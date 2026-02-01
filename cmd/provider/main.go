@@ -182,9 +182,11 @@ func main() {
 			MaxConcurrentReconciles: 1,
 		}), "Cannot setup CRD gate")
 		kingpin.FatalIfError(controller.SetupGated(mgr, o), "Cannot setup Cloudflare controllers")
+		kingpin.FatalIfError(controller.SetupCustomControllersGated(mgr, o), "Cannot setup custom Cloudflare controllers")
 	} else {
 		log.Info("Provider has missing RBAC permissions for watching CRDs, controller SafeStart capability will be disabled")
 		kingpin.FatalIfError(controller.Setup(mgr, o), "Cannot setup Cloudflare controllers")
+		kingpin.FatalIfError(controller.SetupCustomControllers(mgr, o), "Cannot setup custom Cloudflare controllers")
 	}
 
 	kingpin.FatalIfError(mgr.Start(ctrl.SetupSignalHandler()), "Cannot start controller manager")
