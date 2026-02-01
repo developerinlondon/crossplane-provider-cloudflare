@@ -1,0 +1,66 @@
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: AccessApplication
+metadata:
+  name: example-access-app
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    name: My Protected App
+    domain: app.example.com
+    type: self_hosted
+    sessionDuration: 24h
+    autoRedirectToIdentity: true
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: AccessGroup
+metadata:
+  name: example-access-group
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    name: Engineering Team
+    include:
+      - email:
+          email: user@example.com
+      - emailDomain:
+          domain: example.com
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: AccessPolicy
+metadata:
+  name: example-access-policy
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    applicationIdRef:
+      name: example-access-app
+    name: Allow Engineering
+    decision: allow
+    precedence: 1
+    include:
+      - group:
+          id: example-access-group
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: AccessIdentityProvider
+metadata:
+  name: example-oidc-idp
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    name: Corporate SSO
+    type: oidc
+    config:
+      clientId: your-client-id
+      clientSecretSecretRef:
+        name: oidc-secret
+        namespace: crossplane-system
+        key: client-secret
+      authUrl: https://auth.example.com/authorize
+      tokenUrl: https://auth.example.com/token
+      certsUrl: https://auth.example.com/.well-known/jwks.json

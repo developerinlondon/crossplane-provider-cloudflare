@@ -1,0 +1,25 @@
+---
+apiVersion: r2.cloudflare.upbound.io/v1alpha1
+kind: BucketCors
+metadata:
+  name: example-r2-bucket-cors
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    bucketName: my-storage-bucket
+    rules:
+      - allowedOrigins:
+          - "https://example.com"
+          - "https://*.example.com"
+        allowedMethods:
+          - GET
+          - PUT
+          - POST
+          - DELETE
+        allowedHeaders:
+          - "*"
+        exposeHeaders:
+          - ETag
+          - Content-Length
+        maxAgeSeconds: 3600

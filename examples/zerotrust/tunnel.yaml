@@ -1,0 +1,46 @@
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: TunnelCloudflared
+metadata:
+  name: example-tunnel
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    name: my-k8s-tunnel
+    configSrc: cloudflare
+    tunnelSecretSecretRef:
+      name: tunnel-secret
+      namespace: crossplane-system
+      key: secret
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: TunnelCloudflaredConfig
+metadata:
+  name: example-tunnel-config
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    tunnelIdRef:
+      name: example-tunnel
+    config:
+      ingressRules:
+        - hostname: app.example.com
+          service: http://localhost:8080
+        - hostname: api.example.com
+          service: http://localhost:3000
+        - service: http_status:404
+---
+apiVersion: zerotrust.cloudflare.upbound.io/v1alpha1
+kind: TunnelCloudflaredRoute
+metadata:
+  name: example-tunnel-route
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    tunnelIdRef:
+      name: example-tunnel
+    network: 10.0.0.0/8
+    comment: Route to internal network

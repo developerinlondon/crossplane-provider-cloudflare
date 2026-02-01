@@ -1,0 +1,24 @@
+---
+apiVersion: r2.cloudflare.upbound.io/v1alpha1
+kind: BucketLifecycle
+metadata:
+  name: example-r2-bucket-lifecycle
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    bucketName: my-storage-bucket
+    rules:
+      - id: expire-temp-files
+        enabled: true
+        conditions:
+          prefix: tmp/
+        abortIncompleteMultipartUpload:
+          daysAfterInitiation: 7
+      - id: transition-to-infrequent
+        enabled: true
+        conditions:
+          prefix: archive/
+        transitions:
+          - storageClass: InfrequentAccess
+            days: 30

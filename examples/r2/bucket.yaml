@@ -1,0 +1,23 @@
+---
+apiVersion: r2.cloudflare.upbound.io/v1alpha1
+kind: Bucket
+metadata:
+  name: example-r2-bucket
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    name: my-storage-bucket
+    location: wnam
+---
+apiVersion: r2.cloudflare.upbound.io/v1alpha1
+kind: Bucket
+metadata:
+  name: example-r2-bucket-eu
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    name: my-eu-bucket
+    location: weur
+    jurisdiction: eu

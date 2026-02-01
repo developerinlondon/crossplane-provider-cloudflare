@@ -1,0 +1,13 @@
+---
+apiVersion: r2.cloudflare.upbound.io/v1alpha1
+kind: CustomDomain
+metadata:
+  name: example-r2-custom-domain
+spec:
+  forProvider:
+    accountIdRef:
+      name: example-account
+    bucketName: my-storage-bucket
+    domain: storage.example.com
+    zoneIdRef:
+      name: example-zone
