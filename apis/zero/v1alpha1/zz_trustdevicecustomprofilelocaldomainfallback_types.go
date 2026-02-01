@@ -15,69 +15,90 @@ import (
 
 type DomainsInitParameters struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the fallback domain, displayed in the client UI.
 	// A description of the fallback domain, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
 
 type DomainsObservation struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the fallback domain, displayed in the client UI.
 	// A description of the fallback domain, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
 
 type DomainsParameters struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	// +kubebuilder:validation:Optional
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the fallback domain, displayed in the client UI.
 	// A description of the fallback domain, displayed in the client UI.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	// +kubebuilder:validation:Optional
 	Suffix *string `json:"suffix" tf:"suffix,omitempty"`
 }
 
 type TrustDeviceCustomProfileLocalDomainFallbackInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Set) (see below for nested schema)
 	Domains []DomainsInitParameters `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (String)
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 }
 
 type TrustDeviceCustomProfileLocalDomainFallbackObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Set) (see below for nested schema)
 	Domains []DomainsObservation `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 }
 
 type TrustDeviceCustomProfileLocalDomainFallbackParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Set) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Domains []DomainsParameters `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 }
@@ -109,7 +130,7 @@ type TrustDeviceCustomProfileLocalDomainFallbackStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDeviceCustomProfileLocalDomainFallback is the Schema for the TrustDeviceCustomProfileLocalDomainFallbacks API. <no value>
+// TrustDeviceCustomProfileLocalDomainFallback is the Schema for the TrustDeviceCustomProfileLocalDomainFallbacks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

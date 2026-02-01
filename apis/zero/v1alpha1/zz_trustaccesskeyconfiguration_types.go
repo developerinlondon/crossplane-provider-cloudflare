@@ -15,36 +15,45 @@ import (
 
 type TrustAccessKeyConfigurationInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) The number of days between key rotations.
 	// The number of days between key rotations.
 	KeyRotationIntervalDays *float64 `json:"keyRotationIntervalDays,omitempty" tf:"key_rotation_interval_days,omitempty"`
 }
 
 type TrustAccessKeyConfigurationObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) The number of days until the next key rotation.
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation *float64 `json:"daysUntilNextRotation,omitempty" tf:"days_until_next_rotation,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) The number of days between key rotations.
 	// The number of days between key rotations.
 	KeyRotationIntervalDays *float64 `json:"keyRotationIntervalDays,omitempty" tf:"key_rotation_interval_days,omitempty"`
 
+	// (String) The timestamp of the previous key rotation.
 	// The timestamp of the previous key rotation.
 	LastKeyRotationAt *string `json:"lastKeyRotationAt,omitempty" tf:"last_key_rotation_at,omitempty"`
 }
 
 type TrustAccessKeyConfigurationParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) The number of days between key rotations.
 	// The number of days between key rotations.
 	// +kubebuilder:validation:Optional
 	KeyRotationIntervalDays *float64 `json:"keyRotationIntervalDays,omitempty" tf:"key_rotation_interval_days,omitempty"`
@@ -77,7 +86,7 @@ type TrustAccessKeyConfigurationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessKeyConfiguration is the Schema for the TrustAccessKeyConfigurations API. <no value>
+// TrustAccessKeyConfiguration is the Schema for the TrustAccessKeyConfigurations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

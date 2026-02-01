@@ -15,56 +15,73 @@ import (
 
 type DomainInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The domain name.
 	// The domain name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Name of the project.
 	// Name of the project.
 	ProjectName *string `json:"projectName,omitempty" tf:"project_name,omitempty"`
 }
 
 type DomainObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Available values: "google", "lets_encrypt".
 	// Available values: "google", "lets_encrypt".
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String)
 	DomainID *string `json:"domainId,omitempty" tf:"domain_id,omitempty"`
 
+	// (String) The domain name.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The domain name.
 	// The domain name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Name of the project.
 	// Name of the project.
 	ProjectName *string `json:"projectName,omitempty" tf:"project_name,omitempty"`
 
+	// (String) Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ValidationData *ValidationDataObservation `json:"validationData,omitempty" tf:"validation_data,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	VerificationData *VerificationDataObservation `json:"verificationData,omitempty" tf:"verification_data,omitempty"`
 
+	// (String)
 	ZoneTag *string `json:"zoneTag,omitempty" tf:"zone_tag,omitempty"`
 }
 
 type DomainParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The domain name.
 	// The domain name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Name of the project.
 	// Name of the project.
 	// +kubebuilder:validation:Optional
 	ProjectName *string `json:"projectName,omitempty" tf:"project_name,omitempty"`
@@ -74,16 +91,22 @@ type ValidationDataInitParameters struct {
 }
 
 type ValidationDataObservation struct {
+
+	// (String)
 	ErrorMessage *string `json:"errorMessage,omitempty" tf:"error_message,omitempty"`
 
+	// (String) Available values: "http", "txt".
 	// Available values: "http", "txt".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	// Available values: "initializing", "pending", "active", "deactivated", "error".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String)
 	TxtName *string `json:"txtName,omitempty" tf:"txt_name,omitempty"`
 
+	// (String)
 	TxtValue *string `json:"txtValue,omitempty" tf:"txt_value,omitempty"`
 }
 
@@ -94,8 +117,11 @@ type VerificationDataInitParameters struct {
 }
 
 type VerificationDataObservation struct {
+
+	// (String)
 	ErrorMessage *string `json:"errorMessage,omitempty" tf:"error_message,omitempty"`
 
+	// (String) Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	// Available values: "pending", "active", "deactivated", "blocked", "error".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 }
@@ -130,7 +156,7 @@ type DomainStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Domain is the Schema for the Domains API. <no value>
+// Domain is the Schema for the Domains API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,54 +15,72 @@ import (
 
 type BalancerMonitorInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure *bool `json:"allowInsecure,omitempty" tf:"allow_insecure,omitempty"`
 
+	// (Number) To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
 	ConsecutiveDown *float64 `json:"consecutiveDown,omitempty" tf:"consecutive_down,omitempty"`
 
+	// (Number) To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
 	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
 	ConsecutiveUp *float64 `json:"consecutiveUp,omitempty" tf:"consecutive_up,omitempty"`
 
+	// (String) Object description.
 	// Object description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
 	ExpectedBody *string `json:"expectedBody,omitempty" tf:"expected_body,omitempty"`
 
+	// (String) The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
 	// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
 	ExpectedCodes *string `json:"expectedCodes,omitempty" tf:"expected_codes,omitempty"`
 
+	// (Boolean) Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	FollowRedirects *bool `json:"followRedirects,omitempty" tf:"follow_redirects,omitempty"`
 
+	// Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 	Header map[string][]*string `json:"header,omitempty" tf:"header,omitempty"`
 
+	// (Number) The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
 	// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// standard port (HTTP: default 80, HTTPS: default 443).
 	// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 	// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 	ProbeZone *string `json:"probeZone,omitempty" tf:"probe_zone,omitempty"`
 
+	// (Number) The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Number) The timeout (in seconds) before marking the health check as failed.
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
+	// PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp".
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
 	// Available values: "http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -70,60 +88,81 @@ type BalancerMonitorInitParameters struct {
 
 type BalancerMonitorObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure *bool `json:"allowInsecure,omitempty" tf:"allow_insecure,omitempty"`
 
+	// (Number) To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
 	ConsecutiveDown *float64 `json:"consecutiveDown,omitempty" tf:"consecutive_down,omitempty"`
 
+	// (Number) To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
 	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
 	ConsecutiveUp *float64 `json:"consecutiveUp,omitempty" tf:"consecutive_up,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Object description.
 	// Object description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
 	ExpectedBody *string `json:"expectedBody,omitempty" tf:"expected_body,omitempty"`
 
+	// (String) The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
 	// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
 	ExpectedCodes *string `json:"expectedCodes,omitempty" tf:"expected_codes,omitempty"`
 
+	// (Boolean) Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	FollowRedirects *bool `json:"followRedirects,omitempty" tf:"follow_redirects,omitempty"`
 
+	// Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 	Header map[string][]*string `json:"header,omitempty" tf:"header,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
 	// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// standard port (HTTP: default 80, HTTPS: default 443).
 	// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 	// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 	ProbeZone *string `json:"probeZone,omitempty" tf:"probe_zone,omitempty"`
 
+	// (Number) The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Number) The timeout (in seconds) before marking the health check as failed.
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
+	// PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp".
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
 	// Available values: "http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -131,70 +170,88 @@ type BalancerMonitorObservation struct {
 
 type BalancerMonitorParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	AllowInsecure *bool `json:"allowInsecure,omitempty" tf:"allow_insecure,omitempty"`
 
+	// (Number) To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
 	// +kubebuilder:validation:Optional
 	ConsecutiveDown *float64 `json:"consecutiveDown,omitempty" tf:"consecutive_down,omitempty"`
 
+	// (Number) To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
 	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
 	// +kubebuilder:validation:Optional
 	ConsecutiveUp *float64 `json:"consecutiveUp,omitempty" tf:"consecutive_up,omitempty"`
 
+	// (String) Object description.
 	// Object description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	ExpectedBody *string `json:"expectedBody,omitempty" tf:"expected_body,omitempty"`
 
+	// (String) The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
 	// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	ExpectedCodes *string `json:"expectedCodes,omitempty" tf:"expected_codes,omitempty"`
 
+	// (Boolean) Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	FollowRedirects *bool `json:"followRedirects,omitempty" tf:"follow_redirects,omitempty"`
 
+	// Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	Header map[string][]*string `json:"header,omitempty" tf:"header,omitempty"`
 
+	// (Number) The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	// +kubebuilder:validation:Optional
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
 	// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
 	// +kubebuilder:validation:Optional
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// standard port (HTTP: default 80, HTTPS: default 443).
 	// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 	// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 	// +kubebuilder:validation:Optional
 	ProbeZone *string `json:"probeZone,omitempty" tf:"probe_zone,omitempty"`
 
+	// (Number) The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// +kubebuilder:validation:Optional
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Number) The timeout (in seconds) before marking the health check as failed.
 	// The timeout (in seconds) before marking the health check as failed.
 	// +kubebuilder:validation:Optional
 	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
+	// PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp".
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
 	// Available values: "http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp".
 	// +kubebuilder:validation:Optional
@@ -228,7 +285,7 @@ type BalancerMonitorStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// BalancerMonitor is the Schema for the BalancerMonitors API. <no value>
+// BalancerMonitor is the Schema for the BalancerMonitors API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

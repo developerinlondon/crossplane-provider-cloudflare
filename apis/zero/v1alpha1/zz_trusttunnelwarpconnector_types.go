@@ -18,27 +18,35 @@ type TrustTunnelWarpConnectorConnectionsInitParameters struct {
 
 type TrustTunnelWarpConnectorConnectionsObservation struct {
 
+	// (String) UUID of the Cloudflare Tunnel connector.
 	// UUID of the Cloudflare Tunnel connector.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
+	// (String) The cloudflared version used to establish this connection.
 	// The cloudflared version used to establish this connection.
 	ClientVersion *string `json:"clientVersion,omitempty" tf:"client_version,omitempty"`
 
+	// (String) The Cloudflare data center used for this connection.
 	// The Cloudflare data center used for this connection.
 	ColoName *string `json:"coloName,omitempty" tf:"colo_name,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the Cloudflare Tunnel connection.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If true, the connection has disconnected but is still being tracked. If false, the connection is actively serving traffic.
 	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
 	IsPendingReconnect *bool `json:"isPendingReconnect,omitempty" tf:"is_pending_reconnect,omitempty"`
 
+	// (String) Timestamp of when the connection was established.
 	// Timestamp of when the connection was established.
 	OpenedAt *string `json:"openedAt,omitempty" tf:"opened_at,omitempty"`
 
+	// (String) The public IP address of the host running cloudflared.
 	// The public IP address of the host running cloudflared.
 	OriginIP *string `json:"originIp,omitempty" tf:"origin_ip,omitempty"`
 
+	// (String) UUID of the Cloudflare Tunnel connection.
 	// UUID of the Cloudflare Tunnel connection.
 	UUID *string `json:"uuid,omitempty" tf:"uuid,omitempty"`
 }
@@ -48,50 +56,67 @@ type TrustTunnelWarpConnectorConnectionsParameters struct {
 
 type TrustTunnelWarpConnectorInitParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// friendly name for a tunnel.
 	// A user-friendly name for a tunnel.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
 	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
 	TunnelSecretSecretRef *v1.SecretKeySelector `json:"tunnelSecretSecretRef,omitempty" tf:"-"`
 }
 
 type TrustTunnelWarpConnectorObservation struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountTag *string `json:"accountTag,omitempty" tf:"account_tag,omitempty"`
 
+	// (Attributes List, Deprecated) The Cloudflare Tunnel connections between your origin and Cloudflare's edge. (see below for nested schema)
 	Connections []TrustTunnelWarpConnectorConnectionsObservation `json:"connections,omitempty" tf:"connections,omitempty"`
 
+	// (String) Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If null, the tunnel is inactive.
 	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
 	ConnsActiveAt *string `json:"connsActiveAt,omitempty" tf:"conns_active_at,omitempty"`
 
+	// (String) Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If null, the tunnel is active.
 	// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
 	ConnsInactiveAt *string `json:"connsInactiveAt,omitempty" tf:"conns_inactive_at,omitempty"`
 
+	// (String) Timestamp of when the resource was created.
 	// Timestamp of when the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Timestamp of when the resource was deleted. If null, the resource has not been deleted.
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt *string `json:"deletedAt,omitempty" tf:"deleted_at,omitempty"`
 
+	// (String) UUID of the tunnel.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Metadata associated with the tunnel.
 	// Metadata associated with the tunnel.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// friendly name for a tunnel.
 	// A user-friendly name for a tunnel.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The status of the tunnel. Valid values are inactive (tunnel has never been run), degraded (tunnel is active and able to serve traffic but in an unhealthy state), healthy (tunnel is active and able to serve traffic), or down (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	// Available values: "inactive", "degraded", "healthy", "down".
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
 	// Available values: "inactive", "degraded", "healthy", "down".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) The type of tunnel.
+	// Available values: "cfd_tunnel", "warp_connector", "warp", "magic", "ip_sec", "gre", "cni".
 	// The type of tunnel.
 	// Available values: "cfd_tunnel", "warp_connector", "warp", "magic", "ip_sec", "gre", "cni".
 	TunType *string `json:"tunType,omitempty" tf:"tun_type,omitempty"`
@@ -99,14 +124,17 @@ type TrustTunnelWarpConnectorObservation struct {
 
 type TrustTunnelWarpConnectorParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// friendly name for a tunnel.
 	// A user-friendly name for a tunnel.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
 	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
 	// +kubebuilder:validation:Optional
 	TunnelSecretSecretRef *v1.SecretKeySelector `json:"tunnelSecretSecretRef,omitempty" tf:"-"`
@@ -139,7 +167,7 @@ type TrustTunnelWarpConnectorStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustTunnelWarpConnector is the Schema for the TrustTunnelWarpConnectors API. <no value>
+// TrustTunnelWarpConnector is the Schema for the TrustTunnelWarpConnectors API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

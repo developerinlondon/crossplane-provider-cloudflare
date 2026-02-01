@@ -16,62 +16,82 @@ import (
 
 type TLSSettingInitParameters struct {
 
+	// (String) The hostname for which the tls settings are set.
 	// The hostname for which the tls settings are set.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) The TLS Setting name.
+	// Available values: "ciphers", "min_tls_version", "http2".
 	// The TLS Setting name.
 	// Available values: "ciphers", "min_tls_version", "http2".
 	SettingID *string `json:"settingId,omitempty" tf:"setting_id,omitempty"`
 
+	// (Dynamic) The tls setting value.
 	// The tls setting value.
 	Value *v1.JSON `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TLSSettingObservation struct {
 
+	// (String) This is the time the tls setting was originally created for this hostname.
 	// This is the time the tls setting was originally created for this hostname.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) The hostname for which the tls settings are set.
 	// The hostname for which the tls settings are set.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) The TLS Setting name.
+	// Available values: "ciphers", "min_tls_version", "http2".
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The TLS Setting name.
+	// Available values: "ciphers", "min_tls_version", "http2".
 	// The TLS Setting name.
 	// Available values: "ciphers", "min_tls_version", "http2".
 	SettingID *string `json:"settingId,omitempty" tf:"setting_id,omitempty"`
 
+	// (String) Deployment status for the given tls setting.
 	// Deployment status for the given tls setting.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) This is the time the tls setting was updated.
 	// This is the time the tls setting was updated.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (Dynamic) The tls setting value.
 	// The tls setting value.
 	Value *v1.JSON `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TLSSettingParameters struct {
 
+	// (String) The hostname for which the tls settings are set.
 	// The hostname for which the tls settings are set.
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) The TLS Setting name.
+	// Available values: "ciphers", "min_tls_version", "http2".
 	// The TLS Setting name.
 	// Available values: "ciphers", "min_tls_version", "http2".
 	// +kubebuilder:validation:Optional
 	SettingID *string `json:"settingId,omitempty" tf:"setting_id,omitempty"`
 
+	// (Dynamic) The tls setting value.
 	// The tls setting value.
 	// +kubebuilder:validation:Optional
 	Value *v1.JSON `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -104,7 +124,7 @@ type TLSSettingStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TLSSetting is the Schema for the TLSSettings API. <no value>
+// TLSSetting is the Schema for the TLSSettings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,91 +15,118 @@ import (
 
 type HTTPConfigInitParameters struct {
 
+	// (Boolean) Do not validate the certificate when the health check uses HTTPS.
 	// Do not validate the certificate when the health check uses HTTPS.
 	AllowInsecure *bool `json:"allowInsecure,omitempty" tf:"allow_insecure,omitempty"`
 
+	// insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
 	ExpectedBody *string `json:"expectedBody,omitempty" tf:"expected_body,omitempty"`
 
+	// (List of String) The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
 	// The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
 	ExpectedCodes []*string `json:"expectedCodes,omitempty" tf:"expected_codes,omitempty"`
 
+	// (Boolean) Follow redirects if the origin returns a 3xx status code.
 	// Follow redirects if the origin returns a 3xx status code.
 	FollowRedirects *bool `json:"followRedirects,omitempty" tf:"follow_redirects,omitempty"`
 
+	// Agent header cannot be overridden.
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Header map[string][]*string `json:"header,omitempty" tf:"header,omitempty"`
 
+	// (String) The HTTP method to use for the health check.
+	// Available values: "GET", "HEAD".
 	// The HTTP method to use for the health check.
 	// Available values: "GET", "HEAD".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) The endpoint path to health check against.
 	// The endpoint path to health check against.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// (Number) Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type HTTPConfigObservation struct {
 
+	// (Boolean) Do not validate the certificate when the health check uses HTTPS.
 	// Do not validate the certificate when the health check uses HTTPS.
 	AllowInsecure *bool `json:"allowInsecure,omitempty" tf:"allow_insecure,omitempty"`
 
+	// insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
 	ExpectedBody *string `json:"expectedBody,omitempty" tf:"expected_body,omitempty"`
 
+	// (List of String) The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
 	// The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
 	ExpectedCodes []*string `json:"expectedCodes,omitempty" tf:"expected_codes,omitempty"`
 
+	// (Boolean) Follow redirects if the origin returns a 3xx status code.
 	// Follow redirects if the origin returns a 3xx status code.
 	FollowRedirects *bool `json:"followRedirects,omitempty" tf:"follow_redirects,omitempty"`
 
+	// Agent header cannot be overridden.
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Header map[string][]*string `json:"header,omitempty" tf:"header,omitempty"`
 
+	// (String) The HTTP method to use for the health check.
+	// Available values: "GET", "HEAD".
 	// The HTTP method to use for the health check.
 	// Available values: "GET", "HEAD".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) The endpoint path to health check against.
 	// The endpoint path to health check against.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// (Number) Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type HTTPConfigParameters struct {
 
+	// (Boolean) Do not validate the certificate when the health check uses HTTPS.
 	// Do not validate the certificate when the health check uses HTTPS.
 	// +kubebuilder:validation:Optional
 	AllowInsecure *bool `json:"allowInsecure,omitempty" tf:"allow_insecure,omitempty"`
 
+	// insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
 	// +kubebuilder:validation:Optional
 	ExpectedBody *string `json:"expectedBody,omitempty" tf:"expected_body,omitempty"`
 
+	// (List of String) The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
 	// The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
 	// +kubebuilder:validation:Optional
 	ExpectedCodes []*string `json:"expectedCodes,omitempty" tf:"expected_codes,omitempty"`
 
+	// (Boolean) Follow redirects if the origin returns a 3xx status code.
 	// Follow redirects if the origin returns a 3xx status code.
 	// +kubebuilder:validation:Optional
 	FollowRedirects *bool `json:"followRedirects,omitempty" tf:"follow_redirects,omitempty"`
 
+	// Agent header cannot be overridden.
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	// +kubebuilder:validation:Optional
 	Header map[string][]*string `json:"header,omitempty" tf:"header,omitempty"`
 
+	// (String) The HTTP method to use for the health check.
+	// Available values: "GET", "HEAD".
 	// The HTTP method to use for the health check.
 	// Available values: "GET", "HEAD".
 	// +kubebuilder:validation:Optional
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) The endpoint path to health check against.
 	// The endpoint path to health check against.
 	// +kubebuilder:validation:Optional
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// (Number) Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
@@ -107,155 +134,203 @@ type HTTPConfigParameters struct {
 
 type HealthcheckInitParameters struct {
 
+	// (String) The hostname or IP address of the origin server to run health checks on.
 	// The hostname or IP address of the origin server to run health checks on.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (List of String) A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions []*string `json:"checkRegions,omitempty" tf:"check_regions,omitempty"`
 
+	// (Number) The number of consecutive fails required from a health check before changing the health to unhealthy.
 	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	ConsecutiveFails *float64 `json:"consecutiveFails,omitempty" tf:"consecutive_fails,omitempty"`
 
+	// (Number) The number of consecutive successes required from a health check before changing the health to healthy.
 	// The number of consecutive successes required from a health check before changing the health to healthy.
 	ConsecutiveSuccesses *float64 `json:"consecutiveSuccesses,omitempty" tf:"consecutive_successes,omitempty"`
 
+	// readable description of the health check.
 	// A human-readable description of the health check.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes) Parameters specific to an HTTP or HTTPS health check. (see below for nested schema)
 	HTTPConfig *HTTPConfigInitParameters `json:"httpConfig,omitempty" tf:"http_config,omitempty"`
 
+	// (Number) The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Boolean) If suspended, no health checks are sent to the origin.
 	// If suspended, no health checks are sent to the origin.
 	Suspended *bool `json:"suspended,omitempty" tf:"suspended,omitempty"`
 
+	// (Attributes) Parameters specific to TCP health check. (see below for nested schema)
 	TCPConfig *TCPConfigInitParameters `json:"tcpConfig,omitempty" tf:"tcp_config,omitempty"`
 
+	// (Number) The timeout (in seconds) before marking the health check as failed.
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
+	// (String) The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HealthcheckObservation struct {
 
+	// (String) The hostname or IP address of the origin server to run health checks on.
 	// The hostname or IP address of the origin server to run health checks on.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (List of String) A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions []*string `json:"checkRegions,omitempty" tf:"check_regions,omitempty"`
 
+	// (Number) The number of consecutive fails required from a health check before changing the health to unhealthy.
 	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	ConsecutiveFails *float64 `json:"consecutiveFails,omitempty" tf:"consecutive_fails,omitempty"`
 
+	// (Number) The number of consecutive successes required from a health check before changing the health to healthy.
 	// The number of consecutive successes required from a health check before changing the health to healthy.
 	ConsecutiveSuccesses *float64 `json:"consecutiveSuccesses,omitempty" tf:"consecutive_successes,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// readable description of the health check.
 	// A human-readable description of the health check.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The current failure reason if status is unhealthy.
 	// The current failure reason if status is unhealthy.
 	FailureReason *string `json:"failureReason,omitempty" tf:"failure_reason,omitempty"`
 
+	// (Attributes) Parameters specific to an HTTP or HTTPS health check. (see below for nested schema)
 	HTTPConfig *HTTPConfigObservation `json:"httpConfig,omitempty" tf:"http_config,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (String) The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
 	// The current status of the origin server according to the health check.
 	// Available values: "unknown", "healthy", "unhealthy", "suspended".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Boolean) If suspended, no health checks are sent to the origin.
 	// If suspended, no health checks are sent to the origin.
 	Suspended *bool `json:"suspended,omitempty" tf:"suspended,omitempty"`
 
+	// (Attributes) Parameters specific to TCP health check. (see below for nested schema)
 	TCPConfig *TCPConfigObservation `json:"tcpConfig,omitempty" tf:"tcp_config,omitempty"`
 
+	// (Number) The timeout (in seconds) before marking the health check as failed.
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
+	// (String) The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HealthcheckParameters struct {
 
+	// (String) The hostname or IP address of the origin server to run health checks on.
 	// The hostname or IP address of the origin server to run health checks on.
 	// +kubebuilder:validation:Optional
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (List of String) A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	// +kubebuilder:validation:Optional
 	CheckRegions []*string `json:"checkRegions,omitempty" tf:"check_regions,omitempty"`
 
+	// (Number) The number of consecutive fails required from a health check before changing the health to unhealthy.
 	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	// +kubebuilder:validation:Optional
 	ConsecutiveFails *float64 `json:"consecutiveFails,omitempty" tf:"consecutive_fails,omitempty"`
 
+	// (Number) The number of consecutive successes required from a health check before changing the health to healthy.
 	// The number of consecutive successes required from a health check before changing the health to healthy.
 	// +kubebuilder:validation:Optional
 	ConsecutiveSuccesses *float64 `json:"consecutiveSuccesses,omitempty" tf:"consecutive_successes,omitempty"`
 
+	// readable description of the health check.
 	// A human-readable description of the health check.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes) Parameters specific to an HTTP or HTTPS health check. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	HTTPConfig *HTTPConfigParameters `json:"httpConfig,omitempty" tf:"http_config,omitempty"`
 
+	// (Number) The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	// +kubebuilder:validation:Optional
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	// +kubebuilder:validation:Optional
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Boolean) If suspended, no health checks are sent to the origin.
 	// If suspended, no health checks are sent to the origin.
 	// +kubebuilder:validation:Optional
 	Suspended *bool `json:"suspended,omitempty" tf:"suspended,omitempty"`
 
+	// (Attributes) Parameters specific to TCP health check. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	TCPConfig *TCPConfigParameters `json:"tcpConfig,omitempty" tf:"tcp_config,omitempty"`
 
+	// (Number) The timeout (in seconds) before marking the health check as failed.
 	// The timeout (in seconds) before marking the health check as failed.
 	// +kubebuilder:validation:Optional
 	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
+	// (String) The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -263,31 +338,40 @@ type HealthcheckParameters struct {
 
 type TCPConfigInitParameters struct {
 
+	// (String) The HTTP method to use for the health check.
+	// Available values: "GET", "HEAD".
 	// The TCP connection method to use for the health check.
 	// Available values: "connection_established".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (Number) Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// Port number to connect to for the health check. Defaults to 80.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type TCPConfigObservation struct {
 
+	// (String) The HTTP method to use for the health check.
+	// Available values: "GET", "HEAD".
 	// The TCP connection method to use for the health check.
 	// Available values: "connection_established".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (Number) Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// Port number to connect to for the health check. Defaults to 80.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type TCPConfigParameters struct {
 
+	// (String) The HTTP method to use for the health check.
+	// Available values: "GET", "HEAD".
 	// The TCP connection method to use for the health check.
 	// Available values: "connection_established".
 	// +kubebuilder:validation:Optional
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (Number) Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.
 	// Port number to connect to for the health check. Defaults to 80.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
@@ -320,7 +404,7 @@ type HealthcheckStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Healthcheck is the Schema for the Healthchecks API. <no value>
+// Healthcheck is the Schema for the Healthchecks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

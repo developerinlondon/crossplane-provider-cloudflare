@@ -15,35 +15,49 @@ import (
 
 type RoomSettingsInitParameters struct {
 
+	// (Boolean) Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass *bool `json:"searchEngineCrawlerBypass,omitempty" tf:"search_engine_crawler_bypass,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoomSettingsObservation struct {
+
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass *bool `json:"searchEngineCrawlerBypass,omitempty" tf:"search_engine_crawler_bypass,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoomSettingsParameters struct {
 
+	// (Boolean) Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	// +kubebuilder:validation:Optional
 	SearchEngineCrawlerBypass *bool `json:"searchEngineCrawlerBypass,omitempty" tf:"search_engine_crawler_bypass,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -76,7 +90,7 @@ type RoomSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// RoomSettings is the Schema for the RoomSettingss API. <no value>
+// RoomSettings is the Schema for the RoomSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

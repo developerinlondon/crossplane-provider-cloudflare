@@ -15,75 +15,96 @@ import (
 
 type CertificateInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Indicates whether the certificate is a CA or leaf certificate.
 	// Indicates whether the certificate is a CA or leaf certificate.
 	CA *bool `json:"ca,omitempty" tf:"ca,omitempty"`
 
+	// (String) The uploaded root CA certificate.
 	// The uploaded root CA certificate.
 	Certificates *string `json:"certificates,omitempty" tf:"certificates,omitempty"`
 
+	// (String) Optional unique name for the certificate. Only used for human readability.
 	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String, Sensitive) The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	PrivateKeySecretRef *v1.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 }
 
 type CertificateObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Indicates whether the certificate is a CA or leaf certificate.
 	// Indicates whether the certificate is a CA or leaf certificate.
 	CA *bool `json:"ca,omitempty" tf:"ca,omitempty"`
 
+	// (String) The uploaded root CA certificate.
 	// The uploaded root CA certificate.
 	Certificates *string `json:"certificates,omitempty" tf:"certificates,omitempty"`
 
+	// (String) When the certificate expires.
 	// When the certificate expires.
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The certificate authority that issued the certificate.
 	// The certificate authority that issued the certificate.
 	Issuer *string `json:"issuer,omitempty" tf:"issuer,omitempty"`
 
+	// (String) Optional unique name for the certificate. Only used for human readability.
 	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The certificate serial number.
 	// The certificate serial number.
 	SerialNumber *string `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
 
+	// (String) The type of hash used for the certificate.
 	// The type of hash used for the certificate.
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String) This is the time the certificate was updated.
 	// This is the time the certificate was updated.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (String) This is the time the certificate was uploaded.
 	// This is the time the certificate was uploaded.
 	UploadedOn *string `json:"uploadedOn,omitempty" tf:"uploaded_on,omitempty"`
 }
 
 type CertificateParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Indicates whether the certificate is a CA or leaf certificate.
 	// Indicates whether the certificate is a CA or leaf certificate.
 	// +kubebuilder:validation:Optional
 	CA *bool `json:"ca,omitempty" tf:"ca,omitempty"`
 
+	// (String) The uploaded root CA certificate.
 	// The uploaded root CA certificate.
 	// +kubebuilder:validation:Optional
 	Certificates *string `json:"certificates,omitempty" tf:"certificates,omitempty"`
 
+	// (String) Optional unique name for the certificate. Only used for human readability.
 	// Optional unique name for the certificate. Only used for human readability.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String, Sensitive) The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	// +kubebuilder:validation:Optional
 	PrivateKeySecretRef *v1.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
@@ -116,7 +137,7 @@ type CertificateStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Certificate is the Schema for the Certificates API. <no value>
+// Certificate is the Schema for the Certificates API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

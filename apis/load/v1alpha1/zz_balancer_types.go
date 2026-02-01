@@ -15,71 +15,94 @@ import (
 
 type AdaptiveRoutingInitParameters struct {
 
+	// downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned.
 	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
 	FailoverAcrossPools *bool `json:"failoverAcrossPools,omitempty" tf:"failover_across_pools,omitempty"`
 }
 
 type AdaptiveRoutingObservation struct {
 
+	// downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned.
 	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
 	FailoverAcrossPools *bool `json:"failoverAcrossPools,omitempty" tf:"failover_across_pools,omitempty"`
 }
 
 type AdaptiveRoutingParameters struct {
 
+	// downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned.
 	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
 	// +kubebuilder:validation:Optional
 	FailoverAcrossPools *bool `json:"failoverAcrossPools,omitempty" tf:"failover_across_pools,omitempty"`
 }
 
 type BalancerInitParameters struct {
+
+	// downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. (see below for nested schema)
 	AdaptiveRouting *AdaptiveRoutingInitParameters `json:"adaptiveRouting,omitempty" tf:"adaptive_routing,omitempty"`
 
+	// (Map of List of String) A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	CountryPools map[string][]*string `json:"countryPools,omitempty" tf:"country_pools,omitempty"`
 
+	// (List of String) A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	DefaultPools []*string `json:"defaultPools,omitempty" tf:"default_pools,omitempty"`
 
+	// (String) Object description.
 	// Object description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether to enable (the default) this load balancer.
 	// Whether to enable (the default) this load balancer.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The pool ID to use when all other pools are detected as unhealthy.
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPool *string `json:"fallbackPool,omitempty" tf:"fallback_pool,omitempty"`
 
+	// based steering for non-proxied requests. See steering_policy to learn how steering is affected. (see below for nested schema)
 	LocationStrategy *LocationStrategyInitParameters `json:"locationStrategy,omitempty" tf:"location_strategy,omitempty"`
 
+	// (String) The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) List of networks where Load Balancer or Pool is enabled.
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []*string `json:"networks,omitempty" tf:"networks,omitempty"`
 
+	// (Map of List of String) Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	PopPools map[string][]*string `json:"popPools,omitempty" tf:"pop_pools,omitempty"`
 
+	// (Boolean) Whether the hostname should be gray clouded (false) or orange clouded (true).
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied *bool `json:"proxied,omitempty" tf:"proxied,omitempty"`
 
+	// (Attributes) Configures pool weights.
 	RandomSteering *RandomSteeringInitParameters `json:"randomSteering,omitempty" tf:"random_steering,omitempty"`
 
+	// (Map of List of String) A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]*string `json:"regionPools,omitempty" tf:"region_pools,omitempty"`
 
+	// (Attributes List) BETA Field Not General Access: A list of rules for this load balancer to execute. (see below for nested schema)
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// "cookie": On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie": Behaves the same as "cookie" except the initial origin selection is stable and based on the client's ip address. - "header": On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration.
+	// Available values: "none", "cookie", "ip_cookie", "header".
 	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
 	// Available values: "none", "cookie", "ip_cookie", "header".
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 
+	// (Attributes) Configures attributes for session affinity. (see below for nested schema)
 	SessionAffinityAttributes *BalancerSessionAffinityAttributesInitParameters `json:"sessionAffinityAttributes,omitempty" tf:"session_affinity_attributes,omitempty"`
 
+	// "cookie" / "ip_cookie": The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header": The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTTL *float64 `json:"sessionAffinityTtl,omitempty" tf:"session_affinity_ttl,omitempty"`
 
+	// (String) Steering Policy for this load balancer.
 	// Steering Policy for this load balancer.
 	// - `"off"`: Use `default_pools`.
 	// - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
@@ -92,66 +115,91 @@ type BalancerInitParameters struct {
 	// Available values: "off", "geo", "random", "dynamic_latency", "proximity", "least_outstanding_requests", "least_connections", "".
 	SteeringPolicy *string `json:"steeringPolicy,omitempty" tf:"steering_policy,omitempty"`
 
+	// clouded (unproxied) load balancers.
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type BalancerObservation struct {
+
+	// downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. (see below for nested schema)
 	AdaptiveRouting *AdaptiveRoutingObservation `json:"adaptiveRouting,omitempty" tf:"adaptive_routing,omitempty"`
 
+	// (Map of List of String) A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	CountryPools map[string][]*string `json:"countryPools,omitempty" tf:"country_pools,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (List of String) A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	DefaultPools []*string `json:"defaultPools,omitempty" tf:"default_pools,omitempty"`
 
+	// (String) Object description.
 	// Object description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether to enable (the default) this load balancer.
 	// Whether to enable (the default) this load balancer.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The pool ID to use when all other pools are detected as unhealthy.
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPool *string `json:"fallbackPool,omitempty" tf:"fallback_pool,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// based steering for non-proxied requests. See steering_policy to learn how steering is affected. (see below for nested schema)
 	LocationStrategy *LocationStrategyObservation `json:"locationStrategy,omitempty" tf:"location_strategy,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) List of networks where Load Balancer or Pool is enabled.
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []*string `json:"networks,omitempty" tf:"networks,omitempty"`
 
+	// (Map of List of String) Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	PopPools map[string][]*string `json:"popPools,omitempty" tf:"pop_pools,omitempty"`
 
+	// (Boolean) Whether the hostname should be gray clouded (false) or orange clouded (true).
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied *bool `json:"proxied,omitempty" tf:"proxied,omitempty"`
 
+	// (Attributes) Configures pool weights.
 	RandomSteering *RandomSteeringObservation `json:"randomSteering,omitempty" tf:"random_steering,omitempty"`
 
+	// (Map of List of String) A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]*string `json:"regionPools,omitempty" tf:"region_pools,omitempty"`
 
+	// (Attributes List) BETA Field Not General Access: A list of rules for this load balancer to execute. (see below for nested schema)
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// "cookie": On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie": Behaves the same as "cookie" except the initial origin selection is stable and based on the client's ip address. - "header": On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration.
+	// Available values: "none", "cookie", "ip_cookie", "header".
 	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
 	// Available values: "none", "cookie", "ip_cookie", "header".
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 
+	// (Attributes) Configures attributes for session affinity. (see below for nested schema)
 	SessionAffinityAttributes *BalancerSessionAffinityAttributesObservation `json:"sessionAffinityAttributes,omitempty" tf:"session_affinity_attributes,omitempty"`
 
+	// "cookie" / "ip_cookie": The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header": The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTTL *float64 `json:"sessionAffinityTtl,omitempty" tf:"session_affinity_ttl,omitempty"`
 
+	// (String) Steering Policy for this load balancer.
 	// Steering Policy for this load balancer.
 	// - `"off"`: Use `default_pools`.
 	// - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
@@ -164,80 +212,102 @@ type BalancerObservation struct {
 	// Available values: "off", "geo", "random", "dynamic_latency", "proximity", "least_outstanding_requests", "least_connections", "".
 	SteeringPolicy *string `json:"steeringPolicy,omitempty" tf:"steering_policy,omitempty"`
 
+	// clouded (unproxied) load balancers.
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String)
 	ZoneName *string `json:"zoneName,omitempty" tf:"zone_name,omitempty"`
 }
 
 type BalancerParameters struct {
 
+	// downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AdaptiveRouting *AdaptiveRoutingParameters `json:"adaptiveRouting,omitempty" tf:"adaptive_routing,omitempty"`
 
+	// (Map of List of String) A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// +kubebuilder:validation:Optional
 	CountryPools map[string][]*string `json:"countryPools,omitempty" tf:"country_pools,omitempty"`
 
+	// (List of String) A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// +kubebuilder:validation:Optional
 	DefaultPools []*string `json:"defaultPools,omitempty" tf:"default_pools,omitempty"`
 
+	// (String) Object description.
 	// Object description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether to enable (the default) this load balancer.
 	// Whether to enable (the default) this load balancer.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The pool ID to use when all other pools are detected as unhealthy.
 	// The pool ID to use when all other pools are detected as unhealthy.
 	// +kubebuilder:validation:Optional
 	FallbackPool *string `json:"fallbackPool,omitempty" tf:"fallback_pool,omitempty"`
 
+	// based steering for non-proxied requests. See steering_policy to learn how steering is affected. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LocationStrategy *LocationStrategyParameters `json:"locationStrategy,omitempty" tf:"location_strategy,omitempty"`
 
+	// (String) The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) List of networks where Load Balancer or Pool is enabled.
 	// List of networks where Load Balancer or Pool is enabled.
 	// +kubebuilder:validation:Optional
 	Networks []*string `json:"networks,omitempty" tf:"networks,omitempty"`
 
+	// (Map of List of String) Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// +kubebuilder:validation:Optional
 	PopPools map[string][]*string `json:"popPools,omitempty" tf:"pop_pools,omitempty"`
 
+	// (Boolean) Whether the hostname should be gray clouded (false) or orange clouded (true).
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	// +kubebuilder:validation:Optional
 	Proxied *bool `json:"proxied,omitempty" tf:"proxied,omitempty"`
 
+	// (Attributes) Configures pool weights.
 	// +kubebuilder:validation:Optional
 	RandomSteering *RandomSteeringParameters `json:"randomSteering,omitempty" tf:"random_steering,omitempty"`
 
+	// (Map of List of String) A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// +kubebuilder:validation:Optional
 	RegionPools map[string][]*string `json:"regionPools,omitempty" tf:"region_pools,omitempty"`
 
+	// (Attributes List) BETA Field Not General Access: A list of rules for this load balancer to execute. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []RulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// "cookie": On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie": Behaves the same as "cookie" except the initial origin selection is stable and based on the client's ip address. - "header": On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration.
+	// Available values: "none", "cookie", "ip_cookie", "header".
 	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
 	// Available values: "none", "cookie", "ip_cookie", "header".
 	// +kubebuilder:validation:Optional
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 
+	// (Attributes) Configures attributes for session affinity. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SessionAffinityAttributes *BalancerSessionAffinityAttributesParameters `json:"sessionAffinityAttributes,omitempty" tf:"session_affinity_attributes,omitempty"`
 
+	// "cookie" / "ip_cookie": The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header": The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// +kubebuilder:validation:Optional
 	SessionAffinityTTL *float64 `json:"sessionAffinityTtl,omitempty" tf:"session_affinity_ttl,omitempty"`
 
+	// (String) Steering Policy for this load balancer.
 	// Steering Policy for this load balancer.
 	// - `"off"`: Use `default_pools`.
 	// - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
@@ -251,33 +321,44 @@ type BalancerParameters struct {
 	// +kubebuilder:validation:Optional
 	SteeringPolicy *string `json:"steeringPolicy,omitempty" tf:"steering_policy,omitempty"`
 
+	// clouded (unproxied) load balancers.
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type BalancerSessionAffinityAttributesInitParameters struct {
 
+	// (Number) Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	DrainDuration *float64 `json:"drainDuration,omitempty" tf:"drain_duration,omitempty"`
 
+	// name-1>,<cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// "true": Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created. - "false": Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created.
 	// When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders *bool `json:"requireAllHeaders,omitempty" tf:"require_all_headers,omitempty"`
 
+	// (String) Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+	// Available values: "Auto", "Lax", "None", "Strict".
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
 	Samesite *string `json:"samesite,omitempty" tf:"samesite,omitempty"`
 
+	// Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+	// Available values: "Auto", "Always", "Never".
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure *string `json:"secure,omitempty" tf:"secure,omitempty"`
 
+	// downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none": No failover takes place for sessions pinned to the origin (default). - "temporary": Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky": The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
 	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover *string `json:"zeroDowntimeFailover,omitempty" tf:"zero_downtime_failover,omitempty"`
@@ -285,23 +366,32 @@ type BalancerSessionAffinityAttributesInitParameters struct {
 
 type BalancerSessionAffinityAttributesObservation struct {
 
+	// (Number) Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	DrainDuration *float64 `json:"drainDuration,omitempty" tf:"drain_duration,omitempty"`
 
+	// name-1>,<cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// "true": Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created. - "false": Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created.
 	// When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders *bool `json:"requireAllHeaders,omitempty" tf:"require_all_headers,omitempty"`
 
+	// (String) Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+	// Available values: "Auto", "Lax", "None", "Strict".
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
 	Samesite *string `json:"samesite,omitempty" tf:"samesite,omitempty"`
 
+	// Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+	// Available values: "Auto", "Always", "Never".
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure *string `json:"secure,omitempty" tf:"secure,omitempty"`
 
+	// downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none": No failover takes place for sessions pinned to the origin (default). - "temporary": Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky": The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
 	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover *string `json:"zeroDowntimeFailover,omitempty" tf:"zero_downtime_failover,omitempty"`
@@ -309,28 +399,37 @@ type BalancerSessionAffinityAttributesObservation struct {
 
 type BalancerSessionAffinityAttributesParameters struct {
 
+	// (Number) Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// +kubebuilder:validation:Optional
 	DrainDuration *float64 `json:"drainDuration,omitempty" tf:"drain_duration,omitempty"`
 
+	// name-1>,<cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// +kubebuilder:validation:Optional
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// "true": Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created. - "false": Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created.
 	// When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	// +kubebuilder:validation:Optional
 	RequireAllHeaders *bool `json:"requireAllHeaders,omitempty" tf:"require_all_headers,omitempty"`
 
+	// (String) Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+	// Available values: "Auto", "Lax", "None", "Strict".
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
 	// +kubebuilder:validation:Optional
 	Samesite *string `json:"samesite,omitempty" tf:"samesite,omitempty"`
 
+	// Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+	// Available values: "Auto", "Always", "Never".
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	// +kubebuilder:validation:Optional
 	Secure *string `json:"secure,omitempty" tf:"secure,omitempty"`
 
+	// downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none": No failover takes place for sessions pinned to the origin (default). - "temporary": Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky": The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
 	// Available values: "none", "temporary", "sticky".
 	// +kubebuilder:validation:Optional
@@ -339,48 +438,60 @@ type BalancerSessionAffinityAttributesParameters struct {
 
 type FixedResponseInitParameters struct {
 
+	// Type' header to include in the response.
 	// The http 'Content-Type' header to include in the response.
 	ContentType *string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 
+	// (String) The http 'Location' header to include in the response.
 	// The http 'Location' header to include in the response.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) Text to include as the http body.
 	// Text to include as the http body.
 	MessageBody *string `json:"messageBody,omitempty" tf:"message_body,omitempty"`
 
+	// (Number) The http status code to respond with.
 	// The http status code to respond with.
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 }
 
 type FixedResponseObservation struct {
 
+	// Type' header to include in the response.
 	// The http 'Content-Type' header to include in the response.
 	ContentType *string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 
+	// (String) The http 'Location' header to include in the response.
 	// The http 'Location' header to include in the response.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) Text to include as the http body.
 	// Text to include as the http body.
 	MessageBody *string `json:"messageBody,omitempty" tf:"message_body,omitempty"`
 
+	// (Number) The http status code to respond with.
 	// The http status code to respond with.
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 }
 
 type FixedResponseParameters struct {
 
+	// Type' header to include in the response.
 	// The http 'Content-Type' header to include in the response.
 	// +kubebuilder:validation:Optional
 	ContentType *string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 
+	// (String) The http 'Location' header to include in the response.
 	// The http 'Location' header to include in the response.
 	// +kubebuilder:validation:Optional
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) Text to include as the http body.
 	// Text to include as the http body.
 	// +kubebuilder:validation:Optional
 	MessageBody *string `json:"messageBody,omitempty" tf:"message_body,omitempty"`
 
+	// (Number) The http status code to respond with.
 	// The http status code to respond with.
 	// +kubebuilder:validation:Optional
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
@@ -388,12 +499,14 @@ type FixedResponseParameters struct {
 
 type LocationStrategyInitParameters struct {
 
+	// (String) Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// - `"pop"`: Use the Cloudflare PoP location.
 	// - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
 	// Available values: "pop", "resolver_ip".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// - `"always"`: Always prefer ECS.
 	// - `"never"`: Never prefer ECS.
@@ -405,12 +518,14 @@ type LocationStrategyInitParameters struct {
 
 type LocationStrategyObservation struct {
 
+	// (String) Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// - `"pop"`: Use the Cloudflare PoP location.
 	// - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
 	// Available values: "pop", "resolver_ip".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// - `"always"`: Always prefer ECS.
 	// - `"never"`: Never prefer ECS.
@@ -422,6 +537,7 @@ type LocationStrategyObservation struct {
 
 type LocationStrategyParameters struct {
 
+	// (String) Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// - `"pop"`: Use the Cloudflare PoP location.
 	// - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
@@ -429,6 +545,7 @@ type LocationStrategyParameters struct {
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// - `"always"`: Always prefer ECS.
 	// - `"never"`: Never prefer ECS.
@@ -441,54 +558,71 @@ type LocationStrategyParameters struct {
 
 type OverridesAdaptiveRoutingInitParameters struct {
 
+	// downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned.
 	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
 	FailoverAcrossPools *bool `json:"failoverAcrossPools,omitempty" tf:"failover_across_pools,omitempty"`
 }
 
 type OverridesAdaptiveRoutingObservation struct {
 
+	// downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned.
 	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
 	FailoverAcrossPools *bool `json:"failoverAcrossPools,omitempty" tf:"failover_across_pools,omitempty"`
 }
 
 type OverridesAdaptiveRoutingParameters struct {
 
+	// downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned.
 	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
 	// +kubebuilder:validation:Optional
 	FailoverAcrossPools *bool `json:"failoverAcrossPools,omitempty" tf:"failover_across_pools,omitempty"`
 }
 
 type OverridesInitParameters struct {
+
+	// downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. (see below for nested schema)
 	AdaptiveRouting *OverridesAdaptiveRoutingInitParameters `json:"adaptiveRouting,omitempty" tf:"adaptive_routing,omitempty"`
 
+	// (Map of List of String) A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	CountryPools map[string][]*string `json:"countryPools,omitempty" tf:"country_pools,omitempty"`
 
+	// (List of String) A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	DefaultPools []*string `json:"defaultPools,omitempty" tf:"default_pools,omitempty"`
 
+	// (String) The pool ID to use when all other pools are detected as unhealthy.
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPool *string `json:"fallbackPool,omitempty" tf:"fallback_pool,omitempty"`
 
+	// based steering for non-proxied requests. See steering_policy to learn how steering is affected. (see below for nested schema)
 	LocationStrategy *OverridesLocationStrategyInitParameters `json:"locationStrategy,omitempty" tf:"location_strategy,omitempty"`
 
+	// (Map of List of String) Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	PopPools map[string][]*string `json:"popPools,omitempty" tf:"pop_pools,omitempty"`
 
+	// (Attributes) Configures pool weights.
 	RandomSteering *OverridesRandomSteeringInitParameters `json:"randomSteering,omitempty" tf:"random_steering,omitempty"`
 
+	// (Map of List of String) A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]*string `json:"regionPools,omitempty" tf:"region_pools,omitempty"`
 
+	// "cookie": On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie": Behaves the same as "cookie" except the initial origin selection is stable and based on the client's ip address. - "header": On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration.
+	// Available values: "none", "cookie", "ip_cookie", "header".
 	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
 	// Available values: "none", "cookie", "ip_cookie", "header".
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 
+	// (Attributes) Configures attributes for session affinity. (see below for nested schema)
 	SessionAffinityAttributes *SessionAffinityAttributesInitParameters `json:"sessionAffinityAttributes,omitempty" tf:"session_affinity_attributes,omitempty"`
 
+	// "cookie" / "ip_cookie": The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header": The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTTL *float64 `json:"sessionAffinityTtl,omitempty" tf:"session_affinity_ttl,omitempty"`
 
+	// (String) Steering Policy for this load balancer.
 	// Steering Policy for this load balancer.
 	// - `"off"`: Use `default_pools`.
 	// - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
@@ -501,18 +635,21 @@ type OverridesInitParameters struct {
 	// Available values: "off", "geo", "random", "dynamic_latency", "proximity", "least_outstanding_requests", "least_connections", "".
 	SteeringPolicy *string `json:"steeringPolicy,omitempty" tf:"steering_policy,omitempty"`
 
+	// clouded (unproxied) load balancers.
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type OverridesLocationStrategyInitParameters struct {
 
+	// (String) Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// - `"pop"`: Use the Cloudflare PoP location.
 	// - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
 	// Available values: "pop", "resolver_ip".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// - `"always"`: Always prefer ECS.
 	// - `"never"`: Never prefer ECS.
@@ -524,12 +661,14 @@ type OverridesLocationStrategyInitParameters struct {
 
 type OverridesLocationStrategyObservation struct {
 
+	// (String) Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// - `"pop"`: Use the Cloudflare PoP location.
 	// - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
 	// Available values: "pop", "resolver_ip".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// - `"always"`: Always prefer ECS.
 	// - `"never"`: Never prefer ECS.
@@ -541,6 +680,7 @@ type OverridesLocationStrategyObservation struct {
 
 type OverridesLocationStrategyParameters struct {
 
+	// (String) Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
 	// - `"pop"`: Use the Cloudflare PoP location.
 	// - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
@@ -548,6 +688,7 @@ type OverridesLocationStrategyParameters struct {
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
 	// - `"always"`: Always prefer ECS.
 	// - `"never"`: Never prefer ECS.
@@ -559,36 +700,50 @@ type OverridesLocationStrategyParameters struct {
 }
 
 type OverridesObservation struct {
+
+	// downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. (see below for nested schema)
 	AdaptiveRouting *OverridesAdaptiveRoutingObservation `json:"adaptiveRouting,omitempty" tf:"adaptive_routing,omitempty"`
 
+	// (Map of List of String) A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	CountryPools map[string][]*string `json:"countryPools,omitempty" tf:"country_pools,omitempty"`
 
+	// (List of String) A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	DefaultPools []*string `json:"defaultPools,omitempty" tf:"default_pools,omitempty"`
 
+	// (String) The pool ID to use when all other pools are detected as unhealthy.
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPool *string `json:"fallbackPool,omitempty" tf:"fallback_pool,omitempty"`
 
+	// based steering for non-proxied requests. See steering_policy to learn how steering is affected. (see below for nested schema)
 	LocationStrategy *OverridesLocationStrategyObservation `json:"locationStrategy,omitempty" tf:"location_strategy,omitempty"`
 
+	// (Map of List of String) Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	PopPools map[string][]*string `json:"popPools,omitempty" tf:"pop_pools,omitempty"`
 
+	// (Attributes) Configures pool weights.
 	RandomSteering *OverridesRandomSteeringObservation `json:"randomSteering,omitempty" tf:"random_steering,omitempty"`
 
+	// (Map of List of String) A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]*string `json:"regionPools,omitempty" tf:"region_pools,omitempty"`
 
+	// "cookie": On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie": Behaves the same as "cookie" except the initial origin selection is stable and based on the client's ip address. - "header": On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration.
+	// Available values: "none", "cookie", "ip_cookie", "header".
 	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
 	// Available values: "none", "cookie", "ip_cookie", "header".
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 
+	// (Attributes) Configures attributes for session affinity. (see below for nested schema)
 	SessionAffinityAttributes *SessionAffinityAttributesObservation `json:"sessionAffinityAttributes,omitempty" tf:"session_affinity_attributes,omitempty"`
 
+	// "cookie" / "ip_cookie": The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header": The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTTL *float64 `json:"sessionAffinityTtl,omitempty" tf:"session_affinity_ttl,omitempty"`
 
+	// (String) Steering Policy for this load balancer.
 	// Steering Policy for this load balancer.
 	// - `"off"`: Use `default_pools`.
 	// - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
@@ -601,53 +756,67 @@ type OverridesObservation struct {
 	// Available values: "off", "geo", "random", "dynamic_latency", "proximity", "least_outstanding_requests", "least_connections", "".
 	SteeringPolicy *string `json:"steeringPolicy,omitempty" tf:"steering_policy,omitempty"`
 
+	// clouded (unproxied) load balancers.
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type OverridesParameters struct {
 
+	// downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AdaptiveRouting *OverridesAdaptiveRoutingParameters `json:"adaptiveRouting,omitempty" tf:"adaptive_routing,omitempty"`
 
+	// (Map of List of String) A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.
 	// +kubebuilder:validation:Optional
 	CountryPools map[string][]*string `json:"countryPools,omitempty" tf:"country_pools,omitempty"`
 
+	// (List of String) A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
 	// +kubebuilder:validation:Optional
 	DefaultPools []*string `json:"defaultPools,omitempty" tf:"default_pools,omitempty"`
 
+	// (String) The pool ID to use when all other pools are detected as unhealthy.
 	// The pool ID to use when all other pools are detected as unhealthy.
 	// +kubebuilder:validation:Optional
 	FallbackPool *string `json:"fallbackPool,omitempty" tf:"fallback_pool,omitempty"`
 
+	// based steering for non-proxied requests. See steering_policy to learn how steering is affected. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LocationStrategy *OverridesLocationStrategyParameters `json:"locationStrategy,omitempty" tf:"location_strategy,omitempty"`
 
+	// (Map of List of String) Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.
 	// +kubebuilder:validation:Optional
 	PopPools map[string][]*string `json:"popPools,omitempty" tf:"pop_pools,omitempty"`
 
+	// (Attributes) Configures pool weights.
 	// +kubebuilder:validation:Optional
 	RandomSteering *OverridesRandomSteeringParameters `json:"randomSteering,omitempty" tf:"random_steering,omitempty"`
 
+	// (Map of List of String) A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	// +kubebuilder:validation:Optional
 	RegionPools map[string][]*string `json:"regionPools,omitempty" tf:"region_pools,omitempty"`
 
+	// "cookie": On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie": Behaves the same as "cookie" except the initial origin selection is stable and based on the client's ip address. - "header": On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration.
+	// Available values: "none", "cookie", "ip_cookie", "header".
 	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
 	// Available values: "none", "cookie", "ip_cookie", "header".
 	// +kubebuilder:validation:Optional
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 
+	// (Attributes) Configures attributes for session affinity. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SessionAffinityAttributes *SessionAffinityAttributesParameters `json:"sessionAffinityAttributes,omitempty" tf:"session_affinity_attributes,omitempty"`
 
+	// "cookie" / "ip_cookie": The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header": The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	// +kubebuilder:validation:Optional
 	SessionAffinityTTL *float64 `json:"sessionAffinityTtl,omitempty" tf:"session_affinity_ttl,omitempty"`
 
+	// (String) Steering Policy for this load balancer.
 	// Steering Policy for this load balancer.
 	// - `"off"`: Use `default_pools`.
 	// - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
@@ -661,6 +830,7 @@ type OverridesParameters struct {
 	// +kubebuilder:validation:Optional
 	SteeringPolicy *string `json:"steeringPolicy,omitempty" tf:"steering_policy,omitempty"`
 
+	// clouded (unproxied) load balancers.
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
@@ -668,9 +838,11 @@ type OverridesParameters struct {
 
 type OverridesRandomSteeringInitParameters struct {
 
+	// (Number) The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	DefaultWeight *float64 `json:"defaultWeight,omitempty" tf:"default_weight,omitempty"`
 
+	// (Map of Number) A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// +mapType=granular
 	PoolWeights map[string]*float64 `json:"poolWeights,omitempty" tf:"pool_weights,omitempty"`
@@ -678,9 +850,11 @@ type OverridesRandomSteeringInitParameters struct {
 
 type OverridesRandomSteeringObservation struct {
 
+	// (Number) The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	DefaultWeight *float64 `json:"defaultWeight,omitempty" tf:"default_weight,omitempty"`
 
+	// (Map of Number) A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// +mapType=granular
 	PoolWeights map[string]*float64 `json:"poolWeights,omitempty" tf:"pool_weights,omitempty"`
@@ -688,10 +862,12 @@ type OverridesRandomSteeringObservation struct {
 
 type OverridesRandomSteeringParameters struct {
 
+	// (Number) The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// +kubebuilder:validation:Optional
 	DefaultWeight *float64 `json:"defaultWeight,omitempty" tf:"default_weight,omitempty"`
 
+	// (Map of Number) A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
@@ -700,9 +876,11 @@ type OverridesRandomSteeringParameters struct {
 
 type RandomSteeringInitParameters struct {
 
+	// (Number) The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	DefaultWeight *float64 `json:"defaultWeight,omitempty" tf:"default_weight,omitempty"`
 
+	// (Map of Number) A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// +mapType=granular
 	PoolWeights map[string]*float64 `json:"poolWeights,omitempty" tf:"pool_weights,omitempty"`
@@ -710,9 +888,11 @@ type RandomSteeringInitParameters struct {
 
 type RandomSteeringObservation struct {
 
+	// (Number) The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	DefaultWeight *float64 `json:"defaultWeight,omitempty" tf:"default_weight,omitempty"`
 
+	// (Map of Number) A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// +mapType=granular
 	PoolWeights map[string]*float64 `json:"poolWeights,omitempty" tf:"pool_weights,omitempty"`
@@ -720,10 +900,12 @@ type RandomSteeringObservation struct {
 
 type RandomSteeringParameters struct {
 
+	// (Number) The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// The default weight for pools in the load balancer that are not specified in the pool_weights map.
 	// +kubebuilder:validation:Optional
 	DefaultWeight *float64 `json:"defaultWeight,omitempty" tf:"default_weight,omitempty"`
 
+	// (Map of Number) A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
@@ -732,72 +914,93 @@ type RandomSteeringParameters struct {
 
 type RulesInitParameters struct {
 
+	// balancing/understand-basics/load-balancing-rules/expressions.
 	// The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Boolean) Disable this specific rule. It will no longer be evaluated by this load balancer.
 	// Disable this specific rule. It will no longer be evaluated by this load balancer.
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
+	// (Attributes) A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. (see below for nested schema)
 	FixedResponse *FixedResponseInitParameters `json:"fixedResponse,omitempty" tf:"fixed_response,omitempty"`
 
+	// (String) The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// Name of this rule. Only used for human readability.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. (see below for nested schema)
 	Overrides *OverridesInitParameters `json:"overrides,omitempty" tf:"overrides,omitempty"`
 
+	// (Number) The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
 	// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Boolean) If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
 	// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
 	Terminates *bool `json:"terminates,omitempty" tf:"terminates,omitempty"`
 }
 
 type RulesObservation struct {
 
+	// balancing/understand-basics/load-balancing-rules/expressions.
 	// The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Boolean) Disable this specific rule. It will no longer be evaluated by this load balancer.
 	// Disable this specific rule. It will no longer be evaluated by this load balancer.
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
+	// (Attributes) A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. (see below for nested schema)
 	FixedResponse *FixedResponseObservation `json:"fixedResponse,omitempty" tf:"fixed_response,omitempty"`
 
+	// (String) The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// Name of this rule. Only used for human readability.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. (see below for nested schema)
 	Overrides *OverridesObservation `json:"overrides,omitempty" tf:"overrides,omitempty"`
 
+	// (Number) The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
 	// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Boolean) If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
 	// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
 	Terminates *bool `json:"terminates,omitempty" tf:"terminates,omitempty"`
 }
 
 type RulesParameters struct {
 
+	// balancing/understand-basics/load-balancing-rules/expressions.
 	// The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
 	// +kubebuilder:validation:Optional
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Boolean) Disable this specific rule. It will no longer be evaluated by this load balancer.
 	// Disable this specific rule. It will no longer be evaluated by this load balancer.
 	// +kubebuilder:validation:Optional
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
+	// (Attributes) A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	FixedResponse *FixedResponseParameters `json:"fixedResponse,omitempty" tf:"fixed_response,omitempty"`
 
+	// (String) The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
 	// Name of this rule. Only used for human readability.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Overrides *OverridesParameters `json:"overrides,omitempty" tf:"overrides,omitempty"`
 
+	// (Number) The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
 	// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Boolean) If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
 	// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
 	// +kubebuilder:validation:Optional
 	Terminates *bool `json:"terminates,omitempty" tf:"terminates,omitempty"`
@@ -805,23 +1008,32 @@ type RulesParameters struct {
 
 type SessionAffinityAttributesInitParameters struct {
 
+	// (Number) Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	DrainDuration *float64 `json:"drainDuration,omitempty" tf:"drain_duration,omitempty"`
 
+	// name-1>,<cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// "true": Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created. - "false": Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created.
 	// When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders *bool `json:"requireAllHeaders,omitempty" tf:"require_all_headers,omitempty"`
 
+	// (String) Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+	// Available values: "Auto", "Lax", "None", "Strict".
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
 	Samesite *string `json:"samesite,omitempty" tf:"samesite,omitempty"`
 
+	// Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+	// Available values: "Auto", "Always", "Never".
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure *string `json:"secure,omitempty" tf:"secure,omitempty"`
 
+	// downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none": No failover takes place for sessions pinned to the origin (default). - "temporary": Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky": The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
 	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover *string `json:"zeroDowntimeFailover,omitempty" tf:"zero_downtime_failover,omitempty"`
@@ -829,23 +1041,32 @@ type SessionAffinityAttributesInitParameters struct {
 
 type SessionAffinityAttributesObservation struct {
 
+	// (Number) Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	DrainDuration *float64 `json:"drainDuration,omitempty" tf:"drain_duration,omitempty"`
 
+	// name-1>,<cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// "true": Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created. - "false": Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created.
 	// When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders *bool `json:"requireAllHeaders,omitempty" tf:"require_all_headers,omitempty"`
 
+	// (String) Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+	// Available values: "Auto", "Lax", "None", "Strict".
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
 	Samesite *string `json:"samesite,omitempty" tf:"samesite,omitempty"`
 
+	// Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+	// Available values: "Auto", "Always", "Never".
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure *string `json:"secure,omitempty" tf:"secure,omitempty"`
 
+	// downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none": No failover takes place for sessions pinned to the origin (default). - "temporary": Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky": The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
 	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover *string `json:"zeroDowntimeFailover,omitempty" tf:"zero_downtime_failover,omitempty"`
@@ -853,28 +1074,37 @@ type SessionAffinityAttributesObservation struct {
 
 type SessionAffinityAttributesParameters struct {
 
+	// (Number) Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.
 	// +kubebuilder:validation:Optional
 	DrainDuration *float64 `json:"drainDuration,omitempty" tf:"drain_duration,omitempty"`
 
+	// name-1>,<cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	// +kubebuilder:validation:Optional
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// "true": Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created. - "false": Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren't created.
 	// When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	// +kubebuilder:validation:Optional
 	RequireAllHeaders *bool `json:"requireAllHeaders,omitempty" tf:"require_all_headers,omitempty"`
 
+	// (String) Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+	// Available values: "Auto", "Lax", "None", "Strict".
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
 	// +kubebuilder:validation:Optional
 	Samesite *string `json:"samesite,omitempty" tf:"samesite,omitempty"`
 
+	// Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+	// Available values: "Auto", "Always", "Never".
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	// +kubebuilder:validation:Optional
 	Secure *string `json:"secure,omitempty" tf:"secure,omitempty"`
 
+	// downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none": No failover takes place for sessions pinned to the origin (default). - "temporary": Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky": The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
 	// Available values: "none", "temporary", "sticky".
 	// +kubebuilder:validation:Optional
@@ -908,7 +1138,7 @@ type BalancerStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Balancer is the Schema for the Balancers API. <no value>
+// Balancer is the Schema for the Balancers API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

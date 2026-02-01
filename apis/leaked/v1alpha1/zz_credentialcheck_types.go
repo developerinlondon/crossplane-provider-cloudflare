@@ -15,30 +15,36 @@ import (
 
 type CredentialCheckInitParameters struct {
 
+	// (Boolean) Determines whether or not Leaked Credential Checks are enabled.
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CredentialCheckObservation struct {
 
+	// (Boolean) Determines whether or not Leaked Credential Checks are enabled.
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CredentialCheckParameters struct {
 
+	// (Boolean) Determines whether or not Leaked Credential Checks are enabled.
 	// Determines whether or not Leaked Credential Checks are enabled.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -71,7 +77,7 @@ type CredentialCheckStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CredentialCheck is the Schema for the CredentialChecks API. <no value>
+// CredentialCheck is the Schema for the CredentialChecks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

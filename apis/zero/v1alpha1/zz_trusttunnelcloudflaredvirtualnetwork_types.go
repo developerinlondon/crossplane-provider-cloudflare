@@ -15,66 +15,84 @@ import (
 
 type TrustTunnelCloudflaredVirtualNetworkInitParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Optional remark describing the virtual network.
 	// Optional remark describing the virtual network.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (Boolean, Deprecated) If true, this virtual network is the default for the account.
 	// If `true`, this virtual network is the default for the account.
 	IsDefault *bool `json:"isDefault,omitempty" tf:"is_default,omitempty"`
 
+	// (Boolean) If true, this virtual network is the default for the account.
 	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork *bool `json:"isDefaultNetwork,omitempty" tf:"is_default_network,omitempty"`
 
+	// friendly name for the virtual network.
 	// A user-friendly name for the virtual network.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustTunnelCloudflaredVirtualNetworkObservation struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Optional remark describing the virtual network.
 	// Optional remark describing the virtual network.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) Timestamp of when the resource was created.
 	// Timestamp of when the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Timestamp of when the resource was deleted. If null, the resource has not been deleted.
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt *string `json:"deletedAt,omitempty" tf:"deleted_at,omitempty"`
 
+	// (String) UUID of the virtual network.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean, Deprecated) If true, this virtual network is the default for the account.
 	// If `true`, this virtual network is the default for the account.
 	IsDefault *bool `json:"isDefault,omitempty" tf:"is_default,omitempty"`
 
+	// (Boolean) If true, this virtual network is the default for the account.
 	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork *bool `json:"isDefaultNetwork,omitempty" tf:"is_default_network,omitempty"`
 
+	// friendly name for the virtual network.
 	// A user-friendly name for the virtual network.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustTunnelCloudflaredVirtualNetworkParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Optional remark describing the virtual network.
 	// Optional remark describing the virtual network.
 	// +kubebuilder:validation:Optional
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (Boolean, Deprecated) If true, this virtual network is the default for the account.
 	// If `true`, this virtual network is the default for the account.
 	// +kubebuilder:validation:Optional
 	IsDefault *bool `json:"isDefault,omitempty" tf:"is_default,omitempty"`
 
+	// (Boolean) If true, this virtual network is the default for the account.
 	// If `true`, this virtual network is the default for the account.
 	// +kubebuilder:validation:Optional
 	IsDefaultNetwork *bool `json:"isDefaultNetwork,omitempty" tf:"is_default_network,omitempty"`
 
+	// friendly name for the virtual network.
 	// A user-friendly name for the virtual network.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -107,7 +125,7 @@ type TrustTunnelCloudflaredVirtualNetworkStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustTunnelCloudflaredVirtualNetwork is the Schema for the TrustTunnelCloudflaredVirtualNetworks API. <no value>
+// TrustTunnelCloudflaredVirtualNetwork is the Schema for the TrustTunnelCloudflaredVirtualNetworks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,28 +15,34 @@ import (
 
 type IPv4InitParameters struct {
 
+	// (String) IP address of the target
 	// IP address of the target
 	IPAddr *string `json:"ipAddr,omitempty" tf:"ip_addr,omitempty"`
 
+	// (String)  Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type IPv4Observation struct {
 
+	// (String) IP address of the target
 	// IP address of the target
 	IPAddr *string `json:"ipAddr,omitempty" tf:"ip_addr,omitempty"`
 
+	// (String)  Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type IPv4Parameters struct {
 
+	// (String) IP address of the target
 	// IP address of the target
 	// +kubebuilder:validation:Optional
 	IPAddr *string `json:"ipAddr,omitempty" tf:"ip_addr,omitempty"`
 
+	// (String)  Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// +kubebuilder:validation:Optional
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
@@ -44,96 +50,130 @@ type IPv4Parameters struct {
 
 type IPv6InitParameters struct {
 
+	// (String) IP address of the target
 	// IP address of the target
 	IPAddr *string `json:"ipAddr,omitempty" tf:"ip_addr,omitempty"`
 
+	// (String)  Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type IPv6Observation struct {
 
+	// (String) IP address of the target
 	// IP address of the target
 	IPAddr *string `json:"ipAddr,omitempty" tf:"ip_addr,omitempty"`
 
+	// (String)  Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type IPv6Parameters struct {
 
+	// (String) IP address of the target
 	// IP address of the target
 	// +kubebuilder:validation:Optional
 	IPAddr *string `json:"ipAddr,omitempty" tf:"ip_addr,omitempty"`
 
+	// (String)  Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
 	// +kubebuilder:validation:Optional
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type TrustAccessInfrastructureTargetIPInitParameters struct {
+
+	// (Attributes) The target's IPv4 address (see below for nested schema)
 	IPv4 *IPv4InitParameters `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// (Attributes) The target's IPv6 address (see below for nested schema)
 	IPv6 *IPv6InitParameters `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 }
 
 type TrustAccessInfrastructureTargetIPObservation struct {
+
+	// (Attributes) The target's IPv4 address (see below for nested schema)
 	IPv4 *IPv4Observation `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// (Attributes) The target's IPv6 address (see below for nested schema)
 	IPv6 *IPv6Observation `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 }
 
 type TrustAccessInfrastructureTargetIPParameters struct {
 
+	// (Attributes) The target's IPv4 address (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IPv4 *IPv4Parameters `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// (Attributes) The target's IPv6 address (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IPv6 *IPv6Parameters `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 }
 
 type TrustAccessInfrastructureTargetInitParameters struct {
 
+	// (String) Account identifier
 	// Account identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// unique field that refers to a target. Case insensitive, maximum
+	// length of 255 characters, supports the use of special characters dash
+	// and period, does not support spaces, and must start and end with an
+	// alphanumeric character.
 	// A non-unique field that refers to a target. Case insensitive, maximum
 	// length of 255 characters, supports the use of special characters dash
 	// and period, does not support spaces, and must start and end with an
 	// alphanumeric character.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (Attributes) The IPv4/IPv6 address that identifies where to reach a target (see below for nested schema)
 	IP *TrustAccessInfrastructureTargetIPInitParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessInfrastructureTargetObservation struct {
 
+	// (String) Account identifier
 	// Account identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Date and time at which the target was created
 	// Date and time at which the target was created
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// unique field that refers to a target. Case insensitive, maximum
+	// length of 255 characters, supports the use of special characters dash
+	// and period, does not support spaces, and must start and end with an
+	// alphanumeric character.
 	// A non-unique field that refers to a target. Case insensitive, maximum
 	// length of 255 characters, supports the use of special characters dash
 	// and period, does not support spaces, and must start and end with an
 	// alphanumeric character.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Target identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) The IPv4/IPv6 address that identifies where to reach a target (see below for nested schema)
 	IP *TrustAccessInfrastructureTargetIPObservation `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (String) Date and time at which the target was modified
 	// Date and time at which the target was modified
 	ModifiedAt *string `json:"modifiedAt,omitempty" tf:"modified_at,omitempty"`
 }
 
 type TrustAccessInfrastructureTargetParameters struct {
 
+	// (String) Account identifier
 	// Account identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// unique field that refers to a target. Case insensitive, maximum
+	// length of 255 characters, supports the use of special characters dash
+	// and period, does not support spaces, and must start and end with an
+	// alphanumeric character.
 	// A non-unique field that refers to a target. Case insensitive, maximum
 	// length of 255 characters, supports the use of special characters dash
 	// and period, does not support spaces, and must start and end with an
@@ -141,6 +181,7 @@ type TrustAccessInfrastructureTargetParameters struct {
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (Attributes) The IPv4/IPv6 address that identifies where to reach a target (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IP *TrustAccessInfrastructureTargetIPParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 }
@@ -172,7 +213,7 @@ type TrustAccessInfrastructureTargetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessInfrastructureTarget is the Schema for the TrustAccessInfrastructureTargets API. <no value>
+// TrustAccessInfrastructureTarget is the Schema for the TrustAccessInfrastructureTargets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

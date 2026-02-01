@@ -15,154 +15,201 @@ import (
 
 type LiveInputInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Sets the creator ID asssociated with this live input.
 	// Sets the creator ID asssociated with this live input.
 	DefaultCreator *string `json:"defaultCreator,omitempty" tf:"default_creator,omitempty"`
 
+	// (Number) Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a null value to remove an existing scheduled deletion.
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays *float64 `json:"deleteRecordingAfterDays,omitempty" tf:"delete_recording_after_days,omitempty"`
 
+	// (String) A unique identifier for a live input.
 	// A unique identifier for a live input.
 	LiveInputIdentifier *string `json:"liveInputIdentifier,omitempty" tf:"live_input_identifier,omitempty"`
 
+	// value store used to reference other systems of record for managing live inputs.
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
 	Meta *string `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// demand after a condition is satisfied. (see below for nested schema)
 	Recording *RecordingInitParameters `json:"recording,omitempty" tf:"recording,omitempty"`
 }
 
 type LiveInputObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The date and time the live input was created.
 	// The date and time the live input was created.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String) Sets the creator ID asssociated with this live input.
 	// Sets the creator ID asssociated with this live input.
 	DefaultCreator *string `json:"defaultCreator,omitempty" tf:"default_creator,omitempty"`
 
+	// (Number) Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a null value to remove an existing scheduled deletion.
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays *float64 `json:"deleteRecordingAfterDays,omitempty" tf:"delete_recording_after_days,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) A unique identifier for a live input.
 	// A unique identifier for a live input.
 	LiveInputIdentifier *string `json:"liveInputIdentifier,omitempty" tf:"live_input_identifier,omitempty"`
 
+	// value store used to reference other systems of record for managing live inputs.
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
 	Meta *string `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// (String) The date and time the live input was last modified.
 	// The date and time the live input was last modified.
 	Modified *string `json:"modified,omitempty" tf:"modified,omitempty"`
 
+	// demand after a condition is satisfied. (see below for nested schema)
 	Recording *RecordingObservation `json:"recording,omitempty" tf:"recording,omitempty"`
 
+	// (Attributes) Details for streaming to an live input using RTMPS. (see below for nested schema)
 	Rtmps *RtmpsObservation `json:"rtmps,omitempty" tf:"rtmps,omitempty"`
 
+	// (Attributes) Details for playback from an live input using RTMPS. (see below for nested schema)
 	RtmpsPlayback *RtmpsPlaybackObservation `json:"rtmpsPlayback,omitempty" tf:"rtmps_playback,omitempty"`
 
+	// (Attributes) Details for streaming to a live input using SRT. (see below for nested schema)
 	Srt *SrtObservation `json:"srt,omitempty" tf:"srt,omitempty"`
 
+	// (Attributes) Details for playback from an live input using SRT. (see below for nested schema)
 	SrtPlayback *SrtPlaybackObservation `json:"srtPlayback,omitempty" tf:"srt_playback,omitempty"`
 
+	// (String) The connection status of a live input.
+	// Available values: "connected", "reconnected", "reconnecting", "client_disconnect", "ttl_exceeded", "failed_to_connect", "failed_to_reconnect", "new_configuration_accepted".
 	// The connection status of a live input.
 	// Available values: "connected", "reconnected", "reconnecting", "client_disconnect", "ttl_exceeded", "failed_to_connect", "failed_to_reconnect", "new_configuration_accepted".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) A unique identifier for a live input.
 	// A unique identifier for a live input.
 	UID *string `json:"uid,omitempty" tf:"uid,omitempty"`
 
+	// (Attributes) Details for streaming to a live input using WebRTC. (see below for nested schema)
 	WebRtc *WebRtcObservation `json:"webRtc,omitempty" tf:"web_rtc,omitempty"`
 
+	// (Attributes) Details for playback from a live input using WebRTC. (see below for nested schema)
 	WebRtcPlayback *WebRtcPlaybackObservation `json:"webRtcPlayback,omitempty" tf:"web_rtc_playback,omitempty"`
 }
 
 type LiveInputParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Sets the creator ID asssociated with this live input.
 	// Sets the creator ID asssociated with this live input.
 	// +kubebuilder:validation:Optional
 	DefaultCreator *string `json:"defaultCreator,omitempty" tf:"default_creator,omitempty"`
 
+	// (Number) Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a null value to remove an existing scheduled deletion.
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	// +kubebuilder:validation:Optional
 	DeleteRecordingAfterDays *float64 `json:"deleteRecordingAfterDays,omitempty" tf:"delete_recording_after_days,omitempty"`
 
+	// (String) A unique identifier for a live input.
 	// A unique identifier for a live input.
 	// +kubebuilder:validation:Optional
 	LiveInputIdentifier *string `json:"liveInputIdentifier,omitempty" tf:"live_input_identifier,omitempty"`
 
+	// value store used to reference other systems of record for managing live inputs.
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
 	// +kubebuilder:validation:Optional
 	Meta *string `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// demand after a condition is satisfied. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Recording *RecordingParameters `json:"recording,omitempty" tf:"recording,omitempty"`
 }
 
 type RecordingInitParameters struct {
 
+	// (List of String) Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use * for wildcard subdomains. An empty array allows videos to be viewed on any origin.
 	// Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.
 	AllowedOrigins []*string `json:"allowedOrigins,omitempty" tf:"allowed_origins,omitempty"`
 
+	// (Boolean) Disables reporting the number of live viewers when this property is set to true.
 	// Disables reporting the number of live viewers when this property is set to `true`.
 	HideLiveViewerCount *bool `json:"hideLiveViewerCount,omitempty" tf:"hide_live_viewer_count,omitempty"`
 
+	// demand after Stream Live stops receiving input.
+	// Available values: "off", "automatic".
 	// Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
 	// Available values: "off", "automatic".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Boolean) Indicates if a video using the live input has the requireSignedURLs property set. Also enforces access controls on any video recording of the livestream with the live input.
 	// Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.
 	RequireSignedUrls *bool `json:"requireSignedUrls,omitempty" tf:"require_signed_urls,omitempty"`
 
+	// demand. 0 is recommended for most use cases and indicates the platform default should be used.
 	// Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 }
 
 type RecordingObservation struct {
 
+	// (List of String) Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use * for wildcard subdomains. An empty array allows videos to be viewed on any origin.
 	// Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.
 	AllowedOrigins []*string `json:"allowedOrigins,omitempty" tf:"allowed_origins,omitempty"`
 
+	// (Boolean) Disables reporting the number of live viewers when this property is set to true.
 	// Disables reporting the number of live viewers when this property is set to `true`.
 	HideLiveViewerCount *bool `json:"hideLiveViewerCount,omitempty" tf:"hide_live_viewer_count,omitempty"`
 
+	// demand after Stream Live stops receiving input.
+	// Available values: "off", "automatic".
 	// Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
 	// Available values: "off", "automatic".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Boolean) Indicates if a video using the live input has the requireSignedURLs property set. Also enforces access controls on any video recording of the livestream with the live input.
 	// Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.
 	RequireSignedUrls *bool `json:"requireSignedUrls,omitempty" tf:"require_signed_urls,omitempty"`
 
+	// demand. 0 is recommended for most use cases and indicates the platform default should be used.
 	// Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 }
 
 type RecordingParameters struct {
 
+	// (List of String) Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use * for wildcard subdomains. An empty array allows videos to be viewed on any origin.
 	// Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.
 	// +kubebuilder:validation:Optional
 	AllowedOrigins []*string `json:"allowedOrigins,omitempty" tf:"allowed_origins,omitempty"`
 
+	// (Boolean) Disables reporting the number of live viewers when this property is set to true.
 	// Disables reporting the number of live viewers when this property is set to `true`.
 	// +kubebuilder:validation:Optional
 	HideLiveViewerCount *bool `json:"hideLiveViewerCount,omitempty" tf:"hide_live_viewer_count,omitempty"`
 
+	// demand after Stream Live stops receiving input.
+	// Available values: "off", "automatic".
 	// Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
 	// Available values: "off", "automatic".
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Boolean) Indicates if a video using the live input has the requireSignedURLs property set. Also enforces access controls on any video recording of the livestream with the live input.
 	// Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.
 	// +kubebuilder:validation:Optional
 	RequireSignedUrls *bool `json:"requireSignedUrls,omitempty" tf:"require_signed_urls,omitempty"`
 
+	// demand. 0 is recommended for most use cases and indicates the platform default should be used.
 	// Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.
 	// +kubebuilder:validation:Optional
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
@@ -191,6 +238,7 @@ type SrtInitParameters struct {
 
 type SrtObservation struct {
 
+	// (String) The identifier of the live input to use when streaming via SRT.
 	// The identifier of the live input to use when streaming via SRT.
 	StreamID *string `json:"streamId,omitempty" tf:"stream_id,omitempty"`
 }
@@ -203,6 +251,7 @@ type SrtPlaybackInitParameters struct {
 
 type SrtPlaybackObservation struct {
 
+	// (String) The identifier of the live input to use when streaming via SRT.
 	// The identifier of the live input to use for playback via SRT.
 	StreamID *string `json:"streamId,omitempty" tf:"stream_id,omitempty"`
 }
@@ -255,7 +304,7 @@ type LiveInputStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// LiveInput is the Schema for the LiveInputs API. <no value>
+// LiveInput is the Schema for the LiveInputs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,67 +15,85 @@ import (
 
 type AudioTrackInitParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The unique identifier for an additional audio track.
 	// The unique identifier for an additional audio track.
 	AudioIdentifier *string `json:"audioIdentifier,omitempty" tf:"audio_identifier,omitempty"`
 
+	// (Boolean) Denotes whether the audio track will be played by default in a player.
 	// Denotes whether the audio track will be played by default in a player.
 	Default *bool `json:"default,omitempty" tf:"default,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) A string to uniquely identify the track amongst other audio track labels for the specified video.
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
 
 type AudioTrackObservation struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The unique identifier for an additional audio track.
 	// The unique identifier for an additional audio track.
 	AudioIdentifier *string `json:"audioIdentifier,omitempty" tf:"audio_identifier,omitempty"`
 
+	// (Boolean) Denotes whether the audio track will be played by default in a player.
 	// Denotes whether the audio track will be played by default in a player.
 	Default *bool `json:"default,omitempty" tf:"default,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) A string to uniquely identify the track amongst other audio track labels for the specified video.
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
+	// (String) Specifies the processing status of the video.
+	// Available values: "queued", "ready", "error".
 	// Specifies the processing status of the video.
 	// Available values: "queued", "ready", "error".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	UID *string `json:"uid,omitempty" tf:"uid,omitempty"`
 }
 
 type AudioTrackParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The unique identifier for an additional audio track.
 	// The unique identifier for an additional audio track.
 	// +kubebuilder:validation:Optional
 	AudioIdentifier *string `json:"audioIdentifier,omitempty" tf:"audio_identifier,omitempty"`
 
+	// (Boolean) Denotes whether the audio track will be played by default in a player.
 	// Denotes whether the audio track will be played by default in a player.
 	// +kubebuilder:validation:Optional
 	Default *bool `json:"default,omitempty" tf:"default,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	// +kubebuilder:validation:Optional
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) A string to uniquely identify the track amongst other audio track labels for the specified video.
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
@@ -108,7 +126,7 @@ type AudioTrackStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// AudioTrack is the Schema for the AudioTracks API. <no value>
+// AudioTrack is the Schema for the AudioTracks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

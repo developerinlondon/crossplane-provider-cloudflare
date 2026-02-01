@@ -15,21 +15,25 @@ import (
 
 type AnnotationsInitParameters struct {
 
+	// readable message about the deployment. Truncated to 100 bytes.
 	// Human-readable message about the deployment. Truncated to 100 bytes.
 	WorkersMessage *string `json:"workersMessage,omitempty" tf:"workers_message,omitempty"`
 }
 
 type AnnotationsObservation struct {
 
+	// readable message about the deployment. Truncated to 100 bytes.
 	// Human-readable message about the deployment. Truncated to 100 bytes.
 	WorkersMessage *string `json:"workersMessage,omitempty" tf:"workers_message,omitempty"`
 
+	// (String) Operation that triggered the creation of the deployment.
 	// Operation that triggered the creation of the deployment.
 	WorkersTriggeredBy *string `json:"workersTriggeredBy,omitempty" tf:"workers_triggered_by,omitempty"`
 }
 
 type AnnotationsParameters struct {
 
+	// readable message about the deployment. Truncated to 100 bytes.
 	// Human-readable message about the deployment. Truncated to 100 bytes.
 	// +kubebuilder:validation:Optional
 	WorkersMessage *string `json:"workersMessage,omitempty" tf:"workers_message,omitempty"`
@@ -37,82 +41,109 @@ type AnnotationsParameters struct {
 
 type DeploymentInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Annotations *AnnotationsInitParameters `json:"annotations,omitempty" tf:"annotations,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (String) Available values: "percentage".
 	// Available values: "percentage".
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Versions []VersionsInitParameters `json:"versions,omitempty" tf:"versions,omitempty"`
 }
 
 type DeploymentObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Annotations *AnnotationsObservation `json:"annotations,omitempty" tf:"annotations,omitempty"`
 
+	// (String)
 	AuthorEmail *string `json:"authorEmail,omitempty" tf:"author_email,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (String)
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// (String) Available values: "percentage".
 	// Available values: "percentage".
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Versions []VersionsObservation `json:"versions,omitempty" tf:"versions,omitempty"`
 }
 
 type DeploymentParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Annotations *AnnotationsParameters `json:"annotations,omitempty" tf:"annotations,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	// +kubebuilder:validation:Optional
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (String) Available values: "percentage".
 	// Available values: "percentage".
 	// +kubebuilder:validation:Optional
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Versions []VersionsParameters `json:"versions,omitempty" tf:"versions,omitempty"`
 }
 
 type VersionsInitParameters struct {
+
+	// (Number)
 	Percentage *float64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 
+	// (String)
 	VersionID *string `json:"versionId,omitempty" tf:"version_id,omitempty"`
 }
 
 type VersionsObservation struct {
+
+	// (Number)
 	Percentage *float64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 
+	// (String)
 	VersionID *string `json:"versionId,omitempty" tf:"version_id,omitempty"`
 }
 
 type VersionsParameters struct {
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Percentage *float64 `json:"percentage" tf:"percentage,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	VersionID *string `json:"versionId" tf:"version_id,omitempty"`
 }
@@ -144,7 +175,7 @@ type DeploymentStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Deployment is the Schema for the Deployments API. <no value>
+// Deployment is the Schema for the Deployments API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

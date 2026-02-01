@@ -15,58 +15,73 @@ import (
 
 type Lan1InitParameters struct {
 
+	// (String) The identifier for the LAN you want to create an ACL policy with.
 	// The identifier for the LAN you want to create an ACL policy with.
 	LanID *string `json:"lanId,omitempty" tf:"lan_id,omitempty"`
 
+	// (String) The name of the LAN based on the provided lan_id.
 	// The name of the LAN based on the provided lan_id.
 	LanName *string `json:"lanName,omitempty" tf:"lan_name,omitempty"`
 
+	// (List of String) Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	PortRanges []*string `json:"portRanges,omitempty" tf:"port_ranges,omitempty"`
 
+	// (List of Number) Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	Ports []*float64 `json:"ports,omitempty" tf:"ports,omitempty"`
 
+	// (List of String) Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	Subnets []*string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 }
 
 type Lan1Observation struct {
 
+	// (String) The identifier for the LAN you want to create an ACL policy with.
 	// The identifier for the LAN you want to create an ACL policy with.
 	LanID *string `json:"lanId,omitempty" tf:"lan_id,omitempty"`
 
+	// (String) The name of the LAN based on the provided lan_id.
 	// The name of the LAN based on the provided lan_id.
 	LanName *string `json:"lanName,omitempty" tf:"lan_name,omitempty"`
 
+	// (List of String) Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	PortRanges []*string `json:"portRanges,omitempty" tf:"port_ranges,omitempty"`
 
+	// (List of Number) Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	Ports []*float64 `json:"ports,omitempty" tf:"ports,omitempty"`
 
+	// (List of String) Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	Subnets []*string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 }
 
 type Lan1Parameters struct {
 
+	// (String) The identifier for the LAN you want to create an ACL policy with.
 	// The identifier for the LAN you want to create an ACL policy with.
 	// +kubebuilder:validation:Optional
 	LanID *string `json:"lanId" tf:"lan_id,omitempty"`
 
+	// (String) The name of the LAN based on the provided lan_id.
 	// The name of the LAN based on the provided lan_id.
 	// +kubebuilder:validation:Optional
 	LanName *string `json:"lanName,omitempty" tf:"lan_name,omitempty"`
 
+	// (List of String) Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// +kubebuilder:validation:Optional
 	PortRanges []*string `json:"portRanges,omitempty" tf:"port_ranges,omitempty"`
 
+	// (List of Number) Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// +kubebuilder:validation:Optional
 	Ports []*float64 `json:"ports,omitempty" tf:"ports,omitempty"`
 
+	// (List of String) Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// +kubebuilder:validation:Optional
 	Subnets []*string `json:"subnets,omitempty" tf:"subnets,omitempty"`
@@ -74,58 +89,73 @@ type Lan1Parameters struct {
 
 type Lan2InitParameters struct {
 
+	// (String) The identifier for the LAN you want to create an ACL policy with.
 	// The identifier for the LAN you want to create an ACL policy with.
 	LanID *string `json:"lanId,omitempty" tf:"lan_id,omitempty"`
 
+	// (String) The name of the LAN based on the provided lan_id.
 	// The name of the LAN based on the provided lan_id.
 	LanName *string `json:"lanName,omitempty" tf:"lan_name,omitempty"`
 
+	// (List of String) Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	PortRanges []*string `json:"portRanges,omitempty" tf:"port_ranges,omitempty"`
 
+	// (List of Number) Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	Ports []*float64 `json:"ports,omitempty" tf:"ports,omitempty"`
 
+	// (List of String) Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	Subnets []*string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 }
 
 type Lan2Observation struct {
 
+	// (String) The identifier for the LAN you want to create an ACL policy with.
 	// The identifier for the LAN you want to create an ACL policy with.
 	LanID *string `json:"lanId,omitempty" tf:"lan_id,omitempty"`
 
+	// (String) The name of the LAN based on the provided lan_id.
 	// The name of the LAN based on the provided lan_id.
 	LanName *string `json:"lanName,omitempty" tf:"lan_name,omitempty"`
 
+	// (List of String) Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	PortRanges []*string `json:"portRanges,omitempty" tf:"port_ranges,omitempty"`
 
+	// (List of Number) Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	Ports []*float64 `json:"ports,omitempty" tf:"ports,omitempty"`
 
+	// (List of String) Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	Subnets []*string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 }
 
 type Lan2Parameters struct {
 
+	// (String) The identifier for the LAN you want to create an ACL policy with.
 	// The identifier for the LAN you want to create an ACL policy with.
 	// +kubebuilder:validation:Optional
 	LanID *string `json:"lanId" tf:"lan_id,omitempty"`
 
+	// (String) The name of the LAN based on the provided lan_id.
 	// The name of the LAN based on the provided lan_id.
 	// +kubebuilder:validation:Optional
 	LanName *string `json:"lanName,omitempty" tf:"lan_name,omitempty"`
 
+	// (List of String) Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.
 	// +kubebuilder:validation:Optional
 	PortRanges []*string `json:"portRanges,omitempty" tf:"port_ranges,omitempty"`
 
+	// (List of Number) Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.
 	// +kubebuilder:validation:Optional
 	Ports []*float64 `json:"ports,omitempty" tf:"ports,omitempty"`
 
+	// (List of String) Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.
 	// +kubebuilder:validation:Optional
 	Subnets []*string `json:"subnets,omitempty" tf:"subnets,omitempty"`
@@ -133,91 +163,119 @@ type Lan2Parameters struct {
 
 type TransitSiteACLInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Description for the ACL.
 	// Description for the ACL.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
 	ForwardLocally *bool `json:"forwardLocally,omitempty" tf:"forward_locally,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Lan1 *Lan1InitParameters `json:"lan1,omitempty" tf:"lan_1,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Lan2 *Lan2InitParameters `json:"lan2,omitempty" tf:"lan_2,omitempty"`
 
+	// (String) The name of the ACL.
 	// The name of the ACL.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String)
 	Protocols []*string `json:"protocols,omitempty" tf:"protocols,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Boolean) The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
 	// The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
 	Unidirectional *bool `json:"unidirectional,omitempty" tf:"unidirectional,omitempty"`
 }
 
 type TransitSiteACLObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Description for the ACL.
 	// Description for the ACL.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
 	ForwardLocally *bool `json:"forwardLocally,omitempty" tf:"forward_locally,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Lan1 *Lan1Observation `json:"lan1,omitempty" tf:"lan_1,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Lan2 *Lan2Observation `json:"lan2,omitempty" tf:"lan_2,omitempty"`
 
+	// (String) The name of the ACL.
 	// The name of the ACL.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String)
 	Protocols []*string `json:"protocols,omitempty" tf:"protocols,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Boolean) The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
 	// The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
 	Unidirectional *bool `json:"unidirectional,omitempty" tf:"unidirectional,omitempty"`
 }
 
 type TransitSiteACLParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Description for the ACL.
 	// Description for the ACL.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
 	// +kubebuilder:validation:Optional
 	ForwardLocally *bool `json:"forwardLocally,omitempty" tf:"forward_locally,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Lan1 *Lan1Parameters `json:"lan1,omitempty" tf:"lan_1,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Lan2 *Lan2Parameters `json:"lan2,omitempty" tf:"lan_2,omitempty"`
 
+	// (String) The name of the ACL.
 	// The name of the ACL.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Protocols []*string `json:"protocols,omitempty" tf:"protocols,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Boolean) The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
 	// The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
 	// +kubebuilder:validation:Optional
 	Unidirectional *bool `json:"unidirectional,omitempty" tf:"unidirectional,omitempty"`
@@ -250,7 +308,7 @@ type TransitSiteACLStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TransitSiteACL is the Schema for the TransitSiteACLs API. <no value>
+// TransitSiteACL is the Schema for the TransitSiteACLs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

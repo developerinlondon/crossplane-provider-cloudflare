@@ -15,59 +15,76 @@ import (
 
 type OriginPullsCertificateInitParameters struct {
 
+	// (String) The zone's leaf certificate.
 	// The zone's leaf certificate.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String, Sensitive) The zone's private key.
 	// The zone's private key.
 	PrivateKeySecretRef v1.SecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OriginPullsCertificateObservation struct {
 
+	// (String) The zone's leaf certificate.
 	// The zone's leaf certificate.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	CertificateID *string `json:"certificateId,omitempty" tf:"certificate_id,omitempty"`
 
+	// level authenticated origin pulls is enabled.
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) When the certificate from the authority expires.
 	// When the certificate from the authority expires.
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The certificate authority that issued the certificate.
 	// The certificate authority that issued the certificate.
 	Issuer *string `json:"issuer,omitempty" tf:"issuer,omitempty"`
 
+	// (String) The type of hash used for the certificate.
 	// The type of hash used for the certificate.
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String) Status of the certificate activation.
+	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 	// Status of the certificate activation.
 	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) This is the time the certificate was uploaded.
 	// This is the time the certificate was uploaded.
 	UploadedOn *string `json:"uploadedOn,omitempty" tf:"uploaded_on,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OriginPullsCertificateParameters struct {
 
+	// (String) The zone's leaf certificate.
 	// The zone's leaf certificate.
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String, Sensitive) The zone's private key.
 	// The zone's private key.
 	// +kubebuilder:validation:Optional
 	PrivateKeySecretRef v1.SecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -100,7 +117,7 @@ type OriginPullsCertificateStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OriginPullsCertificate is the Schema for the OriginPullsCertificates API. <no value>
+// OriginPullsCertificate is the Schema for the OriginPullsCertificates API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

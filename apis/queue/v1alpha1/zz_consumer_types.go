@@ -15,72 +15,93 @@ import (
 
 type ConsumerInitParameters struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	DeadLetterQueue *string `json:"deadLetterQueue,omitempty" tf:"dead_letter_queue,omitempty"`
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String) Name of a Worker
 	// Name of a Worker
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Settings *SettingsInitParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "worker", "http_pull".
 	// Available values: "worker", "http_pull".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type ConsumerObservation struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	ConsumerID *string `json:"consumerId,omitempty" tf:"consumer_id,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String)
 	DeadLetterQueue *string `json:"deadLetterQueue,omitempty" tf:"dead_letter_queue,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String) Name of a Worker
 	// Name of a Worker
 	Script *string `json:"script,omitempty" tf:"script,omitempty"`
 
+	// (String) Name of a Worker
 	// Name of a Worker
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Settings *SettingsObservation `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "worker", "http_pull".
 	// Available values: "worker", "http_pull".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type ConsumerParameters struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	DeadLetterQueue *string `json:"deadLetterQueue,omitempty" tf:"dead_letter_queue,omitempty"`
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	// +kubebuilder:validation:Optional
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String) Name of a Worker
 	// Name of a Worker
 	// +kubebuilder:validation:Optional
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Settings *SettingsParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "worker", "http_pull".
 	// Available values: "worker", "http_pull".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -88,68 +109,86 @@ type ConsumerParameters struct {
 
 type SettingsInitParameters struct {
 
+	// (Number) The maximum number of messages to include in a batch.
 	// The maximum number of messages to include in a batch.
 	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
+	// (Number) Maximum number of concurrent consumers that may consume from this Queue. Set to null to automatically opt in to the platform's maximum (recommended).
 	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
 	MaxConcurrency *float64 `json:"maxConcurrency,omitempty" tf:"max_concurrency,omitempty"`
 
+	// (Number) The maximum number of retries
 	// The maximum number of retries
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Number) The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	MaxWaitTimeMs *float64 `json:"maxWaitTimeMs,omitempty" tf:"max_wait_time_ms,omitempty"`
 
+	// (Number) The number of seconds to delay before making the message available for another attempt.
 	// The number of seconds to delay before making the message available for another attempt.
 	RetryDelay *float64 `json:"retryDelay,omitempty" tf:"retry_delay,omitempty"`
 
+	// (Number) The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	VisibilityTimeoutMs *float64 `json:"visibilityTimeoutMs,omitempty" tf:"visibility_timeout_ms,omitempty"`
 }
 
 type SettingsObservation struct {
 
+	// (Number) The maximum number of messages to include in a batch.
 	// The maximum number of messages to include in a batch.
 	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
+	// (Number) Maximum number of concurrent consumers that may consume from this Queue. Set to null to automatically opt in to the platform's maximum (recommended).
 	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
 	MaxConcurrency *float64 `json:"maxConcurrency,omitempty" tf:"max_concurrency,omitempty"`
 
+	// (Number) The maximum number of retries
 	// The maximum number of retries
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Number) The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	MaxWaitTimeMs *float64 `json:"maxWaitTimeMs,omitempty" tf:"max_wait_time_ms,omitempty"`
 
+	// (Number) The number of seconds to delay before making the message available for another attempt.
 	// The number of seconds to delay before making the message available for another attempt.
 	RetryDelay *float64 `json:"retryDelay,omitempty" tf:"retry_delay,omitempty"`
 
+	// (Number) The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	VisibilityTimeoutMs *float64 `json:"visibilityTimeoutMs,omitempty" tf:"visibility_timeout_ms,omitempty"`
 }
 
 type SettingsParameters struct {
 
+	// (Number) The maximum number of messages to include in a batch.
 	// The maximum number of messages to include in a batch.
 	// +kubebuilder:validation:Optional
 	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
+	// (Number) Maximum number of concurrent consumers that may consume from this Queue. Set to null to automatically opt in to the platform's maximum (recommended).
 	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
 	// +kubebuilder:validation:Optional
 	MaxConcurrency *float64 `json:"maxConcurrency,omitempty" tf:"max_concurrency,omitempty"`
 
+	// (Number) The maximum number of retries
 	// The maximum number of retries
 	// +kubebuilder:validation:Optional
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Number) The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	// +kubebuilder:validation:Optional
 	MaxWaitTimeMs *float64 `json:"maxWaitTimeMs,omitempty" tf:"max_wait_time_ms,omitempty"`
 
+	// (Number) The number of seconds to delay before making the message available for another attempt.
 	// The number of seconds to delay before making the message available for another attempt.
 	// +kubebuilder:validation:Optional
 	RetryDelay *float64 `json:"retryDelay,omitempty" tf:"retry_delay,omitempty"`
 
+	// (Number) The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	// +kubebuilder:validation:Optional
 	VisibilityTimeoutMs *float64 `json:"visibilityTimeoutMs,omitempty" tf:"visibility_timeout_ms,omitempty"`
@@ -182,7 +221,7 @@ type ConsumerStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Consumer is the Schema for the Consumers API. <no value>
+// Consumer is the Schema for the Consumers API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

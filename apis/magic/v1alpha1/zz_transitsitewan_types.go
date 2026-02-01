@@ -15,72 +15,96 @@ import (
 
 type TransitSiteWanInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	Physport *float64 `json:"physport,omitempty" tf:"physport,omitempty"`
 
+	// (Number)
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Attributes)  if omitted, use DHCP. Submit secondary_address when site is in high availability mode. (see below for nested schema)
 	StaticAddressing *TransitSiteWanStaticAddressingInitParameters `json:"staticAddressing,omitempty" tf:"static_addressing,omitempty"`
 
+	// (Number) VLAN ID. Use zero for untagged.
 	// VLAN ID. Use zero for untagged.
 	VlanTag *float64 `json:"vlanTag,omitempty" tf:"vlan_tag,omitempty"`
 }
 
 type TransitSiteWanObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Magic WAN health check rate for tunnels created on this link. The default value is mid.
+	// Available values: "low", "mid", "high".
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
 	// Available values: "low", "mid", "high".
 	HealthCheckRate *string `json:"healthCheckRate,omitempty" tf:"health_check_rate,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	Physport *float64 `json:"physport,omitempty" tf:"physport,omitempty"`
 
+	// (Number)
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Attributes)  if omitted, use DHCP. Submit secondary_address when site is in high availability mode. (see below for nested schema)
 	StaticAddressing *TransitSiteWanStaticAddressingObservation `json:"staticAddressing,omitempty" tf:"static_addressing,omitempty"`
 
+	// (Number) VLAN ID. Use zero for untagged.
 	// VLAN ID. Use zero for untagged.
 	VlanTag *float64 `json:"vlanTag,omitempty" tf:"vlan_tag,omitempty"`
 }
 
 type TransitSiteWanParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Physport *float64 `json:"physport,omitempty" tf:"physport,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Attributes)  if omitted, use DHCP. Submit secondary_address when site is in high availability mode. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	StaticAddressing *TransitSiteWanStaticAddressingParameters `json:"staticAddressing,omitempty" tf:"static_addressing,omitempty"`
 
+	// (Number) VLAN ID. Use zero for untagged.
 	// VLAN ID. Use zero for untagged.
 	// +kubebuilder:validation:Optional
 	VlanTag *float64 `json:"vlanTag,omitempty" tf:"vlan_tag,omitempty"`
@@ -88,38 +112,47 @@ type TransitSiteWanParameters struct {
 
 type TransitSiteWanStaticAddressingInitParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	GatewayAddress *string `json:"gatewayAddress,omitempty" tf:"gateway_address,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	SecondaryAddress *string `json:"secondaryAddress,omitempty" tf:"secondary_address,omitempty"`
 }
 
 type TransitSiteWanStaticAddressingObservation struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	GatewayAddress *string `json:"gatewayAddress,omitempty" tf:"gateway_address,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	SecondaryAddress *string `json:"secondaryAddress,omitempty" tf:"secondary_address,omitempty"`
 }
 
 type TransitSiteWanStaticAddressingParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	Address *string `json:"address" tf:"address,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	// +kubebuilder:validation:Optional
 	GatewayAddress *string `json:"gatewayAddress" tf:"gateway_address,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	SecondaryAddress *string `json:"secondaryAddress,omitempty" tf:"secondary_address,omitempty"`
@@ -152,7 +185,7 @@ type TransitSiteWanStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TransitSiteWan is the Schema for the TransitSiteWans API. <no value>
+// TransitSiteWan is the Schema for the TransitSiteWans API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

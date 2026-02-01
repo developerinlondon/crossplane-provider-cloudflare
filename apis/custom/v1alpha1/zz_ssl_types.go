@@ -15,18 +15,21 @@ import (
 
 type GeoRestrictionsInitParameters struct {
 
+	// (String) Available values: "us", "eu", "highest_security".
 	// Available values: "us", "eu", "highest_security".
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
 
 type GeoRestrictionsObservation struct {
 
+	// (String) Available values: "us", "eu", "highest_security".
 	// Available values: "us", "eu", "highest_security".
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
 
 type GeoRestrictionsParameters struct {
 
+	// (String) Available values: "us", "eu", "highest_security".
 	// Available values: "us", "eu", "highest_security".
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
@@ -37,34 +40,45 @@ type KeylessServerInitParameters struct {
 
 type KeylessServerObservation struct {
 
+	// (String) When the Keyless SSL was created.
 	// When the Keyless SSL was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (Boolean) Whether or not the Keyless SSL is on or off.
 	// Whether or not the Keyless SSL is on or off.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) Identifier.
 	// Keyless certificate identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) When the certificate was last modified.
 	// When the Keyless SSL was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) Available permissions for the Keyless SSL for the current user requesting the item.
 	// Available permissions for the Keyless SSL for the current user requesting the item.
 	Permissions []*string `json:"permissions,omitempty" tf:"permissions,omitempty"`
 
+	// (Number) The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	// Status of the Keyless SSL.
 	// Available values: "active", "deleted".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Attributes) Configuration for using Keyless SSL through a Cloudflare Tunnel (see below for nested schema)
 	Tunnel *TunnelObservation `json:"tunnel,omitempty" tf:"tunnel,omitempty"`
 }
 
@@ -73,106 +87,143 @@ type KeylessServerParameters struct {
 
 type SSLInitParameters_2 struct {
 
+	// (String) A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) The zone's SSL certificate or certificate and the intermediate(s).
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. (see below for nested schema)
 	GeoRestrictions *GeoRestrictionsInitParameters `json:"geoRestrictions,omitempty" tf:"geo_restrictions,omitempty"`
 
+	// 1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	Policy *string `json:"policy,omitempty" tf:"policy,omitempty"`
 
+	// (String, Sensitive) The zone's private key.
 	// The zone's private key.
 	PrivateKeySecretRef v1.SecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
+	// (String) The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy_custom", "sni_custom".
 	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy_custom", "sni_custom".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SSLObservation_2 struct {
 
+	// (String) A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) The zone's SSL certificate or certificate and the intermediate(s).
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) When the certificate from the authority expires.
 	// When the certificate from the authority expires.
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (Attributes) Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. (see below for nested schema)
 	GeoRestrictions *GeoRestrictionsObservation `json:"geoRestrictions,omitempty" tf:"geo_restrictions,omitempty"`
 
+	// (List of String)
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The certificate authority that issued the certificate.
 	// The certificate authority that issued the certificate.
 	Issuer *string `json:"issuer,omitempty" tf:"issuer,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	KeylessServer *KeylessServerObservation `json:"keylessServer,omitempty" tf:"keyless_server,omitempty"`
 
+	// (String) When the certificate was last modified.
 	// When the certificate was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// 1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	Policy *string `json:"policy,omitempty" tf:"policy,omitempty"`
 
+	// (Number) The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
 	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) The type of hash used for the certificate.
 	// The type of hash used for the certificate.
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String) Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	// Status of the zone's custom SSL.
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy_custom", "sni_custom".
 	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy_custom", "sni_custom".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) When the certificate was uploaded to Cloudflare.
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn *string `json:"uploadedOn,omitempty" tf:"uploaded_on,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SSLParameters_2 struct {
 
+	// (String) A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	// +kubebuilder:validation:Optional
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) The zone's SSL certificate or certificate and the intermediate(s).
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	GeoRestrictions *GeoRestrictionsParameters `json:"geoRestrictions,omitempty" tf:"geo_restrictions,omitempty"`
 
+	// 1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	// +kubebuilder:validation:Optional
 	Policy *string `json:"policy,omitempty" tf:"policy,omitempty"`
 
+	// (String, Sensitive) The zone's private key.
 	// The zone's private key.
 	// +kubebuilder:validation:Optional
 	PrivateKeySecretRef v1.SecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
+	// (String) The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy_custom", "sni_custom".
 	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy_custom", "sni_custom".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -183,9 +234,11 @@ type TunnelInitParameters struct {
 
 type TunnelObservation struct {
 
+	// (String) Private IP of the Key Server Host
 	// Private IP of the Key Server Host
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
+	// (String) Cloudflare Tunnel Virtual Network ID
 	// Cloudflare Tunnel Virtual Network ID
 	VnetID *string `json:"vnetId,omitempty" tf:"vnet_id,omitempty"`
 }
@@ -220,7 +273,7 @@ type SSLStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SSL is the Schema for the SSLs API. <no value>
+// SSL is the Schema for the SSLs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

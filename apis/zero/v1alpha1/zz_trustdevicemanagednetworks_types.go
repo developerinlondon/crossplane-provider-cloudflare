@@ -15,59 +15,79 @@ import (
 
 type TrustDeviceManagedNetworksConfigInitParameters struct {
 
+	// 256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	// The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	Sha256 *string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 
+	// (String) A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
 	// A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
 	TLSSockaddr *string `json:"tlsSockaddr,omitempty" tf:"tls_sockaddr,omitempty"`
 }
 
 type TrustDeviceManagedNetworksConfigObservation struct {
 
+	// 256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	// The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	Sha256 *string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 
+	// (String) A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
 	// A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
 	TLSSockaddr *string `json:"tlsSockaddr,omitempty" tf:"tls_sockaddr,omitempty"`
 }
 
 type TrustDeviceManagedNetworksConfigParameters struct {
 
+	// 256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	// The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	// +kubebuilder:validation:Optional
 	Sha256 *string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 
+	// (String) A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
 	// A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
 	// +kubebuilder:validation:Optional
 	TLSSockaddr *string `json:"tlsSockaddr" tf:"tls_sockaddr,omitempty"`
 }
 
 type TrustDeviceManagedNetworksInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The configuration object containing information for the WARP client to detect the managed network. (see below for nested schema)
 	Config *TrustDeviceManagedNetworksConfigInitParameters `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) The name of the device managed network. This name must be unique.
 	// The name of the device managed network. This name must be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of device managed network.
+	// Available values: "tls".
 	// The type of device managed network.
 	// Available values: "tls".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type TrustDeviceManagedNetworksObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The configuration object containing information for the WARP client to detect the managed network. (see below for nested schema)
 	Config *TrustDeviceManagedNetworksConfigObservation `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) API UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the device managed network. This name must be unique.
 	// The name of the device managed network. This name must be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) API UUID.
 	// API UUID.
 	NetworkID *string `json:"networkId,omitempty" tf:"network_id,omitempty"`
 
+	// (String) The type of device managed network.
+	// Available values: "tls".
 	// The type of device managed network.
 	// Available values: "tls".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -75,16 +95,21 @@ type TrustDeviceManagedNetworksObservation struct {
 
 type TrustDeviceManagedNetworksParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The configuration object containing information for the WARP client to detect the managed network. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Config *TrustDeviceManagedNetworksConfigParameters `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) The name of the device managed network. This name must be unique.
 	// The name of the device managed network. This name must be unique.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of device managed network.
+	// Available values: "tls".
 	// The type of device managed network.
 	// Available values: "tls".
 	// +kubebuilder:validation:Optional
@@ -118,7 +143,7 @@ type TrustDeviceManagedNetworksStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDeviceManagedNetworks is the Schema for the TrustDeviceManagedNetworkss API. <no value>
+// TrustDeviceManagedNetworks is the Schema for the TrustDeviceManagedNetworkss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

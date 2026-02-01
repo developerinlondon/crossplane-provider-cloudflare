@@ -15,103 +15,135 @@ import (
 
 type ConfigurationsInitParameters struct {
 
+	// (String) The configuration target. You must set the target to ip when specifying an IP address in the Zone Lockdown rule.
+	// Available values: "ip", "ip_range".
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
 	// Available values: "ip", "ip_range".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The IP address to match. This address will be compared to the IP address of incoming requests.
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfigurationsObservation struct {
 
+	// (String) The configuration target. You must set the target to ip when specifying an IP address in the Zone Lockdown rule.
+	// Available values: "ip", "ip_range".
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
 	// Available values: "ip", "ip_range".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The IP address to match. This address will be compared to the IP address of incoming requests.
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfigurationsParameters struct {
 
+	// (String) The configuration target. You must set the target to ip when specifying an IP address in the Zone Lockdown rule.
+	// Available values: "ip", "ip_range".
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
 	// Available values: "ip", "ip_range".
 	// +kubebuilder:validation:Optional
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The IP address to match. This address will be compared to the IP address of incoming requests.
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type LockdownInitParameters struct {
+
+	// (Attributes List) A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of ip or ip_range configurations. (see below for nested schema)
 	Configurations []ConfigurationsInitParameters `json:"configurations,omitempty" tf:"configurations,omitempty"`
 
+	// (String) An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) When true, indicates that the rule is currently paused.
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (Number) The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
 	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (List of String) The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []*string `json:"urls,omitempty" tf:"urls,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type LockdownObservation struct {
+
+	// (Attributes List) A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of ip or ip_range configurations. (see below for nested schema)
 	Configurations []ConfigurationsObservation `json:"configurations,omitempty" tf:"configurations,omitempty"`
 
+	// (String) The timestamp of when the rule was created.
 	// The timestamp of when the rule was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The unique identifier of the Zone Lockdown rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The timestamp of when the rule was last modified.
 	// The timestamp of when the rule was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Boolean) When true, indicates that the rule is currently paused.
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (Number) The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
 	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (List of String) The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []*string `json:"urls,omitempty" tf:"urls,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type LockdownParameters struct {
 
+	// (Attributes List) A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of ip or ip_range configurations. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Configurations []ConfigurationsParameters `json:"configurations,omitempty" tf:"configurations,omitempty"`
 
+	// (String) An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) When true, indicates that the rule is currently paused.
 	// When true, indicates that the rule is currently paused.
 	// +kubebuilder:validation:Optional
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (Number) The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
 	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (List of String) The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	// +kubebuilder:validation:Optional
 	Urls []*string `json:"urls,omitempty" tf:"urls,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -144,7 +176,7 @@ type LockdownStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Lockdown is the Schema for the Lockdowns API. <no value>
+// Lockdown is the Schema for the Lockdowns API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

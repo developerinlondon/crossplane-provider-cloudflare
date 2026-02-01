@@ -15,142 +15,194 @@ import (
 
 type DirectoryServiceInitParameters struct {
 
+	// (String) Account identifier
 	// Account identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number)
 	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
+	// (Number)
 	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Host *HostInitParameters `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Available values: "http".
 	// Available values: "http".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type DirectoryServiceObservation struct {
 
+	// (String) Account identifier
 	// Account identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Number)
 	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
+	// (Number)
 	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Host *HostObservation `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	ServiceID *string `json:"serviceId,omitempty" tf:"service_id,omitempty"`
 
+	// (String) Available values: "http".
 	// Available values: "http".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String)
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
 type DirectoryServiceParameters struct {
 
+	// (String) Account identifier
 	// Account identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Host *HostParameters `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Available values: "http".
 	// Available values: "http".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type HostInitParameters struct {
+
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	IPv4 *string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// (String)
 	IPv6 *string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Network *NetworkInitParameters `json:"network,omitempty" tf:"network,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ResolverNetwork *ResolverNetworkInitParameters `json:"resolverNetwork,omitempty" tf:"resolver_network,omitempty"`
 }
 
 type HostObservation struct {
+
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	IPv4 *string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// (String)
 	IPv6 *string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Network *NetworkObservation `json:"network,omitempty" tf:"network,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ResolverNetwork *ResolverNetworkObservation `json:"resolverNetwork,omitempty" tf:"resolver_network,omitempty"`
 }
 
 type HostParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	IPv4 *string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	IPv6 *string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Network *NetworkParameters `json:"network,omitempty" tf:"network,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ResolverNetwork *ResolverNetworkParameters `json:"resolverNetwork,omitempty" tf:"resolver_network,omitempty"`
 }
 
 type NetworkInitParameters struct {
+
+	// (String)
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 }
 
 type NetworkObservation struct {
+
+	// (String)
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 }
 
 type NetworkParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TunnelID *string `json:"tunnelId" tf:"tunnel_id,omitempty"`
 }
 
 type ResolverNetworkInitParameters struct {
+
+	// (List of String)
 	ResolverIps []*string `json:"resolverIps,omitempty" tf:"resolver_ips,omitempty"`
 
+	// (String)
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 }
 
 type ResolverNetworkObservation struct {
+
+	// (List of String)
 	ResolverIps []*string `json:"resolverIps,omitempty" tf:"resolver_ips,omitempty"`
 
+	// (String)
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 }
 
 type ResolverNetworkParameters struct {
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	ResolverIps []*string `json:"resolverIps,omitempty" tf:"resolver_ips,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TunnelID *string `json:"tunnelId" tf:"tunnel_id,omitempty"`
 }
@@ -182,7 +234,7 @@ type DirectoryServiceStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// DirectoryService is the Schema for the DirectoryServices API. <no value>
+// DirectoryService is the Schema for the DirectoryServices API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

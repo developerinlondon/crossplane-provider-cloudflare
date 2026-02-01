@@ -15,6 +15,11 @@ import (
 
 type HoldInitParameters struct {
 
+	// dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated hold_after value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	// If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
@@ -22,19 +27,31 @@ type HoldInitParameters struct {
 	// to the current time.
 	HoldAfter *string `json:"holdAfter,omitempty" tf:"hold_after,omitempty"`
 
+	// (Boolean) If true, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains *bool `json:"includeSubdomains,omitempty" tf:"include_subdomains,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HoldObservation struct {
+
+	// (Boolean)
 	Hold *bool `json:"hold,omitempty" tf:"hold,omitempty"`
 
+	// dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated hold_after value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	// If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
@@ -42,20 +59,31 @@ type HoldObservation struct {
 	// to the current time.
 	HoldAfter *string `json:"holdAfter,omitempty" tf:"hold_after,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) If true, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains *bool `json:"includeSubdomains,omitempty" tf:"include_subdomains,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HoldParameters struct {
 
+	// dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated hold_after value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	// If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
@@ -64,6 +92,10 @@ type HoldParameters struct {
 	// +kubebuilder:validation:Optional
 	HoldAfter *string `json:"holdAfter,omitempty" tf:"hold_after,omitempty"`
 
+	// (Boolean) If true, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
 	// 'example.com' and include_subdomains=true will block 'example.com',
@@ -71,6 +103,7 @@ type HoldParameters struct {
 	// +kubebuilder:validation:Optional
 	IncludeSubdomains *bool `json:"includeSubdomains,omitempty" tf:"include_subdomains,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -103,7 +136,7 @@ type HoldStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Hold is the Schema for the Holds API. <no value>
+// Hold is the Schema for the Holds API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

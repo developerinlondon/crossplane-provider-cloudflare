@@ -15,12 +15,15 @@ import (
 
 type BGPInitParameters struct {
 
+	// (Number) ASN used on the customer end of the BGP session
 	// ASN used on the customer end of the BGP session
 	CustomerAsn *float64 `json:"customerAsn,omitempty" tf:"customer_asn,omitempty"`
 
+	// (List of String) Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	ExtraPrefixes []*string `json:"extraPrefixes,omitempty" tf:"extra_prefixes,omitempty"`
 
+	// (String) MD5 key to use for session authentication.
 	// MD5 key to use for session authentication.
 	//
 	// Note that *this is not a security measure*. MD5 is not a valid security mechanism, and the
@@ -42,12 +45,15 @@ type BGPInitParameters struct {
 
 type BGPObservation struct {
 
+	// (Number) ASN used on the customer end of the BGP session
 	// ASN used on the customer end of the BGP session
 	CustomerAsn *float64 `json:"customerAsn,omitempty" tf:"customer_asn,omitempty"`
 
+	// (List of String) Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	ExtraPrefixes []*string `json:"extraPrefixes,omitempty" tf:"extra_prefixes,omitempty"`
 
+	// (String) MD5 key to use for session authentication.
 	// MD5 key to use for session authentication.
 	//
 	// Note that *this is not a security measure*. MD5 is not a valid security mechanism, and the
@@ -69,14 +75,17 @@ type BGPObservation struct {
 
 type BGPParameters struct {
 
+	// (Number) ASN used on the customer end of the BGP session
 	// ASN used on the customer end of the BGP session
 	// +kubebuilder:validation:Optional
 	CustomerAsn *float64 `json:"customerAsn" tf:"customer_asn,omitempty"`
 
+	// (List of String) Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	// +kubebuilder:validation:Optional
 	ExtraPrefixes []*string `json:"extraPrefixes,omitempty" tf:"extra_prefixes,omitempty"`
 
+	// (String) MD5 key to use for session authentication.
 	// MD5 key to use for session authentication.
 	//
 	// Note that *this is not a security measure*. MD5 is not a valid security mechanism, and the
@@ -101,21 +110,30 @@ type BGPStatusInitParameters struct {
 }
 
 type BGPStatusObservation struct {
+
+	// (String)
 	BGPState *string `json:"bgpState,omitempty" tf:"bgp_state,omitempty"`
 
+	// (String)
 	CfSpeakerIP *string `json:"cfSpeakerIp,omitempty" tf:"cf_speaker_ip,omitempty"`
 
+	// (Number)
 	CfSpeakerPort *float64 `json:"cfSpeakerPort,omitempty" tf:"cf_speaker_port,omitempty"`
 
+	// (String)
 	CustomerSpeakerIP *string `json:"customerSpeakerIp,omitempty" tf:"customer_speaker_ip,omitempty"`
 
+	// (Number)
 	CustomerSpeakerPort *float64 `json:"customerSpeakerPort,omitempty" tf:"customer_speaker_port,omitempty"`
 
+	// (String) Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
 	// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// (Boolean)
 	TCPEstablished *bool `json:"tcpEstablished,omitempty" tf:"tcp_established,omitempty"`
 
+	// (String)
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
@@ -124,19 +142,27 @@ type BGPStatusParameters struct {
 
 type HealthCheckInitParameters struct {
 
+	// (String) The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+	// Available values: "unidirectional", "bidirectional".
 	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
 	// Available values: "unidirectional", "bidirectional".
 	Direction *string `json:"direction,omitempty" tf:"direction,omitempty"`
 
+	// (Boolean) Determines whether to run healthchecks for a tunnel.
 	// Determines whether to run healthchecks for a tunnel.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) How frequent the health check is run. The default value is mid.
+	// Available values: "low", "mid", "high".
 	// How frequent the health check is run. The default value is `mid`.
 	// Available values: "low", "mid", "high".
 	Rate *string `json:"rate,omitempty" tf:"rate,omitempty"`
 
+	// magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. (see below for nested schema)
 	Target *TargetInitParameters `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The type of healthcheck to run, reply or request. The default value is reply.
+	// Available values: "reply", "request".
 	// The type of healthcheck to run, reply or request. The default value is `reply`.
 	// Available values: "reply", "request".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -144,19 +170,27 @@ type HealthCheckInitParameters struct {
 
 type HealthCheckObservation struct {
 
+	// (String) The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+	// Available values: "unidirectional", "bidirectional".
 	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
 	// Available values: "unidirectional", "bidirectional".
 	Direction *string `json:"direction,omitempty" tf:"direction,omitempty"`
 
+	// (Boolean) Determines whether to run healthchecks for a tunnel.
 	// Determines whether to run healthchecks for a tunnel.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) How frequent the health check is run. The default value is mid.
+	// Available values: "low", "mid", "high".
 	// How frequent the health check is run. The default value is `mid`.
 	// Available values: "low", "mid", "high".
 	Rate *string `json:"rate,omitempty" tf:"rate,omitempty"`
 
+	// magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. (see below for nested schema)
 	Target *TargetObservation `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The type of healthcheck to run, reply or request. The default value is reply.
+	// Available values: "reply", "request".
 	// The type of healthcheck to run, reply or request. The default value is `reply`.
 	// Available values: "reply", "request".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -164,23 +198,31 @@ type HealthCheckObservation struct {
 
 type HealthCheckParameters struct {
 
+	// (String) The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+	// Available values: "unidirectional", "bidirectional".
 	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
 	// Available values: "unidirectional", "bidirectional".
 	// +kubebuilder:validation:Optional
 	Direction *string `json:"direction,omitempty" tf:"direction,omitempty"`
 
+	// (Boolean) Determines whether to run healthchecks for a tunnel.
 	// Determines whether to run healthchecks for a tunnel.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) How frequent the health check is run. The default value is mid.
+	// Available values: "low", "mid", "high".
 	// How frequent the health check is run. The default value is `mid`.
 	// Available values: "low", "mid", "high".
 	// +kubebuilder:validation:Optional
 	Rate *string `json:"rate,omitempty" tf:"rate,omitempty"`
 
+	// magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Target *TargetParameters `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The type of healthcheck to run, reply or request. The default value is reply.
+	// Available values: "reply", "request".
 	// The type of healthcheck to run, reply or request. The default value is `reply`.
 	// Available values: "reply", "request".
 	// +kubebuilder:validation:Optional
@@ -189,21 +231,25 @@ type HealthCheckParameters struct {
 
 type TargetInitParameters struct {
 
+	// (String) The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 	Saved *string `json:"saved,omitempty" tf:"saved,omitempty"`
 }
 
 type TargetObservation struct {
 
+	// (String) The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
 	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
 	Effective *string `json:"effective,omitempty" tf:"effective,omitempty"`
 
+	// (String) The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 	Saved *string `json:"saved,omitempty" tf:"saved,omitempty"`
 }
 
 type TargetParameters struct {
 
+	// (String) The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 	// +kubebuilder:validation:Optional
 	Saved *string `json:"saved,omitempty" tf:"saved,omitempty"`
@@ -211,132 +257,172 @@ type TargetParameters struct {
 
 type WanGreTunnelInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
 	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
 	AutomaticReturnRouting *bool `json:"automaticReturnRouting,omitempty" tf:"automatic_return_routing,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	BGP *BGPInitParameters `json:"bgp,omitempty" tf:"bgp,omitempty"`
 
+	// (String) The IP address assigned to the Cloudflare side of the GRE tunnel.
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint *string `json:"cloudflareGreEndpoint,omitempty" tf:"cloudflare_gre_endpoint,omitempty"`
 
+	// (String) The IP address assigned to the customer side of the GRE tunnel.
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint *string `json:"customerGreEndpoint,omitempty" tf:"customer_gre_endpoint,omitempty"`
 
+	// (String) An optional description of the GRE tunnel.
 	// An optional description of the GRE tunnel.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	HealthCheck *HealthCheckInitParameters `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
 
+	// bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `json:"interfaceAddress,omitempty" tf:"interface_address,omitempty"`
 
+	// (String) A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
 	// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
 	InterfaceAddress6 *string `json:"interfaceAddress6,omitempty" tf:"interface_address6,omitempty"`
 
+	// (Number) Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu *float64 `json:"mtu,omitempty" tf:"mtu,omitempty"`
 
+	// (String) The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Time To Live (TTL) in number of hops of the GRE tunnel.
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type WanGreTunnelObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
 	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
 	AutomaticReturnRouting *bool `json:"automaticReturnRouting,omitempty" tf:"automatic_return_routing,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	BGP *BGPObservation `json:"bgp,omitempty" tf:"bgp,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	BGPStatus *BGPStatusObservation `json:"bgpStatus,omitempty" tf:"bgp_status,omitempty"`
 
+	// (String) The IP address assigned to the Cloudflare side of the GRE tunnel.
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint *string `json:"cloudflareGreEndpoint,omitempty" tf:"cloudflare_gre_endpoint,omitempty"`
 
+	// (String) The date and time the tunnel was created.
 	// The date and time the tunnel was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) The IP address assigned to the customer side of the GRE tunnel.
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint *string `json:"customerGreEndpoint,omitempty" tf:"customer_gre_endpoint,omitempty"`
 
+	// (String) An optional description of the GRE tunnel.
 	// An optional description of the GRE tunnel.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	HealthCheck *HealthCheckObservation `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `json:"interfaceAddress,omitempty" tf:"interface_address,omitempty"`
 
+	// (String) A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
 	// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
 	InterfaceAddress6 *string `json:"interfaceAddress6,omitempty" tf:"interface_address6,omitempty"`
 
+	// (String) The date and time the tunnel was last modified.
 	// The date and time the tunnel was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Number) Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu *float64 `json:"mtu,omitempty" tf:"mtu,omitempty"`
 
+	// (String) The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Time To Live (TTL) in number of hops of the GRE tunnel.
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type WanGreTunnelParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
 	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
 	// +kubebuilder:validation:Optional
 	AutomaticReturnRouting *bool `json:"automaticReturnRouting,omitempty" tf:"automatic_return_routing,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	BGP *BGPParameters `json:"bgp,omitempty" tf:"bgp,omitempty"`
 
+	// (String) The IP address assigned to the Cloudflare side of the GRE tunnel.
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	// +kubebuilder:validation:Optional
 	CloudflareGreEndpoint *string `json:"cloudflareGreEndpoint,omitempty" tf:"cloudflare_gre_endpoint,omitempty"`
 
+	// (String) The IP address assigned to the customer side of the GRE tunnel.
 	// The IP address assigned to the customer side of the GRE tunnel.
 	// +kubebuilder:validation:Optional
 	CustomerGreEndpoint *string `json:"customerGreEndpoint,omitempty" tf:"customer_gre_endpoint,omitempty"`
 
+	// (String) An optional description of the GRE tunnel.
 	// An optional description of the GRE tunnel.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	HealthCheck *HealthCheckParameters `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
 
+	// bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	// +kubebuilder:validation:Optional
 	InterfaceAddress *string `json:"interfaceAddress,omitempty" tf:"interface_address,omitempty"`
 
+	// (String) A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
 	// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
 	// +kubebuilder:validation:Optional
 	InterfaceAddress6 *string `json:"interfaceAddress6,omitempty" tf:"interface_address6,omitempty"`
 
+	// (Number) Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	// +kubebuilder:validation:Optional
 	Mtu *float64 `json:"mtu,omitempty" tf:"mtu,omitempty"`
 
+	// (String) The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Time To Live (TTL) in number of hops of the GRE tunnel.
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
@@ -369,7 +455,7 @@ type WanGreTunnelStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// WanGreTunnel is the Schema for the WanGreTunnels API. <no value>
+// WanGreTunnel is the Schema for the WanGreTunnels API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,28 +15,34 @@ import (
 
 type AttackMitigationInitParameters struct {
 
+	// prefix attacks to protect upstream DNS servers
 	// When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Only mitigate attacks when upstream servers seem unhealthy
 	// Only mitigate attacks when upstream servers seem unhealthy
 	OnlyWhenUpstreamUnhealthy *bool `json:"onlyWhenUpstreamUnhealthy,omitempty" tf:"only_when_upstream_unhealthy,omitempty"`
 }
 
 type AttackMitigationObservation struct {
 
+	// prefix attacks to protect upstream DNS servers
 	// When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Only mitigate attacks when upstream servers seem unhealthy
 	// Only mitigate attacks when upstream servers seem unhealthy
 	OnlyWhenUpstreamUnhealthy *bool `json:"onlyWhenUpstreamUnhealthy,omitempty" tf:"only_when_upstream_unhealthy,omitempty"`
 }
 
 type AttackMitigationParameters struct {
 
+	// prefix attacks to protect upstream DNS servers
 	// When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Only mitigate attacks when upstream servers seem unhealthy
 	// Only mitigate attacks when upstream servers seem unhealthy
 	// +kubebuilder:validation:Optional
 	OnlyWhenUpstreamUnhealthy *bool `json:"onlyWhenUpstreamUnhealthy,omitempty" tf:"only_when_upstream_unhealthy,omitempty"`
@@ -44,17 +50,25 @@ type AttackMitigationParameters struct {
 
 type FirewallInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) Attack mitigation settings (see below for nested schema)
 	AttackMitigation *AttackMitigationInitParameters `json:"attackMitigation,omitempty" tf:"attack_mitigation,omitempty"`
 
+	// (Boolean) Whether to refuse to answer queries for the ANY type
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests *bool `json:"deprecateAnyRequests,omitempty" tf:"deprecate_any_requests,omitempty"`
 
+	// (Boolean) Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback *bool `json:"ecsFallback,omitempty" tf:"ecs_fallback,omitempty"`
 
+	// (Number) By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets an upper bound on this duration. For caching purposes, higher TTLs
+	// will be decreased to the maximum value defined by this setting.
 	// By default, Cloudflare attempts to cache responses for as long as
 	// indicated by the TTL received from upstream nameservers. This setting
 	// sets an upper bound on this duration. For caching purposes, higher TTLs
@@ -65,6 +79,10 @@ type FirewallInitParameters struct {
 	// value received from upstream nameservers.
 	MaximumCacheTTL *float64 `json:"maximumCacheTtl,omitempty" tf:"maximum_cache_ttl,omitempty"`
 
+	// (Number) By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets a lower bound on this duration. For caching purposes, lower TTLs
+	// will be increased to the minimum value defined by this setting.
 	// By default, Cloudflare attempts to cache responses for as long as
 	// indicated by the TTL received from upstream nameservers. This setting
 	// sets a lower bound on this duration. For caching purposes, lower TTLs
@@ -80,9 +98,12 @@ type FirewallInitParameters struct {
 	// reasons.
 	MinimumCacheTTL *float64 `json:"minimumCacheTtl,omitempty" tf:"minimum_cache_ttl,omitempty"`
 
+	// (String) DNS Firewall cluster name
 	// DNS Firewall cluster name
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) This setting controls how long DNS Firewall should cache negative
+	// responses (e.g., NXDOMAIN) from the upstream servers.
 	// This setting controls how long DNS Firewall should cache negative
 	// responses (e.g., NXDOMAIN) from the upstream servers.
 	//
@@ -91,34 +112,47 @@ type FirewallInitParameters struct {
 	// value received from upstream nameservers.
 	NegativeCacheTTL *float64 `json:"negativeCacheTtl,omitempty" tf:"negative_cache_ttl,omitempty"`
 
+	// (Number) Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	Ratelimit *float64 `json:"ratelimit,omitempty" tf:"ratelimit,omitempty"`
 
+	// (Number) Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Set of String)
 	// +listType=set
 	UpstreamIps []*string `json:"upstreamIps,omitempty" tf:"upstream_ips,omitempty"`
 }
 
 type FirewallObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) Attack mitigation settings (see below for nested schema)
 	AttackMitigation *AttackMitigationObservation `json:"attackMitigation,omitempty" tf:"attack_mitigation,omitempty"`
 
+	// (Set of String)
 	// +listType=set
 	DNSFirewallIps []*string `json:"dnsFirewallIps,omitempty" tf:"dns_firewall_ips,omitempty"`
 
+	// (Boolean) Whether to refuse to answer queries for the ANY type
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests *bool `json:"deprecateAnyRequests,omitempty" tf:"deprecate_any_requests,omitempty"`
 
+	// (Boolean) Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback *bool `json:"ecsFallback,omitempty" tf:"ecs_fallback,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets an upper bound on this duration. For caching purposes, higher TTLs
+	// will be decreased to the maximum value defined by this setting.
 	// By default, Cloudflare attempts to cache responses for as long as
 	// indicated by the TTL received from upstream nameservers. This setting
 	// sets an upper bound on this duration. For caching purposes, higher TTLs
@@ -129,6 +163,10 @@ type FirewallObservation struct {
 	// value received from upstream nameservers.
 	MaximumCacheTTL *float64 `json:"maximumCacheTtl,omitempty" tf:"maximum_cache_ttl,omitempty"`
 
+	// (Number) By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets a lower bound on this duration. For caching purposes, lower TTLs
+	// will be increased to the minimum value defined by this setting.
 	// By default, Cloudflare attempts to cache responses for as long as
 	// indicated by the TTL received from upstream nameservers. This setting
 	// sets a lower bound on this duration. For caching purposes, lower TTLs
@@ -144,12 +182,16 @@ type FirewallObservation struct {
 	// reasons.
 	MinimumCacheTTL *float64 `json:"minimumCacheTtl,omitempty" tf:"minimum_cache_ttl,omitempty"`
 
+	// (String) Last modification of DNS Firewall cluster
 	// Last modification of DNS Firewall cluster
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) DNS Firewall cluster name
 	// DNS Firewall cluster name
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) This setting controls how long DNS Firewall should cache negative
+	// responses (e.g., NXDOMAIN) from the upstream servers.
 	// This setting controls how long DNS Firewall should cache negative
 	// responses (e.g., NXDOMAIN) from the upstream servers.
 	//
@@ -158,33 +200,44 @@ type FirewallObservation struct {
 	// value received from upstream nameservers.
 	NegativeCacheTTL *float64 `json:"negativeCacheTtl,omitempty" tf:"negative_cache_ttl,omitempty"`
 
+	// (Number) Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	Ratelimit *float64 `json:"ratelimit,omitempty" tf:"ratelimit,omitempty"`
 
+	// (Number) Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Set of String)
 	// +listType=set
 	UpstreamIps []*string `json:"upstreamIps,omitempty" tf:"upstream_ips,omitempty"`
 }
 
 type FirewallParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) Attack mitigation settings (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AttackMitigation *AttackMitigationParameters `json:"attackMitigation,omitempty" tf:"attack_mitigation,omitempty"`
 
+	// (Boolean) Whether to refuse to answer queries for the ANY type
 	// Whether to refuse to answer queries for the ANY type
 	// +kubebuilder:validation:Optional
 	DeprecateAnyRequests *bool `json:"deprecateAnyRequests,omitempty" tf:"deprecate_any_requests,omitempty"`
 
+	// (Boolean) Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	// +kubebuilder:validation:Optional
 	EcsFallback *bool `json:"ecsFallback,omitempty" tf:"ecs_fallback,omitempty"`
 
+	// (Number) By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets an upper bound on this duration. For caching purposes, higher TTLs
+	// will be decreased to the maximum value defined by this setting.
 	// By default, Cloudflare attempts to cache responses for as long as
 	// indicated by the TTL received from upstream nameservers. This setting
 	// sets an upper bound on this duration. For caching purposes, higher TTLs
@@ -196,6 +249,10 @@ type FirewallParameters struct {
 	// +kubebuilder:validation:Optional
 	MaximumCacheTTL *float64 `json:"maximumCacheTtl,omitempty" tf:"maximum_cache_ttl,omitempty"`
 
+	// (Number) By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets a lower bound on this duration. For caching purposes, lower TTLs
+	// will be increased to the minimum value defined by this setting.
 	// By default, Cloudflare attempts to cache responses for as long as
 	// indicated by the TTL received from upstream nameservers. This setting
 	// sets a lower bound on this duration. For caching purposes, lower TTLs
@@ -212,10 +269,13 @@ type FirewallParameters struct {
 	// +kubebuilder:validation:Optional
 	MinimumCacheTTL *float64 `json:"minimumCacheTtl,omitempty" tf:"minimum_cache_ttl,omitempty"`
 
+	// (String) DNS Firewall cluster name
 	// DNS Firewall cluster name
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) This setting controls how long DNS Firewall should cache negative
+	// responses (e.g., NXDOMAIN) from the upstream servers.
 	// This setting controls how long DNS Firewall should cache negative
 	// responses (e.g., NXDOMAIN) from the upstream servers.
 	//
@@ -225,14 +285,17 @@ type FirewallParameters struct {
 	// +kubebuilder:validation:Optional
 	NegativeCacheTTL *float64 `json:"negativeCacheTtl,omitempty" tf:"negative_cache_ttl,omitempty"`
 
+	// (Number) Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	// +kubebuilder:validation:Optional
 	Ratelimit *float64 `json:"ratelimit,omitempty" tf:"ratelimit,omitempty"`
 
+	// (Number) Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	// +kubebuilder:validation:Optional
 	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
+	// (Set of String)
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	UpstreamIps []*string `json:"upstreamIps,omitempty" tf:"upstream_ips,omitempty"`
@@ -265,7 +328,7 @@ type FirewallStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Firewall is the Schema for the Firewalls API. <no value>
+// Firewall is the Schema for the Firewalls API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

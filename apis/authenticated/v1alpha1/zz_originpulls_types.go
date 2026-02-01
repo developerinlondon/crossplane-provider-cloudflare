@@ -15,116 +15,151 @@ import (
 
 type ConfigInitParameters struct {
 
+	// (String) Identifier.
 	// Certificate identifier tag.
 	CertID *string `json:"certId,omitempty" tf:"cert_id,omitempty"`
 
+	// level authenticated origin pulls is enabled. A null value voids the association.
 	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The hostname on the origin for which the client certificate uploaded will be used.
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 }
 
 type ConfigObservation struct {
 
+	// (String) Identifier.
 	// Certificate identifier tag.
 	CertID *string `json:"certId,omitempty" tf:"cert_id,omitempty"`
 
+	// level authenticated origin pulls is enabled. A null value voids the association.
 	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The hostname on the origin for which the client certificate uploaded will be used.
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 }
 
 type ConfigParameters struct {
 
+	// (String) Identifier.
 	// Certificate identifier tag.
 	// +kubebuilder:validation:Optional
 	CertID *string `json:"certId,omitempty" tf:"cert_id,omitempty"`
 
+	// level authenticated origin pulls is enabled. A null value voids the association.
 	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The hostname on the origin for which the client certificate uploaded will be used.
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 }
 
 type OriginPullsInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	Config []ConfigInitParameters `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) The hostname on the origin for which the client certificate uploaded will be used.
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OriginPullsObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	CertID *string `json:"certId,omitempty" tf:"cert_id,omitempty"`
 
+	// (String) Status of the certificate or the association.
+	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 	// Status of the certificate or the association.
 	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 	CertStatus *string `json:"certStatus,omitempty" tf:"cert_status,omitempty"`
 
+	// (String) The time when the certificate was updated.
 	// The time when the certificate was updated.
 	CertUpdatedAt *string `json:"certUpdatedAt,omitempty" tf:"cert_updated_at,omitempty"`
 
+	// (String) The time when the certificate was uploaded.
 	// The time when the certificate was uploaded.
 	CertUploadedOn *string `json:"certUploadedOn,omitempty" tf:"cert_uploaded_on,omitempty"`
 
+	// (String) The hostname certificate.
 	// The hostname certificate.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Config []ConfigObservation `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) The time when the certificate was created.
 	// The time when the certificate was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// level authenticated origin pulls is enabled. A null value voids the association.
 	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The date when the certificate expires.
 	// The date when the certificate expires.
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (String) The hostname on the origin for which the client certificate uploaded will be used.
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The certificate authority that issued the certificate.
 	// The certificate authority that issued the certificate.
 	Issuer *string `json:"issuer,omitempty" tf:"issuer,omitempty"`
 
+	// (String) The serial number on the uploaded certificate.
 	// The serial number on the uploaded certificate.
 	SerialNumber *string `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
 
+	// (String) The type of hash used for the certificate.
 	// The type of hash used for the certificate.
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String) Status of the certificate or the association.
+	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 	// Status of the certificate or the association.
 	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) The time when the certificate was updated.
 	// The time when the certificate was updated.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OriginPullsParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Config []ConfigParameters `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) The hostname on the origin for which the client certificate uploaded will be used.
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -157,7 +192,7 @@ type OriginPullsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OriginPulls is the Schema for the OriginPullss API. <no value>
+// OriginPulls is the Schema for the OriginPullss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

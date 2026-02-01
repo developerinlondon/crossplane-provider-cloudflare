@@ -15,56 +15,76 @@ import (
 
 type SecurityImpersonationRegistryInitParameters struct {
 
+	// (String) Account Identifier
 	// Account Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Boolean)
 	IsEmailRegex *bool `json:"isEmailRegex,omitempty" tf:"is_email_regex,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type SecurityImpersonationRegistryObservation struct {
 
+	// (String) Account Identifier
 	// Account Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Comments *string `json:"comments,omitempty" tf:"comments,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Number)
 	DirectoryID *float64 `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
 
+	// (Number)
 	DirectoryNodeID *float64 `json:"directoryNodeId,omitempty" tf:"directory_node_id,omitempty"`
 
+	// (String)
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String, Deprecated)
 	ExternalDirectoryNodeID *string `json:"externalDirectoryNodeId,omitempty" tf:"external_directory_node_id,omitempty"`
 
+	// (Number) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean)
 	IsEmailRegex *bool `json:"isEmailRegex,omitempty" tf:"is_email_regex,omitempty"`
 
+	// (String)
 	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	Provenance *string `json:"provenance,omitempty" tf:"provenance,omitempty"`
 }
 
 type SecurityImpersonationRegistryParameters struct {
 
+	// (String) Account Identifier
 	// Account Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	IsEmailRegex *bool `json:"isEmailRegex,omitempty" tf:"is_email_regex,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -96,7 +116,7 @@ type SecurityImpersonationRegistryStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SecurityImpersonationRegistry is the Schema for the SecurityImpersonationRegistrys API. <no value>
+// SecurityImpersonationRegistry is the Schema for the SecurityImpersonationRegistrys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

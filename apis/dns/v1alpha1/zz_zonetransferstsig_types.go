@@ -14,43 +14,57 @@ import (
 )
 
 type ZoneTransfersTsigInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) TSIG algorithm.
 	// TSIG algorithm.
 	Algo *string `json:"algo,omitempty" tf:"algo,omitempty"`
 
+	// (String) TSIG key name.
 	// TSIG key name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String, Sensitive) TSIG secret.
 	// TSIG secret.
 	SecretSecretRef v1.SecretKeySelector `json:"secretSecretRef" tf:"-"`
 }
 
 type ZoneTransfersTsigObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) TSIG algorithm.
 	// TSIG algorithm.
 	Algo *string `json:"algo,omitempty" tf:"algo,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) TSIG key name.
 	// TSIG key name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type ZoneTransfersTsigParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) TSIG algorithm.
 	// TSIG algorithm.
 	// +kubebuilder:validation:Optional
 	Algo *string `json:"algo,omitempty" tf:"algo,omitempty"`
 
+	// (String) TSIG key name.
 	// TSIG key name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String, Sensitive) TSIG secret.
 	// TSIG secret.
 	// +kubebuilder:validation:Optional
 	SecretSecretRef v1.SecretKeySelector `json:"secretSecretRef" tf:"-"`
@@ -83,7 +97,7 @@ type ZoneTransfersTsigStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ZoneTransfersTsig is the Schema for the ZoneTransfersTsigs API. <no value>
+// ZoneTransfersTsig is the Schema for the ZoneTransfersTsigs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

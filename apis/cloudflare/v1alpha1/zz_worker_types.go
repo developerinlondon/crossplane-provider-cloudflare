@@ -18,15 +18,19 @@ type DispatchNamespaceOutboundsInitParameters struct {
 
 type DispatchNamespaceOutboundsObservation struct {
 
+	// (String) ID of the dispatch namespace.
 	// ID of the dispatch namespace.
 	NamespaceID *string `json:"namespaceId,omitempty" tf:"namespace_id,omitempty"`
 
+	// (String) Name of the dispatch namespace.
 	// Name of the dispatch namespace.
 	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
 
+	// (String) ID of the Worker using the dispatch namespace.
 	// ID of the Worker using the dispatch namespace.
 	WorkerID *string `json:"workerId,omitempty" tf:"worker_id,omitempty"`
 
+	// (String) Name of the Worker using the dispatch namespace.
 	// Name of the Worker using the dispatch namespace.
 	WorkerName *string `json:"workerName,omitempty" tf:"worker_name,omitempty"`
 }
@@ -39,18 +43,23 @@ type DomainsInitParameters struct {
 
 type DomainsObservation struct {
 
+	// (String) ID of the TLS certificate issued for the custom domain.
 	// ID of the TLS certificate issued for the custom domain.
 	CertificateID *string `json:"certificateId,omitempty" tf:"certificate_id,omitempty"`
 
+	// (String) Full hostname of the custom domain, including the zone name.
 	// Full hostname of the custom domain, including the zone name.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Immutable ID of the Worker.
 	// ID of the custom domain.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) ID of the zone.
 	// ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String) Name of the zone.
 	// Name of the zone.
 	ZoneName *string `json:"zoneName,omitempty" tf:"zone_name,omitempty"`
 }
@@ -63,15 +72,19 @@ type DurableObjectsInitParameters struct {
 
 type DurableObjectsObservation struct {
 
+	// (String) ID of the dispatch namespace.
 	// ID of the Durable Object namespace being used.
 	NamespaceID *string `json:"namespaceId,omitempty" tf:"namespace_id,omitempty"`
 
+	// (String) Name of the dispatch namespace.
 	// Name of the Durable Object namespace being used.
 	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
 
+	// (String) ID of the Worker using the dispatch namespace.
 	// ID of the Worker using the Durable Object implementation.
 	WorkerID *string `json:"workerId,omitempty" tf:"worker_id,omitempty"`
 
+	// (String) Name of the Worker using the dispatch namespace.
 	// Name of the Worker using the Durable Object implementation.
 	WorkerName *string `json:"workerName,omitempty" tf:"worker_name,omitempty"`
 }
@@ -81,38 +94,47 @@ type DurableObjectsParameters struct {
 
 type LogsInitParameters struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether logs are enabled for the Worker.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Number) The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	HeadSamplingRate *float64 `json:"headSamplingRate,omitempty" tf:"head_sampling_rate,omitempty"`
 
+	// (Boolean) Whether invocation logs are enabled for the Worker.
 	// Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
 	InvocationLogs *bool `json:"invocationLogs,omitempty" tf:"invocation_logs,omitempty"`
 }
 
 type LogsObservation struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether logs are enabled for the Worker.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Number) The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	HeadSamplingRate *float64 `json:"headSamplingRate,omitempty" tf:"head_sampling_rate,omitempty"`
 
+	// (Boolean) Whether invocation logs are enabled for the Worker.
 	// Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
 	InvocationLogs *bool `json:"invocationLogs,omitempty" tf:"invocation_logs,omitempty"`
 }
 
 type LogsParameters struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether logs are enabled for the Worker.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Number) The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// +kubebuilder:validation:Optional
 	HeadSamplingRate *float64 `json:"headSamplingRate,omitempty" tf:"head_sampling_rate,omitempty"`
 
+	// (Boolean) Whether invocation logs are enabled for the Worker.
 	// Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
 	// +kubebuilder:validation:Optional
 	InvocationLogs *bool `json:"invocationLogs,omitempty" tf:"invocation_logs,omitempty"`
@@ -120,36 +142,45 @@ type LogsParameters struct {
 
 type ObservabilityInitParameters struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether observability is enabled for the Worker.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Number) The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	HeadSamplingRate *float64 `json:"headSamplingRate,omitempty" tf:"head_sampling_rate,omitempty"`
 
+	// (Attributes) Log settings for the Worker. (see below for nested schema)
 	Logs *LogsInitParameters `json:"logs,omitempty" tf:"logs,omitempty"`
 }
 
 type ObservabilityObservation struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether observability is enabled for the Worker.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Number) The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	HeadSamplingRate *float64 `json:"headSamplingRate,omitempty" tf:"head_sampling_rate,omitempty"`
 
+	// (Attributes) Log settings for the Worker. (see below for nested schema)
 	Logs *LogsObservation `json:"logs,omitempty" tf:"logs,omitempty"`
 }
 
 type ObservabilityParameters struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether observability is enabled for the Worker.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Number) The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
 	// +kubebuilder:validation:Optional
 	HeadSamplingRate *float64 `json:"headSamplingRate,omitempty" tf:"head_sampling_rate,omitempty"`
 
+	// (Attributes) Log settings for the Worker. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Logs *LogsParameters `json:"logs,omitempty" tf:"logs,omitempty"`
 }
@@ -159,12 +190,15 @@ type QueuesInitParameters struct {
 
 type QueuesObservation struct {
 
+	// (String) ID of the queue consumer configuration.
 	// ID of the queue consumer configuration.
 	QueueConsumerID *string `json:"queueConsumerId,omitempty" tf:"queue_consumer_id,omitempty"`
 
+	// (String) ID of the queue.
 	// ID of the queue.
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String) Name of the queue.
 	// Name of the queue.
 	QueueName *string `json:"queueName,omitempty" tf:"queue_name,omitempty"`
 }
@@ -176,14 +210,20 @@ type ReferencesInitParameters struct {
 }
 
 type ReferencesObservation struct {
+
+	// (Attributes List) Other Workers that reference the Worker as an outbound for a dispatch namespace. (see below for nested schema)
 	DispatchNamespaceOutbounds []DispatchNamespaceOutboundsObservation `json:"dispatchNamespaceOutbounds,omitempty" tf:"dispatch_namespace_outbounds,omitempty"`
 
+	// (Attributes List) Custom domains connected to the Worker. (see below for nested schema)
 	Domains []DomainsObservation `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (Attributes List) Other Workers that reference Durable Object classes implemented by the Worker. (see below for nested schema)
 	DurableObjects []DurableObjectsObservation `json:"durableObjects,omitempty" tf:"durable_objects,omitempty"`
 
+	// (Attributes List) Queues that send messages to the Worker. (see below for nested schema)
 	Queues []QueuesObservation `json:"queues,omitempty" tf:"queues,omitempty"`
 
+	// (Attributes List) Other Workers that reference the Worker using service bindings. (see below for nested schema)
 	Workers []WorkersObservation `json:"workers,omitempty" tf:"workers,omitempty"`
 }
 
@@ -192,28 +232,34 @@ type ReferencesParameters struct {
 
 type SubdomainInitParameters struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether the *.workers.dev subdomain is enabled for the Worker.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Whether preview URLs are enabled for the Worker.
 	// Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
 	PreviewsEnabled *bool `json:"previewsEnabled,omitempty" tf:"previews_enabled,omitempty"`
 }
 
 type SubdomainObservation struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether the *.workers.dev subdomain is enabled for the Worker.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Whether preview URLs are enabled for the Worker.
 	// Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
 	PreviewsEnabled *bool `json:"previewsEnabled,omitempty" tf:"previews_enabled,omitempty"`
 }
 
 type SubdomainParameters struct {
 
+	// (Boolean) Whether observability is enabled for the Worker.
 	// Whether the *.workers.dev subdomain is enabled for the Worker.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Whether preview URLs are enabled for the Worker.
 	// Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
 	// +kubebuilder:validation:Optional
 	PreviewsEnabled *bool `json:"previewsEnabled,omitempty" tf:"previews_enabled,omitempty"`
@@ -221,18 +267,21 @@ type SubdomainParameters struct {
 
 type TailConsumersInitParameters struct {
 
+	// (String) Name of the Worker.
 	// Name of the consumer Worker.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TailConsumersObservation struct {
 
+	// (String) Name of the Worker.
 	// Name of the consumer Worker.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TailConsumersParameters struct {
 
+	// (String) Name of the Worker.
 	// Name of the consumer Worker.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
@@ -240,83 +289,108 @@ type TailConsumersParameters struct {
 
 type WorkerInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether logpush is enabled for the Worker.
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `json:"logpush,omitempty" tf:"logpush,omitempty"`
 
+	// (String) Name of the Worker.
 	// Name of the Worker.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) Observability settings for the Worker. (see below for nested schema)
 	Observability *ObservabilityInitParameters `json:"observability,omitempty" tf:"observability,omitempty"`
 
+	// (Attributes) Subdomain settings for the Worker. (see below for nested schema)
 	Subdomain *SubdomainInitParameters `json:"subdomain,omitempty" tf:"subdomain,omitempty"`
 
+	// (Set of String) Tags associated with the Worker.
 	// Tags associated with the Worker.
 	// +listType=set
 	Tags []*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// (Attributes Set) Other Workers that should consume logs from the Worker. (see below for nested schema)
 	TailConsumers []TailConsumersInitParameters `json:"tailConsumers,omitempty" tf:"tail_consumers,omitempty"`
 }
 
 type WorkerObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) When the Worker was created.
 	// When the Worker was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Immutable ID of the Worker.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Whether logpush is enabled for the Worker.
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `json:"logpush,omitempty" tf:"logpush,omitempty"`
 
+	// (String) Name of the Worker.
 	// Name of the Worker.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) Observability settings for the Worker. (see below for nested schema)
 	Observability *ObservabilityObservation `json:"observability,omitempty" tf:"observability,omitempty"`
 
+	// (Attributes) Other resources that reference the Worker and depend on it existing. (see below for nested schema)
 	References *ReferencesObservation `json:"references,omitempty" tf:"references,omitempty"`
 
+	// (Attributes) Subdomain settings for the Worker. (see below for nested schema)
 	Subdomain *SubdomainObservation `json:"subdomain,omitempty" tf:"subdomain,omitempty"`
 
+	// (Set of String) Tags associated with the Worker.
 	// Tags associated with the Worker.
 	// +listType=set
 	Tags []*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// (Attributes Set) Other Workers that should consume logs from the Worker. (see below for nested schema)
 	TailConsumers []TailConsumersObservation `json:"tailConsumers,omitempty" tf:"tail_consumers,omitempty"`
 
+	// (String) When the Worker was most recently updated.
 	// When the Worker was most recently updated.
 	UpdatedOn *string `json:"updatedOn,omitempty" tf:"updated_on,omitempty"`
 }
 
 type WorkerParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether logpush is enabled for the Worker.
 	// Whether logpush is enabled for the Worker.
 	// +kubebuilder:validation:Optional
 	Logpush *bool `json:"logpush,omitempty" tf:"logpush,omitempty"`
 
+	// (String) Name of the Worker.
 	// Name of the Worker.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) Observability settings for the Worker. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Observability *ObservabilityParameters `json:"observability,omitempty" tf:"observability,omitempty"`
 
+	// (Attributes) Subdomain settings for the Worker. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Subdomain *SubdomainParameters `json:"subdomain,omitempty" tf:"subdomain,omitempty"`
 
+	// (Set of String) Tags associated with the Worker.
 	// Tags associated with the Worker.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Tags []*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// (Attributes Set) Other Workers that should consume logs from the Worker. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	TailConsumers []TailConsumersParameters `json:"tailConsumers,omitempty" tf:"tail_consumers,omitempty"`
 }
@@ -326,9 +400,11 @@ type WorkersInitParameters struct {
 
 type WorkersObservation struct {
 
+	// (String) Immutable ID of the Worker.
 	// ID of the referencing Worker.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Name of the Worker.
 	// Name of the referencing Worker.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -363,7 +439,7 @@ type WorkerStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Worker is the Schema for the Workers API. <no value>
+// Worker is the Schema for the Workers API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

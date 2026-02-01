@@ -15,68 +15,87 @@ import (
 
 type ConnectorInitParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Begin the verification process after creation
 	// Begin the verification process after creation
 	BeginVerification *bool `json:"beginVerification,omitempty" tf:"begin_verification,omitempty"`
 
+	// (String) Email domain of the new SSO connector
 	// Email domain of the new SSO connector
 	EmailDomain *string `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Boolean) SSO Connector enabled state
 	// SSO Connector enabled state
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Controls the display of FedRAMP language to the user during SSO login
 	// Controls the display of FedRAMP language to the user during SSO login
 	UseFedrampLanguage *bool `json:"useFedrampLanguage,omitempty" tf:"use_fedramp_language,omitempty"`
 }
 
 type ConnectorObservation struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Begin the verification process after creation
 	// Begin the verification process after creation
 	BeginVerification *bool `json:"beginVerification,omitempty" tf:"begin_verification,omitempty"`
 
+	// (String) Timestamp for the creation of the SSO connector
 	// Timestamp for the creation of the SSO connector
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Email domain of the new SSO connector
 	// Email domain of the new SSO connector
 	EmailDomain *string `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Boolean) SSO Connector enabled state
 	// SSO Connector enabled state
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) SSO Connector identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Timestamp for the last update of the SSO connector
 	// Timestamp for the last update of the SSO connector
 	UpdatedOn *string `json:"updatedOn,omitempty" tf:"updated_on,omitempty"`
 
+	// (Boolean) Controls the display of FedRAMP language to the user during SSO login
 	// Controls the display of FedRAMP language to the user during SSO login
 	UseFedrampLanguage *bool `json:"useFedrampLanguage,omitempty" tf:"use_fedramp_language,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Verification *VerificationObservation `json:"verification,omitempty" tf:"verification,omitempty"`
 }
 
 type ConnectorParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Begin the verification process after creation
 	// Begin the verification process after creation
 	// +kubebuilder:validation:Optional
 	BeginVerification *bool `json:"beginVerification,omitempty" tf:"begin_verification,omitempty"`
 
+	// (String) Email domain of the new SSO connector
 	// Email domain of the new SSO connector
 	// +kubebuilder:validation:Optional
 	EmailDomain *string `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Boolean) SSO Connector enabled state
 	// SSO Connector enabled state
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Controls the display of FedRAMP language to the user during SSO login
 	// Controls the display of FedRAMP language to the user during SSO login
 	// +kubebuilder:validation:Optional
 	UseFedrampLanguage *bool `json:"useFedrampLanguage,omitempty" tf:"use_fedramp_language,omitempty"`
@@ -87,9 +106,12 @@ type VerificationInitParameters struct {
 
 type VerificationObservation struct {
 
+	// (String) DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
 	// DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
 	Code *string `json:"code,omitempty" tf:"code,omitempty"`
 
+	// (String) The status of the verification code from the verification process.
+	// Available values: "awaiting", "pending", "failed", "verified".
 	// The status of the verification code from the verification process.
 	// Available values: "awaiting", "pending", "failed", "verified".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -125,7 +147,7 @@ type ConnectorStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Connector is the Schema for the Connectors API. <no value>
+// Connector is the Schema for the Connectors API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

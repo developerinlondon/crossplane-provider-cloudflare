@@ -15,108 +15,138 @@ import (
 
 type WatermarkInitParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The image file to upload.
 	// The image file to upload.
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (String) The unique identifier for a watermark profile.
 	// The unique identifier for a watermark profile.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) A short description of the watermark profile.
 	// A short description of the watermark profile.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// transparent, setting this to 1.0 will not make the image completely opaque.
 	// The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
 	Opacity *float64 `json:"opacity,omitempty" tf:"opacity,omitempty"`
 
+	// (Number) The whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 indicates no padding, and 1.0 indicates a fully padded video width or length, as determined by the algorithm.
 	// The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
 	Padding *float64 `json:"padding,omitempty" tf:"padding,omitempty"`
 
+	// (String) The location of the image. Valid positions are: upperRight, upperLeft, lowerLeft, lowerRight, and center. Note that center ignores the padding parameter.
 	// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
 	Position *string `json:"position,omitempty" tf:"position,omitempty"`
 
+	// is), and 1.0 fills the entire video.
 	// The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.
 	Scale *float64 `json:"scale,omitempty" tf:"scale,omitempty"`
 }
 
 type WatermarkObservation struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The date and a time a watermark profile was created.
 	// The date and a time a watermark profile was created.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String) The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
 	// The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
 	DownloadedFrom *string `json:"downloadedFrom,omitempty" tf:"downloaded_from,omitempty"`
 
+	// (String) The image file to upload.
 	// The image file to upload.
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (Number) The height of the image in pixels.
 	// The height of the image in pixels.
 	Height *float64 `json:"height,omitempty" tf:"height,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The unique identifier for a watermark profile.
 	// The unique identifier for a watermark profile.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) A short description of the watermark profile.
 	// A short description of the watermark profile.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// transparent, setting this to 1.0 will not make the image completely opaque.
 	// The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
 	Opacity *float64 `json:"opacity,omitempty" tf:"opacity,omitempty"`
 
+	// (Number) The whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 indicates no padding, and 1.0 indicates a fully padded video width or length, as determined by the algorithm.
 	// The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
 	Padding *float64 `json:"padding,omitempty" tf:"padding,omitempty"`
 
+	// (String) The location of the image. Valid positions are: upperRight, upperLeft, lowerLeft, lowerRight, and center. Note that center ignores the padding parameter.
 	// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
 	Position *string `json:"position,omitempty" tf:"position,omitempty"`
 
+	// is), and 1.0 fills the entire video.
 	// The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.
 	Scale *float64 `json:"scale,omitempty" tf:"scale,omitempty"`
 
+	// (Number) The size of the image in bytes.
 	// The size of the image in bytes.
 	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
 
+	// (String) The unique identifier for a watermark profile.
 	// The unique identifier for a watermark profile.
 	UID *string `json:"uid,omitempty" tf:"uid,omitempty"`
 
+	// (Number) The width of the image in pixels.
 	// The width of the image in pixels.
 	Width *float64 `json:"width,omitempty" tf:"width,omitempty"`
 }
 
 type WatermarkParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The image file to upload.
 	// The image file to upload.
 	// +kubebuilder:validation:Optional
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (String) The unique identifier for a watermark profile.
 	// The unique identifier for a watermark profile.
 	// +kubebuilder:validation:Optional
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) A short description of the watermark profile.
 	// A short description of the watermark profile.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// transparent, setting this to 1.0 will not make the image completely opaque.
 	// The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
 	// +kubebuilder:validation:Optional
 	Opacity *float64 `json:"opacity,omitempty" tf:"opacity,omitempty"`
 
+	// (Number) The whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 indicates no padding, and 1.0 indicates a fully padded video width or length, as determined by the algorithm.
 	// The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
 	// +kubebuilder:validation:Optional
 	Padding *float64 `json:"padding,omitempty" tf:"padding,omitempty"`
 
+	// (String) The location of the image. Valid positions are: upperRight, upperLeft, lowerLeft, lowerRight, and center. Note that center ignores the padding parameter.
 	// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
 	// +kubebuilder:validation:Optional
 	Position *string `json:"position,omitempty" tf:"position,omitempty"`
 
+	// is), and 1.0 fills the entire video.
 	// The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.
 	// +kubebuilder:validation:Optional
 	Scale *float64 `json:"scale,omitempty" tf:"scale,omitempty"`
@@ -149,7 +179,7 @@ type WatermarkStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Watermark is the Schema for the Watermarks API. <no value>
+// Watermark is the Schema for the Watermarks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

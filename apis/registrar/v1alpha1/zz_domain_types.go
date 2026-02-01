@@ -15,60 +15,75 @@ import (
 
 type DomainInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// renew controls whether subscription is automatically renewed upon domain expiration.
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `json:"autoRenew,omitempty" tf:"auto_renew,omitempty"`
 
+	// (String) Domain name.
 	// Domain name.
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 
+	// (Boolean) Shows whether a registrar lock is in place for a domain.
 	// Shows whether a registrar lock is in place for a domain.
 	Locked *bool `json:"locked,omitempty" tf:"locked,omitempty"`
 
+	// (Boolean) Privacy option controls redacting WHOIS information.
 	// Privacy option controls redacting WHOIS information.
 	Privacy *bool `json:"privacy,omitempty" tf:"privacy,omitempty"`
 }
 
 type DomainObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// renew controls whether subscription is automatically renewed upon domain expiration.
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `json:"autoRenew,omitempty" tf:"auto_renew,omitempty"`
 
+	// (String) Domain name.
 	// Domain name.
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Shows whether a registrar lock is in place for a domain.
 	// Shows whether a registrar lock is in place for a domain.
 	Locked *bool `json:"locked,omitempty" tf:"locked,omitempty"`
 
+	// (Boolean) Privacy option controls redacting WHOIS information.
 	// Privacy option controls redacting WHOIS information.
 	Privacy *bool `json:"privacy,omitempty" tf:"privacy,omitempty"`
 }
 
 type DomainParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// renew controls whether subscription is automatically renewed upon domain expiration.
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	// +kubebuilder:validation:Optional
 	AutoRenew *bool `json:"autoRenew,omitempty" tf:"auto_renew,omitempty"`
 
+	// (String) Domain name.
 	// Domain name.
 	// +kubebuilder:validation:Optional
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 
+	// (Boolean) Shows whether a registrar lock is in place for a domain.
 	// Shows whether a registrar lock is in place for a domain.
 	// +kubebuilder:validation:Optional
 	Locked *bool `json:"locked,omitempty" tf:"locked,omitempty"`
 
+	// (Boolean) Privacy option controls redacting WHOIS information.
 	// Privacy option controls redacting WHOIS information.
 	// +kubebuilder:validation:Optional
 	Privacy *bool `json:"privacy,omitempty" tf:"privacy,omitempty"`
@@ -101,7 +116,7 @@ type DomainStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Domain is the Schema for the Domains API. <no value>
+// Domain is the Schema for the Domains API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,70 +15,94 @@ import (
 
 type HostnameInitParameters struct {
 
+	// (String) Specify an optional description of the hostname.
 	// Specify an optional description of the hostname.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Specify the DNSLink value used if the target is ipfs.
 	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink *string `json:"dnslink,omitempty" tf:"dnslink,omitempty"`
 
+	// (String) Specify the hostname that points to the target gateway via CNAME.
 	// Specify the hostname that points to the target gateway via CNAME.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) Specify the identifier of the hostname.
 	// Specify the identifier of the hostname.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HostnameObservation struct {
+
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Specify an optional description of the hostname.
 	// Specify an optional description of the hostname.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Specify the DNSLink value used if the target is ipfs.
 	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink *string `json:"dnslink,omitempty" tf:"dnslink,omitempty"`
 
+	// (String) Specify the identifier of the hostname.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) Specify the hostname that points to the target gateway via CNAME.
 	// Specify the hostname that points to the target gateway via CNAME.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specifies the status of the hostname's activation.
+	// Available values: "active", "pending", "deleting", "error".
 	// Specifies the status of the hostname's activation.
 	// Available values: "active", "pending", "deleting", "error".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Specify the target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) Specify the identifier of the hostname.
 	// Specify the identifier of the hostname.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HostnameParameters struct {
 
+	// (String) Specify an optional description of the hostname.
 	// Specify an optional description of the hostname.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Specify the DNSLink value used if the target is ipfs.
 	// Specify the DNSLink value used if the target is ipfs.
 	// +kubebuilder:validation:Optional
 	Dnslink *string `json:"dnslink,omitempty" tf:"dnslink,omitempty"`
 
+	// (String) Specify the hostname that points to the target gateway via CNAME.
 	// Specify the hostname that points to the target gateway via CNAME.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 	// +kubebuilder:validation:Optional
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) Specify the identifier of the hostname.
 	// Specify the identifier of the hostname.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -111,7 +135,7 @@ type HostnameStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Hostname is the Schema for the Hostnames API. <no value>
+// Hostname is the Schema for the Hostnames API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

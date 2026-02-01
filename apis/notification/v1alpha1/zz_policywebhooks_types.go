@@ -15,60 +15,77 @@ import (
 
 type PolicyWebhooksInitParameters struct {
 
+	// (String) The account id
 	// The account id
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	// The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// webhook-auth header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	SecretSecretRef *v1.SecretKeySelector `json:"secretSecretRef,omitempty" tf:"-"`
 
+	// (String) The POST endpoint to call when dispatching a notification.
 	// The POST endpoint to call when dispatching a notification.
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type PolicyWebhooksObservation struct {
 
+	// (String) The account id
 	// The account id
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Timestamp of when the webhook destination was created.
 	// Timestamp of when the webhook destination was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) UUID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
 	// Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
 	LastFailure *string `json:"lastFailure,omitempty" tf:"last_failure,omitempty"`
 
+	// (String) Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
 	// Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
 	LastSuccess *string `json:"lastSuccess,omitempty" tf:"last_success,omitempty"`
 
+	// (String) The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	// The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Type of webhook endpoint.
+	// Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
 	// Type of webhook endpoint.
 	// Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) The POST endpoint to call when dispatching a notification.
 	// The POST endpoint to call when dispatching a notification.
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type PolicyWebhooksParameters struct {
 
+	// (String) The account id
 	// The account id
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	// The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// webhook-auth header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	// +kubebuilder:validation:Optional
 	SecretSecretRef *v1.SecretKeySelector `json:"secretSecretRef,omitempty" tf:"-"`
 
+	// (String) The POST endpoint to call when dispatching a notification.
 	// The POST endpoint to call when dispatching a notification.
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
@@ -101,7 +118,7 @@ type PolicyWebhooksStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// PolicyWebhooks is the Schema for the PolicyWebhookss API. <no value>
+// PolicyWebhooks is the Schema for the PolicyWebhookss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,122 +15,160 @@ import (
 
 type BucketLockInitParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Rules []BucketLockRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketLockObservation struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Unique identifier for this rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Rules []BucketLockRulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketLockParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	// +kubebuilder:validation:Optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []BucketLockRulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketLockRulesInitParameters struct {
+
+	// (Attributes) Condition to apply a lock rule to an object for how long in seconds. (see below for nested schema)
 	Condition *RulesConditionInitParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Boolean) Whether or not this rule is in effect.
 	// Whether or not this rule is in effect.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Unique identifier for this rule.
 	// Unique identifier for this rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
 type BucketLockRulesObservation struct {
+
+	// (Attributes) Condition to apply a lock rule to an object for how long in seconds. (see below for nested schema)
 	Condition *RulesConditionObservation `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Boolean) Whether or not this rule is in effect.
 	// Whether or not this rule is in effect.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Unique identifier for this rule.
 	// Unique identifier for this rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
 type BucketLockRulesParameters struct {
 
+	// (Attributes) Condition to apply a lock rule to an object for how long in seconds. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Condition *RulesConditionParameters `json:"condition" tf:"condition,omitempty"`
 
+	// (Boolean) Whether or not this rule is in effect.
 	// Whether or not this rule is in effect.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String) Unique identifier for this rule.
 	// Unique identifier for this rule.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	// +kubebuilder:validation:Optional
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
 type RulesConditionInitParameters struct {
+
+	// (String)
 	Date *string `json:"date,omitempty" tf:"date,omitempty"`
 
+	// (Number)
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 
+	// (String) Available values: "Age", "Date", "Indefinite".
 	// Available values: "Age", "Date", "Indefinite".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type RulesConditionObservation struct {
+
+	// (String)
 	Date *string `json:"date,omitempty" tf:"date,omitempty"`
 
+	// (Number)
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 
+	// (String) Available values: "Age", "Date", "Indefinite".
 	// Available values: "Age", "Date", "Indefinite".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type RulesConditionParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Date *string `json:"date,omitempty" tf:"date,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 
+	// (String) Available values: "Age", "Date", "Indefinite".
 	// Available values: "Age", "Date", "Indefinite".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`
@@ -163,7 +201,7 @@ type BucketLockStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// BucketLock is the Schema for the BucketLocks API. <no value>
+// BucketLock is the Schema for the BucketLocks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,68 +15,86 @@ import (
 
 type TrustAccessMtlsCertificateInitParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Set of String) The hostnames of the applications that will use this certificate.
 	// The hostnames of the applications that will use this certificate.
 	// +listType=set
 	AssociatedHostnames []*string `json:"associatedHostnames,omitempty" tf:"associated_hostnames,omitempty"`
 
+	// (String) The certificate content.
 	// The certificate content.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) The name of the certificate.
 	// The name of the certificate.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustAccessMtlsCertificateObservation struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Set of String) The hostnames of the applications that will use this certificate.
 	// The hostnames of the applications that will use this certificate.
 	// +listType=set
 	AssociatedHostnames []*string `json:"associatedHostnames,omitempty" tf:"associated_hostnames,omitempty"`
 
+	// (String) The certificate content.
 	// The certificate content.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String)
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (String) The MD5 fingerprint of the certificate.
 	// The MD5 fingerprint of the certificate.
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (String) The ID of the application that will use this certificate.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the certificate.
 	// The name of the certificate.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustAccessMtlsCertificateParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Set of String) The hostnames of the applications that will use this certificate.
 	// The hostnames of the applications that will use this certificate.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	AssociatedHostnames []*string `json:"associatedHostnames,omitempty" tf:"associated_hostnames,omitempty"`
 
+	// (String) The certificate content.
 	// The certificate content.
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) The name of the certificate.
 	// The name of the certificate.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -109,7 +127,7 @@ type TrustAccessMtlsCertificateStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessMtlsCertificate is the Schema for the TrustAccessMtlsCertificates API. <no value>
+// TrustAccessMtlsCertificate is the Schema for the TrustAccessMtlsCertificates API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,53 +15,67 @@ import (
 
 type ZoneTransfersOutgoingInitParameters struct {
 
+	// (String) Zone name.
 	// Zone name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) A list of peer tags.
 	// A list of peer tags.
 	// +listType=set
 	Peers []*string `json:"peers,omitempty" tf:"peers,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ZoneTransfersOutgoingObservation struct {
 
+	// (String) The time for a specific event.
 	// The time for a specific event.
 	CheckedTime *string `json:"checkedTime,omitempty" tf:"checked_time,omitempty"`
 
+	// (String) The time for a specific event.
 	// The time for a specific event.
 	CreatedTime *string `json:"createdTime,omitempty" tf:"created_time,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The time for a specific event.
 	// The time for a specific event.
 	LastTransferredTime *string `json:"lastTransferredTime,omitempty" tf:"last_transferred_time,omitempty"`
 
+	// (String) Zone name.
 	// Zone name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) A list of peer tags.
 	// A list of peer tags.
 	// +listType=set
 	Peers []*string `json:"peers,omitempty" tf:"peers,omitempty"`
 
+	// (Number) The serial number of the SOA for the given zone.
 	// The serial number of the SOA for the given zone.
 	SoaSerial *float64 `json:"soaSerial,omitempty" tf:"soa_serial,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ZoneTransfersOutgoingParameters struct {
 
+	// (String) Zone name.
 	// Zone name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) A list of peer tags.
 	// A list of peer tags.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Peers []*string `json:"peers,omitempty" tf:"peers,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -93,7 +107,7 @@ type ZoneTransfersOutgoingStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ZoneTransfersOutgoing is the Schema for the ZoneTransfersOutgoings API. <no value>
+// ZoneTransfersOutgoing is the Schema for the ZoneTransfersOutgoings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

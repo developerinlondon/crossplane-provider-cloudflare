@@ -14,65 +14,93 @@ import (
 )
 
 type NetworkMonitoringRuleInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement *bool `json:"automaticAdvertisement,omitempty" tf:"automatic_advertisement,omitempty"`
 
+	// (Number) The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	Bandwidth *float64 `json:"bandwidth,omitempty" tf:"bandwidth,omitempty"`
 
+	// (String) The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	Duration *string `json:"duration,omitempty" tf:"duration,omitempty"`
 
+	// Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	// The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	PacketThreshold *float64 `json:"packetThreshold,omitempty" tf:"packet_threshold,omitempty"`
 
+	// (List of String)
 	Prefixes []*string `json:"prefixes,omitempty" tf:"prefixes,omitempty"`
 }
 
 type NetworkMonitoringRuleObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement *bool `json:"automaticAdvertisement,omitempty" tf:"automatic_advertisement,omitempty"`
 
+	// (Number) The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	Bandwidth *float64 `json:"bandwidth,omitempty" tf:"bandwidth,omitempty"`
 
+	// (Number) The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	BandwidthThreshold *float64 `json:"bandwidthThreshold,omitempty" tf:"bandwidth_threshold,omitempty"`
 
+	// (String) The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	Duration *string `json:"duration,omitempty" tf:"duration,omitempty"`
 
+	// (String) The id of the rule. Must be unique.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	// The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	PacketThreshold *float64 `json:"packetThreshold,omitempty" tf:"packet_threshold,omitempty"`
 
+	// (String) Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+	// Available values: "exact", "subnet", "supernet".
 	// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
 	// Available values: "exact", "subnet", "supernet".
 	PrefixMatch *string `json:"prefixMatch,omitempty" tf:"prefix_match,omitempty"`
 
+	// (List of String)
 	Prefixes []*string `json:"prefixes,omitempty" tf:"prefixes,omitempty"`
 
+	// (String) MNM rule type.
+	// Available values: "threshold", "zscore", "advanced_ddos".
 	// MNM rule type.
 	// Available values: "threshold", "zscore", "advanced_ddos".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Level of sensitivity set for zscore rules.
+	// Available values: "low", "medium", "high".
 	// Level of sensitivity set for zscore rules.
 	// Available values: "low", "medium", "high".
 	ZscoreSensitivity *string `json:"zscoreSensitivity,omitempty" tf:"zscore_sensitivity,omitempty"`
 
+	// (String) Target of the zscore rule analysis.
+	// Available values: "bits", "packets".
 	// Target of the zscore rule analysis.
 	// Available values: "bits", "packets".
 	ZscoreTarget *string `json:"zscoreTarget,omitempty" tf:"zscore_target,omitempty"`
@@ -80,30 +108,38 @@ type NetworkMonitoringRuleObservation struct {
 
 type NetworkMonitoringRuleParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	// +kubebuilder:validation:Optional
 	AutomaticAdvertisement *bool `json:"automaticAdvertisement,omitempty" tf:"automatic_advertisement,omitempty"`
 
+	// (Number) The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// +kubebuilder:validation:Optional
 	Bandwidth *float64 `json:"bandwidth,omitempty" tf:"bandwidth,omitempty"`
 
+	// (String) The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	// +kubebuilder:validation:Optional
 	Duration *string `json:"duration,omitempty" tf:"duration,omitempty"`
 
+	// Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	// The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	// +kubebuilder:validation:Optional
 	PacketThreshold *float64 `json:"packetThreshold,omitempty" tf:"packet_threshold,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Prefixes []*string `json:"prefixes,omitempty" tf:"prefixes,omitempty"`
 }
@@ -135,7 +171,7 @@ type NetworkMonitoringRuleStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// NetworkMonitoringRule is the Schema for the NetworkMonitoringRules API. <no value>
+// NetworkMonitoringRule is the Schema for the NetworkMonitoringRules API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

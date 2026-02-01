@@ -15,42 +15,53 @@ import (
 
 type RoutingAddressInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type RoutingAddressObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The date and time the destination address has been created.
 	// The date and time the destination address has been created.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) Destination address identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The date and time the destination address was last modified.
 	// The date and time the destination address was last modified.
 	Modified *string `json:"modified,omitempty" tf:"modified,omitempty"`
 
+	// (String, Deprecated) Destination address tag. (Deprecated, replaced by destination address identifier)
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) The date and time the destination address has been verified. Null means not verified yet.
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified *string `json:"verified,omitempty" tf:"verified,omitempty"`
 }
 
 type RoutingAddressParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
@@ -83,7 +94,7 @@ type RoutingAddressStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// RoutingAddress is the Schema for the RoutingAddresss API. <no value>
+// RoutingAddress is the Schema for the RoutingAddresss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

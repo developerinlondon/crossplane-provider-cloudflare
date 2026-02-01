@@ -15,30 +15,36 @@ import (
 
 type WebhookInitParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The URL where webhooks will be sent.
 	// The URL where webhooks will be sent.
 	NotificationURL *string `json:"notificationUrl,omitempty" tf:"notification_url,omitempty"`
 }
 
 type WebhookObservation struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The URL where webhooks will be sent.
 	// The URL where webhooks will be sent.
 	NotificationURL *string `json:"notificationUrl,omitempty" tf:"notification_url,omitempty"`
 }
 
 type WebhookParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The URL where webhooks will be sent.
 	// The URL where webhooks will be sent.
 	// +kubebuilder:validation:Optional
 	NotificationURL *string `json:"notificationUrl,omitempty" tf:"notification_url,omitempty"`
@@ -71,7 +77,7 @@ type WebhookStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Webhook is the Schema for the Webhooks API. <no value>
+// Webhook is the Schema for the Webhooks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

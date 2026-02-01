@@ -17,20 +17,29 @@ type InstancesInitParameters struct {
 }
 
 type InstancesObservation struct {
+
+	// (Number)
 	Complete *float64 `json:"complete,omitempty" tf:"complete,omitempty"`
 
+	// (Number)
 	Errored *float64 `json:"errored,omitempty" tf:"errored,omitempty"`
 
+	// (Number)
 	Paused *float64 `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (Number)
 	Queued *float64 `json:"queued,omitempty" tf:"queued,omitempty"`
 
+	// (Number)
 	Running *float64 `json:"running,omitempty" tf:"running,omitempty"`
 
+	// (Number)
 	Terminated *float64 `json:"terminated,omitempty" tf:"terminated,omitempty"`
 
+	// (Number)
 	Waiting *float64 `json:"waiting,omitempty" tf:"waiting,omitempty"`
 
+	// (Number)
 	WaitingForPause *float64 `json:"waitingForPause,omitempty" tf:"waiting_for_pause,omitempty"`
 }
 
@@ -38,54 +47,77 @@ type InstancesParameters struct {
 }
 
 type WorkflowInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	ClassName *string `json:"className,omitempty" tf:"class_name,omitempty"`
 
+	// (String)
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (String)
 	WorkflowName *string `json:"workflowName,omitempty" tf:"workflow_name,omitempty"`
 }
 
 type WorkflowObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	ClassName *string `json:"className,omitempty" tf:"class_name,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Instances *InstancesObservation `json:"instances,omitempty" tf:"instances,omitempty"`
 
+	// (Number)
 	IsDeleted *float64 `json:"isDeleted,omitempty" tf:"is_deleted,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (Number)
 	TerminatorRunning *float64 `json:"terminatorRunning,omitempty" tf:"terminator_running,omitempty"`
 
+	// (String)
 	TriggeredOn *string `json:"triggeredOn,omitempty" tf:"triggered_on,omitempty"`
 
+	// (String)
 	VersionID *string `json:"versionId,omitempty" tf:"version_id,omitempty"`
 
+	// (String)
 	WorkflowName *string `json:"workflowName,omitempty" tf:"workflow_name,omitempty"`
 }
 
 type WorkflowParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ClassName *string `json:"className,omitempty" tf:"class_name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	WorkflowName *string `json:"workflowName,omitempty" tf:"workflow_name,omitempty"`
 }
@@ -117,7 +149,7 @@ type WorkflowStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Workflow is the Schema for the Workflows API. <no value>
+// Workflow is the Schema for the Workflows API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

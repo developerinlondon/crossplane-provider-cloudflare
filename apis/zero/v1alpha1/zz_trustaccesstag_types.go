@@ -15,30 +15,37 @@ import (
 
 type TrustAccessTagInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the tag
 	// The name of the tag
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessTagObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the tag
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the tag
 	// The name of the tag
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessTagParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the tag
 	// The name of the tag
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -71,7 +78,7 @@ type TrustAccessTagStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessTag is the Schema for the TrustAccessTags API. <no value>
+// TrustAccessTag is the Schema for the TrustAccessTags API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

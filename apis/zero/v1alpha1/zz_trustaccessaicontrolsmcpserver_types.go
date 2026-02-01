@@ -14,73 +14,103 @@ import (
 )
 
 type TrustAccessAIControlsMcpServerInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	AuthCredentials *string `json:"authCredentials,omitempty" tf:"auth_credentials,omitempty"`
 
+	// (String) Available values: "oauth", "bearer", "unauthenticated".
 	// Available values: "oauth", "bearer", "unauthenticated".
 	AuthType *string `json:"authType,omitempty" tf:"auth_type,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessAIControlsMcpServerObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	AuthCredentials *string `json:"authCredentials,omitempty" tf:"auth_credentials,omitempty"`
 
+	// (String) Available values: "oauth", "bearer", "unauthenticated".
 	// Available values: "oauth", "bearer", "unauthenticated".
 	AuthType *string `json:"authType,omitempty" tf:"auth_type,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String)
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	Error *string `json:"error,omitempty" tf:"error,omitempty"`
 
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) server id
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	LastSynced *string `json:"lastSynced,omitempty" tf:"last_synced,omitempty"`
 
+	// (String)
 	ModifiedAt *string `json:"modifiedAt,omitempty" tf:"modified_at,omitempty"`
 
+	// (String)
 	ModifiedBy *string `json:"modifiedBy,omitempty" tf:"modified_by,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of Map of String)
 	Prompts []map[string]*string `json:"prompts,omitempty" tf:"prompts,omitempty"`
 
+	// (String)
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (List of Map of String)
 	Tools []map[string]*string `json:"tools,omitempty" tf:"tools,omitempty"`
 }
 
 type TrustAccessAIControlsMcpServerParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AuthCredentials *string `json:"authCredentials,omitempty" tf:"auth_credentials,omitempty"`
 
+	// (String) Available values: "oauth", "bearer", "unauthenticated".
 	// Available values: "oauth", "bearer", "unauthenticated".
 	// +kubebuilder:validation:Optional
 	AuthType *string `json:"authType,omitempty" tf:"auth_type,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -112,7 +142,7 @@ type TrustAccessAIControlsMcpServerStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessAIControlsMcpServer is the Schema for the TrustAccessAIControlsMcpServers API. <no value>
+// TrustAccessAIControlsMcpServer is the Schema for the TrustAccessAIControlsMcpServers API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

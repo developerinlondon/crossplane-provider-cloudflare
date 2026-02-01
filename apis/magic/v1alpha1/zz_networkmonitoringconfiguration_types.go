@@ -14,89 +14,116 @@ import (
 )
 
 type NetworkMonitoringConfigurationInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	DefaultSampling *float64 `json:"defaultSampling,omitempty" tf:"default_sampling,omitempty"`
 
+	// (String) The account name.
 	// The account name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String)
 	RouterIps []*string `json:"routerIps,omitempty" tf:"router_ips,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	WarpDevices []WarpDevicesInitParameters `json:"warpDevices,omitempty" tf:"warp_devices,omitempty"`
 }
 
 type NetworkMonitoringConfigurationObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	DefaultSampling *float64 `json:"defaultSampling,omitempty" tf:"default_sampling,omitempty"`
 
+	// (String) Unique identifier for the warp device.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The account name.
 	// The account name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String)
 	RouterIps []*string `json:"routerIps,omitempty" tf:"router_ips,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	WarpDevices []WarpDevicesObservation `json:"warpDevices,omitempty" tf:"warp_devices,omitempty"`
 }
 
 type NetworkMonitoringConfigurationParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	// +kubebuilder:validation:Optional
 	DefaultSampling *float64 `json:"defaultSampling,omitempty" tf:"default_sampling,omitempty"`
 
+	// (String) The account name.
 	// The account name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	RouterIps []*string `json:"routerIps,omitempty" tf:"router_ips,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	WarpDevices []WarpDevicesParameters `json:"warpDevices,omitempty" tf:"warp_devices,omitempty"`
 }
 
 type WarpDevicesInitParameters struct {
 
+	// (String) Unique identifier for the warp device.
 	// Unique identifier for the warp device.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The account name.
 	// Name of the warp device.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.
 	// IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.
 	RouterIP *string `json:"routerIp,omitempty" tf:"router_ip,omitempty"`
 }
 
 type WarpDevicesObservation struct {
 
+	// (String) Unique identifier for the warp device.
 	// Unique identifier for the warp device.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The account name.
 	// Name of the warp device.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.
 	// IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.
 	RouterIP *string `json:"routerIp,omitempty" tf:"router_ip,omitempty"`
 }
 
 type WarpDevicesParameters struct {
 
+	// (String) Unique identifier for the warp device.
 	// Unique identifier for the warp device.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The account name.
 	// Name of the warp device.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 
+	// (String) IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.
 	// IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.
 	// +kubebuilder:validation:Optional
 	RouterIP *string `json:"routerIp" tf:"router_ip,omitempty"`
@@ -129,7 +156,7 @@ type NetworkMonitoringConfigurationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// NetworkMonitoringConfiguration is the Schema for the NetworkMonitoringConfigurations API. <no value>
+// NetworkMonitoringConfiguration is the Schema for the NetworkMonitoringConfigurations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -14,95 +14,128 @@ import (
 )
 
 type DeviceInitParameters struct {
+
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// only field that will not be stored in state.
 	// Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
 	ProvisionLicense *bool `json:"provisionLicense,omitempty" tf:"provision_license,omitempty"`
 
+	// (String)
 	SerialNumber *string `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
 }
 
 type DeviceObservation struct {
+
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// only field that will not be stored in state.
 	// Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
 	ProvisionLicense *bool `json:"provisionLicense,omitempty" tf:"provision_license,omitempty"`
 
+	// (String)
 	SerialNumber *string `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
 }
 
 type DeviceParameters struct {
 
+	// (String) The ID of this resource.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// only field that will not be stored in state.
 	// Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
 	// +kubebuilder:validation:Optional
 	ProvisionLicense *bool `json:"provisionLicense,omitempty" tf:"provision_license,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	SerialNumber *string `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
 }
 
 type TransitConnectorInitParameters struct {
 
+	// (String) Account identifier
 	// Account identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean)
 	Activated *bool `json:"activated,omitempty" tf:"activated,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Device *DeviceInitParameters `json:"device,omitempty" tf:"device,omitempty"`
 
+	// (Number)
 	InterruptWindowDurationHours *float64 `json:"interruptWindowDurationHours,omitempty" tf:"interrupt_window_duration_hours,omitempty"`
 
+	// (Number)
 	InterruptWindowHourOfDay *float64 `json:"interruptWindowHourOfDay,omitempty" tf:"interrupt_window_hour_of_day,omitempty"`
 
+	// (String)
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
 
+	// (String)
 	Timezone *string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 }
 
 type TransitConnectorObservation struct {
 
+	// (String) Account identifier
 	// Account identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean)
 	Activated *bool `json:"activated,omitempty" tf:"activated,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Device *DeviceObservation `json:"device,omitempty" tf:"device,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number)
 	InterruptWindowDurationHours *float64 `json:"interruptWindowDurationHours,omitempty" tf:"interrupt_window_duration_hours,omitempty"`
 
+	// (Number)
 	InterruptWindowHourOfDay *float64 `json:"interruptWindowHourOfDay,omitempty" tf:"interrupt_window_hour_of_day,omitempty"`
 
+	// (String)
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
 
+	// (String)
 	Timezone *string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 }
 
 type TransitConnectorParameters struct {
 
+	// (String) Account identifier
 	// Account identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Activated *bool `json:"activated,omitempty" tf:"activated,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Device *DeviceParameters `json:"device,omitempty" tf:"device,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	InterruptWindowDurationHours *float64 `json:"interruptWindowDurationHours,omitempty" tf:"interrupt_window_duration_hours,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	InterruptWindowHourOfDay *float64 `json:"interruptWindowHourOfDay,omitempty" tf:"interrupt_window_hour_of_day,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Timezone *string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 }
@@ -134,7 +167,7 @@ type TransitConnectorStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TransitConnector is the Schema for the TransitConnectors API. <no value>
+// TransitConnector is the Schema for the TransitConnectors API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

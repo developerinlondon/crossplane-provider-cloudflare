@@ -17,14 +17,20 @@ type FlagsInitParameters struct {
 }
 
 type FlagsObservation struct {
+
+	// (String)
 	AccountCreation *string `json:"accountCreation,omitempty" tf:"account_creation,omitempty"`
 
+	// (String)
 	AccountDeletion *string `json:"accountDeletion,omitempty" tf:"account_deletion,omitempty"`
 
+	// (String)
 	AccountMigration *string `json:"accountMigration,omitempty" tf:"account_migration,omitempty"`
 
+	// (String)
 	AccountMobility *string `json:"accountMobility,omitempty" tf:"account_mobility,omitempty"`
 
+	// (String)
 	SubOrgCreation *string `json:"subOrgCreation,omitempty" tf:"sub_org_creation,omitempty"`
 }
 
@@ -35,8 +41,11 @@ type MetaInitParameters struct {
 }
 
 type MetaObservation struct {
+
+	// (Attributes) Enable features for Organizations. (see below for nested schema)
 	Flags *FlagsObservation `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (String)
 	ManagedBy *string `json:"managedBy,omitempty" tf:"managed_by,omitempty"`
 }
 
@@ -44,93 +53,130 @@ type MetaParameters struct {
 }
 
 type OrganizationInitParameters struct {
+
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Parent *ParentInitParameters `json:"parent,omitempty" tf:"parent,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Profile *ProfileInitParameters `json:"profile,omitempty" tf:"profile,omitempty"`
 }
 
 type OrganizationObservation struct {
+
+	// (String)
 	CreateTime *string `json:"createTime,omitempty" tf:"create_time,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Meta *MetaObservation `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Parent *ParentObservation `json:"parent,omitempty" tf:"parent,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Profile *ProfileObservation `json:"profile,omitempty" tf:"profile,omitempty"`
 }
 
 type OrganizationParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Parent *ParentParameters `json:"parent,omitempty" tf:"parent,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Profile *ProfileParameters `json:"profile,omitempty" tf:"profile,omitempty"`
 }
 
 type ParentInitParameters struct {
+
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ParentObservation struct {
+
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type ParentParameters struct {
 
+	// (String) The ID of this resource.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type ProfileInitParameters struct {
+
+	// (String)
 	BusinessAddress *string `json:"businessAddress,omitempty" tf:"business_address,omitempty"`
 
+	// (String)
 	BusinessEmail *string `json:"businessEmail,omitempty" tf:"business_email,omitempty"`
 
+	// (String)
 	BusinessName *string `json:"businessName,omitempty" tf:"business_name,omitempty"`
 
+	// (String)
 	BusinessPhone *string `json:"businessPhone,omitempty" tf:"business_phone,omitempty"`
 
+	// (String)
 	ExternalMetadata *string `json:"externalMetadata,omitempty" tf:"external_metadata,omitempty"`
 }
 
 type ProfileObservation struct {
+
+	// (String)
 	BusinessAddress *string `json:"businessAddress,omitempty" tf:"business_address,omitempty"`
 
+	// (String)
 	BusinessEmail *string `json:"businessEmail,omitempty" tf:"business_email,omitempty"`
 
+	// (String)
 	BusinessName *string `json:"businessName,omitempty" tf:"business_name,omitempty"`
 
+	// (String)
 	BusinessPhone *string `json:"businessPhone,omitempty" tf:"business_phone,omitempty"`
 
+	// (String)
 	ExternalMetadata *string `json:"externalMetadata,omitempty" tf:"external_metadata,omitempty"`
 }
 
 type ProfileParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessAddress *string `json:"businessAddress" tf:"business_address,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessEmail *string `json:"businessEmail" tf:"business_email,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessName *string `json:"businessName" tf:"business_name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessPhone *string `json:"businessPhone" tf:"business_phone,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ExternalMetadata *string `json:"externalMetadata" tf:"external_metadata,omitempty"`
 }
@@ -162,7 +208,7 @@ type OrganizationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Organization is the Schema for the Organizations API. <no value>
+// Organization is the Schema for the Organizations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

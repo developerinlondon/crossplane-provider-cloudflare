@@ -15,46 +15,58 @@ import (
 
 type OwnershipChallengeInitParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf *string `json:"destinationConf,omitempty" tf:"destination_conf,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OwnershipChallengeObservation struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf *string `json:"destinationConf,omitempty" tf:"destination_conf,omitempty"`
 
+	// (String)
 	Filename *string `json:"filename,omitempty" tf:"filename,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Message *string `json:"message,omitempty" tf:"message,omitempty"`
 
+	// (Boolean)
 	Valid *bool `json:"valid,omitempty" tf:"valid,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OwnershipChallengeParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	// +kubebuilder:validation:Optional
 	DestinationConf *string `json:"destinationConf,omitempty" tf:"destination_conf,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -87,7 +99,7 @@ type OwnershipChallengeStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OwnershipChallenge is the Schema for the OwnershipChallenges API. <no value>
+// OwnershipChallenge is the Schema for the OwnershipChallenges API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

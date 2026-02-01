@@ -17,8 +17,11 @@ type APIRoutingInitParameters struct {
 }
 
 type APIRoutingObservation struct {
+
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (String) Target route.
 	// Target route.
 	Route *string `json:"route,omitempty" tf:"route,omitempty"`
 }
@@ -30,14 +33,19 @@ type ActiveSchemaInitParameters struct {
 }
 
 type ActiveSchemaObservation struct {
+
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// provided.
 	// True if schema is Cloudflare-provided.
 	IsLearned *bool `json:"isLearned,omitempty" tf:"is_learned,omitempty"`
 
+	// (String) Schema file name.
 	// Schema file name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -49,8 +57,11 @@ type ConfidenceIntervalsInitParameters struct {
 }
 
 type ConfidenceIntervalsObservation struct {
+
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SuggestedThreshold *SuggestedThresholdObservation `json:"suggestedThreshold,omitempty" tf:"suggested_threshold,omitempty"`
 }
 
@@ -61,14 +72,20 @@ type FeaturesInitParameters struct {
 }
 
 type FeaturesObservation struct {
+
+	// (Attributes) API Routing settings on endpoint. (see below for nested schema)
 	APIRouting *APIRoutingObservation `json:"apiRouting,omitempty" tf:"api_routing,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ConfidenceIntervals *ConfidenceIntervalsObservation `json:"confidenceIntervals,omitempty" tf:"confidence_intervals,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ParameterSchemas *ParameterSchemasObservation `json:"parameterSchemas,omitempty" tf:"parameter_schemas,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SchemaInfo *SchemaInfoObservation `json:"schemaInfo,omitempty" tf:"schema_info,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Thresholds *ThresholdsObservation `json:"thresholds,omitempty" tf:"thresholds,omitempty"`
 }
 
@@ -80,9 +97,11 @@ type P90InitParameters struct {
 
 type P90Observation struct {
 
+	// (Number) Lower bound for percentile estimate
 	// Lower bound for percentile estimate
 	Lower *float64 `json:"lower,omitempty" tf:"lower,omitempty"`
 
+	// (Number) Upper bound for percentile estimate
 	// Upper bound for percentile estimate
 	Upper *float64 `json:"upper,omitempty" tf:"upper,omitempty"`
 }
@@ -95,9 +114,11 @@ type P95InitParameters struct {
 
 type P95Observation struct {
 
+	// (Number) Lower bound for percentile estimate
 	// Lower bound for percentile estimate
 	Lower *float64 `json:"lower,omitempty" tf:"lower,omitempty"`
 
+	// (Number) Upper bound for percentile estimate
 	// Upper bound for percentile estimate
 	Upper *float64 `json:"upper,omitempty" tf:"upper,omitempty"`
 }
@@ -110,9 +131,11 @@ type P99InitParameters struct {
 
 type P99Observation struct {
 
+	// (Number) Lower bound for percentile estimate
 	// Lower bound for percentile estimate
 	Lower *float64 `json:"lower,omitempty" tf:"lower,omitempty"`
 
+	// (Number) Upper bound for percentile estimate
 	// Upper bound for percentile estimate
 	Upper *float64 `json:"upper,omitempty" tf:"upper,omitempty"`
 }
@@ -124,8 +147,11 @@ type ParameterSchemasInitParameters struct {
 }
 
 type ParameterSchemasObservation struct {
+
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ParameterSchemas *ParameterSchemasParameterSchemasObservation `json:"parameterSchemas,omitempty" tf:"parameter_schemas,omitempty"`
 }
 
@@ -134,9 +160,11 @@ type ParameterSchemasParameterSchemasInitParameters struct {
 
 type ParameterSchemasParameterSchemasObservation struct {
 
+	// (List of String) An array containing the learned parameter schemas.
 	// An array containing the learned parameter schemas.
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// (String) An empty response object. This field is required to yield a valid operation schema.
 	// An empty response object. This field is required to yield a valid operation schema.
 	Responses *string `json:"responses,omitempty" tf:"responses,omitempty"`
 }
@@ -151,11 +179,16 @@ type SchemaInfoInitParameters struct {
 }
 
 type SchemaInfoObservation struct {
+
+	// (Attributes) Schema active on endpoint. (see below for nested schema)
 	ActiveSchema *ActiveSchemaObservation `json:"activeSchema,omitempty" tf:"active_schema,omitempty"`
 
+	// provided learned schema is available for this endpoint.
 	// True if a Cloudflare-provided learned schema is available for this endpoint.
 	LearnedAvailable *bool `json:"learnedAvailable,omitempty" tf:"learned_available,omitempty"`
 
+	// (String) Action taken on requests failing validation.
+	// Available values: "none", "log", "block".
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction *string `json:"mitigationAction,omitempty" tf:"mitigation_action,omitempty"`
@@ -166,60 +199,79 @@ type SchemaInfoParameters struct {
 
 type ShieldOperationInitParameters struct {
 
+	// normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
+	// compliant host.
 	// RFC3986-compliant host.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldOperationObservation struct {
 
+	// normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Features *FeaturesObservation `json:"features,omitempty" tf:"features,omitempty"`
 
+	// compliant host.
 	// RFC3986-compliant host.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (String) The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldOperationParameters struct {
 
+	// normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	// +kubebuilder:validation:Optional
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
+	// compliant host.
 	// RFC3986-compliant host.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	// +kubebuilder:validation:Optional
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -229,10 +281,14 @@ type SuggestedThresholdConfidenceIntervalsInitParameters struct {
 }
 
 type SuggestedThresholdConfidenceIntervalsObservation struct {
+
+	// (Attributes) Upper and lower bound for percentile estimate (see below for nested schema)
 	P90 *P90Observation `json:"p90,omitempty" tf:"p90,omitempty"`
 
+	// (Attributes) Upper and lower bound for percentile estimate (see below for nested schema)
 	P95 *P95Observation `json:"p95,omitempty" tf:"p95,omitempty"`
 
+	// (Attributes) Upper and lower bound for percentile estimate (see below for nested schema)
 	P99 *P99Observation `json:"p99,omitempty" tf:"p99,omitempty"`
 }
 
@@ -243,8 +299,11 @@ type SuggestedThresholdInitParameters struct {
 }
 
 type SuggestedThresholdObservation struct {
+
+	// (Attributes) (see below for nested schema)
 	ConfidenceIntervals *SuggestedThresholdConfidenceIntervalsObservation `json:"confidenceIntervals,omitempty" tf:"confidence_intervals,omitempty"`
 
+	// (Number) Suggested threshold.
 	// Suggested threshold.
 	Mean *float64 `json:"mean,omitempty" tf:"mean,omitempty"`
 }
@@ -257,29 +316,38 @@ type ThresholdsInitParameters struct {
 
 type ThresholdsObservation struct {
 
+	// ids seen across this calculation.
 	// The total number of auth-ids seen across this calculation.
 	AuthIDTokens *float64 `json:"authIdTokens,omitempty" tf:"auth_id_tokens,omitempty"`
 
+	// (Number) The number of data points used for the threshold suggestion calculation.
 	// The number of data points used for the threshold suggestion calculation.
 	DataPoints *float64 `json:"dataPoints,omitempty" tf:"data_points,omitempty"`
 
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (Number) The p50 quantile of requests (in period_seconds).
 	// The p50 quantile of requests (in period_seconds).
 	P50 *float64 `json:"p50,omitempty" tf:"p50,omitempty"`
 
+	// (Attributes) Upper and lower bound for percentile estimate (see below for nested schema)
 	// The p90 quantile of requests (in period_seconds).
 	P90 *float64 `json:"p90,omitempty" tf:"p90,omitempty"`
 
+	// (Attributes) Upper and lower bound for percentile estimate (see below for nested schema)
 	// The p99 quantile of requests (in period_seconds).
 	P99 *float64 `json:"p99,omitempty" tf:"p99,omitempty"`
 
+	// (Number) The period over which this threshold is suggested.
 	// The period over which this threshold is suggested.
 	PeriodSeconds *float64 `json:"periodSeconds,omitempty" tf:"period_seconds,omitempty"`
 
+	// (Number) The estimated number of requests covered by these calculations.
 	// The estimated number of requests covered by these calculations.
 	Requests *float64 `json:"requests,omitempty" tf:"requests,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// The suggested threshold in requests done by the same auth_id or period_seconds.
 	SuggestedThreshold *float64 `json:"suggestedThreshold,omitempty" tf:"suggested_threshold,omitempty"`
 }
@@ -314,7 +382,7 @@ type ShieldOperationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ShieldOperation is the Schema for the ShieldOperations API. <no value>
+// ShieldOperation is the Schema for the ShieldOperations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

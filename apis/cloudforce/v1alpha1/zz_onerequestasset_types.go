@@ -15,72 +15,92 @@ import (
 
 type OneRequestAssetInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Page number of results.
 	// Page number of results.
 	Page *float64 `json:"page,omitempty" tf:"page,omitempty"`
 
+	// (Number) Number of results per page.
 	// Number of results per page.
 	PerPage *float64 `json:"perPage,omitempty" tf:"per_page,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	RequestID *string `json:"requestId,omitempty" tf:"request_id,omitempty"`
 
+	// (String) Asset file to upload.
 	// Asset file to upload.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type OneRequestAssetObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Defines the asset creation time.
 	// Defines the asset creation time.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String) Asset description.
 	// Asset description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Asset file type.
 	// Asset file type.
 	FileType *string `json:"fileType,omitempty" tf:"file_type,omitempty"`
 
+	// (Number) Asset ID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Asset name.
 	// Asset name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Page number of results.
 	// Page number of results.
 	Page *float64 `json:"page,omitempty" tf:"page,omitempty"`
 
+	// (Number) Number of results per page.
 	// Number of results per page.
 	PerPage *float64 `json:"perPage,omitempty" tf:"per_page,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	RequestID *string `json:"requestId,omitempty" tf:"request_id,omitempty"`
 
+	// (String) Asset file to upload.
 	// Asset file to upload.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type OneRequestAssetParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Page number of results.
 	// Page number of results.
 	// +kubebuilder:validation:Optional
 	Page *float64 `json:"page,omitempty" tf:"page,omitempty"`
 
+	// (Number) Number of results per page.
 	// Number of results per page.
 	// +kubebuilder:validation:Optional
 	PerPage *float64 `json:"perPage,omitempty" tf:"per_page,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	// +kubebuilder:validation:Optional
 	RequestID *string `json:"requestId,omitempty" tf:"request_id,omitempty"`
 
+	// (String) Asset file to upload.
 	// Asset file to upload.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -113,7 +133,7 @@ type OneRequestAssetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OneRequestAsset is the Schema for the OneRequestAssets API. <no value>
+// OneRequestAsset is the Schema for the OneRequestAssets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

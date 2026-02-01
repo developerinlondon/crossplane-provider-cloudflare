@@ -14,93 +14,130 @@ import (
 )
 
 type TrustDlpPredefinedProfileEntriesInitParameters struct {
+
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustDlpPredefinedProfileEntriesObservation struct {
+
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustDlpPredefinedProfileEntriesParameters struct {
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String) The ID of this resource.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type TrustDlpPredefinedProfileInitParameters struct {
+
+	// (Boolean)
 	AIContextEnabled *bool `json:"aiContextEnabled,omitempty" tf:"ai_context_enabled,omitempty"`
 
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number)
 	AllowedMatchCount *float64 `json:"allowedMatchCount,omitempty" tf:"allowed_match_count,omitempty"`
 
+	// (String)
 	ConfidenceThreshold *string `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
+	// (List of String)
 	EnabledEntries []*string `json:"enabledEntries,omitempty" tf:"enabled_entries,omitempty"`
 
+	// (Attributes List, Deprecated) (see below for nested schema)
 	Entries []TrustDlpPredefinedProfileEntriesInitParameters `json:"entries,omitempty" tf:"entries,omitempty"`
 
+	// (Boolean)
 	OcrEnabled *bool `json:"ocrEnabled,omitempty" tf:"ocr_enabled,omitempty"`
 
+	// (String)
 	ProfileID *string `json:"profileId,omitempty" tf:"profile_id,omitempty"`
 }
 
 type TrustDlpPredefinedProfileObservation struct {
+
+	// (Boolean)
 	AIContextEnabled *bool `json:"aiContextEnabled,omitempty" tf:"ai_context_enabled,omitempty"`
 
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number)
 	AllowedMatchCount *float64 `json:"allowedMatchCount,omitempty" tf:"allowed_match_count,omitempty"`
 
+	// (String)
 	ConfidenceThreshold *string `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
+	// (List of String)
 	EnabledEntries []*string `json:"enabledEntries,omitempty" tf:"enabled_entries,omitempty"`
 
+	// (Attributes List, Deprecated) (see below for nested schema)
 	Entries []TrustDlpPredefinedProfileEntriesObservation `json:"entries,omitempty" tf:"entries,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the predefined profile.
 	// The name of the predefined profile.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean)
 	OcrEnabled *bool `json:"ocrEnabled,omitempty" tf:"ocr_enabled,omitempty"`
 
+	// (Boolean) Whether this profile can be accessed by anyone.
 	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool `json:"openAccess,omitempty" tf:"open_access,omitempty"`
 
+	// (String)
 	ProfileID *string `json:"profileId,omitempty" tf:"profile_id,omitempty"`
 }
 
 type TrustDlpPredefinedProfileParameters struct {
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	AIContextEnabled *bool `json:"aiContextEnabled,omitempty" tf:"ai_context_enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	AllowedMatchCount *float64 `json:"allowedMatchCount,omitempty" tf:"allowed_match_count,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ConfidenceThreshold *string `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	EnabledEntries []*string `json:"enabledEntries,omitempty" tf:"enabled_entries,omitempty"`
 
+	// (Attributes List, Deprecated) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Entries []TrustDlpPredefinedProfileEntriesParameters `json:"entries,omitempty" tf:"entries,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	OcrEnabled *bool `json:"ocrEnabled,omitempty" tf:"ocr_enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ProfileID *string `json:"profileId,omitempty" tf:"profile_id,omitempty"`
 }
@@ -132,7 +169,7 @@ type TrustDlpPredefinedProfileStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDlpPredefinedProfile is the Schema for the TrustDlpPredefinedProfiles API. <no value>
+// TrustDlpPredefinedProfile is the Schema for the TrustDlpPredefinedProfiles API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

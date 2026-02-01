@@ -15,9 +15,12 @@ import (
 
 type AuthIDCharacteristicsInitParameters struct {
 
+	// (String) The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as $(token_config_id):$(json_path), where token_config_id is the ID of the token configuration used in validating the JWT, and json_path is a RFC 9535 JSONPath expression.
 	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of characteristic.
+	// Available values: "header", "cookie", "jwt".
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -25,9 +28,12 @@ type AuthIDCharacteristicsInitParameters struct {
 
 type AuthIDCharacteristicsObservation struct {
 
+	// (String) The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as $(token_config_id):$(json_path), where token_config_id is the ID of the token configuration used in validating the JWT, and json_path is a RFC 9535 JSONPath expression.
 	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of characteristic.
+	// Available values: "header", "cookie", "jwt".
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -35,10 +41,13 @@ type AuthIDCharacteristicsObservation struct {
 
 type AuthIDCharacteristicsParameters struct {
 
+	// (String) The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as $(token_config_id):$(json_path), where token_config_id is the ID of the token configuration used in validating the JWT, and json_path is a RFC 9535 JSONPath expression.
 	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 
+	// (String) The type of characteristic.
+	// Available values: "header", "cookie", "jwt".
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
 	// +kubebuilder:validation:Optional
@@ -46,26 +55,35 @@ type AuthIDCharacteristicsParameters struct {
 }
 
 type ShieldInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	AuthIDCharacteristics []AuthIDCharacteristicsInitParameters `json:"authIdCharacteristics,omitempty" tf:"auth_id_characteristics,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldObservation struct {
+
+	// (Attributes List) (see below for nested schema)
 	AuthIDCharacteristics []AuthIDCharacteristicsObservation `json:"authIdCharacteristics,omitempty" tf:"auth_id_characteristics,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthIDCharacteristics []AuthIDCharacteristicsParameters `json:"authIdCharacteristics,omitempty" tf:"auth_id_characteristics,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -98,7 +116,7 @@ type ShieldStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Shield is the Schema for the Shields API. <no value>
+// Shield is the Schema for the Shields API. Manages API Shield configuration properties for a zone, specifically auth ID characteristics.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

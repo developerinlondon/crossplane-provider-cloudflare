@@ -14,173 +14,231 @@ import (
 )
 
 type CredentialsInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	Keys []KeysInitParameters `json:"keys,omitempty" tf:"keys,omitempty"`
 }
 
 type CredentialsObservation struct {
+
+	// (Attributes List) (see below for nested schema)
 	Keys []KeysObservation `json:"keys,omitempty" tf:"keys,omitempty"`
 }
 
 type CredentialsParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Keys []KeysParameters `json:"keys" tf:"keys,omitempty"`
 }
 
 type KeysInitParameters struct {
 
+	// (String) Algorithm
+	// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
 	// Algorithm
 	// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
 	Alg *string `json:"alg,omitempty" tf:"alg,omitempty"`
 
+	// 256", "P-384".
 	// Curve
 	// Available values: "P-256", "P-384".
 	Crv *string `json:"crv,omitempty" tf:"crv,omitempty"`
 
+	// (String) RSA exponent
 	// RSA exponent
 	E *string `json:"e,omitempty" tf:"e,omitempty"`
 
+	// (String) Key ID
 	// Key ID
 	Kid *string `json:"kid,omitempty" tf:"kid,omitempty"`
 
+	// (String) Key Type
+	// Available values: "RSA", "EC".
 	// Key Type
 	// Available values: "RSA", "EC".
 	Kty *string `json:"kty,omitempty" tf:"kty,omitempty"`
 
+	// (String) RSA modulus
 	// RSA modulus
 	N *string `json:"n,omitempty" tf:"n,omitempty"`
 
+	// (String) X EC coordinate
 	// X EC coordinate
 	X *string `json:"x,omitempty" tf:"x,omitempty"`
 
+	// (String) Y EC coordinate
 	// Y EC coordinate
 	Y *string `json:"y,omitempty" tf:"y,omitempty"`
 }
 
 type KeysObservation struct {
 
+	// (String) Algorithm
+	// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
 	// Algorithm
 	// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
 	Alg *string `json:"alg,omitempty" tf:"alg,omitempty"`
 
+	// 256", "P-384".
 	// Curve
 	// Available values: "P-256", "P-384".
 	Crv *string `json:"crv,omitempty" tf:"crv,omitempty"`
 
+	// (String) RSA exponent
 	// RSA exponent
 	E *string `json:"e,omitempty" tf:"e,omitempty"`
 
+	// (String) Key ID
 	// Key ID
 	Kid *string `json:"kid,omitempty" tf:"kid,omitempty"`
 
+	// (String) Key Type
+	// Available values: "RSA", "EC".
 	// Key Type
 	// Available values: "RSA", "EC".
 	Kty *string `json:"kty,omitempty" tf:"kty,omitempty"`
 
+	// (String) RSA modulus
 	// RSA modulus
 	N *string `json:"n,omitempty" tf:"n,omitempty"`
 
+	// (String) X EC coordinate
 	// X EC coordinate
 	X *string `json:"x,omitempty" tf:"x,omitempty"`
 
+	// (String) Y EC coordinate
 	// Y EC coordinate
 	Y *string `json:"y,omitempty" tf:"y,omitempty"`
 }
 
 type KeysParameters struct {
 
+	// (String) Algorithm
+	// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
 	// Algorithm
 	// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
 	// +kubebuilder:validation:Optional
 	Alg *string `json:"alg" tf:"alg,omitempty"`
 
+	// 256", "P-384".
 	// Curve
 	// Available values: "P-256", "P-384".
 	// +kubebuilder:validation:Optional
 	Crv *string `json:"crv,omitempty" tf:"crv,omitempty"`
 
+	// (String) RSA exponent
 	// RSA exponent
 	// +kubebuilder:validation:Optional
 	E *string `json:"e,omitempty" tf:"e,omitempty"`
 
+	// (String) Key ID
 	// Key ID
 	// +kubebuilder:validation:Optional
 	Kid *string `json:"kid" tf:"kid,omitempty"`
 
+	// (String) Key Type
+	// Available values: "RSA", "EC".
 	// Key Type
 	// Available values: "RSA", "EC".
 	// +kubebuilder:validation:Optional
 	Kty *string `json:"kty" tf:"kty,omitempty"`
 
+	// (String) RSA modulus
 	// RSA modulus
 	// +kubebuilder:validation:Optional
 	N *string `json:"n,omitempty" tf:"n,omitempty"`
 
+	// (String) X EC coordinate
 	// X EC coordinate
 	// +kubebuilder:validation:Optional
 	X *string `json:"x,omitempty" tf:"x,omitempty"`
 
+	// (String) Y EC coordinate
 	// Y EC coordinate
 	// +kubebuilder:validation:Optional
 	Y *string `json:"y,omitempty" tf:"y,omitempty"`
 }
 
 type ValidationConfigInitParameters struct {
+
+	// (Attributes) (see below for nested schema)
 	Credentials *CredentialsInitParameters `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (List of String)
 	TokenSources []*string `json:"tokenSources,omitempty" tf:"token_sources,omitempty"`
 
+	// (String) Available values: "JWT".
 	// Available values: "JWT".
 	TokenType *string `json:"tokenType,omitempty" tf:"token_type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationConfigObservation struct {
+
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Credentials *CredentialsObservation `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (String)
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (List of String)
 	TokenSources []*string `json:"tokenSources,omitempty" tf:"token_sources,omitempty"`
 
+	// (String) Available values: "JWT".
 	// Available values: "JWT".
 	TokenType *string `json:"tokenType,omitempty" tf:"token_type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationConfigParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Credentials *CredentialsParameters `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	TokenSources []*string `json:"tokenSources,omitempty" tf:"token_sources,omitempty"`
 
+	// (String) Available values: "JWT".
 	// Available values: "JWT".
 	// +kubebuilder:validation:Optional
 	TokenType *string `json:"tokenType,omitempty" tf:"token_type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -213,7 +271,7 @@ type ValidationConfigStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ValidationConfig is the Schema for the ValidationConfigs API. <no value>
+// ValidationConfig is the Schema for the ValidationConfigs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

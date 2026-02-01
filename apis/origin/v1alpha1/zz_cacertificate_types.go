@@ -15,16 +15,22 @@ import (
 
 type CACertificateInitParameters struct {
 
+	// encoded.
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr *string `json:"csr,omitempty" tf:"csr,omitempty"`
 
+	// (List of String) Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []*string `json:"hostnames,omitempty" tf:"hostnames,omitempty"`
 
+	// rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
+	// (Number) The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `json:"requestedValidity,omitempty" tf:"requested_validity,omitempty"`
@@ -32,24 +38,33 @@ type CACertificateInitParameters struct {
 
 type CACertificateObservation struct {
 
+	// encoded.
 	// The Origin CA certificate. Will be newline-encoded.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// encoded.
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr *string `json:"csr,omitempty" tf:"csr,omitempty"`
 
+	// (String) When the certificate will expire.
 	// When the certificate will expire.
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (List of String) Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []*string `json:"hostnames,omitempty" tf:"hostnames,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
+	// (Number) The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `json:"requestedValidity,omitempty" tf:"requested_validity,omitempty"`
@@ -57,19 +72,25 @@ type CACertificateObservation struct {
 
 type CACertificateParameters struct {
 
+	// encoded.
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	// +kubebuilder:validation:Optional
 	Csr *string `json:"csr,omitempty" tf:"csr,omitempty"`
 
+	// (List of String) Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	// +kubebuilder:validation:Optional
 	Hostnames []*string `json:"hostnames,omitempty" tf:"hostnames,omitempty"`
 
+	// rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	// +kubebuilder:validation:Optional
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
+	// (Number) The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	// +kubebuilder:validation:Optional
@@ -103,7 +124,7 @@ type CACertificateStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CACertificate is the Schema for the CACertificates API. <no value>
+// CACertificate is the Schema for the CACertificates API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,68 +15,89 @@ import (
 
 type AnalyticsRuleInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (Boolean) Whether the rule includes or excludes traffic from being measured.
 	// Whether the rule includes or excludes traffic from being measured.
 	Inclusive *bool `json:"inclusive,omitempty" tf:"inclusive,omitempty"`
 
+	// (Boolean) Whether the rule is paused or not.
 	// Whether the rule is paused or not.
 	IsPaused *bool `json:"isPaused,omitempty" tf:"is_paused,omitempty"`
 
+	// (List of String)
 	Paths []*string `json:"paths,omitempty" tf:"paths,omitempty"`
 
+	// (String) The Web Analytics ruleset identifier.
 	// The Web Analytics ruleset identifier.
 	RulesetID *string `json:"rulesetId,omitempty" tf:"ruleset_id,omitempty"`
 }
 
 type AnalyticsRuleObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String)
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The Web Analytics rule identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Whether the rule includes or excludes traffic from being measured.
 	// Whether the rule includes or excludes traffic from being measured.
 	Inclusive *bool `json:"inclusive,omitempty" tf:"inclusive,omitempty"`
 
+	// (Boolean) Whether the rule is paused or not.
 	// Whether the rule is paused or not.
 	IsPaused *bool `json:"isPaused,omitempty" tf:"is_paused,omitempty"`
 
+	// (List of String)
 	Paths []*string `json:"paths,omitempty" tf:"paths,omitempty"`
 
+	// (Number)
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) The Web Analytics ruleset identifier.
 	// The Web Analytics ruleset identifier.
 	RulesetID *string `json:"rulesetId,omitempty" tf:"ruleset_id,omitempty"`
 }
 
 type AnalyticsRuleParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (Boolean) Whether the rule includes or excludes traffic from being measured.
 	// Whether the rule includes or excludes traffic from being measured.
 	// +kubebuilder:validation:Optional
 	Inclusive *bool `json:"inclusive,omitempty" tf:"inclusive,omitempty"`
 
+	// (Boolean) Whether the rule is paused or not.
 	// Whether the rule is paused or not.
 	// +kubebuilder:validation:Optional
 	IsPaused *bool `json:"isPaused,omitempty" tf:"is_paused,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Paths []*string `json:"paths,omitempty" tf:"paths,omitempty"`
 
+	// (String) The Web Analytics ruleset identifier.
 	// The Web Analytics ruleset identifier.
 	// +kubebuilder:validation:Optional
 	RulesetID *string `json:"rulesetId,omitempty" tf:"ruleset_id,omitempty"`
@@ -109,7 +130,7 @@ type AnalyticsRuleStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// AnalyticsRule is the Schema for the AnalyticsRules API. <no value>
+// AnalyticsRule is the Schema for the AnalyticsRules API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

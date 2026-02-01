@@ -14,33 +14,45 @@ import (
 )
 
 type RoomRulesInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String)
 	WaitingRoomID *string `json:"waitingRoomId,omitempty" tf:"waiting_room_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoomRulesObservation struct {
+
+	// (String) The ID of the rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String)
 	WaitingRoomID *string `json:"waitingRoomId,omitempty" tf:"waiting_room_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoomRulesParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []RulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	WaitingRoomID *string `json:"waitingRoomId,omitempty" tf:"waiting_room_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -48,51 +60,66 @@ type RoomRulesParameters struct {
 
 type RulesInitParameters struct {
 
+	// (String) The action to take when the expression matches.
+	// Available values: "bypass_waiting_room".
 	// The action to take when the expression matches.
 	// Available values: "bypass_waiting_room".
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// (String) The description of the rule.
 	// The description of the rule.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) When set to true, the rule is enabled.
 	// When set to true, the rule is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Criteria defining when there is a match for the current rule.
 	// Criteria defining when there is a match for the current rule.
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 }
 
 type RulesObservation struct {
 
+	// (String) The action to take when the expression matches.
+	// Available values: "bypass_waiting_room".
 	// The action to take when the expression matches.
 	// Available values: "bypass_waiting_room".
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// (String) The description of the rule.
 	// The description of the rule.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) When set to true, the rule is enabled.
 	// When set to true, the rule is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Criteria defining when there is a match for the current rule.
 	// Criteria defining when there is a match for the current rule.
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 }
 
 type RulesParameters struct {
 
+	// (String) The action to take when the expression matches.
+	// Available values: "bypass_waiting_room".
 	// The action to take when the expression matches.
 	// Available values: "bypass_waiting_room".
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action" tf:"action,omitempty"`
 
+	// (String) The description of the rule.
 	// The description of the rule.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) When set to true, the rule is enabled.
 	// When set to true, the rule is enabled.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Criteria defining when there is a match for the current rule.
 	// Criteria defining when there is a match for the current rule.
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression" tf:"expression,omitempty"`
@@ -125,7 +152,7 @@ type RoomRulesStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// RoomRules is the Schema for the RoomRuless API. <no value>
+// RoomRules is the Schema for the RoomRuless API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -18,12 +18,15 @@ type FallbackDomainsInitParameters struct {
 
 type FallbackDomainsObservation struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the fallback domain, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
@@ -33,28 +36,34 @@ type FallbackDomainsParameters struct {
 
 type ServiceModeV2InitParameters struct {
 
+	// (String) The mode to run the WARP client under.
 	// The mode to run the WARP client under.
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Number) The port number when used with proxy mode.
 	// The port number when used with proxy mode.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ServiceModeV2Observation struct {
 
+	// (String) The mode to run the WARP client under.
 	// The mode to run the WARP client under.
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Number) The port number when used with proxy mode.
 	// The port number when used with proxy mode.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ServiceModeV2Parameters struct {
 
+	// (String) The mode to run the WARP client under.
 	// The mode to run the WARP client under.
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Number) The port number when used with proxy mode.
 	// The port number when used with proxy mode.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
@@ -65,9 +74,11 @@ type TargetTestsInitParameters struct {
 
 type TargetTestsObservation struct {
 
+	// (String) The ID of this resource.
 	// The id of the DEX test targeting this policy.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the device settings profile.
 	// The name of the DEX test targeting this policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -77,38 +88,47 @@ type TargetTestsParameters struct {
 
 type TrustDeviceCustomProfileExcludeInitParameters struct {
 
+	// (String) The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.
 	// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the Split Tunnel item, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain name to exclude from the tunnel. If host is present, address must not be present.
 	// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type TrustDeviceCustomProfileExcludeObservation struct {
 
+	// (String) The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.
 	// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the Split Tunnel item, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain name to exclude from the tunnel. If host is present, address must not be present.
 	// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type TrustDeviceCustomProfileExcludeParameters struct {
 
+	// (String) The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.
 	// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
 	// +kubebuilder:validation:Optional
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the Split Tunnel item, displayed in the client UI.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain name to exclude from the tunnel. If host is present, address must not be present.
 	// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
@@ -116,276 +136,362 @@ type TrustDeviceCustomProfileExcludeParameters struct {
 
 type TrustDeviceCustomProfileIncludeInitParameters struct {
 
+	// (String) The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.
 	// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the Split Tunnel item, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain name to exclude from the tunnel. If host is present, address must not be present.
 	// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type TrustDeviceCustomProfileIncludeObservation struct {
 
+	// (String) The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.
 	// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the Split Tunnel item, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain name to exclude from the tunnel. If host is present, address must not be present.
 	// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type TrustDeviceCustomProfileIncludeParameters struct {
 
+	// (String) The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.
 	// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
 	// +kubebuilder:validation:Optional
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the Split Tunnel item, displayed in the client UI.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain name to exclude from the tunnel. If host is present, address must not be present.
 	// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type TrustDeviceCustomProfileInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether to allow the user to switch WARP between modes.
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch *bool `json:"allowModeSwitch,omitempty" tf:"allow_mode_switch,omitempty"`
 
+	// (Boolean) Whether to receive update notifications when a new version of the client is available.
 	// Whether to receive update notifications when a new version of the client is available.
 	AllowUpdates *bool `json:"allowUpdates,omitempty" tf:"allow_updates,omitempty"`
 
+	// (Boolean) Whether to allow devices to leave the organization.
 	// Whether to allow devices to leave the organization.
 	AllowedToLeave *bool `json:"allowedToLeave,omitempty" tf:"allowed_to_leave,omitempty"`
 
+	// (Number) The amount of time in seconds to reconnect after having been disabled.
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect *float64 `json:"autoConnect,omitempty" tf:"auto_connect,omitempty"`
 
+	// (Number) Turn on the captive portal after the specified amount of time.
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal *float64 `json:"captivePortal,omitempty" tf:"captive_portal,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the policy.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to true.
 	// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback *bool `json:"disableAutoFallback,omitempty" tf:"disable_auto_fallback,omitempty"`
 
+	// (Boolean) Whether the policy will be applied to matching devices.
 	// Whether the policy will be applied to matching devices.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes List) List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. (see below for nested schema)
 	Exclude []TrustDeviceCustomProfileExcludeInitParameters `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Boolean) Whether to add Microsoft IPs to Split Tunnel exclusions.
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
 	ExcludeOfficeIps *bool `json:"excludeOfficeIps,omitempty" tf:"exclude_office_ips,omitempty"`
 
+	// (Attributes List) List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. (see below for nested schema)
 	Include []TrustDeviceCustomProfileIncludeInitParameters `json:"include,omitempty" tf:"include,omitempty"`
 
+	// (Number) The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	LanAllowMinutes *float64 `json:"lanAllowMinutes,omitempty" tf:"lan_allow_minutes,omitempty"`
 
+	// (Number) The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `json:"lanAllowSubnetSize,omitempty" tf:"lan_allow_subnet_size,omitempty"`
 
+	// (String) The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match *string `json:"match,omitempty" tf:"match,omitempty"`
 
+	// (String) The name of the device settings profile.
 	// The name of the device settings profile.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence *float64 `json:"precedence,omitempty" tf:"precedence,omitempty"`
 
+	// premises DNS server.
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIPWithDNS *bool `json:"registerInterfaceIpWithDns,omitempty" tf:"register_interface_ip_with_dns,omitempty"`
 
+	// (Boolean) Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
 	SccmVPNBoundarySupport *bool `json:"sccmVpnBoundarySupport,omitempty" tf:"sccm_vpn_boundary_support,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceModeV2 *ServiceModeV2InitParameters `json:"serviceModeV2,omitempty" tf:"service_mode_v2,omitempty"`
 
+	// (String) The URL to launch when the Send Feedback button is clicked.
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportURL *string `json:"supportUrl,omitempty" tf:"support_url,omitempty"`
 
+	// (Boolean) Whether to allow the user to turn off the WARP switch and disconnect the client.
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
 	SwitchLocked *bool `json:"switchLocked,omitempty" tf:"switch_locked,omitempty"`
 
+	// (String) Determines which tunnel protocol to use.
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `json:"tunnelProtocol,omitempty" tf:"tunnel_protocol,omitempty"`
 }
 
 type TrustDeviceCustomProfileObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether to allow the user to switch WARP between modes.
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch *bool `json:"allowModeSwitch,omitempty" tf:"allow_mode_switch,omitempty"`
 
+	// (Boolean) Whether to receive update notifications when a new version of the client is available.
 	// Whether to receive update notifications when a new version of the client is available.
 	AllowUpdates *bool `json:"allowUpdates,omitempty" tf:"allow_updates,omitempty"`
 
+	// (Boolean) Whether to allow devices to leave the organization.
 	// Whether to allow devices to leave the organization.
 	AllowedToLeave *bool `json:"allowedToLeave,omitempty" tf:"allowed_to_leave,omitempty"`
 
+	// (Number) The amount of time in seconds to reconnect after having been disabled.
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect *float64 `json:"autoConnect,omitempty" tf:"auto_connect,omitempty"`
 
+	// (Number) Turn on the captive portal after the specified amount of time.
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal *float64 `json:"captivePortal,omitempty" tf:"captive_portal,omitempty"`
 
+	// (Boolean) Whether the policy is the default policy for an account.
 	// Whether the policy is the default policy for an account.
 	Default *bool `json:"default,omitempty" tf:"default,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the policy.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to true.
 	// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback *bool `json:"disableAutoFallback,omitempty" tf:"disable_auto_fallback,omitempty"`
 
+	// (Boolean) Whether the policy will be applied to matching devices.
 	// Whether the policy will be applied to matching devices.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes List) List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. (see below for nested schema)
 	Exclude []TrustDeviceCustomProfileExcludeObservation `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Boolean) Whether to add Microsoft IPs to Split Tunnel exclusions.
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
 	ExcludeOfficeIps *bool `json:"excludeOfficeIps,omitempty" tf:"exclude_office_ips,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	FallbackDomains []FallbackDomainsObservation `json:"fallbackDomains,omitempty" tf:"fallback_domains,omitempty"`
 
+	// (String)
 	GatewayUniqueID *string `json:"gatewayUniqueId,omitempty" tf:"gateway_unique_id,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. (see below for nested schema)
 	Include []TrustDeviceCustomProfileIncludeObservation `json:"include,omitempty" tf:"include,omitempty"`
 
+	// (Number) The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	LanAllowMinutes *float64 `json:"lanAllowMinutes,omitempty" tf:"lan_allow_minutes,omitempty"`
 
+	// (Number) The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `json:"lanAllowSubnetSize,omitempty" tf:"lan_allow_subnet_size,omitempty"`
 
+	// (String) The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match *string `json:"match,omitempty" tf:"match,omitempty"`
 
+	// (String) The name of the device settings profile.
 	// The name of the device settings profile.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
+	// (Number) The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence *float64 `json:"precedence,omitempty" tf:"precedence,omitempty"`
 
+	// premises DNS server.
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIPWithDNS *bool `json:"registerInterfaceIpWithDns,omitempty" tf:"register_interface_ip_with_dns,omitempty"`
 
+	// (Boolean) Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
 	SccmVPNBoundarySupport *bool `json:"sccmVpnBoundarySupport,omitempty" tf:"sccm_vpn_boundary_support,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceModeV2 *ServiceModeV2Observation `json:"serviceModeV2,omitempty" tf:"service_mode_v2,omitempty"`
 
+	// (String) The URL to launch when the Send Feedback button is clicked.
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportURL *string `json:"supportUrl,omitempty" tf:"support_url,omitempty"`
 
+	// (Boolean) Whether to allow the user to turn off the WARP switch and disconnect the client.
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
 	SwitchLocked *bool `json:"switchLocked,omitempty" tf:"switch_locked,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	TargetTests []TargetTestsObservation `json:"targetTests,omitempty" tf:"target_tests,omitempty"`
 
+	// (String) Determines which tunnel protocol to use.
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `json:"tunnelProtocol,omitempty" tf:"tunnel_protocol,omitempty"`
 }
 
 type TrustDeviceCustomProfileParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether to allow the user to switch WARP between modes.
 	// Whether to allow the user to switch WARP between modes.
 	// +kubebuilder:validation:Optional
 	AllowModeSwitch *bool `json:"allowModeSwitch,omitempty" tf:"allow_mode_switch,omitempty"`
 
+	// (Boolean) Whether to receive update notifications when a new version of the client is available.
 	// Whether to receive update notifications when a new version of the client is available.
 	// +kubebuilder:validation:Optional
 	AllowUpdates *bool `json:"allowUpdates,omitempty" tf:"allow_updates,omitempty"`
 
+	// (Boolean) Whether to allow devices to leave the organization.
 	// Whether to allow devices to leave the organization.
 	// +kubebuilder:validation:Optional
 	AllowedToLeave *bool `json:"allowedToLeave,omitempty" tf:"allowed_to_leave,omitempty"`
 
+	// (Number) The amount of time in seconds to reconnect after having been disabled.
 	// The amount of time in seconds to reconnect after having been disabled.
 	// +kubebuilder:validation:Optional
 	AutoConnect *float64 `json:"autoConnect,omitempty" tf:"auto_connect,omitempty"`
 
+	// (Number) Turn on the captive portal after the specified amount of time.
 	// Turn on the captive portal after the specified amount of time.
 	// +kubebuilder:validation:Optional
 	CaptivePortal *float64 `json:"captivePortal,omitempty" tf:"captive_portal,omitempty"`
 
+	// (String) A description of the policy.
 	// A description of the policy.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to true.
 	// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	// +kubebuilder:validation:Optional
 	DisableAutoFallback *bool `json:"disableAutoFallback,omitempty" tf:"disable_auto_fallback,omitempty"`
 
+	// (Boolean) Whether the policy will be applied to matching devices.
 	// Whether the policy will be applied to matching devices.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes List) List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Exclude []TrustDeviceCustomProfileExcludeParameters `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Boolean) Whether to add Microsoft IPs to Split Tunnel exclusions.
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
 	// +kubebuilder:validation:Optional
 	ExcludeOfficeIps *bool `json:"excludeOfficeIps,omitempty" tf:"exclude_office_ips,omitempty"`
 
+	// (Attributes List) List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Include []TrustDeviceCustomProfileIncludeParameters `json:"include,omitempty" tf:"include,omitempty"`
 
+	// (Number) The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	// +kubebuilder:validation:Optional
 	LanAllowMinutes *float64 `json:"lanAllowMinutes,omitempty" tf:"lan_allow_minutes,omitempty"`
 
+	// (Number) The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	// +kubebuilder:validation:Optional
 	LanAllowSubnetSize *float64 `json:"lanAllowSubnetSize,omitempty" tf:"lan_allow_subnet_size,omitempty"`
 
+	// (String) The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	// +kubebuilder:validation:Optional
 	Match *string `json:"match,omitempty" tf:"match,omitempty"`
 
+	// (String) The name of the device settings profile.
 	// The name of the device settings profile.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	// +kubebuilder:validation:Optional
 	Precedence *float64 `json:"precedence,omitempty" tf:"precedence,omitempty"`
 
+	// premises DNS server.
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	// +kubebuilder:validation:Optional
 	RegisterInterfaceIPWithDNS *bool `json:"registerInterfaceIpWithDns,omitempty" tf:"register_interface_ip_with_dns,omitempty"`
 
+	// (Boolean) Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
 	// +kubebuilder:validation:Optional
 	SccmVPNBoundarySupport *bool `json:"sccmVpnBoundarySupport,omitempty" tf:"sccm_vpn_boundary_support,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ServiceModeV2 *ServiceModeV2Parameters `json:"serviceModeV2,omitempty" tf:"service_mode_v2,omitempty"`
 
+	// (String) The URL to launch when the Send Feedback button is clicked.
 	// The URL to launch when the Send Feedback button is clicked.
 	// +kubebuilder:validation:Optional
 	SupportURL *string `json:"supportUrl,omitempty" tf:"support_url,omitempty"`
 
+	// (Boolean) Whether to allow the user to turn off the WARP switch and disconnect the client.
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
 	// +kubebuilder:validation:Optional
 	SwitchLocked *bool `json:"switchLocked,omitempty" tf:"switch_locked,omitempty"`
 
+	// (String) Determines which tunnel protocol to use.
 	// Determines which tunnel protocol to use.
 	// +kubebuilder:validation:Optional
 	TunnelProtocol *string `json:"tunnelProtocol,omitempty" tf:"tunnel_protocol,omitempty"`
@@ -418,7 +524,7 @@ type TrustDeviceCustomProfileStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDeviceCustomProfile is the Schema for the TrustDeviceCustomProfiles API. <no value>
+// TrustDeviceCustomProfile is the Schema for the TrustDeviceCustomProfiles API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

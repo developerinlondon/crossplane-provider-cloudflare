@@ -15,38 +15,47 @@ import (
 
 type ApprovalGroupsInitParameters struct {
 
+	// (Number) The number of approvals needed to obtain access.
 	// The number of approvals needed to obtain access.
 	ApprovalsNeeded *float64 `json:"approvalsNeeded,omitempty" tf:"approvals_needed,omitempty"`
 
+	// (List of String) A list of emails that can approve the access request.
 	// A list of emails that can approve the access request.
 	EmailAddresses []*string `json:"emailAddresses,omitempty" tf:"email_addresses,omitempty"`
 
+	// usable email list.
 	// The UUID of an re-usable email list.
 	EmailListUUID *string `json:"emailListUuid,omitempty" tf:"email_list_uuid,omitempty"`
 }
 
 type ApprovalGroupsObservation struct {
 
+	// (Number) The number of approvals needed to obtain access.
 	// The number of approvals needed to obtain access.
 	ApprovalsNeeded *float64 `json:"approvalsNeeded,omitempty" tf:"approvals_needed,omitempty"`
 
+	// (List of String) A list of emails that can approve the access request.
 	// A list of emails that can approve the access request.
 	EmailAddresses []*string `json:"emailAddresses,omitempty" tf:"email_addresses,omitempty"`
 
+	// usable email list.
 	// The UUID of an re-usable email list.
 	EmailListUUID *string `json:"emailListUuid,omitempty" tf:"email_list_uuid,omitempty"`
 }
 
 type ApprovalGroupsParameters struct {
 
+	// (Number) The number of approvals needed to obtain access.
 	// The number of approvals needed to obtain access.
 	// +kubebuilder:validation:Optional
 	ApprovalsNeeded *float64 `json:"approvalsNeeded" tf:"approvals_needed,omitempty"`
 
+	// (List of String) A list of emails that can approve the access request.
 	// A list of emails that can approve the access request.
 	// +kubebuilder:validation:Optional
 	EmailAddresses []*string `json:"emailAddresses,omitempty" tf:"email_addresses,omitempty"`
 
+	// usable email list.
 	// The UUID of an re-usable email list.
 	// +kubebuilder:validation:Optional
 	EmailListUUID *string `json:"emailListUuid,omitempty" tf:"email_list_uuid,omitempty"`
@@ -63,38 +72,47 @@ type TrustAccessPolicyExcludeAnyValidServiceTokenParameters struct {
 
 type TrustAccessPolicyExcludeAuthContextInitParameters struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	AcID *string `json:"acId,omitempty" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeAuthContextObservation struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	AcID *string `json:"acId,omitempty" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeAuthContextParameters struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	// +kubebuilder:validation:Optional
 	AcID *string `json:"acId" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -102,18 +120,21 @@ type TrustAccessPolicyExcludeAuthContextParameters struct {
 
 type TrustAccessPolicyExcludeAuthMethodInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	AuthMethod *string `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 }
 
 type TrustAccessPolicyExcludeAuthMethodObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	AuthMethod *string `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 }
 
 type TrustAccessPolicyExcludeAuthMethodParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	// +kubebuilder:validation:Optional
 	AuthMethod *string `json:"authMethod" tf:"auth_method,omitempty"`
@@ -121,28 +142,34 @@ type TrustAccessPolicyExcludeAuthMethodParameters struct {
 
 type TrustAccessPolicyExcludeAzureAdInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeAzureAdObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeAzureAdParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -159,18 +186,21 @@ type TrustAccessPolicyExcludeCertificateParameters struct {
 
 type TrustAccessPolicyExcludeCommonNameInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	CommonName *string `json:"commonName,omitempty" tf:"common_name,omitempty"`
 }
 
 type TrustAccessPolicyExcludeCommonNameObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	CommonName *string `json:"commonName,omitempty" tf:"common_name,omitempty"`
 }
 
 type TrustAccessPolicyExcludeCommonNameParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	// +kubebuilder:validation:Optional
 	CommonName *string `json:"commonName" tf:"common_name,omitempty"`
@@ -178,18 +208,21 @@ type TrustAccessPolicyExcludeCommonNameParameters struct {
 
 type TrustAccessPolicyExcludeDevicePostureInitParameters struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	IntegrationUID *string `json:"integrationUid,omitempty" tf:"integration_uid,omitempty"`
 }
 
 type TrustAccessPolicyExcludeDevicePostureObservation struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	IntegrationUID *string `json:"integrationUid,omitempty" tf:"integration_uid,omitempty"`
 }
 
 type TrustAccessPolicyExcludeDevicePostureParameters struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	// +kubebuilder:validation:Optional
 	IntegrationUID *string `json:"integrationUid" tf:"integration_uid,omitempty"`
@@ -197,18 +230,21 @@ type TrustAccessPolicyExcludeDevicePostureParameters struct {
 
 type TrustAccessPolicyExcludeEmailDomainInitParameters struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 }
 
 type TrustAccessPolicyExcludeEmailDomainObservation struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 }
 
 type TrustAccessPolicyExcludeEmailDomainParameters struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	// +kubebuilder:validation:Optional
 	Domain *string `json:"domain" tf:"domain,omitempty"`
@@ -216,24 +252,28 @@ type TrustAccessPolicyExcludeEmailDomainParameters struct {
 
 type TrustAccessPolicyExcludeEmailInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type TrustAccessPolicyExcludeEmailListInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeEmailListObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeEmailListParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -241,12 +281,14 @@ type TrustAccessPolicyExcludeEmailListParameters struct {
 
 type TrustAccessPolicyExcludeEmailObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type TrustAccessPolicyExcludeEmailParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email" tf:"email,omitempty"`
@@ -263,28 +305,34 @@ type TrustAccessPolicyExcludeEveryoneParameters struct {
 
 type TrustAccessPolicyExcludeExternalEvaluationInitParameters struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	EvaluateURL *string `json:"evaluateUrl,omitempty" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	KeysURL *string `json:"keysUrl,omitempty" tf:"keys_url,omitempty"`
 }
 
 type TrustAccessPolicyExcludeExternalEvaluationObservation struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	EvaluateURL *string `json:"evaluateUrl,omitempty" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	KeysURL *string `json:"keysUrl,omitempty" tf:"keys_url,omitempty"`
 }
 
 type TrustAccessPolicyExcludeExternalEvaluationParameters struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	// +kubebuilder:validation:Optional
 	EvaluateURL *string `json:"evaluateUrl" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// +kubebuilder:validation:Optional
 	KeysURL *string `json:"keysUrl" tf:"keys_url,omitempty"`
@@ -292,18 +340,21 @@ type TrustAccessPolicyExcludeExternalEvaluationParameters struct {
 
 type TrustAccessPolicyExcludeGeoInitParameters struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	CountryCode *string `json:"countryCode,omitempty" tf:"country_code,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGeoObservation struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	CountryCode *string `json:"countryCode,omitempty" tf:"country_code,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGeoParameters struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	// +kubebuilder:validation:Optional
 	CountryCode *string `json:"countryCode" tf:"country_code,omitempty"`
@@ -311,38 +362,47 @@ type TrustAccessPolicyExcludeGeoParameters struct {
 
 type TrustAccessPolicyExcludeGithubOrganizationInitParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGithubOrganizationObservation struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGithubOrganizationParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	// +kubebuilder:validation:Optional
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
@@ -350,18 +410,21 @@ type TrustAccessPolicyExcludeGithubOrganizationParameters struct {
 
 type TrustAccessPolicyExcludeGroupInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGroupObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGroupParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -369,28 +432,34 @@ type TrustAccessPolicyExcludeGroupParameters struct {
 
 type TrustAccessPolicyExcludeGsuiteInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGsuiteObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeGsuiteParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -398,24 +467,28 @@ type TrustAccessPolicyExcludeGsuiteParameters struct {
 
 type TrustAccessPolicyExcludeIPInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyExcludeIPListInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeIPListObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeIPListParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -423,81 +496,111 @@ type TrustAccessPolicyExcludeIPListParameters struct {
 
 type TrustAccessPolicyExcludeIPObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyExcludeIPParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	// +kubebuilder:validation:Optional
 	IP *string `json:"ip" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyExcludeInitParameters struct {
+
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	AnyValidServiceToken *TrustAccessPolicyExcludeAnyValidServiceTokenInitParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthContext *TrustAccessPolicyExcludeAuthContextInitParameters `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthMethod *TrustAccessPolicyExcludeAuthMethodInitParameters `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AzureAd *TrustAccessPolicyExcludeAzureAdInitParameters `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Certificate *TrustAccessPolicyExcludeCertificateInitParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CommonName *TrustAccessPolicyExcludeCommonNameInitParameters `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DevicePosture *TrustAccessPolicyExcludeDevicePostureInitParameters `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Email *TrustAccessPolicyExcludeEmailInitParameters `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailDomain *TrustAccessPolicyExcludeEmailDomainInitParameters `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailList *TrustAccessPolicyExcludeEmailListInitParameters `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	Everyone *TrustAccessPolicyExcludeEveryoneInitParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ExternalEvaluation *TrustAccessPolicyExcludeExternalEvaluationInitParameters `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Geo *TrustAccessPolicyExcludeGeoInitParameters `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	GithubOrganization *TrustAccessPolicyExcludeGithubOrganizationInitParameters `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Group *TrustAccessPolicyExcludeGroupInitParameters `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Gsuite *TrustAccessPolicyExcludeGsuiteInitParameters `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IP *TrustAccessPolicyExcludeIPInitParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IPList *TrustAccessPolicyExcludeIPListInitParameters `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LinkedAppToken *TrustAccessPolicyExcludeLinkedAppTokenInitParameters `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginMethod *TrustAccessPolicyExcludeLoginMethodInitParameters `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Oidc *TrustAccessPolicyExcludeOidcInitParameters `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Okta *TrustAccessPolicyExcludeOktaInitParameters `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SAML *TrustAccessPolicyExcludeSAMLInitParameters `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceToken *TrustAccessPolicyExcludeServiceTokenInitParameters `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyExcludeLinkedAppTokenInitParameters struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	AppUID *string `json:"appUid,omitempty" tf:"app_uid,omitempty"`
 }
 
 type TrustAccessPolicyExcludeLinkedAppTokenObservation struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	AppUID *string `json:"appUid,omitempty" tf:"app_uid,omitempty"`
 }
 
 type TrustAccessPolicyExcludeLinkedAppTokenParameters struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	// +kubebuilder:validation:Optional
 	AppUID *string `json:"appUid" tf:"app_uid,omitempty"`
@@ -505,107 +608,144 @@ type TrustAccessPolicyExcludeLinkedAppTokenParameters struct {
 
 type TrustAccessPolicyExcludeLoginMethodInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeLoginMethodObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeLoginMethodParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeObservation struct {
+
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	AnyValidServiceToken *TrustAccessPolicyExcludeAnyValidServiceTokenParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthContext *TrustAccessPolicyExcludeAuthContextObservation `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthMethod *TrustAccessPolicyExcludeAuthMethodObservation `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AzureAd *TrustAccessPolicyExcludeAzureAdObservation `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Certificate *TrustAccessPolicyExcludeCertificateParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CommonName *TrustAccessPolicyExcludeCommonNameObservation `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DevicePosture *TrustAccessPolicyExcludeDevicePostureObservation `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Email *TrustAccessPolicyExcludeEmailObservation `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailDomain *TrustAccessPolicyExcludeEmailDomainObservation `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailList *TrustAccessPolicyExcludeEmailListObservation `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	Everyone *TrustAccessPolicyExcludeEveryoneParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ExternalEvaluation *TrustAccessPolicyExcludeExternalEvaluationObservation `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Geo *TrustAccessPolicyExcludeGeoObservation `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	GithubOrganization *TrustAccessPolicyExcludeGithubOrganizationObservation `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Group *TrustAccessPolicyExcludeGroupObservation `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Gsuite *TrustAccessPolicyExcludeGsuiteObservation `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IP *TrustAccessPolicyExcludeIPObservation `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IPList *TrustAccessPolicyExcludeIPListObservation `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LinkedAppToken *TrustAccessPolicyExcludeLinkedAppTokenObservation `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginMethod *TrustAccessPolicyExcludeLoginMethodObservation `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Oidc *TrustAccessPolicyExcludeOidcObservation `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Okta *TrustAccessPolicyExcludeOktaObservation `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SAML *TrustAccessPolicyExcludeSAMLObservation `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceToken *TrustAccessPolicyExcludeServiceTokenObservation `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyExcludeOidcInitParameters struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	ClaimName *string `json:"claimName,omitempty" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	ClaimValue *string `json:"claimValue,omitempty" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeOidcObservation struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	ClaimName *string `json:"claimName,omitempty" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	ClaimValue *string `json:"claimValue,omitempty" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeOidcParameters struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	// +kubebuilder:validation:Optional
 	ClaimName *string `json:"claimName" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	// +kubebuilder:validation:Optional
 	ClaimValue *string `json:"claimValue" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -613,28 +753,34 @@ type TrustAccessPolicyExcludeOidcParameters struct {
 
 type TrustAccessPolicyExcludeOktaInitParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessPolicyExcludeOktaObservation struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessPolicyExcludeOktaParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
@@ -642,113 +788,146 @@ type TrustAccessPolicyExcludeOktaParameters struct {
 
 type TrustAccessPolicyExcludeParameters struct {
 
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AnyValidServiceToken *TrustAccessPolicyExcludeAnyValidServiceTokenParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthContext *TrustAccessPolicyExcludeAuthContextParameters `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthMethod *TrustAccessPolicyExcludeAuthMethodParameters `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AzureAd *TrustAccessPolicyExcludeAzureAdParameters `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Certificate *TrustAccessPolicyExcludeCertificateParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	CommonName *TrustAccessPolicyExcludeCommonNameParameters `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DevicePosture *TrustAccessPolicyExcludeDevicePostureParameters `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Email *TrustAccessPolicyExcludeEmailParameters `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EmailDomain *TrustAccessPolicyExcludeEmailDomainParameters `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EmailList *TrustAccessPolicyExcludeEmailListParameters `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Everyone *TrustAccessPolicyExcludeEveryoneParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ExternalEvaluation *TrustAccessPolicyExcludeExternalEvaluationParameters `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Geo *TrustAccessPolicyExcludeGeoParameters `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	GithubOrganization *TrustAccessPolicyExcludeGithubOrganizationParameters `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Group *TrustAccessPolicyExcludeGroupParameters `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Gsuite *TrustAccessPolicyExcludeGsuiteParameters `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IP *TrustAccessPolicyExcludeIPParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IPList *TrustAccessPolicyExcludeIPListParameters `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LinkedAppToken *TrustAccessPolicyExcludeLinkedAppTokenParameters `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LoginMethod *TrustAccessPolicyExcludeLoginMethodParameters `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Oidc *TrustAccessPolicyExcludeOidcParameters `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Okta *TrustAccessPolicyExcludeOktaParameters `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SAML *TrustAccessPolicyExcludeSAMLParameters `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ServiceToken *TrustAccessPolicyExcludeServiceTokenParameters `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyExcludeSAMLInitParameters struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	AttributeName *string `json:"attributeName,omitempty" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	AttributeValue *string `json:"attributeValue,omitempty" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeSAMLObservation struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	AttributeName *string `json:"attributeName,omitempty" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	AttributeValue *string `json:"attributeValue,omitempty" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeSAMLParameters struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	// +kubebuilder:validation:Optional
 	AttributeName *string `json:"attributeName" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	// +kubebuilder:validation:Optional
 	AttributeValue *string `json:"attributeValue" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -756,18 +935,21 @@ type TrustAccessPolicyExcludeSAMLParameters struct {
 
 type TrustAccessPolicyExcludeServiceTokenInitParameters struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeServiceTokenObservation struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TrustAccessPolicyExcludeServiceTokenParameters struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	// +kubebuilder:validation:Optional
 	TokenID *string `json:"tokenId" tf:"token_id,omitempty"`
@@ -784,38 +966,47 @@ type TrustAccessPolicyIncludeAnyValidServiceTokenParameters struct {
 
 type TrustAccessPolicyIncludeAuthContextInitParameters struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	AcID *string `json:"acId,omitempty" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeAuthContextObservation struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	AcID *string `json:"acId,omitempty" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeAuthContextParameters struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	// +kubebuilder:validation:Optional
 	AcID *string `json:"acId" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -823,18 +1014,21 @@ type TrustAccessPolicyIncludeAuthContextParameters struct {
 
 type TrustAccessPolicyIncludeAuthMethodInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	AuthMethod *string `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 }
 
 type TrustAccessPolicyIncludeAuthMethodObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	AuthMethod *string `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 }
 
 type TrustAccessPolicyIncludeAuthMethodParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	// +kubebuilder:validation:Optional
 	AuthMethod *string `json:"authMethod" tf:"auth_method,omitempty"`
@@ -842,28 +1036,34 @@ type TrustAccessPolicyIncludeAuthMethodParameters struct {
 
 type TrustAccessPolicyIncludeAzureAdInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeAzureAdObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeAzureAdParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -880,18 +1080,21 @@ type TrustAccessPolicyIncludeCertificateParameters struct {
 
 type TrustAccessPolicyIncludeCommonNameInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	CommonName *string `json:"commonName,omitempty" tf:"common_name,omitempty"`
 }
 
 type TrustAccessPolicyIncludeCommonNameObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	CommonName *string `json:"commonName,omitempty" tf:"common_name,omitempty"`
 }
 
 type TrustAccessPolicyIncludeCommonNameParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	// +kubebuilder:validation:Optional
 	CommonName *string `json:"commonName" tf:"common_name,omitempty"`
@@ -899,18 +1102,21 @@ type TrustAccessPolicyIncludeCommonNameParameters struct {
 
 type TrustAccessPolicyIncludeDevicePostureInitParameters struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	IntegrationUID *string `json:"integrationUid,omitempty" tf:"integration_uid,omitempty"`
 }
 
 type TrustAccessPolicyIncludeDevicePostureObservation struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	IntegrationUID *string `json:"integrationUid,omitempty" tf:"integration_uid,omitempty"`
 }
 
 type TrustAccessPolicyIncludeDevicePostureParameters struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	// +kubebuilder:validation:Optional
 	IntegrationUID *string `json:"integrationUid" tf:"integration_uid,omitempty"`
@@ -918,18 +1124,21 @@ type TrustAccessPolicyIncludeDevicePostureParameters struct {
 
 type TrustAccessPolicyIncludeEmailDomainInitParameters struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 }
 
 type TrustAccessPolicyIncludeEmailDomainObservation struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 }
 
 type TrustAccessPolicyIncludeEmailDomainParameters struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	// +kubebuilder:validation:Optional
 	Domain *string `json:"domain" tf:"domain,omitempty"`
@@ -937,24 +1146,28 @@ type TrustAccessPolicyIncludeEmailDomainParameters struct {
 
 type TrustAccessPolicyIncludeEmailInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type TrustAccessPolicyIncludeEmailListInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeEmailListObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeEmailListParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -962,12 +1175,14 @@ type TrustAccessPolicyIncludeEmailListParameters struct {
 
 type TrustAccessPolicyIncludeEmailObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type TrustAccessPolicyIncludeEmailParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email" tf:"email,omitempty"`
@@ -984,28 +1199,34 @@ type TrustAccessPolicyIncludeEveryoneParameters struct {
 
 type TrustAccessPolicyIncludeExternalEvaluationInitParameters struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	EvaluateURL *string `json:"evaluateUrl,omitempty" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	KeysURL *string `json:"keysUrl,omitempty" tf:"keys_url,omitempty"`
 }
 
 type TrustAccessPolicyIncludeExternalEvaluationObservation struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	EvaluateURL *string `json:"evaluateUrl,omitempty" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	KeysURL *string `json:"keysUrl,omitempty" tf:"keys_url,omitempty"`
 }
 
 type TrustAccessPolicyIncludeExternalEvaluationParameters struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	// +kubebuilder:validation:Optional
 	EvaluateURL *string `json:"evaluateUrl" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// +kubebuilder:validation:Optional
 	KeysURL *string `json:"keysUrl" tf:"keys_url,omitempty"`
@@ -1013,18 +1234,21 @@ type TrustAccessPolicyIncludeExternalEvaluationParameters struct {
 
 type TrustAccessPolicyIncludeGeoInitParameters struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	CountryCode *string `json:"countryCode,omitempty" tf:"country_code,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGeoObservation struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	CountryCode *string `json:"countryCode,omitempty" tf:"country_code,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGeoParameters struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	// +kubebuilder:validation:Optional
 	CountryCode *string `json:"countryCode" tf:"country_code,omitempty"`
@@ -1032,38 +1256,47 @@ type TrustAccessPolicyIncludeGeoParameters struct {
 
 type TrustAccessPolicyIncludeGithubOrganizationInitParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGithubOrganizationObservation struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGithubOrganizationParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	// +kubebuilder:validation:Optional
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
@@ -1071,18 +1304,21 @@ type TrustAccessPolicyIncludeGithubOrganizationParameters struct {
 
 type TrustAccessPolicyIncludeGroupInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGroupObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGroupParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -1090,28 +1326,34 @@ type TrustAccessPolicyIncludeGroupParameters struct {
 
 type TrustAccessPolicyIncludeGsuiteInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGsuiteObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeGsuiteParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -1119,24 +1361,28 @@ type TrustAccessPolicyIncludeGsuiteParameters struct {
 
 type TrustAccessPolicyIncludeIPInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyIncludeIPListInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeIPListObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeIPListParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -1144,81 +1390,111 @@ type TrustAccessPolicyIncludeIPListParameters struct {
 
 type TrustAccessPolicyIncludeIPObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyIncludeIPParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	// +kubebuilder:validation:Optional
 	IP *string `json:"ip" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyIncludeInitParameters struct {
+
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	AnyValidServiceToken *TrustAccessPolicyIncludeAnyValidServiceTokenInitParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthContext *TrustAccessPolicyIncludeAuthContextInitParameters `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthMethod *TrustAccessPolicyIncludeAuthMethodInitParameters `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AzureAd *TrustAccessPolicyIncludeAzureAdInitParameters `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Certificate *TrustAccessPolicyIncludeCertificateInitParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CommonName *TrustAccessPolicyIncludeCommonNameInitParameters `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DevicePosture *TrustAccessPolicyIncludeDevicePostureInitParameters `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Email *TrustAccessPolicyIncludeEmailInitParameters `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailDomain *TrustAccessPolicyIncludeEmailDomainInitParameters `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailList *TrustAccessPolicyIncludeEmailListInitParameters `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	Everyone *TrustAccessPolicyIncludeEveryoneInitParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ExternalEvaluation *TrustAccessPolicyIncludeExternalEvaluationInitParameters `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Geo *TrustAccessPolicyIncludeGeoInitParameters `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	GithubOrganization *TrustAccessPolicyIncludeGithubOrganizationInitParameters `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Group *TrustAccessPolicyIncludeGroupInitParameters `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Gsuite *TrustAccessPolicyIncludeGsuiteInitParameters `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IP *TrustAccessPolicyIncludeIPInitParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IPList *TrustAccessPolicyIncludeIPListInitParameters `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LinkedAppToken *TrustAccessPolicyIncludeLinkedAppTokenInitParameters `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginMethod *TrustAccessPolicyIncludeLoginMethodInitParameters `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Oidc *TrustAccessPolicyIncludeOidcInitParameters `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Okta *TrustAccessPolicyIncludeOktaInitParameters `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SAML *TrustAccessPolicyIncludeSAMLInitParameters `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceToken *TrustAccessPolicyIncludeServiceTokenInitParameters `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyIncludeLinkedAppTokenInitParameters struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	AppUID *string `json:"appUid,omitempty" tf:"app_uid,omitempty"`
 }
 
 type TrustAccessPolicyIncludeLinkedAppTokenObservation struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	AppUID *string `json:"appUid,omitempty" tf:"app_uid,omitempty"`
 }
 
 type TrustAccessPolicyIncludeLinkedAppTokenParameters struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	// +kubebuilder:validation:Optional
 	AppUID *string `json:"appUid" tf:"app_uid,omitempty"`
@@ -1226,107 +1502,144 @@ type TrustAccessPolicyIncludeLinkedAppTokenParameters struct {
 
 type TrustAccessPolicyIncludeLoginMethodInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeLoginMethodObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeLoginMethodParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeObservation struct {
+
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	AnyValidServiceToken *TrustAccessPolicyIncludeAnyValidServiceTokenParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthContext *TrustAccessPolicyIncludeAuthContextObservation `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthMethod *TrustAccessPolicyIncludeAuthMethodObservation `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AzureAd *TrustAccessPolicyIncludeAzureAdObservation `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Certificate *TrustAccessPolicyIncludeCertificateParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CommonName *TrustAccessPolicyIncludeCommonNameObservation `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DevicePosture *TrustAccessPolicyIncludeDevicePostureObservation `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Email *TrustAccessPolicyIncludeEmailObservation `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailDomain *TrustAccessPolicyIncludeEmailDomainObservation `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailList *TrustAccessPolicyIncludeEmailListObservation `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	Everyone *TrustAccessPolicyIncludeEveryoneParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ExternalEvaluation *TrustAccessPolicyIncludeExternalEvaluationObservation `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Geo *TrustAccessPolicyIncludeGeoObservation `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	GithubOrganization *TrustAccessPolicyIncludeGithubOrganizationObservation `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Group *TrustAccessPolicyIncludeGroupObservation `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Gsuite *TrustAccessPolicyIncludeGsuiteObservation `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IP *TrustAccessPolicyIncludeIPObservation `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IPList *TrustAccessPolicyIncludeIPListObservation `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LinkedAppToken *TrustAccessPolicyIncludeLinkedAppTokenObservation `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginMethod *TrustAccessPolicyIncludeLoginMethodObservation `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Oidc *TrustAccessPolicyIncludeOidcObservation `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Okta *TrustAccessPolicyIncludeOktaObservation `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SAML *TrustAccessPolicyIncludeSAMLObservation `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceToken *TrustAccessPolicyIncludeServiceTokenObservation `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyIncludeOidcInitParameters struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	ClaimName *string `json:"claimName,omitempty" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	ClaimValue *string `json:"claimValue,omitempty" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeOidcObservation struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	ClaimName *string `json:"claimName,omitempty" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	ClaimValue *string `json:"claimValue,omitempty" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeOidcParameters struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	// +kubebuilder:validation:Optional
 	ClaimName *string `json:"claimName" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	// +kubebuilder:validation:Optional
 	ClaimValue *string `json:"claimValue" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -1334,28 +1647,34 @@ type TrustAccessPolicyIncludeOidcParameters struct {
 
 type TrustAccessPolicyIncludeOktaInitParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessPolicyIncludeOktaObservation struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessPolicyIncludeOktaParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
@@ -1363,113 +1682,146 @@ type TrustAccessPolicyIncludeOktaParameters struct {
 
 type TrustAccessPolicyIncludeParameters struct {
 
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AnyValidServiceToken *TrustAccessPolicyIncludeAnyValidServiceTokenParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthContext *TrustAccessPolicyIncludeAuthContextParameters `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthMethod *TrustAccessPolicyIncludeAuthMethodParameters `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AzureAd *TrustAccessPolicyIncludeAzureAdParameters `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Certificate *TrustAccessPolicyIncludeCertificateParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	CommonName *TrustAccessPolicyIncludeCommonNameParameters `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DevicePosture *TrustAccessPolicyIncludeDevicePostureParameters `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Email *TrustAccessPolicyIncludeEmailParameters `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EmailDomain *TrustAccessPolicyIncludeEmailDomainParameters `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EmailList *TrustAccessPolicyIncludeEmailListParameters `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Everyone *TrustAccessPolicyIncludeEveryoneParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ExternalEvaluation *TrustAccessPolicyIncludeExternalEvaluationParameters `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Geo *TrustAccessPolicyIncludeGeoParameters `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	GithubOrganization *TrustAccessPolicyIncludeGithubOrganizationParameters `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Group *TrustAccessPolicyIncludeGroupParameters `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Gsuite *TrustAccessPolicyIncludeGsuiteParameters `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IP *TrustAccessPolicyIncludeIPParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IPList *TrustAccessPolicyIncludeIPListParameters `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LinkedAppToken *TrustAccessPolicyIncludeLinkedAppTokenParameters `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LoginMethod *TrustAccessPolicyIncludeLoginMethodParameters `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Oidc *TrustAccessPolicyIncludeOidcParameters `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Okta *TrustAccessPolicyIncludeOktaParameters `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SAML *TrustAccessPolicyIncludeSAMLParameters `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ServiceToken *TrustAccessPolicyIncludeServiceTokenParameters `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyIncludeSAMLInitParameters struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	AttributeName *string `json:"attributeName,omitempty" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	AttributeValue *string `json:"attributeValue,omitempty" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeSAMLObservation struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	AttributeName *string `json:"attributeName,omitempty" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	AttributeValue *string `json:"attributeValue,omitempty" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeSAMLParameters struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	// +kubebuilder:validation:Optional
 	AttributeName *string `json:"attributeName" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	// +kubebuilder:validation:Optional
 	AttributeValue *string `json:"attributeValue" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -1477,18 +1829,21 @@ type TrustAccessPolicyIncludeSAMLParameters struct {
 
 type TrustAccessPolicyIncludeServiceTokenInitParameters struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeServiceTokenObservation struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TrustAccessPolicyIncludeServiceTokenParameters struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	// +kubebuilder:validation:Optional
 	TokenID *string `json:"tokenId" tf:"token_id,omitempty"`
@@ -1496,121 +1851,161 @@ type TrustAccessPolicyIncludeServiceTokenParameters struct {
 
 type TrustAccessPolicyInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Set) Administrators who can approve a temporary authentication request. (see below for nested schema)
 	ApprovalGroups []ApprovalGroupsInitParameters `json:"approvalGroups,omitempty" tf:"approval_groups,omitempty"`
 
+	// (Boolean) Requires the user to request access from an administrator at the start of each session.
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired *bool `json:"approvalRequired,omitempty" tf:"approval_required,omitempty"`
 
+	// (String) The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "non_identity", "bypass".
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "non_identity", "bypass".
 	Decision *string `json:"decision,omitempty" tf:"decision,omitempty"`
 
+	// (Attributes Set) Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. (see below for nested schema)
 	Exclude []TrustAccessPolicyExcludeInitParameters `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Attributes Set) Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. (see below for nested schema)
 	Include []TrustAccessPolicyIncludeInitParameters `json:"include,omitempty" tf:"include,omitempty"`
 
+	// (Boolean) Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired *bool `json:"isolationRequired,omitempty" tf:"isolation_required,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Access policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) A custom message that will appear on the purpose justification screen.
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt *string `json:"purposeJustificationPrompt,omitempty" tf:"purpose_justification_prompt,omitempty"`
 
+	// (Boolean) Require users to enter a justification when they log in to the application.
 	// Require users to enter a justification when they log in to the application.
 	PurposeJustificationRequired *bool `json:"purposeJustificationRequired,omitempty" tf:"purpose_justification_required,omitempty"`
 
+	// (Attributes Set) Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. (see below for nested schema)
 	Require []TrustAccessPolicyRequireInitParameters `json:"require,omitempty" tf:"require,omitempty"`
 
+	// (String) The amount of time that tokens issued for the application will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `json:"sessionDuration,omitempty" tf:"session_duration,omitempty"`
 }
 
 type TrustAccessPolicyObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Set) Administrators who can approve a temporary authentication request. (see below for nested schema)
 	ApprovalGroups []ApprovalGroupsObservation `json:"approvalGroups,omitempty" tf:"approval_groups,omitempty"`
 
+	// (Boolean) Requires the user to request access from an administrator at the start of each session.
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired *bool `json:"approvalRequired,omitempty" tf:"approval_required,omitempty"`
 
+	// (String) The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "non_identity", "bypass".
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "non_identity", "bypass".
 	Decision *string `json:"decision,omitempty" tf:"decision,omitempty"`
 
+	// (Attributes Set) Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. (see below for nested schema)
 	Exclude []TrustAccessPolicyExcludeObservation `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (String) The UUID of the policy
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes Set) Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. (see below for nested schema)
 	Include []TrustAccessPolicyIncludeObservation `json:"include,omitempty" tf:"include,omitempty"`
 
+	// (Boolean) Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired *bool `json:"isolationRequired,omitempty" tf:"isolation_required,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Access policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) A custom message that will appear on the purpose justification screen.
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt *string `json:"purposeJustificationPrompt,omitempty" tf:"purpose_justification_prompt,omitempty"`
 
+	// (Boolean) Require users to enter a justification when they log in to the application.
 	// Require users to enter a justification when they log in to the application.
 	PurposeJustificationRequired *bool `json:"purposeJustificationRequired,omitempty" tf:"purpose_justification_required,omitempty"`
 
+	// (Attributes Set) Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. (see below for nested schema)
 	Require []TrustAccessPolicyRequireObservation `json:"require,omitempty" tf:"require,omitempty"`
 
+	// (String) The amount of time that tokens issued for the application will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `json:"sessionDuration,omitempty" tf:"session_duration,omitempty"`
 }
 
 type TrustAccessPolicyParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Set) Administrators who can approve a temporary authentication request. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ApprovalGroups []ApprovalGroupsParameters `json:"approvalGroups,omitempty" tf:"approval_groups,omitempty"`
 
+	// (Boolean) Requires the user to request access from an administrator at the start of each session.
 	// Requires the user to request access from an administrator at the start of each session.
 	// +kubebuilder:validation:Optional
 	ApprovalRequired *bool `json:"approvalRequired,omitempty" tf:"approval_required,omitempty"`
 
+	// (String) The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "non_identity", "bypass".
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "non_identity", "bypass".
 	// +kubebuilder:validation:Optional
 	Decision *string `json:"decision,omitempty" tf:"decision,omitempty"`
 
+	// (Attributes Set) Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Exclude []TrustAccessPolicyExcludeParameters `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Attributes Set) Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Include []TrustAccessPolicyIncludeParameters `json:"include,omitempty" tf:"include,omitempty"`
 
+	// (Boolean) Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	// +kubebuilder:validation:Optional
 	IsolationRequired *bool `json:"isolationRequired,omitempty" tf:"isolation_required,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Access policy.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) A custom message that will appear on the purpose justification screen.
 	// A custom message that will appear on the purpose justification screen.
 	// +kubebuilder:validation:Optional
 	PurposeJustificationPrompt *string `json:"purposeJustificationPrompt,omitempty" tf:"purpose_justification_prompt,omitempty"`
 
+	// (Boolean) Require users to enter a justification when they log in to the application.
 	// Require users to enter a justification when they log in to the application.
 	// +kubebuilder:validation:Optional
 	PurposeJustificationRequired *bool `json:"purposeJustificationRequired,omitempty" tf:"purpose_justification_required,omitempty"`
 
+	// (Attributes Set) Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Require []TrustAccessPolicyRequireParameters `json:"require,omitempty" tf:"require,omitempty"`
 
+	// (String) The amount of time that tokens issued for the application will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// +kubebuilder:validation:Optional
 	SessionDuration *string `json:"sessionDuration,omitempty" tf:"session_duration,omitempty"`
@@ -1627,38 +2022,47 @@ type TrustAccessPolicyRequireAnyValidServiceTokenParameters struct {
 
 type TrustAccessPolicyRequireAuthContextInitParameters struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	AcID *string `json:"acId,omitempty" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireAuthContextObservation struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	AcID *string `json:"acId,omitempty" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireAuthContextParameters struct {
 
+	// (String) The ACID of an Authentication context.
 	// The ACID of an Authentication context.
 	// +kubebuilder:validation:Optional
 	AcID *string `json:"acId" tf:"ac_id,omitempty"`
 
+	// (String) The UUID of the policy
 	// The ID of an Authentication context.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -1666,18 +2070,21 @@ type TrustAccessPolicyRequireAuthContextParameters struct {
 
 type TrustAccessPolicyRequireAuthMethodInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	AuthMethod *string `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 }
 
 type TrustAccessPolicyRequireAuthMethodObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	AuthMethod *string `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 }
 
 type TrustAccessPolicyRequireAuthMethodParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 	// +kubebuilder:validation:Optional
 	AuthMethod *string `json:"authMethod" tf:"auth_method,omitempty"`
@@ -1685,28 +2092,34 @@ type TrustAccessPolicyRequireAuthMethodParameters struct {
 
 type TrustAccessPolicyRequireAzureAdInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireAzureAdObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireAzureAdParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an Azure group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Azure identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -1723,18 +2136,21 @@ type TrustAccessPolicyRequireCertificateParameters struct {
 
 type TrustAccessPolicyRequireCommonNameInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	CommonName *string `json:"commonName,omitempty" tf:"common_name,omitempty"`
 }
 
 type TrustAccessPolicyRequireCommonNameObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	CommonName *string `json:"commonName,omitempty" tf:"common_name,omitempty"`
 }
 
 type TrustAccessPolicyRequireCommonNameParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The common name to match.
 	// +kubebuilder:validation:Optional
 	CommonName *string `json:"commonName" tf:"common_name,omitempty"`
@@ -1742,18 +2158,21 @@ type TrustAccessPolicyRequireCommonNameParameters struct {
 
 type TrustAccessPolicyRequireDevicePostureInitParameters struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	IntegrationUID *string `json:"integrationUid,omitempty" tf:"integration_uid,omitempty"`
 }
 
 type TrustAccessPolicyRequireDevicePostureObservation struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	IntegrationUID *string `json:"integrationUid,omitempty" tf:"integration_uid,omitempty"`
 }
 
 type TrustAccessPolicyRequireDevicePostureParameters struct {
 
+	// (String) The ID of a device posture integration.
 	// The ID of a device posture integration.
 	// +kubebuilder:validation:Optional
 	IntegrationUID *string `json:"integrationUid" tf:"integration_uid,omitempty"`
@@ -1761,18 +2180,21 @@ type TrustAccessPolicyRequireDevicePostureParameters struct {
 
 type TrustAccessPolicyRequireEmailDomainInitParameters struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 }
 
 type TrustAccessPolicyRequireEmailDomainObservation struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 }
 
 type TrustAccessPolicyRequireEmailDomainParameters struct {
 
+	// (String) The email domain to match.
 	// The email domain to match.
 	// +kubebuilder:validation:Optional
 	Domain *string `json:"domain" tf:"domain,omitempty"`
@@ -1780,24 +2202,28 @@ type TrustAccessPolicyRequireEmailDomainParameters struct {
 
 type TrustAccessPolicyRequireEmailInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type TrustAccessPolicyRequireEmailListInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireEmailListObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireEmailListParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created email list.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -1805,12 +2231,14 @@ type TrustAccessPolicyRequireEmailListParameters struct {
 
 type TrustAccessPolicyRequireEmailObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
 type TrustAccessPolicyRequireEmailParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the user.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email" tf:"email,omitempty"`
@@ -1827,28 +2255,34 @@ type TrustAccessPolicyRequireEveryoneParameters struct {
 
 type TrustAccessPolicyRequireExternalEvaluationInitParameters struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	EvaluateURL *string `json:"evaluateUrl,omitempty" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	KeysURL *string `json:"keysUrl,omitempty" tf:"keys_url,omitempty"`
 }
 
 type TrustAccessPolicyRequireExternalEvaluationObservation struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	EvaluateURL *string `json:"evaluateUrl,omitempty" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	KeysURL *string `json:"keysUrl,omitempty" tf:"keys_url,omitempty"`
 }
 
 type TrustAccessPolicyRequireExternalEvaluationParameters struct {
 
+	// (String) The API endpoint containing your business logic.
 	// The API endpoint containing your business logic.
 	// +kubebuilder:validation:Optional
 	EvaluateURL *string `json:"evaluateUrl" tf:"evaluate_url,omitempty"`
 
+	// (String) The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// The API endpoint containing the key that Access uses to verify that the response came from your API.
 	// +kubebuilder:validation:Optional
 	KeysURL *string `json:"keysUrl" tf:"keys_url,omitempty"`
@@ -1856,18 +2290,21 @@ type TrustAccessPolicyRequireExternalEvaluationParameters struct {
 
 type TrustAccessPolicyRequireGeoInitParameters struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	CountryCode *string `json:"countryCode,omitempty" tf:"country_code,omitempty"`
 }
 
 type TrustAccessPolicyRequireGeoObservation struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	CountryCode *string `json:"countryCode,omitempty" tf:"country_code,omitempty"`
 }
 
 type TrustAccessPolicyRequireGeoParameters struct {
 
+	// (String) The country code that should be matched.
 	// The country code that should be matched.
 	// +kubebuilder:validation:Optional
 	CountryCode *string `json:"countryCode" tf:"country_code,omitempty"`
@@ -1875,38 +2312,47 @@ type TrustAccessPolicyRequireGeoParameters struct {
 
 type TrustAccessPolicyRequireGithubOrganizationInitParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
 }
 
 type TrustAccessPolicyRequireGithubOrganizationObservation struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
 }
 
 type TrustAccessPolicyRequireGithubOrganizationParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Github identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the organization.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 
+	// (String) The name of the team
 	// The name of the team
 	// +kubebuilder:validation:Optional
 	Team *string `json:"team,omitempty" tf:"team,omitempty"`
@@ -1914,18 +2360,21 @@ type TrustAccessPolicyRequireGithubOrganizationParameters struct {
 
 type TrustAccessPolicyRequireGroupInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireGroupObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireGroupParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created Access group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -1933,28 +2382,34 @@ type TrustAccessPolicyRequireGroupParameters struct {
 
 type TrustAccessPolicyRequireGsuiteInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireGsuiteObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireGsuiteParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// The email of the Google Workspace group.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email" tf:"email,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Google Workspace identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -1962,24 +2417,28 @@ type TrustAccessPolicyRequireGsuiteParameters struct {
 
 type TrustAccessPolicyRequireIPInitParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyRequireIPListInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireIPListObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireIPListParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of a previously created IP list.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -1987,81 +2446,111 @@ type TrustAccessPolicyRequireIPListParameters struct {
 
 type TrustAccessPolicyRequireIPObservation struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyRequireIPParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// An IPv4 or IPv6 CIDR block.
 	// +kubebuilder:validation:Optional
 	IP *string `json:"ip" tf:"ip,omitempty"`
 }
 
 type TrustAccessPolicyRequireInitParameters struct {
+
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	AnyValidServiceToken *TrustAccessPolicyRequireAnyValidServiceTokenInitParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthContext *TrustAccessPolicyRequireAuthContextInitParameters `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthMethod *TrustAccessPolicyRequireAuthMethodInitParameters `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AzureAd *TrustAccessPolicyRequireAzureAdInitParameters `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Certificate *TrustAccessPolicyRequireCertificateInitParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CommonName *TrustAccessPolicyRequireCommonNameInitParameters `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DevicePosture *TrustAccessPolicyRequireDevicePostureInitParameters `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Email *TrustAccessPolicyRequireEmailInitParameters `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailDomain *TrustAccessPolicyRequireEmailDomainInitParameters `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailList *TrustAccessPolicyRequireEmailListInitParameters `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	Everyone *TrustAccessPolicyRequireEveryoneInitParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ExternalEvaluation *TrustAccessPolicyRequireExternalEvaluationInitParameters `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Geo *TrustAccessPolicyRequireGeoInitParameters `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	GithubOrganization *TrustAccessPolicyRequireGithubOrganizationInitParameters `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Group *TrustAccessPolicyRequireGroupInitParameters `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Gsuite *TrustAccessPolicyRequireGsuiteInitParameters `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IP *TrustAccessPolicyRequireIPInitParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IPList *TrustAccessPolicyRequireIPListInitParameters `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LinkedAppToken *TrustAccessPolicyRequireLinkedAppTokenInitParameters `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginMethod *TrustAccessPolicyRequireLoginMethodInitParameters `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Oidc *TrustAccessPolicyRequireOidcInitParameters `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Okta *TrustAccessPolicyRequireOktaInitParameters `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SAML *TrustAccessPolicyRequireSAMLInitParameters `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceToken *TrustAccessPolicyRequireServiceTokenInitParameters `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyRequireLinkedAppTokenInitParameters struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	AppUID *string `json:"appUid,omitempty" tf:"app_uid,omitempty"`
 }
 
 type TrustAccessPolicyRequireLinkedAppTokenObservation struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	AppUID *string `json:"appUid,omitempty" tf:"app_uid,omitempty"`
 }
 
 type TrustAccessPolicyRequireLinkedAppTokenParameters struct {
 
+	// (String) The ID of an Access OIDC SaaS application
 	// The ID of an Access OIDC SaaS application
 	// +kubebuilder:validation:Optional
 	AppUID *string `json:"appUid" tf:"app_uid,omitempty"`
@@ -2069,107 +2558,144 @@ type TrustAccessPolicyRequireLinkedAppTokenParameters struct {
 
 type TrustAccessPolicyRequireLoginMethodInitParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireLoginMethodObservation struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireLoginMethodParameters struct {
 
+	// (String) The UUID of the policy
 	// The ID of an identity provider.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type TrustAccessPolicyRequireObservation struct {
+
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	AnyValidServiceToken *TrustAccessPolicyRequireAnyValidServiceTokenParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthContext *TrustAccessPolicyRequireAuthContextObservation `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AuthMethod *TrustAccessPolicyRequireAuthMethodObservation `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	AzureAd *TrustAccessPolicyRequireAzureAdObservation `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Certificate *TrustAccessPolicyRequireCertificateParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CommonName *TrustAccessPolicyRequireCommonNameObservation `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DevicePosture *TrustAccessPolicyRequireDevicePostureObservation `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Email *TrustAccessPolicyRequireEmailObservation `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailDomain *TrustAccessPolicyRequireEmailDomainObservation `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	EmailList *TrustAccessPolicyRequireEmailListObservation `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	Everyone *TrustAccessPolicyRequireEveryoneParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ExternalEvaluation *TrustAccessPolicyRequireExternalEvaluationObservation `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Geo *TrustAccessPolicyRequireGeoObservation `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	GithubOrganization *TrustAccessPolicyRequireGithubOrganizationObservation `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Group *TrustAccessPolicyRequireGroupObservation `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Gsuite *TrustAccessPolicyRequireGsuiteObservation `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IP *TrustAccessPolicyRequireIPObservation `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	IPList *TrustAccessPolicyRequireIPListObservation `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LinkedAppToken *TrustAccessPolicyRequireLinkedAppTokenObservation `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginMethod *TrustAccessPolicyRequireLoginMethodObservation `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Oidc *TrustAccessPolicyRequireOidcObservation `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Okta *TrustAccessPolicyRequireOktaObservation `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	SAML *TrustAccessPolicyRequireSAMLObservation `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	ServiceToken *TrustAccessPolicyRequireServiceTokenObservation `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyRequireOidcInitParameters struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	ClaimName *string `json:"claimName,omitempty" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	ClaimValue *string `json:"claimValue,omitempty" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireOidcObservation struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	ClaimName *string `json:"claimName,omitempty" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	ClaimValue *string `json:"claimValue,omitempty" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireOidcParameters struct {
 
+	// (String) The name of the OIDC claim.
 	// The name of the OIDC claim.
 	// +kubebuilder:validation:Optional
 	ClaimName *string `json:"claimName" tf:"claim_name,omitempty"`
 
+	// (String) The OIDC claim value to look for.
 	// The OIDC claim value to look for.
 	// +kubebuilder:validation:Optional
 	ClaimValue *string `json:"claimValue" tf:"claim_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your OIDC identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -2177,28 +2703,34 @@ type TrustAccessPolicyRequireOidcParameters struct {
 
 type TrustAccessPolicyRequireOktaInitParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessPolicyRequireOktaObservation struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustAccessPolicyRequireOktaParameters struct {
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your Okta identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
 
+	// (String) The name of the Access policy.
 	// The name of the Okta group.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
@@ -2206,113 +2738,146 @@ type TrustAccessPolicyRequireOktaParameters struct {
 
 type TrustAccessPolicyRequireParameters struct {
 
+	// (Attributes) An empty object which matches on all service tokens. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AnyValidServiceToken *TrustAccessPolicyRequireAnyValidServiceTokenParameters `json:"anyValidServiceToken,omitempty" tf:"any_valid_service_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthContext *TrustAccessPolicyRequireAuthContextParameters `json:"authContext,omitempty" tf:"auth_context,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AuthMethod *TrustAccessPolicyRequireAuthMethodParameters `json:"authMethod,omitempty" tf:"auth_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	AzureAd *TrustAccessPolicyRequireAzureAdParameters `json:"azureAd,omitempty" tf:"azure_ad,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Certificate *TrustAccessPolicyRequireCertificateParameters `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	CommonName *TrustAccessPolicyRequireCommonNameParameters `json:"commonName,omitempty" tf:"common_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DevicePosture *TrustAccessPolicyRequireDevicePostureParameters `json:"devicePosture,omitempty" tf:"device_posture,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Email *TrustAccessPolicyRequireEmailParameters `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EmailDomain *TrustAccessPolicyRequireEmailDomainParameters `json:"emailDomain,omitempty" tf:"email_domain,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EmailList *TrustAccessPolicyRequireEmailListParameters `json:"emailList,omitempty" tf:"email_list,omitempty"`
 
+	// (Attributes) An empty object which matches on all users. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Everyone *TrustAccessPolicyRequireEveryoneParameters `json:"everyone,omitempty" tf:"everyone,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ExternalEvaluation *TrustAccessPolicyRequireExternalEvaluationParameters `json:"externalEvaluation,omitempty" tf:"external_evaluation,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Geo *TrustAccessPolicyRequireGeoParameters `json:"geo,omitempty" tf:"geo,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	GithubOrganization *TrustAccessPolicyRequireGithubOrganizationParameters `json:"githubOrganization,omitempty" tf:"github_organization,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Group *TrustAccessPolicyRequireGroupParameters `json:"group,omitempty" tf:"group,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Gsuite *TrustAccessPolicyRequireGsuiteParameters `json:"gsuite,omitempty" tf:"gsuite,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IP *TrustAccessPolicyRequireIPParameters `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	IPList *TrustAccessPolicyRequireIPListParameters `json:"ipList,omitempty" tf:"ip_list,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LinkedAppToken *TrustAccessPolicyRequireLinkedAppTokenParameters `json:"linkedAppToken,omitempty" tf:"linked_app_token,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LoginMethod *TrustAccessPolicyRequireLoginMethodParameters `json:"loginMethod,omitempty" tf:"login_method,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Oidc *TrustAccessPolicyRequireOidcParameters `json:"oidc,omitempty" tf:"oidc,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Okta *TrustAccessPolicyRequireOktaParameters `json:"okta,omitempty" tf:"okta,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SAML *TrustAccessPolicyRequireSAMLParameters `json:"saml,omitempty" tf:"saml,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ServiceToken *TrustAccessPolicyRequireServiceTokenParameters `json:"serviceToken,omitempty" tf:"service_token,omitempty"`
 }
 
 type TrustAccessPolicyRequireSAMLInitParameters struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	AttributeName *string `json:"attributeName,omitempty" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	AttributeValue *string `json:"attributeValue,omitempty" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireSAMLObservation struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	AttributeName *string `json:"attributeName,omitempty" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	AttributeValue *string `json:"attributeValue,omitempty" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	IdentityProviderID *string `json:"identityProviderId,omitempty" tf:"identity_provider_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireSAMLParameters struct {
 
+	// (String) The name of the SAML attribute.
 	// The name of the SAML attribute.
 	// +kubebuilder:validation:Optional
 	AttributeName *string `json:"attributeName" tf:"attribute_name,omitempty"`
 
+	// (String) The SAML attribute value to look for.
 	// The SAML attribute value to look for.
 	// +kubebuilder:validation:Optional
 	AttributeValue *string `json:"attributeValue" tf:"attribute_value,omitempty"`
 
+	// (String) The ID of your Azure identity provider.
 	// The ID of your SAML identity provider.
 	// +kubebuilder:validation:Optional
 	IdentityProviderID *string `json:"identityProviderId" tf:"identity_provider_id,omitempty"`
@@ -2320,18 +2885,21 @@ type TrustAccessPolicyRequireSAMLParameters struct {
 
 type TrustAccessPolicyRequireServiceTokenInitParameters struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireServiceTokenObservation struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TrustAccessPolicyRequireServiceTokenParameters struct {
 
+	// (String) The ID of a Service Token.
 	// The ID of a Service Token.
 	// +kubebuilder:validation:Optional
 	TokenID *string `json:"tokenId" tf:"token_id,omitempty"`
@@ -2364,7 +2932,7 @@ type TrustAccessPolicyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessPolicy is the Schema for the TrustAccessPolicys API. <no value>
+// TrustAccessPolicy is the Schema for the TrustAccessPolicys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

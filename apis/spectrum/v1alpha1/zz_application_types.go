@@ -16,145 +16,202 @@ import (
 
 type ApplicationInitParameters struct {
 
+	// (Boolean) Enables Argo Smart Routing for this application.
+	// Notes: Only available for TCP applications with traffic_type set to "direct".
 	// Enables Argo Smart Routing for this application.
 	// Notes: Only available for TCP applications with traffic_type set to "direct".
 	ArgoSmartRouting *bool `json:"argoSmartRouting,omitempty" tf:"argo_smart_routing,omitempty"`
 
+	// (Attributes) The name and type of DNS record for the Spectrum application. (see below for nested schema)
 	DNS *DNSInitParameters `json:"dns,omitempty" tf:"dns,omitempty"`
 
+	// (Attributes) The anycast edge IP configuration for the hostname of this application. (see below for nested schema)
 	EdgeIps *EdgeIpsInitParameters `json:"edgeIps,omitempty" tf:"edge_ips,omitempty"`
 
+	// (Boolean) Enables IP Access Rules for this application.
+	// Notes: Only available for TCP applications.
 	// Enables IP Access Rules for this application.
 	// Notes: Only available for TCP applications.
 	IPFirewall *bool `json:"ipFirewall,omitempty" tf:"ip_firewall,omitempty"`
 
+	// (Attributes) The name and type of DNS record for the Spectrum application. (see below for nested schema)
 	OriginDNS *OriginDNSInitParameters `json:"originDns,omitempty" tf:"origin_dns,omitempty"`
 
+	// (List of String) List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	// List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	OriginDirect []*string `json:"originDirect,omitempty" tf:"origin_direct,omitempty"`
 
+	// 2000".
+	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
 	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	OriginPort *v1.JSON `json:"originPort,omitempty" tf:"origin_port,omitempty"`
 
+	// 2000".
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String) Enables Proxy Protocol to the origin. Refer to Enable Proxy protocol for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
 	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol *string `json:"proxyProtocol,omitempty" tf:"proxy_protocol,omitempty"`
 
+	// (String) The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	// The type of TLS termination associated with the application.
 	// Available values: "off", "flexible", "full", "strict".
 	TLS *string `json:"tls,omitempty" tf:"tls,omitempty"`
 
+	// (String) Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the protocol. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType *string `json:"trafficType,omitempty" tf:"traffic_type,omitempty"`
 
+	// (String) Zone identifier.
 	// Zone identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ApplicationObservation struct {
 
+	// (Boolean) Enables Argo Smart Routing for this application.
+	// Notes: Only available for TCP applications with traffic_type set to "direct".
 	// Enables Argo Smart Routing for this application.
 	// Notes: Only available for TCP applications with traffic_type set to "direct".
 	ArgoSmartRouting *bool `json:"argoSmartRouting,omitempty" tf:"argo_smart_routing,omitempty"`
 
+	// (String) When the Application was created.
 	// When the Application was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (Attributes) The name and type of DNS record for the Spectrum application. (see below for nested schema)
 	DNS *DNSObservation `json:"dns,omitempty" tf:"dns,omitempty"`
 
+	// (Attributes) The anycast edge IP configuration for the hostname of this application. (see below for nested schema)
 	EdgeIps *EdgeIpsObservation `json:"edgeIps,omitempty" tf:"edge_ips,omitempty"`
 
+	// (String) App identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Enables IP Access Rules for this application.
+	// Notes: Only available for TCP applications.
 	// Enables IP Access Rules for this application.
 	// Notes: Only available for TCP applications.
 	IPFirewall *bool `json:"ipFirewall,omitempty" tf:"ip_firewall,omitempty"`
 
+	// (String) When the Application was last modified.
 	// When the Application was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Attributes) The name and type of DNS record for the Spectrum application. (see below for nested schema)
 	OriginDNS *OriginDNSObservation `json:"originDns,omitempty" tf:"origin_dns,omitempty"`
 
+	// (List of String) List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	// List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	OriginDirect []*string `json:"originDirect,omitempty" tf:"origin_direct,omitempty"`
 
+	// 2000".
+	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
 	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	OriginPort *v1.JSON `json:"originPort,omitempty" tf:"origin_port,omitempty"`
 
+	// 2000".
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String) Enables Proxy Protocol to the origin. Refer to Enable Proxy protocol for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
 	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol *string `json:"proxyProtocol,omitempty" tf:"proxy_protocol,omitempty"`
 
+	// (String) The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	// The type of TLS termination associated with the application.
 	// Available values: "off", "flexible", "full", "strict".
 	TLS *string `json:"tls,omitempty" tf:"tls,omitempty"`
 
+	// (String) Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the protocol. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType *string `json:"trafficType,omitempty" tf:"traffic_type,omitempty"`
 
+	// (String) Zone identifier.
 	// Zone identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ApplicationParameters struct {
 
+	// (Boolean) Enables Argo Smart Routing for this application.
+	// Notes: Only available for TCP applications with traffic_type set to "direct".
 	// Enables Argo Smart Routing for this application.
 	// Notes: Only available for TCP applications with traffic_type set to "direct".
 	// +kubebuilder:validation:Optional
 	ArgoSmartRouting *bool `json:"argoSmartRouting,omitempty" tf:"argo_smart_routing,omitempty"`
 
+	// (Attributes) The name and type of DNS record for the Spectrum application. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DNS *DNSParameters `json:"dns,omitempty" tf:"dns,omitempty"`
 
+	// (Attributes) The anycast edge IP configuration for the hostname of this application. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	EdgeIps *EdgeIpsParameters `json:"edgeIps,omitempty" tf:"edge_ips,omitempty"`
 
+	// (Boolean) Enables IP Access Rules for this application.
+	// Notes: Only available for TCP applications.
 	// Enables IP Access Rules for this application.
 	// Notes: Only available for TCP applications.
 	// +kubebuilder:validation:Optional
 	IPFirewall *bool `json:"ipFirewall,omitempty" tf:"ip_firewall,omitempty"`
 
+	// (Attributes) The name and type of DNS record for the Spectrum application. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	OriginDNS *OriginDNSParameters `json:"originDns,omitempty" tf:"origin_dns,omitempty"`
 
+	// (List of String) List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	// List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	// +kubebuilder:validation:Optional
 	OriginDirect []*string `json:"originDirect,omitempty" tf:"origin_direct,omitempty"`
 
+	// 2000".
+	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
 	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	// +kubebuilder:validation:Optional
 	OriginPort *v1.JSON `json:"originPort,omitempty" tf:"origin_port,omitempty"`
 
+	// 2000".
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	// +kubebuilder:validation:Optional
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String) Enables Proxy Protocol to the origin. Refer to Enable Proxy protocol for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
 	// Available values: "off", "v1", "v2", "simple".
 	// +kubebuilder:validation:Optional
 	ProxyProtocol *string `json:"proxyProtocol,omitempty" tf:"proxy_protocol,omitempty"`
 
+	// (String) The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	// The type of TLS termination associated with the application.
 	// Available values: "off", "flexible", "full", "strict".
 	// +kubebuilder:validation:Optional
 	TLS *string `json:"tls,omitempty" tf:"tls,omitempty"`
 
+	// (String) Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the protocol. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	// +kubebuilder:validation:Optional
 	TrafficType *string `json:"trafficType,omitempty" tf:"traffic_type,omitempty"`
 
+	// (String) Zone identifier.
 	// Zone identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -162,9 +219,12 @@ type ApplicationParameters struct {
 
 type DNSInitParameters struct {
 
+	// (String) The name of the DNS record associated with the application.
 	// The name of the DNS record associated with the application.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of DNS record associated with the application.
 	// Available values: "CNAME", "ADDRESS".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -172,9 +232,12 @@ type DNSInitParameters struct {
 
 type DNSObservation struct {
 
+	// (String) The name of the DNS record associated with the application.
 	// The name of the DNS record associated with the application.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of DNS record associated with the application.
 	// Available values: "CNAME", "ADDRESS".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -182,10 +245,13 @@ type DNSObservation struct {
 
 type DNSParameters struct {
 
+	// (String) The name of the DNS record associated with the application.
 	// The name of the DNS record associated with the application.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of DNS record associated with the application.
 	// Available values: "CNAME", "ADDRESS".
 	// +kubebuilder:validation:Optional
@@ -194,13 +260,18 @@ type DNSParameters struct {
 
 type EdgeIpsInitParameters struct {
 
+	// (String) The IP versions supported for inbound connections on Spectrum anycast IPs.
+	// Available values: "all", "ipv4", "ipv6".
 	// The IP versions supported for inbound connections on Spectrum anycast IPs.
 	// Available values: "all", "ipv4", "ipv6".
 	Connectivity *string `json:"connectivity,omitempty" tf:"connectivity,omitempty"`
 
+	// (List of String) The array of customer owned IPs we broadcast via anycast for this hostname and application.
 	// The array of customer owned IPs we broadcast via anycast for this hostname and application.
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
 	// Available values: "dynamic", "static".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -208,13 +279,18 @@ type EdgeIpsInitParameters struct {
 
 type EdgeIpsObservation struct {
 
+	// (String) The IP versions supported for inbound connections on Spectrum anycast IPs.
+	// Available values: "all", "ipv4", "ipv6".
 	// The IP versions supported for inbound connections on Spectrum anycast IPs.
 	// Available values: "all", "ipv4", "ipv6".
 	Connectivity *string `json:"connectivity,omitempty" tf:"connectivity,omitempty"`
 
+	// (List of String) The array of customer owned IPs we broadcast via anycast for this hostname and application.
 	// The array of customer owned IPs we broadcast via anycast for this hostname and application.
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
 	// Available values: "dynamic", "static".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -222,15 +298,20 @@ type EdgeIpsObservation struct {
 
 type EdgeIpsParameters struct {
 
+	// (String) The IP versions supported for inbound connections on Spectrum anycast IPs.
+	// Available values: "all", "ipv4", "ipv6".
 	// The IP versions supported for inbound connections on Spectrum anycast IPs.
 	// Available values: "all", "ipv4", "ipv6".
 	// +kubebuilder:validation:Optional
 	Connectivity *string `json:"connectivity,omitempty" tf:"connectivity,omitempty"`
 
+	// (List of String) The array of customer owned IPs we broadcast via anycast for this hostname and application.
 	// The array of customer owned IPs we broadcast via anycast for this hostname and application.
 	// +kubebuilder:validation:Optional
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
 	// Available values: "dynamic", "static".
 	// +kubebuilder:validation:Optional
@@ -239,12 +320,16 @@ type EdgeIpsParameters struct {
 
 type OriginDNSInitParameters struct {
 
+	// (String) The name of the DNS record associated with the application.
 	// The name of the DNS record associated with the origin.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The TTL of our resolution of your DNS record in seconds.
 	// The TTL of our resolution of your DNS record in seconds.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
 	// Available values: "", "A", "AAAA", "SRV".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -252,12 +337,16 @@ type OriginDNSInitParameters struct {
 
 type OriginDNSObservation struct {
 
+	// (String) The name of the DNS record associated with the application.
 	// The name of the DNS record associated with the origin.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The TTL of our resolution of your DNS record in seconds.
 	// The TTL of our resolution of your DNS record in seconds.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
 	// Available values: "", "A", "AAAA", "SRV".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -265,14 +354,18 @@ type OriginDNSObservation struct {
 
 type OriginDNSParameters struct {
 
+	// (String) The name of the DNS record associated with the application.
 	// The name of the DNS record associated with the origin.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The TTL of our resolution of your DNS record in seconds.
 	// The TTL of our resolution of your DNS record in seconds.
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (String) The type of DNS record associated with the application.
+	// Available values: "CNAME", "ADDRESS".
 	// The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
 	// Available values: "", "A", "AAAA", "SRV".
 	// +kubebuilder:validation:Optional
@@ -306,7 +399,7 @@ type ApplicationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Application is the Schema for the Applications API. <no value>
+// Application is the Schema for the Applications API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

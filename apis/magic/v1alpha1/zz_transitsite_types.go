@@ -15,28 +15,34 @@ import (
 
 type LocationInitParameters struct {
 
+	// (String) Latitude
 	// Latitude
 	Lat *string `json:"lat,omitempty" tf:"lat,omitempty"`
 
+	// (String) Longitude
 	// Longitude
 	Lon *string `json:"lon,omitempty" tf:"lon,omitempty"`
 }
 
 type LocationObservation struct {
 
+	// (String) Latitude
 	// Latitude
 	Lat *string `json:"lat,omitempty" tf:"lat,omitempty"`
 
+	// (String) Longitude
 	// Longitude
 	Lon *string `json:"lon,omitempty" tf:"lon,omitempty"`
 }
 
 type LocationParameters struct {
 
+	// (String) Latitude
 	// Latitude
 	// +kubebuilder:validation:Optional
 	Lat *string `json:"lat,omitempty" tf:"lat,omitempty"`
 
+	// (String) Longitude
 	// Longitude
 	// +kubebuilder:validation:Optional
 	Lon *string `json:"lon,omitempty" tf:"lon,omitempty"`
@@ -44,74 +50,96 @@ type LocationParameters struct {
 
 type TransitSiteInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Magic Connector identifier tag.
 	// Magic Connector identifier tag.
 	ConnectorID *string `json:"connectorId,omitempty" tf:"connector_id,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	// Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	HaMode *bool `json:"haMode,omitempty" tf:"ha_mode,omitempty"`
 
+	// (Attributes) Location of site in latitude and longitude. (see below for nested schema)
 	Location *LocationInitParameters `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) The name of the site.
 	// The name of the site.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Magic Connector identifier tag. Used when high availability mode is on.
 	// Magic Connector identifier tag. Used when high availability mode is on.
 	SecondaryConnectorID *string `json:"secondaryConnectorId,omitempty" tf:"secondary_connector_id,omitempty"`
 }
 
 type TransitSiteObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Magic Connector identifier tag.
 	// Magic Connector identifier tag.
 	ConnectorID *string `json:"connectorId,omitempty" tf:"connector_id,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	// Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	HaMode *bool `json:"haMode,omitempty" tf:"ha_mode,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) Location of site in latitude and longitude. (see below for nested schema)
 	Location *LocationObservation `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) The name of the site.
 	// The name of the site.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Magic Connector identifier tag. Used when high availability mode is on.
 	// Magic Connector identifier tag. Used when high availability mode is on.
 	SecondaryConnectorID *string `json:"secondaryConnectorId,omitempty" tf:"secondary_connector_id,omitempty"`
 }
 
 type TransitSiteParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Magic Connector identifier tag.
 	// Magic Connector identifier tag.
 	// +kubebuilder:validation:Optional
 	ConnectorID *string `json:"connectorId,omitempty" tf:"connector_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	// Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	// +kubebuilder:validation:Optional
 	HaMode *bool `json:"haMode,omitempty" tf:"ha_mode,omitempty"`
 
+	// (Attributes) Location of site in latitude and longitude. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Location *LocationParameters `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) The name of the site.
 	// The name of the site.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Magic Connector identifier tag. Used when high availability mode is on.
 	// Magic Connector identifier tag. Used when high availability mode is on.
 	// +kubebuilder:validation:Optional
 	SecondaryConnectorID *string `json:"secondaryConnectorId,omitempty" tf:"secondary_connector_id,omitempty"`
@@ -144,7 +172,7 @@ type TransitSiteStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TransitSite is the Schema for the TransitSites API. <no value>
+// TransitSite is the Schema for the TransitSites API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

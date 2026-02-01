@@ -15,6 +15,7 @@ import (
 
 type ShieldSchemaValidationSettingsInitParameters struct {
 
+	// (String) The default mitigation action used when there is no mitigation action defined on the operation
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	//
 	// Mitigation actions are as follows:
@@ -26,6 +27,7 @@ type ShieldSchemaValidationSettingsInitParameters struct {
 	// Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction *string `json:"validationDefaultMitigationAction,omitempty" tf:"validation_default_mitigation_action,omitempty"`
 
+	// (String) When set, this overrides both zone level and operation level mitigation actions.
 	// When set, this overrides both zone level and operation level mitigation actions.
 	//
 	// - `none` will skip running schema validation entirely for the request
@@ -35,13 +37,17 @@ type ShieldSchemaValidationSettingsInitParameters struct {
 	// Available values: "none", "disable_override".
 	ValidationOverrideMitigationAction *string `json:"validationOverrideMitigationAction,omitempty" tf:"validation_override_mitigation_action,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldSchemaValidationSettingsObservation struct {
+
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The default mitigation action used when there is no mitigation action defined on the operation
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	//
 	// Mitigation actions are as follows:
@@ -53,6 +59,7 @@ type ShieldSchemaValidationSettingsObservation struct {
 	// Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction *string `json:"validationDefaultMitigationAction,omitempty" tf:"validation_default_mitigation_action,omitempty"`
 
+	// (String) When set, this overrides both zone level and operation level mitigation actions.
 	// When set, this overrides both zone level and operation level mitigation actions.
 	//
 	// - `none` will skip running schema validation entirely for the request
@@ -62,12 +69,14 @@ type ShieldSchemaValidationSettingsObservation struct {
 	// Available values: "none", "disable_override".
 	ValidationOverrideMitigationAction *string `json:"validationOverrideMitigationAction,omitempty" tf:"validation_override_mitigation_action,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldSchemaValidationSettingsParameters struct {
 
+	// (String) The default mitigation action used when there is no mitigation action defined on the operation
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	//
 	// Mitigation actions are as follows:
@@ -80,6 +89,7 @@ type ShieldSchemaValidationSettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	ValidationDefaultMitigationAction *string `json:"validationDefaultMitigationAction,omitempty" tf:"validation_default_mitigation_action,omitempty"`
 
+	// (String) When set, this overrides both zone level and operation level mitigation actions.
 	// When set, this overrides both zone level and operation level mitigation actions.
 	//
 	// - `none` will skip running schema validation entirely for the request
@@ -90,6 +100,7 @@ type ShieldSchemaValidationSettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	ValidationOverrideMitigationAction *string `json:"validationOverrideMitigationAction,omitempty" tf:"validation_override_mitigation_action,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -122,7 +133,7 @@ type ShieldSchemaValidationSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ShieldSchemaValidationSettings is the Schema for the ShieldSchemaValidationSettingss API. <no value>
+// ShieldSchemaValidationSettings is the Schema for the ShieldSchemaValidationSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

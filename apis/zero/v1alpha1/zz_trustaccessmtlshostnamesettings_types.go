@@ -15,38 +15,47 @@ import (
 
 type SettingsInitParameters struct {
 
+	// (Boolean) Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	ChinaNetwork *bool `json:"chinaNetwork,omitempty" tf:"china_network,omitempty"`
 
+	// (Boolean) Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	ClientCertificateForwarding *bool `json:"clientCertificateForwarding,omitempty" tf:"client_certificate_forwarding,omitempty"`
 
+	// (String) The hostname that these settings apply to.
 	// The hostname that these settings apply to.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 }
 
 type SettingsObservation struct {
 
+	// (Boolean) Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	ChinaNetwork *bool `json:"chinaNetwork,omitempty" tf:"china_network,omitempty"`
 
+	// (Boolean) Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	ClientCertificateForwarding *bool `json:"clientCertificateForwarding,omitempty" tf:"client_certificate_forwarding,omitempty"`
 
+	// (String) The hostname that these settings apply to.
 	// The hostname that these settings apply to.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 }
 
 type SettingsParameters struct {
 
+	// (Boolean) Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	// +kubebuilder:validation:Optional
 	ChinaNetwork *bool `json:"chinaNetwork" tf:"china_network,omitempty"`
 
+	// (Boolean) Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	// +kubebuilder:validation:Optional
 	ClientCertificateForwarding *bool `json:"clientCertificateForwarding" tf:"client_certificate_forwarding,omitempty"`
 
+	// (String) The hostname that these settings apply to.
 	// The hostname that these settings apply to.
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname" tf:"hostname,omitempty"`
@@ -54,46 +63,58 @@ type SettingsParameters struct {
 
 type TrustAccessMtlsHostnameSettingsInitParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Settings []SettingsInitParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustAccessMtlsHostnameSettingsObservation struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	ChinaNetwork *bool `json:"chinaNetwork,omitempty" tf:"china_network,omitempty"`
 
+	// (Boolean) Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
 	ClientCertificateForwarding *bool `json:"clientCertificateForwarding,omitempty" tf:"client_certificate_forwarding,omitempty"`
 
+	// (String) The hostname that these settings apply to.
 	// The hostname that these settings apply to.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Settings []SettingsObservation `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustAccessMtlsHostnameSettingsParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Settings []SettingsParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -126,7 +147,7 @@ type TrustAccessMtlsHostnameSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessMtlsHostnameSettings is the Schema for the TrustAccessMtlsHostnameSettingss API. <no value>
+// TrustAccessMtlsHostnameSettings is the Schema for the TrustAccessMtlsHostnameSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

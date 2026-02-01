@@ -15,12 +15,15 @@ import (
 
 type DNSSettingsInternalViewInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the view.
 	// The name of the view.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) The list of zones linked to this view.
 	// The list of zones linked to this view.
 	// +listType=set
 	Zones []*string `json:"zones,omitempty" tf:"zones,omitempty"`
@@ -28,20 +31,26 @@ type DNSSettingsInternalViewInitParameters struct {
 
 type DNSSettingsInternalViewObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) When the view was created.
 	// When the view was created.
 	CreatedTime *string `json:"createdTime,omitempty" tf:"created_time,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) When the view was last modified.
 	// When the view was last modified.
 	ModifiedTime *string `json:"modifiedTime,omitempty" tf:"modified_time,omitempty"`
 
+	// (String) The name of the view.
 	// The name of the view.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) The list of zones linked to this view.
 	// The list of zones linked to this view.
 	// +listType=set
 	Zones []*string `json:"zones,omitempty" tf:"zones,omitempty"`
@@ -49,14 +58,17 @@ type DNSSettingsInternalViewObservation struct {
 
 type DNSSettingsInternalViewParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the view.
 	// The name of the view.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) The list of zones linked to this view.
 	// The list of zones linked to this view.
 	// +kubebuilder:validation:Optional
 	// +listType=set
@@ -90,7 +102,7 @@ type DNSSettingsInternalViewStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// DNSSettingsInternalView is the Schema for the DNSSettingsInternalViews API. <no value>
+// DNSSettingsInternalView is the Schema for the DNSSettingsInternalViews API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

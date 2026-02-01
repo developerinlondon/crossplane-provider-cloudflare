@@ -15,56 +15,73 @@ import (
 
 type CronTriggerInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Schedules []SchedulesInitParameters `json:"schedules,omitempty" tf:"schedules,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 }
 
 type CronTriggerObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Schedules []SchedulesObservation `json:"schedules,omitempty" tf:"schedules,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 }
 
 type CronTriggerParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Schedules []SchedulesParameters `json:"schedules,omitempty" tf:"schedules,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	// +kubebuilder:validation:Optional
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 }
 
 type SchedulesInitParameters struct {
+
+	// (String)
 	Cron *string `json:"cron,omitempty" tf:"cron,omitempty"`
 }
 
 type SchedulesObservation struct {
+
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String)
 	Cron *string `json:"cron,omitempty" tf:"cron,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 }
 
 type SchedulesParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Cron *string `json:"cron" tf:"cron,omitempty"`
 }
@@ -96,7 +113,7 @@ type CronTriggerStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CronTrigger is the Schema for the CronTriggers API. <no value>
+// CronTrigger is the Schema for the CronTriggers API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

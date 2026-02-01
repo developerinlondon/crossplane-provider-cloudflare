@@ -15,28 +15,34 @@ import (
 
 type DNSInitParameters struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type DNSObservation struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type DNSParameters struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	// +kubebuilder:validation:Optional
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	// +kubebuilder:validation:Optional
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
@@ -44,28 +50,34 @@ type DNSParameters struct {
 
 type HTTPInitParameters struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type HTTPObservation struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type HTTPParameters struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	// +kubebuilder:validation:Optional
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	// +kubebuilder:validation:Optional
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
@@ -73,90 +85,118 @@ type HTTPParameters struct {
 
 type L4InitParameters struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type L4Observation struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type L4Parameters struct {
 
+	// (Boolean) Specify whether to log all requests to this service.
 	// Specify whether to log all requests to this service.
 	// +kubebuilder:validation:Optional
 	LogAll *bool `json:"logAll,omitempty" tf:"log_all,omitempty"`
 
+	// (Boolean) Specify whether to log only blocking requests to this service.
 	// Specify whether to log only blocking requests to this service.
 	// +kubebuilder:validation:Optional
 	LogBlocks *bool `json:"logBlocks,omitempty" tf:"log_blocks,omitempty"`
 }
 
 type SettingsByRuleTypeInitParameters struct {
+
+	// (Attributes) Configure logging settings for DNS firewall. (see below for nested schema)
 	DNS *DNSInitParameters `json:"dns,omitempty" tf:"dns,omitempty"`
 
+	// (Attributes) Configure logging settings for HTTP/HTTPS firewall. (see below for nested schema)
 	HTTP *HTTPInitParameters `json:"http,omitempty" tf:"http,omitempty"`
 
+	// (Attributes) Configure logging settings for Network firewall. (see below for nested schema)
 	L4 *L4InitParameters `json:"l4,omitempty" tf:"l4,omitempty"`
 }
 
 type SettingsByRuleTypeObservation struct {
+
+	// (Attributes) Configure logging settings for DNS firewall. (see below for nested schema)
 	DNS *DNSObservation `json:"dns,omitempty" tf:"dns,omitempty"`
 
+	// (Attributes) Configure logging settings for HTTP/HTTPS firewall. (see below for nested schema)
 	HTTP *HTTPObservation `json:"http,omitempty" tf:"http,omitempty"`
 
+	// (Attributes) Configure logging settings for Network firewall. (see below for nested schema)
 	L4 *L4Observation `json:"l4,omitempty" tf:"l4,omitempty"`
 }
 
 type SettingsByRuleTypeParameters struct {
 
+	// (Attributes) Configure logging settings for DNS firewall. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DNS *DNSParameters `json:"dns,omitempty" tf:"dns,omitempty"`
 
+	// (Attributes) Configure logging settings for HTTP/HTTPS firewall. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	HTTP *HTTPParameters `json:"http,omitempty" tf:"http,omitempty"`
 
+	// (Attributes) Configure logging settings for Network firewall. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	L4 *L4Parameters `json:"l4,omitempty" tf:"l4,omitempty"`
 }
 
 type TrustGatewayLoggingInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii *bool `json:"redactPii,omitempty" tf:"redact_pii,omitempty"`
 
+	// (Attributes) Configure logging settings for each rule type. (see below for nested schema)
 	SettingsByRuleType *SettingsByRuleTypeInitParameters `json:"settingsByRuleType,omitempty" tf:"settings_by_rule_type,omitempty"`
 }
 
 type TrustGatewayLoggingObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii *bool `json:"redactPii,omitempty" tf:"redact_pii,omitempty"`
 
+	// (Attributes) Configure logging settings for each rule type. (see below for nested schema)
 	SettingsByRuleType *SettingsByRuleTypeObservation `json:"settingsByRuleType,omitempty" tf:"settings_by_rule_type,omitempty"`
 }
 
 type TrustGatewayLoggingParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	// +kubebuilder:validation:Optional
 	RedactPii *bool `json:"redactPii,omitempty" tf:"redact_pii,omitempty"`
 
+	// (Attributes) Configure logging settings for each rule type. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SettingsByRuleType *SettingsByRuleTypeParameters `json:"settingsByRuleType,omitempty" tf:"settings_by_rule_type,omitempty"`
 }
@@ -188,7 +228,7 @@ type TrustGatewayLoggingStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustGatewayLogging is the Schema for the TrustGatewayLoggings API. <no value>
+// TrustGatewayLogging is the Schema for the TrustGatewayLoggings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

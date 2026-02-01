@@ -15,101 +15,131 @@ import (
 
 type IPPrefixInitParameters struct {
 
+	// (String) Identifier of a Cloudflare account.
 	// Identifier of a Cloudflare account.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Autonomous System Number (ASN) the prefix will be advertised under.
 	// Autonomous System Number (ASN) the prefix will be advertised under.
 	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
+	// Domain Routing format.
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr *string `json:"cidr,omitempty" tf:"cidr,omitempty"`
 
+	// (Boolean) Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 	DelegateLoaCreation *bool `json:"delegateLoaCreation,omitempty" tf:"delegate_loa_creation,omitempty"`
 
+	// (String) Description of the prefix.
 	// Description of the prefix.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Identifier for the uploaded LOA document.
 	// Identifier for the uploaded LOA document.
 	LoaDocumentID *string `json:"loaDocumentId,omitempty" tf:"loa_document_id,omitempty"`
 }
 
 type IPPrefixObservation struct {
 
+	// (String) Identifier of a Cloudflare account.
 	// Identifier of a Cloudflare account.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean, Deprecated) Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
 	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
 	Advertised *bool `json:"advertised,omitempty" tf:"advertised,omitempty"`
 
+	// (String, Deprecated) Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
 	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
 	AdvertisedModifiedAt *string `json:"advertisedModifiedAt,omitempty" tf:"advertised_modified_at,omitempty"`
 
+	// (String) Approval state of the prefix (P = pending, V = active).
 	// Approval state of the prefix (P = pending, V = active).
 	Approved *string `json:"approved,omitempty" tf:"approved,omitempty"`
 
+	// (Number) Autonomous System Number (ASN) the prefix will be advertised under.
 	// Autonomous System Number (ASN) the prefix will be advertised under.
 	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
+	// Domain Routing format.
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr *string `json:"cidr,omitempty" tf:"cidr,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Boolean) Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 	DelegateLoaCreation *bool `json:"delegateLoaCreation,omitempty" tf:"delegate_loa_creation,omitempty"`
 
+	// (String) Description of the prefix.
 	// Description of the prefix.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Identifier of an IP Prefix.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) State of one kind of validation for an IP prefix.
 	// State of one kind of validation for an IP prefix.
 	IrrValidationState *string `json:"irrValidationState,omitempty" tf:"irr_validation_state,omitempty"`
 
+	// (String) Identifier for the uploaded LOA document.
 	// Identifier for the uploaded LOA document.
 	LoaDocumentID *string `json:"loaDocumentId,omitempty" tf:"loa_document_id,omitempty"`
 
+	// (String)
 	ModifiedAt *string `json:"modifiedAt,omitempty" tf:"modified_at,omitempty"`
 
+	// (Boolean, Deprecated) Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
 	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
 	OnDemandEnabled *bool `json:"onDemandEnabled,omitempty" tf:"on_demand_enabled,omitempty"`
 
+	// (Boolean, Deprecated) Whether advertisement status of the prefix is locked, meaning it cannot be changed.
 	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
 	OnDemandLocked *bool `json:"onDemandLocked,omitempty" tf:"on_demand_locked,omitempty"`
 
+	// (String) State of one kind of validation for an IP prefix.
 	// State of one kind of validation for an IP prefix.
 	OwnershipValidationState *string `json:"ownershipValidationState,omitempty" tf:"ownership_validation_state,omitempty"`
 
+	// (String) Token provided to demonstrate ownership of the prefix.
 	// Token provided to demonstrate ownership of the prefix.
 	OwnershipValidationToken *string `json:"ownershipValidationToken,omitempty" tf:"ownership_validation_token,omitempty"`
 
+	// (String) State of one kind of validation for an IP prefix.
 	// State of one kind of validation for an IP prefix.
 	RpkiValidationState *string `json:"rpkiValidationState,omitempty" tf:"rpki_validation_state,omitempty"`
 }
 
 type IPPrefixParameters struct {
 
+	// (String) Identifier of a Cloudflare account.
 	// Identifier of a Cloudflare account.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Autonomous System Number (ASN) the prefix will be advertised under.
 	// Autonomous System Number (ASN) the prefix will be advertised under.
 	// +kubebuilder:validation:Optional
 	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
+	// Domain Routing format.
 	// IP Prefix in Classless Inter-Domain Routing format.
 	// +kubebuilder:validation:Optional
 	Cidr *string `json:"cidr,omitempty" tf:"cidr,omitempty"`
 
+	// (Boolean) Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 	// +kubebuilder:validation:Optional
 	DelegateLoaCreation *bool `json:"delegateLoaCreation,omitempty" tf:"delegate_loa_creation,omitempty"`
 
+	// (String) Description of the prefix.
 	// Description of the prefix.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Identifier for the uploaded LOA document.
 	// Identifier for the uploaded LOA document.
 	// +kubebuilder:validation:Optional
 	LoaDocumentID *string `json:"loaDocumentId,omitempty" tf:"loa_document_id,omitempty"`
@@ -142,7 +172,7 @@ type IPPrefixStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// IPPrefix is the Schema for the IPPrefixs API. <no value>
+// IPPrefix is the Schema for the IPPrefixs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

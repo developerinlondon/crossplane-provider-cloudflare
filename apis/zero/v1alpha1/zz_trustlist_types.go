@@ -15,90 +15,120 @@ import (
 
 type ItemsInitParameters struct {
 
+	// (String) Provide the list description.
 	// Provide the list item description (optional).
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Specify the item value.
 	// Specify the item value.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ItemsObservation struct {
 
+	// (String) Provide the list description.
 	// Provide the list item description (optional).
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Specify the item value.
 	// Specify the item value.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ItemsParameters struct {
 
+	// (String) Provide the list description.
 	// Provide the list item description (optional).
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Specify the item value.
 	// Specify the item value.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type TrustListInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Provide the list description.
 	// Provide the list description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes Set) Add items to the list. (see below for nested schema)
 	Items []ItemsInitParameters `json:"items,omitempty" tf:"items,omitempty"`
 
+	// (String) Specify the list name.
 	// Specify the list name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the list type.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type TrustListObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Provide the list description.
 	// Provide the list description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Identify the API resource with a UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes Set) Add items to the list. (see below for nested schema)
 	Items []ItemsObservation `json:"items,omitempty" tf:"items,omitempty"`
 
+	// (Number) Indicate the number of items in the list.
 	// Indicate the number of items in the list.
 	ListCount *float64 `json:"listCount,omitempty" tf:"list_count,omitempty"`
 
+	// (String) Specify the list name.
 	// Specify the list name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the list type.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String)
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
 type TrustListParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Provide the list description.
 	// Provide the list description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes Set) Add items to the list. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Items []ItemsParameters `json:"items,omitempty" tf:"items,omitempty"`
 
+	// (String) Specify the list name.
 	// Specify the list name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the list type.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	// +kubebuilder:validation:Optional
@@ -132,7 +162,7 @@ type TrustListStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustList is the Schema for the TrustLists API. <no value>
+// TrustList is the Schema for the TrustLists API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

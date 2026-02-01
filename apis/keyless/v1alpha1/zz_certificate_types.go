@@ -15,103 +15,136 @@ import (
 
 type CertificateInitParameters struct {
 
+	// (String) A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) The zone's SSL certificate or SSL certificate and intermediate(s).
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Boolean, Deprecated) Whether or not the Keyless SSL is on or off.
 	// Whether or not the Keyless SSL is on or off.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Attributes) Configuration for using Keyless SSL through a Cloudflare Tunnel (see below for nested schema)
 	Tunnel *TunnelInitParameters `json:"tunnel,omitempty" tf:"tunnel,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CertificateObservation struct {
 
+	// (String) A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) The zone's SSL certificate or SSL certificate and intermediate(s).
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) When the Keyless SSL was created.
 	// When the Keyless SSL was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (Boolean, Deprecated) Whether or not the Keyless SSL is on or off.
 	// Whether or not the Keyless SSL is on or off.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) Keyless certificate identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) When the Keyless SSL was last modified.
 	// When the Keyless SSL was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) Available permissions for the Keyless SSL for the current user requesting the item.
 	// Available permissions for the Keyless SSL for the current user requesting the item.
 	Permissions []*string `json:"permissions,omitempty" tf:"permissions,omitempty"`
 
+	// (Number) The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	// Status of the Keyless SSL.
 	// Available values: "active", "deleted".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Attributes) Configuration for using Keyless SSL through a Cloudflare Tunnel (see below for nested schema)
 	Tunnel *TunnelObservation `json:"tunnel,omitempty" tf:"tunnel,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CertificateParameters struct {
 
+	// (String) A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	// +kubebuilder:validation:Optional
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) The zone's SSL certificate or SSL certificate and intermediate(s).
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (Boolean, Deprecated) Whether or not the Keyless SSL is on or off.
 	// Whether or not the Keyless SSL is on or off.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The keyless SSL name.
 	// The keyless SSL name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Attributes) Configuration for using Keyless SSL through a Cloudflare Tunnel (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Tunnel *TunnelParameters `json:"tunnel,omitempty" tf:"tunnel,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -119,28 +152,34 @@ type CertificateParameters struct {
 
 type TunnelInitParameters struct {
 
+	// (String) Private IP of the Key Server Host
 	// Private IP of the Key Server Host
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
+	// (String) Cloudflare Tunnel Virtual Network ID
 	// Cloudflare Tunnel Virtual Network ID
 	VnetID *string `json:"vnetId,omitempty" tf:"vnet_id,omitempty"`
 }
 
 type TunnelObservation struct {
 
+	// (String) Private IP of the Key Server Host
 	// Private IP of the Key Server Host
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
+	// (String) Cloudflare Tunnel Virtual Network ID
 	// Cloudflare Tunnel Virtual Network ID
 	VnetID *string `json:"vnetId,omitempty" tf:"vnet_id,omitempty"`
 }
 
 type TunnelParameters struct {
 
+	// (String) Private IP of the Key Server Host
 	// Private IP of the Key Server Host
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp" tf:"private_ip,omitempty"`
 
+	// (String) Cloudflare Tunnel Virtual Network ID
 	// Cloudflare Tunnel Virtual Network ID
 	// +kubebuilder:validation:Optional
 	VnetID *string `json:"vnetId" tf:"vnet_id,omitempty"`
@@ -173,7 +212,7 @@ type CertificateStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Certificate is the Schema for the Certificates API. <no value>
+// Certificate is the Schema for the Certificates API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

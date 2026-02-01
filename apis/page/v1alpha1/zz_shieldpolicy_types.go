@@ -15,73 +15,95 @@ import (
 
 type ShieldPolicyInitParameters struct {
 
+	// (String) The action to take if the expression matches
+	// Available values: "allow", "log".
 	// The action to take if the expression matches
 	// Available values: "allow", "log".
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// (String) A description for the policy
 	// A description for the policy
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether the policy is enabled
 	// Whether the policy is enabled
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
 	// The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) The policy which will be applied
 	// The policy which will be applied
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldPolicyObservation struct {
 
+	// (String) The action to take if the expression matches
+	// Available values: "allow", "log".
 	// The action to take if the expression matches
 	// Available values: "allow", "log".
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// (String) A description for the policy
 	// A description for the policy
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether the policy is enabled
 	// Whether the policy is enabled
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
 	// The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The policy which will be applied
 	// The policy which will be applied
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldPolicyParameters struct {
 
+	// (String) The action to take if the expression matches
+	// Available values: "allow", "log".
 	// The action to take if the expression matches
 	// Available values: "allow", "log".
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// (String) A description for the policy
 	// A description for the policy
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether the policy is enabled
 	// Whether the policy is enabled
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
 	// The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) The policy which will be applied
 	// The policy which will be applied
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -114,7 +136,7 @@ type ShieldPolicyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ShieldPolicy is the Schema for the ShieldPolicys API. <no value>
+// ShieldPolicy is the Schema for the ShieldPolicys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

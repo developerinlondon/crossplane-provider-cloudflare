@@ -15,39 +15,50 @@ import (
 
 type CredentialCheckRuleInitParameters struct {
 
+	// (String) Defines ehe ruleset expression to use in matching the password in a request.
 	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password *string `json:"password,omitempty" tf:"password,omitempty"`
 
+	// (String) Defines the ruleset expression to use in matching the username in a request.
 	// Defines the ruleset expression to use in matching the username in a request.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CredentialCheckRuleObservation struct {
+
+	// (String) Defines the unique ID for this custom detection.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Defines ehe ruleset expression to use in matching the password in a request.
 	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password *string `json:"password,omitempty" tf:"password,omitempty"`
 
+	// (String) Defines the ruleset expression to use in matching the username in a request.
 	// Defines the ruleset expression to use in matching the username in a request.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CredentialCheckRuleParameters struct {
 
+	// (String) Defines ehe ruleset expression to use in matching the password in a request.
 	// Defines ehe ruleset expression to use in matching the password in a request.
 	// +kubebuilder:validation:Optional
 	Password *string `json:"password,omitempty" tf:"password,omitempty"`
 
+	// (String) Defines the ruleset expression to use in matching the username in a request.
 	// Defines the ruleset expression to use in matching the username in a request.
 	// +kubebuilder:validation:Optional
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -80,7 +91,7 @@ type CredentialCheckRuleStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CredentialCheckRule is the Schema for the CredentialCheckRules API. <no value>
+// CredentialCheckRule is the Schema for the CredentialCheckRules API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

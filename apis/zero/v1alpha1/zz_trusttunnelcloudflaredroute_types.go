@@ -15,66 +15,84 @@ import (
 
 type TrustTunnelCloudflaredRouteInitParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Optional remark describing the route.
 	// Optional remark describing the route.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network *string `json:"network,omitempty" tf:"network,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the tunnel.
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 
+	// (String) UUID of the virtual network.
 	// UUID of the virtual network.
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type TrustTunnelCloudflaredRouteObservation struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Optional remark describing the route.
 	// Optional remark describing the route.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) Timestamp of when the resource was created.
 	// Timestamp of when the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Timestamp of when the resource was deleted. If null, the resource has not been deleted.
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt *string `json:"deletedAt,omitempty" tf:"deleted_at,omitempty"`
 
+	// (String) UUID of the route.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network *string `json:"network,omitempty" tf:"network,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the tunnel.
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 
+	// (String) UUID of the virtual network.
 	// UUID of the virtual network.
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
 }
 
 type TrustTunnelCloudflaredRouteParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Optional remark describing the route.
 	// Optional remark describing the route.
 	// +kubebuilder:validation:Optional
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	// +kubebuilder:validation:Optional
 	Network *string `json:"network,omitempty" tf:"network,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the tunnel.
 	// +kubebuilder:validation:Optional
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 
+	// (String) UUID of the virtual network.
 	// UUID of the virtual network.
 	// +kubebuilder:validation:Optional
 	VirtualNetworkID *string `json:"virtualNetworkId,omitempty" tf:"virtual_network_id,omitempty"`
@@ -107,7 +125,7 @@ type TrustTunnelCloudflaredRouteStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustTunnelCloudflaredRoute is the Schema for the TrustTunnelCloudflaredRoutes API. <no value>
+// TrustTunnelCloudflaredRoute is the Schema for the TrustTunnelCloudflaredRoutes API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

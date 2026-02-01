@@ -15,62 +15,80 @@ import (
 
 type TrustDeviceDefaultProfileLocalDomainFallbackDomainsInitParameters struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the fallback domain, displayed in the client UI.
 	// A description of the fallback domain, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
 
 type TrustDeviceDefaultProfileLocalDomainFallbackDomainsObservation struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the fallback domain, displayed in the client UI.
 	// A description of the fallback domain, displayed in the client UI.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
 
 type TrustDeviceDefaultProfileLocalDomainFallbackDomainsParameters struct {
 
+	// (List of String) A list of IP addresses to handle domain resolution.
 	// A list of IP addresses to handle domain resolution.
 	// +kubebuilder:validation:Optional
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (String) A description of the fallback domain, displayed in the client UI.
 	// A description of the fallback domain, displayed in the client UI.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The domain suffix to match when resolving locally.
 	// The domain suffix to match when resolving locally.
 	// +kubebuilder:validation:Optional
 	Suffix *string `json:"suffix" tf:"suffix,omitempty"`
 }
 
 type TrustDeviceDefaultProfileLocalDomainFallbackInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Domains []TrustDeviceDefaultProfileLocalDomainFallbackDomainsInitParameters `json:"domains,omitempty" tf:"domains,omitempty"`
 }
 
 type TrustDeviceDefaultProfileLocalDomainFallbackObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Domains []TrustDeviceDefaultProfileLocalDomainFallbackDomainsObservation `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TrustDeviceDefaultProfileLocalDomainFallbackParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Domains []TrustDeviceDefaultProfileLocalDomainFallbackDomainsParameters `json:"domains,omitempty" tf:"domains,omitempty"`
 }
@@ -102,7 +120,7 @@ type TrustDeviceDefaultProfileLocalDomainFallbackStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDeviceDefaultProfileLocalDomainFallback is the Schema for the TrustDeviceDefaultProfileLocalDomainFallbacks API. <no value>
+// TrustDeviceDefaultProfileLocalDomainFallback is the Schema for the TrustDeviceDefaultProfileLocalDomainFallbacks API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

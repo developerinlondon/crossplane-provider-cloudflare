@@ -14,52 +14,72 @@ import (
 )
 
 type ProfileInitParameters struct {
+
+	// (String)
 	BusinessAddress *string `json:"businessAddress,omitempty" tf:"business_address,omitempty"`
 
+	// (String)
 	BusinessEmail *string `json:"businessEmail,omitempty" tf:"business_email,omitempty"`
 
+	// (String)
 	BusinessName *string `json:"businessName,omitempty" tf:"business_name,omitempty"`
 
+	// (String)
 	BusinessPhone *string `json:"businessPhone,omitempty" tf:"business_phone,omitempty"`
 
+	// (String)
 	ExternalMetadata *string `json:"externalMetadata,omitempty" tf:"external_metadata,omitempty"`
 
+	// (String)
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
 }
 
 type ProfileObservation struct {
+
+	// (String)
 	BusinessAddress *string `json:"businessAddress,omitempty" tf:"business_address,omitempty"`
 
+	// (String)
 	BusinessEmail *string `json:"businessEmail,omitempty" tf:"business_email,omitempty"`
 
+	// (String)
 	BusinessName *string `json:"businessName,omitempty" tf:"business_name,omitempty"`
 
+	// (String)
 	BusinessPhone *string `json:"businessPhone,omitempty" tf:"business_phone,omitempty"`
 
+	// (String)
 	ExternalMetadata *string `json:"externalMetadata,omitempty" tf:"external_metadata,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
 }
 
 type ProfileParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessAddress *string `json:"businessAddress,omitempty" tf:"business_address,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessEmail *string `json:"businessEmail,omitempty" tf:"business_email,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessName *string `json:"businessName,omitempty" tf:"business_name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	BusinessPhone *string `json:"businessPhone,omitempty" tf:"business_phone,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ExternalMetadata *string `json:"externalMetadata,omitempty" tf:"external_metadata,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
 }
@@ -91,7 +111,7 @@ type ProfileStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Profile is the Schema for the Profiles API. <no value>
+// Profile is the Schema for the Profiles API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

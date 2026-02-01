@@ -15,38 +15,47 @@ import (
 
 type AllowedInitParameters struct {
 
+	// Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
 	// Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
 	// Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
 	Methods []*string `json:"methods,omitempty" tf:"methods,omitempty"`
 
+	// Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
 	// Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
 	Origins []*string `json:"origins,omitempty" tf:"origins,omitempty"`
 }
 
 type AllowedObservation struct {
 
+	// Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
 	// Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
 	// Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
 	Methods []*string `json:"methods,omitempty" tf:"methods,omitempty"`
 
+	// Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
 	// Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
 	Origins []*string `json:"origins,omitempty" tf:"origins,omitempty"`
 }
 
 type AllowedParameters struct {
 
+	// Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
 	// Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
 	// +kubebuilder:validation:Optional
 	Headers []*string `json:"headers,omitempty" tf:"headers,omitempty"`
 
+	// Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
 	// Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
 	// +kubebuilder:validation:Optional
 	Methods []*string `json:"methods" tf:"methods,omitempty"`
 
+	// Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
 	// Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
 	// +kubebuilder:validation:Optional
 	Origins []*string `json:"origins" tf:"origins,omitempty"`
@@ -54,91 +63,118 @@ type AllowedParameters struct {
 
 type BucketCorsInitParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketCorsObservation struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Identifier for this rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketCorsParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	// +kubebuilder:validation:Optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []RulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type RulesInitParameters struct {
+
+	// (Attributes) Object specifying allowed origins, methods and headers for this CORS rule. (see below for nested schema)
 	Allowed *AllowedInitParameters `json:"allowed,omitempty" tf:"allowed,omitempty"`
 
+	// origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	ExposeHeaders []*string `json:"exposeHeaders,omitempty" tf:"expose_headers,omitempty"`
 
+	// (String) Identifier for this rule.
 	// Identifier for this rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 }
 
 type RulesObservation struct {
+
+	// (Attributes) Object specifying allowed origins, methods and headers for this CORS rule. (see below for nested schema)
 	Allowed *AllowedObservation `json:"allowed,omitempty" tf:"allowed,omitempty"`
 
+	// origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	ExposeHeaders []*string `json:"exposeHeaders,omitempty" tf:"expose_headers,omitempty"`
 
+	// (String) Identifier for this rule.
 	// Identifier for this rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 }
 
 type RulesParameters struct {
 
+	// (Attributes) Object specifying allowed origins, methods and headers for this CORS rule. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Allowed *AllowedParameters `json:"allowed" tf:"allowed,omitempty"`
 
+	// origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	// +kubebuilder:validation:Optional
 	ExposeHeaders []*string `json:"exposeHeaders,omitempty" tf:"expose_headers,omitempty"`
 
+	// (String) Identifier for this rule.
 	// Identifier for this rule.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	// +kubebuilder:validation:Optional
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
@@ -171,7 +207,7 @@ type BucketCorsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// BucketCors is the Schema for the BucketCorss API. <no value>
+// BucketCors is the Schema for the BucketCorss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

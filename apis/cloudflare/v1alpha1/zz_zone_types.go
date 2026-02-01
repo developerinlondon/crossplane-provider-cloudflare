@@ -18,12 +18,16 @@ type OwnerInitParameters struct {
 
 type OwnerObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The domain name.
 	// Name of the owner.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary", "internal".
 	// The type of owner.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -36,33 +40,43 @@ type PlanInitParameters struct {
 
 type PlanObservation struct {
 
+	// (Boolean) States if the subscription can be activated.
 	// States if the subscription can be activated.
 	CanSubscribe *bool `json:"canSubscribe,omitempty" tf:"can_subscribe,omitempty"`
 
+	// (String) The denomination of the customer.
 	// The denomination of the customer.
 	Currency *string `json:"currency,omitempty" tf:"currency,omitempty"`
 
+	// (Boolean) If this Zone is managed by another company.
 	// If this Zone is managed by another company.
 	ExternallyManaged *bool `json:"externallyManaged,omitempty" tf:"externally_managed,omitempty"`
 
+	// (String) How often the customer is billed.
 	// How often the customer is billed.
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) States if the subscription active.
 	// States if the subscription active.
 	IsSubscribed *bool `json:"isSubscribed,omitempty" tf:"is_subscribed,omitempty"`
 
+	// (Boolean) If the legacy discount applies to this Zone.
 	// If the legacy discount applies to this Zone.
 	LegacyDiscount *bool `json:"legacyDiscount,omitempty" tf:"legacy_discount,omitempty"`
 
+	// (String) The legacy name of the plan.
 	// The legacy name of the plan.
 	LegacyID *string `json:"legacyId,omitempty" tf:"legacy_id,omitempty"`
 
+	// (String) The domain name.
 	// Name of the owner.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) How much the customer is paying.
 	// How much the customer is paying.
 	Price *float64 `json:"price,omitempty" tf:"price,omitempty"`
 }
@@ -75,9 +89,11 @@ type TenantInitParameters struct {
 
 type TenantObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The domain name.
 	// The name of the Tenant account.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -90,6 +106,7 @@ type TenantUnitInitParameters struct {
 
 type TenantUnitObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
@@ -99,39 +116,52 @@ type TenantUnitParameters struct {
 
 type ZoneAccountInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ZoneAccountObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ZoneAccountParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ZoneInitParameters struct {
+
+	// (Attributes) (see below for nested schema)
 	Account *ZoneAccountInitParameters `json:"account,omitempty" tf:"account,omitempty"`
 
+	// (String) The domain name.
 	// The domain name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Indicates whether the zone is only using Cloudflare DNS services. A
+	// true value means the zone will not receive security or performance
+	// benefits.
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
 	// benefits.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary", "internal".
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
 	// Available values: "full", "partial", "secondary", "internal".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String) An array of domains used for custom name servers. This is only
+	// available for Business and Enterprise plans.
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers []*string `json:"vanityNameServers,omitempty" tf:"vanity_name_servers,omitempty"`
@@ -142,24 +172,31 @@ type ZoneMetaInitParameters struct {
 
 type ZoneMetaObservation struct {
 
+	// (Boolean) The zone is only configured for CDN.
 	// The zone is only configured for CDN.
 	CdnOnly *bool `json:"cdnOnly,omitempty" tf:"cdn_only,omitempty"`
 
+	// (Number) Number of Custom Certificates the zone can have.
 	// Number of Custom Certificates the zone can have.
 	CustomCertificateQuota *float64 `json:"customCertificateQuota,omitempty" tf:"custom_certificate_quota,omitempty"`
 
+	// (Boolean) The zone is only configured for DNS.
 	// The zone is only configured for DNS.
 	DNSOnly *bool `json:"dnsOnly,omitempty" tf:"dns_only,omitempty"`
 
+	// (Boolean) The zone is setup with Foundation DNS.
 	// The zone is setup with Foundation DNS.
 	FoundationDNS *bool `json:"foundationDns,omitempty" tf:"foundation_dns,omitempty"`
 
+	// (Number) Number of Page Rules a zone can have.
 	// Number of Page Rules a zone can have.
 	PageRuleQuota *float64 `json:"pageRuleQuota,omitempty" tf:"page_rule_quota,omitempty"`
 
+	// (Boolean) The zone has been flagged for phishing.
 	// The zone has been flagged for phishing.
 	PhishingDetected *bool `json:"phishingDetected,omitempty" tf:"phishing_detected,omitempty"`
 
+	// (Number)
 	Step *float64 `json:"step,omitempty" tf:"step,omitempty"`
 }
 
@@ -167,100 +204,142 @@ type ZoneMetaParameters struct {
 }
 
 type ZoneObservation struct {
+
+	// (Attributes) (see below for nested schema)
 	Account *ZoneAccountObservation `json:"account,omitempty" tf:"account,omitempty"`
 
+	// (String) The last time proof of ownership was detected and the zone was made
+	// active.
 	// The last time proof of ownership was detected and the zone was made
 	// active.
 	ActivatedOn *string `json:"activatedOn,omitempty" tf:"activated_on,omitempty"`
 
+	// (String) Allows the customer to use a custom apex.
+	// Tenants Only Configuration.
 	// Allows the customer to use a custom apex.
 	// *Tenants Only Configuration*.
 	CnameSuffix *string `json:"cnameSuffix,omitempty" tf:"cname_suffix,omitempty"`
 
+	// (String) When the zone was created.
 	// When the zone was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (Number) The interval (in seconds) from when development mode expires
+	// (positive integer) or last expired (negative integer) for the
+	// domain. If development mode has never been enabled, this value is 0.
 	// The interval (in seconds) from when development mode expires
 	// (positive integer) or last expired (negative integer) for the
 	// domain. If development mode has never been enabled, this value is 0.
 	DevelopmentMode *float64 `json:"developmentMode,omitempty" tf:"development_mode,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) Metadata about the zone. (see below for nested schema)
 	Meta *ZoneMetaObservation `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// (String) When the zone was last modified.
 	// When the zone was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The domain name.
 	// The domain name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) The name servers Cloudflare assigns to a zone.
 	// The name servers Cloudflare assigns to a zone.
 	NameServers []*string `json:"nameServers,omitempty" tf:"name_servers,omitempty"`
 
+	// (String) DNS host at the time of switching to Cloudflare.
 	// DNS host at the time of switching to Cloudflare.
 	OriginalDnshost *string `json:"originalDnshost,omitempty" tf:"original_dnshost,omitempty"`
 
+	// (List of String) Original name servers before moving to Cloudflare.
 	// Original name servers before moving to Cloudflare.
 	OriginalNameServers []*string `json:"originalNameServers,omitempty" tf:"original_name_servers,omitempty"`
 
+	// (String) Registrar for the domain at the time of switching to Cloudflare.
 	// Registrar for the domain at the time of switching to Cloudflare.
 	OriginalRegistrar *string `json:"originalRegistrar,omitempty" tf:"original_registrar,omitempty"`
 
+	// (Attributes) The owner of the zone. (see below for nested schema)
 	Owner *OwnerObservation `json:"owner,omitempty" tf:"owner,omitempty"`
 
+	// (Boolean) Indicates whether the zone is only using Cloudflare DNS services. A
+	// true value means the zone will not receive security or performance
+	// benefits.
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
 	// benefits.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (List of String, Deprecated) Legacy permissions based on legacy user membership information.
 	// Legacy permissions based on legacy user membership information.
 	Permissions []*string `json:"permissions,omitempty" tf:"permissions,omitempty"`
 
+	// (Attributes, Deprecated) A Zones subscription information. (see below for nested schema)
 	Plan *PlanObservation `json:"plan,omitempty" tf:"plan,omitempty"`
 
+	// (String) The zone status on Cloudflare.
+	// Available values: "initializing", "pending", "active", "moved".
 	// The zone status on Cloudflare.
 	// Available values: "initializing", "pending", "active", "moved".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Attributes) The root organizational unit that this zone belongs to (such as a tenant or organization). (see below for nested schema)
 	Tenant *TenantObservation `json:"tenant,omitempty" tf:"tenant,omitempty"`
 
+	// organization). (see below for nested schema)
 	TenantUnit *TenantUnitObservation `json:"tenantUnit,omitempty" tf:"tenant_unit,omitempty"`
 
+	// hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary", "internal".
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
 	// Available values: "full", "partial", "secondary", "internal".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String) An array of domains used for custom name servers. This is only
+	// available for Business and Enterprise plans.
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers []*string `json:"vanityNameServers,omitempty" tf:"vanity_name_servers,omitempty"`
 
+	// (String) Verification key for partial zone setup.
 	// Verification key for partial zone setup.
 	VerificationKey *string `json:"verificationKey,omitempty" tf:"verification_key,omitempty"`
 }
 
 type ZoneParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Account *ZoneAccountParameters `json:"account,omitempty" tf:"account,omitempty"`
 
+	// (String) The domain name.
 	// The domain name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Indicates whether the zone is only using Cloudflare DNS services. A
+	// true value means the zone will not receive security or performance
+	// benefits.
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
 	// benefits.
 	// +kubebuilder:validation:Optional
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary", "internal".
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
 	// Available values: "full", "partial", "secondary", "internal".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String) An array of domains used for custom name servers. This is only
+	// available for Business and Enterprise plans.
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	// +kubebuilder:validation:Optional
@@ -294,7 +373,7 @@ type ZoneStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Zone is the Schema for the Zones API. <no value>
+// Zone is the Schema for the Zones API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

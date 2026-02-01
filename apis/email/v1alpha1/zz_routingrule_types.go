@@ -15,139 +15,185 @@ import (
 
 type RoutingRuleActionsInitParameters struct {
 
+	// (String) Type of supported action.
+	// Available values: "drop", "forward", "worker".
 	// Type of supported action.
 	// Available values: "drop", "forward", "worker".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String)
 	Value []*string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RoutingRuleActionsObservation struct {
 
+	// (String) Type of supported action.
+	// Available values: "drop", "forward", "worker".
 	// Type of supported action.
 	// Available values: "drop", "forward", "worker".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String)
 	Value []*string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RoutingRuleActionsParameters struct {
 
+	// (String) Type of supported action.
+	// Available values: "drop", "forward", "worker".
 	// Type of supported action.
 	// Available values: "drop", "forward", "worker".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Value []*string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RoutingRuleInitParameters struct {
+
+	// (Attributes List) List actions patterns. (see below for nested schema)
 	Actions []RoutingRuleActionsInitParameters `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (Boolean) Routing rule status.
 	// Routing rule status.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes List) Matching patterns to forward to your actions. (see below for nested schema)
 	Matchers []RoutingRuleMatchersInitParameters `json:"matchers,omitempty" tf:"matchers,omitempty"`
 
+	// (String) Routing rule name.
 	// Routing rule name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Priority of the routing rule.
 	// Priority of the routing rule.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoutingRuleMatchersInitParameters struct {
 
+	// (String) Field for type matcher.
+	// Available values: "to".
 	// Field for type matcher.
 	// Available values: "to".
 	Field *string `json:"field,omitempty" tf:"field,omitempty"`
 
+	// (String) Type of supported action.
+	// Available values: "drop", "forward", "worker".
 	// Type of matcher.
 	// Available values: "all", "literal".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String)
 	// Value for matcher.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RoutingRuleMatchersObservation struct {
 
+	// (String) Field for type matcher.
+	// Available values: "to".
 	// Field for type matcher.
 	// Available values: "to".
 	Field *string `json:"field,omitempty" tf:"field,omitempty"`
 
+	// (String) Type of supported action.
+	// Available values: "drop", "forward", "worker".
 	// Type of matcher.
 	// Available values: "all", "literal".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String)
 	// Value for matcher.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RoutingRuleMatchersParameters struct {
 
+	// (String) Field for type matcher.
+	// Available values: "to".
 	// Field for type matcher.
 	// Available values: "to".
 	// +kubebuilder:validation:Optional
 	Field *string `json:"field,omitempty" tf:"field,omitempty"`
 
+	// (String) Type of supported action.
+	// Available values: "drop", "forward", "worker".
 	// Type of matcher.
 	// Available values: "all", "literal".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`
 
+	// (List of String)
 	// Value for matcher.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RoutingRuleObservation struct {
+
+	// (Attributes List) List actions patterns. (see below for nested schema)
 	Actions []RoutingRuleActionsObservation `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (Boolean) Routing rule status.
 	// Routing rule status.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Routing rule identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) Matching patterns to forward to your actions. (see below for nested schema)
 	Matchers []RoutingRuleMatchersObservation `json:"matchers,omitempty" tf:"matchers,omitempty"`
 
+	// (String) Routing rule name.
 	// Routing rule name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Priority of the routing rule.
 	// Priority of the routing rule.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String, Deprecated) Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoutingRuleParameters struct {
 
+	// (Attributes List) List actions patterns. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Actions []RoutingRuleActionsParameters `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (Boolean) Routing rule status.
 	// Routing rule status.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes List) Matching patterns to forward to your actions. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Matchers []RoutingRuleMatchersParameters `json:"matchers,omitempty" tf:"matchers,omitempty"`
 
+	// (String) Routing rule name.
 	// Routing rule name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Priority of the routing rule.
 	// Priority of the routing rule.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -180,7 +226,7 @@ type RoutingRuleStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// RoutingRule is the Schema for the RoutingRules API. <no value>
+// RoutingRule is the Schema for the RoutingRules API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

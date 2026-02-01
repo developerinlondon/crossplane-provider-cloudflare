@@ -15,18 +15,21 @@ import (
 
 type ExcludeInitParameters struct {
 
+	// (List of String) Excluded operation IDs.
 	// Excluded operation IDs.
 	OperationIds []*string `json:"operationIds,omitempty" tf:"operation_ids,omitempty"`
 }
 
 type ExcludeObservation struct {
 
+	// (List of String) Excluded operation IDs.
 	// Excluded operation IDs.
 	OperationIds []*string `json:"operationIds,omitempty" tf:"operation_ids,omitempty"`
 }
 
 type ExcludeParameters struct {
 
+	// (List of String) Excluded operation IDs.
 	// Excluded operation IDs.
 	// +kubebuilder:validation:Optional
 	OperationIds []*string `json:"operationIds,omitempty" tf:"operation_ids,omitempty"`
@@ -34,18 +37,21 @@ type ExcludeParameters struct {
 
 type IncludeInitParameters struct {
 
+	// (List of String) Included hostnames.
 	// Included hostnames.
 	Host []*string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type IncludeObservation struct {
 
+	// (List of String) Included hostnames.
 	// Included hostnames.
 	Host []*string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type IncludeParameters struct {
 
+	// (List of String) Included hostnames.
 	// Included hostnames.
 	// +kubebuilder:validation:Optional
 	Host []*string `json:"host,omitempty" tf:"host,omitempty"`
@@ -53,157 +59,204 @@ type IncludeParameters struct {
 
 type PositionInitParameters struct {
 
+	// (String) Move rule to after rule with this ID.
 	// Move rule to after rule with this ID.
 	After *string `json:"after,omitempty" tf:"after,omitempty"`
 
+	// (String) Move rule to before rule with this ID.
 	// Move rule to before rule with this ID.
 	Before *string `json:"before,omitempty" tf:"before,omitempty"`
 
+	// (Number) Move rule to this position
 	// Move rule to this position
 	Index *float64 `json:"index,omitempty" tf:"index,omitempty"`
 }
 
 type PositionObservation struct {
 
+	// (String) Move rule to after rule with this ID.
 	// Move rule to after rule with this ID.
 	After *string `json:"after,omitempty" tf:"after,omitempty"`
 
+	// (String) Move rule to before rule with this ID.
 	// Move rule to before rule with this ID.
 	Before *string `json:"before,omitempty" tf:"before,omitempty"`
 
+	// (Number) Move rule to this position
 	// Move rule to this position
 	Index *float64 `json:"index,omitempty" tf:"index,omitempty"`
 }
 
 type PositionParameters struct {
 
+	// (String) Move rule to after rule with this ID.
 	// Move rule to after rule with this ID.
 	// +kubebuilder:validation:Optional
 	After *string `json:"after,omitempty" tf:"after,omitempty"`
 
+	// (String) Move rule to before rule with this ID.
 	// Move rule to before rule with this ID.
 	// +kubebuilder:validation:Optional
 	Before *string `json:"before,omitempty" tf:"before,omitempty"`
 
+	// (Number) Move rule to this position
 	// Move rule to this position
 	// +kubebuilder:validation:Optional
 	Index *float64 `json:"index,omitempty" tf:"index,omitempty"`
 }
 
 type SelectorInitParameters struct {
+
+	// (Attributes List) Ignore operations that were otherwise included by include. (see below for nested schema)
 	Exclude []ExcludeInitParameters `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Attributes List) Select all matching operations. (see below for nested schema)
 	Include []IncludeInitParameters `json:"include,omitempty" tf:"include,omitempty"`
 }
 
 type SelectorObservation struct {
+
+	// (Attributes List) Ignore operations that were otherwise included by include. (see below for nested schema)
 	Exclude []ExcludeObservation `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Attributes List) Select all matching operations. (see below for nested schema)
 	Include []IncludeObservation `json:"include,omitempty" tf:"include,omitempty"`
 }
 
 type SelectorParameters struct {
 
+	// (Attributes List) Ignore operations that were otherwise included by include. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Exclude []ExcludeParameters `json:"exclude,omitempty" tf:"exclude,omitempty"`
 
+	// (Attributes List) Select all matching operations. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Include []IncludeParameters `json:"include,omitempty" tf:"include,omitempty"`
 }
 
 type ValidationRulesInitParameters struct {
 
+	// (String) Action to take on requests that match operations included in selector and fail expression.
+	// Available values: "log", "block".
 	// Action to take on requests that match operations included in `selector` and fail `expression`.
 	// Available values: "log", "block".
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// readable description that gives more details than title.
 	// A human-readable description that gives more details than `title`.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Toggle rule on or off.
 	// Toggle rule on or off.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Rule expression. Requests that fail to match this expression will be subject to action.
 	// Rule expression. Requests that fail to match this expression will be subject to `action`.
 	//
 	// For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Attributes) Update rule order among zone rules. (see below for nested schema)
 	Position *PositionInitParameters `json:"position,omitempty" tf:"position,omitempty"`
 
+	// (Attributes) Select operations covered by this rule.
 	Selector *SelectorInitParameters `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// readable name for the rule.
 	// A human-readable name for the rule.
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationRulesObservation struct {
 
+	// (String) Action to take on requests that match operations included in selector and fail expression.
+	// Available values: "log", "block".
 	// Action to take on requests that match operations included in `selector` and fail `expression`.
 	// Available values: "log", "block".
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// readable description that gives more details than title.
 	// A human-readable description that gives more details than `title`.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Toggle rule on or off.
 	// Toggle rule on or off.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Rule expression. Requests that fail to match this expression will be subject to action.
 	// Rule expression. Requests that fail to match this expression will be subject to `action`.
 	//
 	// For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (Attributes) Update rule order among zone rules. (see below for nested schema)
 	Position *PositionObservation `json:"position,omitempty" tf:"position,omitempty"`
 
+	// (Attributes) Select operations covered by this rule.
 	Selector *SelectorObservation `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// readable name for the rule.
 	// A human-readable name for the rule.
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationRulesParameters struct {
 
+	// (String) Action to take on requests that match operations included in selector and fail expression.
+	// Available values: "log", "block".
 	// Action to take on requests that match operations included in `selector` and fail `expression`.
 	// Available values: "log", "block".
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
+	// readable description that gives more details than title.
 	// A human-readable description that gives more details than `title`.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Toggle rule on or off.
 	// Toggle rule on or off.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Rule expression. Requests that fail to match this expression will be subject to action.
 	// Rule expression. Requests that fail to match this expression will be subject to `action`.
 	//
 	// For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Attributes) Update rule order among zone rules. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Position *PositionParameters `json:"position,omitempty" tf:"position,omitempty"`
 
+	// (Attributes) Select operations covered by this rule.
 	// +kubebuilder:validation:Optional
 	Selector *SelectorParameters `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// readable name for the rule.
 	// A human-readable name for the rule.
 	// +kubebuilder:validation:Optional
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -236,7 +289,7 @@ type ValidationRulesStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ValidationRules is the Schema for the ValidationRuless API. <no value>
+// ValidationRules is the Schema for the ValidationRuless API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

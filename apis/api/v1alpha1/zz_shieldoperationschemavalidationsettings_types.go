@@ -15,6 +15,7 @@ import (
 
 type ShieldOperationSchemaValidationSettingsInitParameters struct {
 
+	// (String) When set, this applies a mitigation action to this operation
 	// When set, this applies a mitigation action to this operation
 	//
 	// - `log` log request when request does not conform to schema for this operation
@@ -24,16 +25,21 @@ type ShieldOperationSchemaValidationSettingsInitParameters struct {
 	// Available values: "log", "block", "none".
 	MitigationAction *string `json:"mitigationAction,omitempty" tf:"mitigation_action,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldOperationSchemaValidationSettingsObservation struct {
+
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) When set, this applies a mitigation action to this operation
 	// When set, this applies a mitigation action to this operation
 	//
 	// - `log` log request when request does not conform to schema for this operation
@@ -43,15 +49,18 @@ type ShieldOperationSchemaValidationSettingsObservation struct {
 	// Available values: "log", "block", "none".
 	MitigationAction *string `json:"mitigationAction,omitempty" tf:"mitigation_action,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldOperationSchemaValidationSettingsParameters struct {
 
+	// (String) When set, this applies a mitigation action to this operation
 	// When set, this applies a mitigation action to this operation
 	//
 	// - `log` log request when request does not conform to schema for this operation
@@ -62,10 +71,12 @@ type ShieldOperationSchemaValidationSettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	MitigationAction *string `json:"mitigationAction,omitempty" tf:"mitigation_action,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	// +kubebuilder:validation:Optional
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -98,7 +109,7 @@ type ShieldOperationSchemaValidationSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ShieldOperationSchemaValidationSettings is the Schema for the ShieldOperationSchemaValidationSettingss API. <no value>
+// ShieldOperationSchemaValidationSettings is the Schema for the ShieldOperationSchemaValidationSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

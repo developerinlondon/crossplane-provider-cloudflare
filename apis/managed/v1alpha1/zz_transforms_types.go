@@ -15,28 +15,34 @@ import (
 
 type ManagedRequestHeadersInitParameters struct {
 
+	// (Boolean) Whether the Managed Transform is enabled.
 	// Whether the Managed Transform is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The human-readable identifier of the Managed Transform.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ManagedRequestHeadersObservation struct {
 
+	// (Boolean) Whether the Managed Transform is enabled.
 	// Whether the Managed Transform is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The human-readable identifier of the Managed Transform.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ManagedRequestHeadersParameters struct {
 
+	// (Boolean) Whether the Managed Transform is enabled.
 	// Whether the Managed Transform is enabled.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The human-readable identifier of the Managed Transform.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -44,61 +50,79 @@ type ManagedRequestHeadersParameters struct {
 
 type ManagedResponseHeadersInitParameters struct {
 
+	// (Boolean) Whether the Managed Transform is enabled.
 	// Whether the Managed Transform is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The human-readable identifier of the Managed Transform.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ManagedResponseHeadersObservation struct {
 
+	// (Boolean) Whether the Managed Transform is enabled.
 	// Whether the Managed Transform is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The human-readable identifier of the Managed Transform.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ManagedResponseHeadersParameters struct {
 
+	// (Boolean) Whether the Managed Transform is enabled.
 	// Whether the Managed Transform is enabled.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The human-readable identifier of the Managed Transform.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type TransformsInitParameters struct {
+
+	// (Attributes Set) The list of Managed Request Transforms. (see below for nested schema)
 	ManagedRequestHeaders []ManagedRequestHeadersInitParameters `json:"managedRequestHeaders,omitempty" tf:"managed_request_headers,omitempty"`
 
+	// (Attributes Set) The list of Managed Response Transforms. (see below for nested schema)
 	ManagedResponseHeaders []ManagedResponseHeadersInitParameters `json:"managedResponseHeaders,omitempty" tf:"managed_response_headers,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TransformsObservation struct {
+
+	// (String) The unique ID of the zone.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes Set) The list of Managed Request Transforms. (see below for nested schema)
 	ManagedRequestHeaders []ManagedRequestHeadersObservation `json:"managedRequestHeaders,omitempty" tf:"managed_request_headers,omitempty"`
 
+	// (Attributes Set) The list of Managed Response Transforms. (see below for nested schema)
 	ManagedResponseHeaders []ManagedResponseHeadersObservation `json:"managedResponseHeaders,omitempty" tf:"managed_response_headers,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TransformsParameters struct {
 
+	// (Attributes Set) The list of Managed Request Transforms. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ManagedRequestHeaders []ManagedRequestHeadersParameters `json:"managedRequestHeaders,omitempty" tf:"managed_request_headers,omitempty"`
 
+	// (Attributes Set) The list of Managed Response Transforms. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ManagedResponseHeaders []ManagedResponseHeadersParameters `json:"managedResponseHeaders,omitempty" tf:"managed_response_headers,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -131,7 +155,7 @@ type TransformsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Transforms is the Schema for the Transformss API. <no value>
+// Transforms is the Schema for the Transformss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

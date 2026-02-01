@@ -15,30 +15,36 @@ import (
 
 type OriginPullsSettingsInitParameters struct {
 
+	// level authenticated origin pulls is enabled.
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OriginPullsSettingsObservation struct {
 
+	// level authenticated origin pulls is enabled.
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type OriginPullsSettingsParameters struct {
 
+	// level authenticated origin pulls is enabled.
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -71,7 +77,7 @@ type OriginPullsSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OriginPullsSettings is the Schema for the OriginPullsSettingss API. <no value>
+// OriginPullsSettings is the Schema for the OriginPullsSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

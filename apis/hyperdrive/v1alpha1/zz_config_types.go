@@ -15,38 +15,47 @@ import (
 
 type CachingInitParameters struct {
 
+	// (Boolean) Set to true to disable caching of SQL responses. Default is false.
 	// Set to true to disable caching of SQL responses. Default is false.
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
+	// (Number) Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	MaxAge *float64 `json:"maxAge,omitempty" tf:"max_age,omitempty"`
 
+	// (Number) Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	StaleWhileRevalidate *float64 `json:"staleWhileRevalidate,omitempty" tf:"stale_while_revalidate,omitempty"`
 }
 
 type CachingObservation struct {
 
+	// (Boolean) Set to true to disable caching of SQL responses. Default is false.
 	// Set to true to disable caching of SQL responses. Default is false.
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
+	// (Number) Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	MaxAge *float64 `json:"maxAge,omitempty" tf:"max_age,omitempty"`
 
+	// (Number) Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	StaleWhileRevalidate *float64 `json:"staleWhileRevalidate,omitempty" tf:"stale_while_revalidate,omitempty"`
 }
 
 type CachingParameters struct {
 
+	// (Boolean) Set to true to disable caching of SQL responses. Default is false.
 	// Set to true to disable caching of SQL responses. Default is false.
 	// +kubebuilder:validation:Optional
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
+	// (Number) Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	// +kubebuilder:validation:Optional
 	MaxAge *float64 `json:"maxAge,omitempty" tf:"max_age,omitempty"`
 
+	// (Number) Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	// +kubebuilder:validation:Optional
 	StaleWhileRevalidate *float64 `json:"staleWhileRevalidate,omitempty" tf:"stale_while_revalidate,omitempty"`
@@ -54,67 +63,88 @@ type CachingParameters struct {
 
 type ConfigInitParameters struct {
 
+	// (String) Define configurations using a unique string identifier.
 	// Define configurations using a unique string identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Caching *CachingInitParameters `json:"caching,omitempty" tf:"caching,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Mtls *MtlsInitParameters `json:"mtls,omitempty" tf:"mtls,omitempty"`
 
+	// (String) The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Origin *OriginInitParameters `json:"origin,omitempty" tf:"origin,omitempty"`
 
+	// (Number) The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *float64 `json:"originConnectionLimit,omitempty" tf:"origin_connection_limit,omitempty"`
 }
 
 type ConfigObservation struct {
 
+	// (String) Define configurations using a unique string identifier.
 	// Define configurations using a unique string identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Caching *CachingObservation `json:"caching,omitempty" tf:"caching,omitempty"`
 
+	// (String) Defines the creation time of the Hyperdrive configuration.
 	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Define configurations using a unique string identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Defines the last modified time of the Hyperdrive configuration.
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Mtls *MtlsObservation `json:"mtls,omitempty" tf:"mtls,omitempty"`
 
+	// (String) The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Origin *OriginObservation `json:"origin,omitempty" tf:"origin,omitempty"`
 
+	// (Number) The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *float64 `json:"originConnectionLimit,omitempty" tf:"origin_connection_limit,omitempty"`
 }
 
 type ConfigParameters struct {
 
+	// (String) Define configurations using a unique string identifier.
 	// Define configurations using a unique string identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Caching *CachingParameters `json:"caching,omitempty" tf:"caching,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Mtls *MtlsParameters `json:"mtls,omitempty" tf:"mtls,omitempty"`
 
+	// (String) The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Origin *OriginParameters `json:"origin,omitempty" tf:"origin,omitempty"`
 
+	// (Number) The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	// +kubebuilder:validation:Optional
 	OriginConnectionLimit *float64 `json:"originConnectionLimit,omitempty" tf:"origin_connection_limit,omitempty"`
@@ -122,38 +152,47 @@ type ConfigParameters struct {
 
 type MtlsInitParameters struct {
 
+	// (String) Define CA certificate ID obtained after uploading CA cert.
 	// Define CA certificate ID obtained after uploading CA cert.
 	CACertificateID *string `json:"caCertificateId,omitempty" tf:"ca_certificate_id,omitempty"`
 
+	// (String) Define mTLS certificate ID obtained after uploading client cert.
 	// Define mTLS certificate ID obtained after uploading client cert.
 	MtlsCertificateID *string `json:"mtlsCertificateId,omitempty" tf:"mtls_certificate_id,omitempty"`
 
+	// ca', or 'verify-full' to verify the CA.
 	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 	Sslmode *string `json:"sslmode,omitempty" tf:"sslmode,omitempty"`
 }
 
 type MtlsObservation struct {
 
+	// (String) Define CA certificate ID obtained after uploading CA cert.
 	// Define CA certificate ID obtained after uploading CA cert.
 	CACertificateID *string `json:"caCertificateId,omitempty" tf:"ca_certificate_id,omitempty"`
 
+	// (String) Define mTLS certificate ID obtained after uploading client cert.
 	// Define mTLS certificate ID obtained after uploading client cert.
 	MtlsCertificateID *string `json:"mtlsCertificateId,omitempty" tf:"mtls_certificate_id,omitempty"`
 
+	// ca', or 'verify-full' to verify the CA.
 	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 	Sslmode *string `json:"sslmode,omitempty" tf:"sslmode,omitempty"`
 }
 
 type MtlsParameters struct {
 
+	// (String) Define CA certificate ID obtained after uploading CA cert.
 	// Define CA certificate ID obtained after uploading CA cert.
 	// +kubebuilder:validation:Optional
 	CACertificateID *string `json:"caCertificateId,omitempty" tf:"ca_certificate_id,omitempty"`
 
+	// (String) Define mTLS certificate ID obtained after uploading client cert.
 	// Define mTLS certificate ID obtained after uploading client cert.
 	// +kubebuilder:validation:Optional
 	MtlsCertificateID *string `json:"mtlsCertificateId,omitempty" tf:"mtls_certificate_id,omitempty"`
 
+	// ca', or 'verify-full' to verify the CA.
 	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 	// +kubebuilder:validation:Optional
 	Sslmode *string `json:"sslmode,omitempty" tf:"sslmode,omitempty"`
@@ -161,85 +200,110 @@ type MtlsParameters struct {
 
 type OriginInitParameters struct {
 
+	// (String) Defines the Client ID of the Access token to use when connecting to the origin database.
 	// Defines the Client ID of the Access token to use when connecting to the origin database.
 	AccessClientID *string `json:"accessClientId,omitempty" tf:"access_client_id,omitempty"`
 
+	// only value.
 	// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
 	AccessClientSecretSecretRef *v1.SecretKeySelector `json:"accessClientSecretSecretRef,omitempty" tf:"-"`
 
+	// (String) Set the name of your origin database.
 	// Set the name of your origin database.
 	Database *string `json:"database,omitempty" tf:"database,omitempty"`
 
+	// (String) Defines the host (hostname or IP) of your origin database.
 	// Defines the host (hostname or IP) of your origin database.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// only value.
 	// Set the password needed to access your origin database. The API never returns this write-only value.
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// (Number) Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Specifies the URL scheme used to connect to your origin database.
+	// Available values: "postgres", "postgresql", "mysql".
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
 	Scheme *string `json:"scheme,omitempty" tf:"scheme,omitempty"`
 
+	// (String) Set the user of your origin database.
 	// Set the user of your origin database.
 	User *string `json:"user,omitempty" tf:"user,omitempty"`
 }
 
 type OriginObservation struct {
 
+	// (String) Defines the Client ID of the Access token to use when connecting to the origin database.
 	// Defines the Client ID of the Access token to use when connecting to the origin database.
 	AccessClientID *string `json:"accessClientId,omitempty" tf:"access_client_id,omitempty"`
 
+	// (String) Set the name of your origin database.
 	// Set the name of your origin database.
 	Database *string `json:"database,omitempty" tf:"database,omitempty"`
 
+	// (String) Defines the host (hostname or IP) of your origin database.
 	// Defines the host (hostname or IP) of your origin database.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (Number) Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Specifies the URL scheme used to connect to your origin database.
+	// Available values: "postgres", "postgresql", "mysql".
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
 	Scheme *string `json:"scheme,omitempty" tf:"scheme,omitempty"`
 
+	// (String) Set the user of your origin database.
 	// Set the user of your origin database.
 	User *string `json:"user,omitempty" tf:"user,omitempty"`
 }
 
 type OriginParameters struct {
 
+	// (String) Defines the Client ID of the Access token to use when connecting to the origin database.
 	// Defines the Client ID of the Access token to use when connecting to the origin database.
 	// +kubebuilder:validation:Optional
 	AccessClientID *string `json:"accessClientId,omitempty" tf:"access_client_id,omitempty"`
 
+	// only value.
 	// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
 	// +kubebuilder:validation:Optional
 	AccessClientSecretSecretRef *v1.SecretKeySelector `json:"accessClientSecretSecretRef,omitempty" tf:"-"`
 
+	// (String) Set the name of your origin database.
 	// Set the name of your origin database.
 	// +kubebuilder:validation:Optional
 	Database *string `json:"database" tf:"database,omitempty"`
 
+	// (String) Defines the host (hostname or IP) of your origin database.
 	// Defines the host (hostname or IP) of your origin database.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host" tf:"host,omitempty"`
 
+	// only value.
 	// Set the password needed to access your origin database. The API never returns this write-only value.
 	// +kubebuilder:validation:Optional
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// (Number) Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) Specifies the URL scheme used to connect to your origin database.
+	// Available values: "postgres", "postgresql", "mysql".
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
 	// +kubebuilder:validation:Optional
 	Scheme *string `json:"scheme" tf:"scheme,omitempty"`
 
+	// (String) Set the user of your origin database.
 	// Set the user of your origin database.
 	// +kubebuilder:validation:Optional
 	User *string `json:"user" tf:"user,omitempty"`
@@ -272,7 +336,7 @@ type ConfigStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Config is the Schema for the Configs API. <no value>
+// Config is the Schema for the Configs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

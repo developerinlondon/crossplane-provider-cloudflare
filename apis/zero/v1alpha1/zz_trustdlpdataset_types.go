@@ -17,12 +17,17 @@ type ColumnsInitParameters struct {
 }
 
 type ColumnsObservation struct {
+
+	// (String)
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String)
 	HeaderName *string `json:"headerName,omitempty" tf:"header_name,omitempty"`
 
+	// (Number)
 	NumCells *float64 `json:"numCells,omitempty" tf:"num_cells,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus *string `json:"uploadStatus,omitempty" tf:"upload_status,omitempty"`
 }
@@ -34,12 +39,17 @@ type DatasetColumnsInitParameters struct {
 }
 
 type DatasetColumnsObservation struct {
+
+	// (String)
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String)
 	HeaderName *string `json:"headerName,omitempty" tf:"header_name,omitempty"`
 
+	// (Number)
 	NumCells *float64 `json:"numCells,omitempty" tf:"num_cells,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus *string `json:"uploadStatus,omitempty" tf:"upload_status,omitempty"`
 }
@@ -51,33 +61,47 @@ type DatasetInitParameters struct {
 }
 
 type DatasetObservation struct {
+
+	// sensitive manner
+	// Cannot be set to false if secret is true or undefined
 	CaseSensitive *bool `json:"caseSensitive,omitempty" tf:"case_sensitive,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Columns []DatasetColumnsObservation `json:"columns,omitempty" tf:"columns,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) The description of the dataset.
 	// The description of the dataset.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Number) Dataset encoding version
 	EncodingVersion *float64 `json:"encodingVersion,omitempty" tf:"encoding_version,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	NumCells *float64 `json:"numCells,omitempty" tf:"num_cells,omitempty"`
 
+	// (Boolean) Generate a secret dataset.
 	Secret *bool `json:"secret,omitempty" tf:"secret,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Stores when the dataset was last updated.
 	// Stores when the dataset was last updated.
 	//
 	// This includes name or description changes as well as uploads.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Uploads []UploadsObservation `json:"uploads,omitempty" tf:"uploads,omitempty"`
 }
 
@@ -85,18 +109,25 @@ type DatasetParameters struct {
 }
 
 type TrustDlpDatasetInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// sensitive manner
+	// Cannot be set to false if secret is true or undefined
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
 	CaseSensitive *bool `json:"caseSensitive,omitempty" tf:"case_sensitive,omitempty"`
 
+	// (String)
 	DatasetID *string `json:"datasetId,omitempty" tf:"dataset_id,omitempty"`
 
+	// (String) The description of the dataset.
 	// The description of the dataset.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Number) Dataset encoding version
 	// Dataset encoding version
 	//
 	// Non-secret custom word lists with no header are always version 1.
@@ -106,8 +137,10 @@ type TrustDlpDatasetInitParameters struct {
 	// the same as 1.
 	EncodingVersion *float64 `json:"encodingVersion,omitempty" tf:"encoding_version,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Generate a secret dataset.
 	// Generate a secret dataset.
 	//
 	// If true, the response will include a secret to use with the EDM encoder.
@@ -116,24 +149,34 @@ type TrustDlpDatasetInitParameters struct {
 }
 
 type TrustDlpDatasetObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// sensitive manner
+	// Cannot be set to false if secret is true or undefined
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
 	CaseSensitive *bool `json:"caseSensitive,omitempty" tf:"case_sensitive,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Columns []ColumnsObservation `json:"columns,omitempty" tf:"columns,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Dataset *DatasetObservation `json:"dataset,omitempty" tf:"dataset,omitempty"`
 
+	// (String)
 	DatasetID *string `json:"datasetId,omitempty" tf:"dataset_id,omitempty"`
 
+	// (String) The description of the dataset.
 	// The description of the dataset.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Number) Dataset encoding version
 	// Dataset encoding version
 	//
 	// Non-secret custom word lists with no header are always version 1.
@@ -143,52 +186,67 @@ type TrustDlpDatasetObservation struct {
 	// the same as 1.
 	EncodingVersion *float64 `json:"encodingVersion,omitempty" tf:"encoding_version,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number)
 	MaxCells *float64 `json:"maxCells,omitempty" tf:"max_cells,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	NumCells *float64 `json:"numCells,omitempty" tf:"num_cells,omitempty"`
 
+	// (Boolean) Generate a secret dataset.
 	// Generate a secret dataset.
 	//
 	// If true, the response will include a secret to use with the EDM encoder.
 	// If false, the response has no secret and the dataset is uploaded in plaintext.
 	Secret *bool `json:"secret,omitempty" tf:"secret,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Stores when the dataset was last updated.
 	// Stores when the dataset was last updated.
 	//
 	// This includes name or description changes as well as uploads.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Uploads []TrustDlpDatasetUploadsObservation `json:"uploads,omitempty" tf:"uploads,omitempty"`
 
+	// (Number) The version to use when uploading the dataset.
 	// The version to use when uploading the dataset.
 	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type TrustDlpDatasetParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// sensitive manner
+	// Cannot be set to false if secret is true or undefined
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
 	// +kubebuilder:validation:Optional
 	CaseSensitive *bool `json:"caseSensitive,omitempty" tf:"case_sensitive,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	DatasetID *string `json:"datasetId,omitempty" tf:"dataset_id,omitempty"`
 
+	// (String) The description of the dataset.
 	// The description of the dataset.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Number) Dataset encoding version
 	// Dataset encoding version
 	//
 	// Non-secret custom word lists with no header are always version 1.
@@ -199,9 +257,11 @@ type TrustDlpDatasetParameters struct {
 	// +kubebuilder:validation:Optional
 	EncodingVersion *float64 `json:"encodingVersion,omitempty" tf:"encoding_version,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Generate a secret dataset.
 	// Generate a secret dataset.
 	//
 	// If true, the response will include a secret to use with the EDM encoder.
@@ -214,11 +274,15 @@ type TrustDlpDatasetUploadsInitParameters struct {
 }
 
 type TrustDlpDatasetUploadsObservation struct {
+
+	// (Number)
 	NumCells *float64 `json:"numCells,omitempty" tf:"num_cells,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Number) The version to use when uploading the dataset.
 	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
@@ -229,11 +293,15 @@ type UploadsInitParameters struct {
 }
 
 type UploadsObservation struct {
+
+	// (Number)
 	NumCells *float64 `json:"numCells,omitempty" tf:"num_cells,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Number) The version to use when uploading the dataset.
 	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
@@ -267,7 +335,7 @@ type TrustDlpDatasetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDlpDataset is the Schema for the TrustDlpDatasets API. <no value>
+// TrustDlpDataset is the Schema for the TrustDlpDatasets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

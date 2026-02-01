@@ -15,64 +15,83 @@ import (
 
 type BucketSippyInitParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (Attributes) R2 bucket to copy objects to. (see below for nested schema)
 	Destination *DestinationInitParameters `json:"destination,omitempty" tf:"destination,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes) AWS S3 bucket to copy objects from. (see below for nested schema)
 	Source *SourceInitParameters `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type BucketSippyObservation struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (Attributes) R2 bucket to copy objects to. (see below for nested schema)
 	Destination *DestinationObservation `json:"destination,omitempty" tf:"destination,omitempty"`
 
+	// (Boolean) State of Sippy for this bucket.
 	// State of Sippy for this bucket.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes) AWS S3 bucket to copy objects from. (see below for nested schema)
 	Source *SourceObservation `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type BucketSippyParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	// +kubebuilder:validation:Optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (Attributes) R2 bucket to copy objects to. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Destination *DestinationParameters `json:"destination,omitempty" tf:"destination,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (Attributes) AWS S3 bucket to copy objects from. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Source *SourceParameters `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type DestinationInitParameters struct {
 
+	// (String) ID of a Cloudflare API token.
+	// This is the value labelled "Access Key ID" when creating an API.
+	// token from the R2 dashboard.
 	// ID of a Cloudflare API token.
 	// This is the value labelled "Access Key ID" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
@@ -81,9 +100,13 @@ type DestinationInitParameters struct {
 	// best to scope this token to the bucket you're enabling Sippy for.
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (String) Available values: "r2".
 	// Available values: "r2".
 	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
 
+	// (String, Sensitive) Value of a Cloudflare API token.
+	// This is the value labelled "Secret Access Key" when creating an API.
+	// token from the R2 dashboard.
 	// Value of a Cloudflare API token.
 	// This is the value labelled "Secret Access Key" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
@@ -95,6 +118,9 @@ type DestinationInitParameters struct {
 
 type DestinationObservation struct {
 
+	// (String) ID of a Cloudflare API token.
+	// This is the value labelled "Access Key ID" when creating an API.
+	// token from the R2 dashboard.
 	// ID of a Cloudflare API token.
 	// This is the value labelled "Access Key ID" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
@@ -103,12 +129,16 @@ type DestinationObservation struct {
 	// best to scope this token to the bucket you're enabling Sippy for.
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (String) Available values: "r2".
 	// Available values: "r2".
 	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
 }
 
 type DestinationParameters struct {
 
+	// (String) ID of a Cloudflare API token.
+	// This is the value labelled "Access Key ID" when creating an API.
+	// token from the R2 dashboard.
 	// ID of a Cloudflare API token.
 	// This is the value labelled "Access Key ID" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
@@ -118,10 +148,14 @@ type DestinationParameters struct {
 	// +kubebuilder:validation:Optional
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (String) Available values: "r2".
 	// Available values: "r2".
 	// +kubebuilder:validation:Optional
 	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
 
+	// (String, Sensitive) Value of a Cloudflare API token.
+	// This is the value labelled "Secret Access Key" when creating an API.
+	// token from the R2 dashboard.
 	// Value of a Cloudflare API token.
 	// This is the value labelled "Secret Access Key" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
@@ -134,82 +168,114 @@ type DestinationParameters struct {
 
 type SourceInitParameters struct {
 
+	// (String) ID of a Cloudflare API token.
+	// This is the value labelled "Access Key ID" when creating an API.
+	// token from the R2 dashboard.
 	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (String) Name of the AWS S3 bucket.
 	// Name of the AWS S3 bucket.
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 
+	// compatible API of the bucket.
 	// URL to the S3-compatible API of the bucket.
 	BucketURL *string `json:"bucketUrl,omitempty" tf:"bucket_url,omitempty"`
 
+	// (String) Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	ClientEmail *string `json:"clientEmail,omitempty" tf:"client_email,omitempty"`
 
+	// (String) Available values: "r2".
 	// Available values: "aws", "gcs", "s3".
 	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
 
+	// (String, Sensitive) Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 	PrivateKeySecretRef *v1.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
+	// (String) Name of the AWS availability zone.
 	// Name of the AWS availability zone.
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 
+	// (String, Sensitive) Value of a Cloudflare API token.
+	// This is the value labelled "Secret Access Key" when creating an API.
+	// token from the R2 dashboard.
 	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 	SecretAccessKeySecretRef *v1.SecretKeySelector `json:"secretAccessKeySecretRef,omitempty" tf:"-"`
 }
 
 type SourceObservation struct {
 
+	// (String) ID of a Cloudflare API token.
+	// This is the value labelled "Access Key ID" when creating an API.
+	// token from the R2 dashboard.
 	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (String) Name of the AWS S3 bucket.
 	// Name of the AWS S3 bucket.
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 
+	// compatible API of the bucket.
 	// URL to the S3-compatible API of the bucket.
 	BucketURL *string `json:"bucketUrl,omitempty" tf:"bucket_url,omitempty"`
 
+	// (String) Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	ClientEmail *string `json:"clientEmail,omitempty" tf:"client_email,omitempty"`
 
+	// (String) Available values: "r2".
 	// Available values: "aws", "gcs", "s3".
 	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
 
+	// (String) Name of the AWS availability zone.
 	// Name of the AWS availability zone.
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 }
 
 type SourceParameters struct {
 
+	// (String) ID of a Cloudflare API token.
+	// This is the value labelled "Access Key ID" when creating an API.
+	// token from the R2 dashboard.
 	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 	// +kubebuilder:validation:Optional
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (String) Name of the AWS S3 bucket.
 	// Name of the AWS S3 bucket.
 	// +kubebuilder:validation:Optional
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 
+	// compatible API of the bucket.
 	// URL to the S3-compatible API of the bucket.
 	// +kubebuilder:validation:Optional
 	BucketURL *string `json:"bucketUrl,omitempty" tf:"bucket_url,omitempty"`
 
+	// (String) Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	// +kubebuilder:validation:Optional
 	ClientEmail *string `json:"clientEmail,omitempty" tf:"client_email,omitempty"`
 
+	// (String) Available values: "r2".
 	// Available values: "aws", "gcs", "s3".
 	// +kubebuilder:validation:Optional
 	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
 
+	// (String, Sensitive) Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 	// +kubebuilder:validation:Optional
 	PrivateKeySecretRef *v1.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
+	// (String) Name of the AWS availability zone.
 	// Name of the AWS availability zone.
 	// +kubebuilder:validation:Optional
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 
+	// (String, Sensitive) Value of a Cloudflare API token.
+	// This is the value labelled "Secret Access Key" when creating an API.
+	// token from the R2 dashboard.
 	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 	// +kubebuilder:validation:Optional
 	SecretAccessKeySecretRef *v1.SecretKeySelector `json:"secretAccessKeySecretRef,omitempty" tf:"-"`
@@ -242,7 +308,7 @@ type BucketSippyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// BucketSippy is the Schema for the BucketSippys API. <no value>
+// BucketSippy is the Schema for the BucketSippys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,63 +15,80 @@ import (
 
 type CustomDomainInitParameters struct {
 
+	// (String) Identifer of the account.
 	// Identifer of the account.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String, Deprecated) Worker environment associated with the zone and hostname.
 	// Worker environment associated with the zone and hostname.
 	Environment *string `json:"environment,omitempty" tf:"environment,omitempty"`
 
+	// (String) Hostname of the Worker Domain.
 	// Hostname of the Worker Domain.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Worker service associated with the zone and hostname.
 	// Worker service associated with the zone and hostname.
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (String) Identifier of the zone.
 	// Identifier of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CustomDomainObservation struct {
 
+	// (String) Identifer of the account.
 	// Identifer of the account.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String, Deprecated) Worker environment associated with the zone and hostname.
 	// Worker environment associated with the zone and hostname.
 	Environment *string `json:"environment,omitempty" tf:"environment,omitempty"`
 
+	// (String) Hostname of the Worker Domain.
 	// Hostname of the Worker Domain.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Identifer of the Worker Domain.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Worker service associated with the zone and hostname.
 	// Worker service associated with the zone and hostname.
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (String) Identifier of the zone.
 	// Identifier of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String) Name of the zone.
 	// Name of the zone.
 	ZoneName *string `json:"zoneName,omitempty" tf:"zone_name,omitempty"`
 }
 
 type CustomDomainParameters struct {
 
+	// (String) Identifer of the account.
 	// Identifer of the account.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String, Deprecated) Worker environment associated with the zone and hostname.
 	// Worker environment associated with the zone and hostname.
 	// +kubebuilder:validation:Optional
 	Environment *string `json:"environment,omitempty" tf:"environment,omitempty"`
 
+	// (String) Hostname of the Worker Domain.
 	// Hostname of the Worker Domain.
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Worker service associated with the zone and hostname.
 	// Worker service associated with the zone and hostname.
 	// +kubebuilder:validation:Optional
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (String) Identifier of the zone.
 	// Identifier of the zone.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -104,7 +121,7 @@ type CustomDomainStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CustomDomain is the Schema for the CustomDomains API. <no value>
+// CustomDomain is the Schema for the CustomDomains API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

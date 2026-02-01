@@ -15,42 +15,54 @@ import (
 
 type RoutingSettingsInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoutingSettingsObservation struct {
 
+	// (String) The date and time the settings have been created.
 	// The date and time the settings have been created.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (Boolean) State of the zone settings for Email Routing.
 	// State of the zone settings for Email Routing.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Email Routing settings identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The date and time the settings have been modified.
 	// The date and time the settings have been modified.
 	Modified *string `json:"modified,omitempty" tf:"modified,omitempty"`
 
+	// (String) Domain of your zone.
 	// Domain of your zone.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Flag to check if the user skipped the configuration wizard.
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard *bool `json:"skipWizard,omitempty" tf:"skip_wizard,omitempty"`
 
+	// (String) Show the state of your account, and the type or configuration error.
+	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String, Deprecated) Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoutingSettingsParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -83,7 +95,7 @@ type RoutingSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// RoutingSettings is the Schema for the RoutingSettingss API. <no value>
+// RoutingSettings is the Schema for the RoutingSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

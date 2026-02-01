@@ -15,30 +15,36 @@ import (
 
 type DownloadInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 }
 
 type DownloadObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 }
 
 type DownloadParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	// +kubebuilder:validation:Optional
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
@@ -71,7 +77,7 @@ type DownloadStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Download is the Schema for the Downloads API. <no value>
+// Download is the Schema for the Downloads API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

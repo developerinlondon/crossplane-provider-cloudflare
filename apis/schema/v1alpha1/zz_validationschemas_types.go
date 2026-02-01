@@ -15,67 +15,89 @@ import (
 
 type ValidationSchemasInitParameters struct {
 
+	// (String) The kind of the schema
+	// Available values: "openapi_v3".
 	// The kind of the schema
 	// Available values: "openapi_v3".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// readable name for the schema
 	// A human-readable name for the schema
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// (Boolean) An indicator if this schema is enabled
 	// An indicator if this schema is enabled
 	ValidationEnabled *bool `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationSchemasObservation struct {
+
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) A unique identifier of this schema
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The kind of the schema
+	// Available values: "openapi_v3".
 	// The kind of the schema
 	// Available values: "openapi_v3".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// readable name for the schema
 	// A human-readable name for the schema
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) A unique identifier of this schema
 	// A unique identifier of this schema
 	SchemaID *string `json:"schemaId,omitempty" tf:"schema_id,omitempty"`
 
+	// (String) The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// (Boolean) An indicator if this schema is enabled
 	// An indicator if this schema is enabled
 	ValidationEnabled *bool `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationSchemasParameters struct {
 
+	// (String) The kind of the schema
+	// Available values: "openapi_v3".
 	// The kind of the schema
 	// Available values: "openapi_v3".
 	// +kubebuilder:validation:Optional
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// readable name for the schema
 	// A human-readable name for the schema
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// (Boolean) An indicator if this schema is enabled
 	// An indicator if this schema is enabled
 	// +kubebuilder:validation:Optional
 	ValidationEnabled *bool `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -108,7 +130,7 @@ type ValidationSchemasStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ValidationSchemas is the Schema for the ValidationSchemass API. <no value>
+// ValidationSchemas is the Schema for the ValidationSchemass API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

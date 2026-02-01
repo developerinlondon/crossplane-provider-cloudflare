@@ -15,49 +15,61 @@ import (
 
 type SfuAppInitParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
 
+	// (String) A short description of Calls app, not shown to end users.
 	// A short description of Calls app, not shown to end users.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type SfuAppObservation struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
 
+	// (String) The date and time the item was created.
 	// The date and time the item was created.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The date and time the item was last modified.
 	// The date and time the item was last modified.
 	Modified *string `json:"modified,omitempty" tf:"modified,omitempty"`
 
+	// (String) A short description of Calls app, not shown to end users.
 	// A short description of Calls app, not shown to end users.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	UID *string `json:"uid,omitempty" tf:"uid,omitempty"`
 }
 
 type SfuAppParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	// +kubebuilder:validation:Optional
 	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
 
+	// (String) A short description of Calls app, not shown to end users.
 	// A short description of Calls app, not shown to end users.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -90,7 +102,7 @@ type SfuAppStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SfuApp is the Schema for the SfuApps API. <no value>
+// SfuApp is the Schema for the SfuApps API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

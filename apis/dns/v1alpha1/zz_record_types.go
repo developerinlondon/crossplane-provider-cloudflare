@@ -16,374 +16,491 @@ import (
 
 type DataInitParameters struct {
 
+	// (Number) Algorithm.
 	// Algorithm.
 	Algorithm *float64 `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
+	// (Number) Altitude of location in meters.
 	// Altitude of location in meters.
 	Altitude *float64 `json:"altitude,omitempty" tf:"altitude,omitempty"`
 
+	// (String) Certificate.
 	// Certificate.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) Digest.
 	// Digest.
 	Digest *string `json:"digest,omitempty" tf:"digest,omitempty"`
 
+	// (Number) Digest Type.
 	// Digest Type.
 	DigestType *float64 `json:"digestType,omitempty" tf:"digest_type,omitempty"`
 
+	// (String) Fingerprint.
 	// Fingerprint.
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (Dynamic) Flags for the CAA record.
 	// Flags for the CAA record.
 	Flags *v1.JSON `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (Number) Key Tag.
 	// Key Tag.
 	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
+	// (Number) Degrees of latitude.
 	// Degrees of latitude.
 	LatDegrees *float64 `json:"latDegrees,omitempty" tf:"lat_degrees,omitempty"`
 
+	// (String) Latitude direction.
+	// Available values: "N", "S".
 	// Latitude direction.
 	// Available values: "N", "S".
 	LatDirection *string `json:"latDirection,omitempty" tf:"lat_direction,omitempty"`
 
+	// (Number) Minutes of latitude.
 	// Minutes of latitude.
 	LatMinutes *float64 `json:"latMinutes,omitempty" tf:"lat_minutes,omitempty"`
 
+	// (Number) Seconds of latitude.
 	// Seconds of latitude.
 	LatSeconds *float64 `json:"latSeconds,omitempty" tf:"lat_seconds,omitempty"`
 
+	// (Number) Degrees of longitude.
 	// Degrees of longitude.
 	LongDegrees *float64 `json:"longDegrees,omitempty" tf:"long_degrees,omitempty"`
 
+	// (String) Longitude direction.
+	// Available values: "E", "W".
 	// Longitude direction.
 	// Available values: "E", "W".
 	LongDirection *string `json:"longDirection,omitempty" tf:"long_direction,omitempty"`
 
+	// (Number) Minutes of longitude.
 	// Minutes of longitude.
 	LongMinutes *float64 `json:"longMinutes,omitempty" tf:"long_minutes,omitempty"`
 
+	// (Number) Seconds of longitude.
 	// Seconds of longitude.
 	LongSeconds *float64 `json:"longSeconds,omitempty" tf:"long_seconds,omitempty"`
 
+	// (Number) Matching Type.
 	// Matching Type.
 	MatchingType *float64 `json:"matchingType,omitempty" tf:"matching_type,omitempty"`
 
+	// (Number) Order.
 	// Order.
 	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
 
+	// (Number) The port of the service.
 	// The port of the service.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Number) Horizontal precision of location.
 	// Horizontal precision of location.
 	PrecisionHorz *float64 `json:"precisionHorz,omitempty" tf:"precision_horz,omitempty"`
 
+	// (Number) Vertical precision of location.
 	// Vertical precision of location.
 	PrecisionVert *float64 `json:"precisionVert,omitempty" tf:"precision_vert,omitempty"`
 
+	// (Number) Preference.
 	// Preference.
 	Preference *float64 `json:"preference,omitempty" tf:"preference,omitempty"`
 
+	// (Number) Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// Priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Number) Protocol.
 	// Protocol.
 	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String) Public Key.
 	// Public Key.
 	PublicKey *string `json:"publicKey,omitempty" tf:"public_key,omitempty"`
 
+	// (String) Regex.
 	// Regex.
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String) Replacement.
 	// Replacement.
 	Replacement *string `json:"replacement,omitempty" tf:"replacement,omitempty"`
 
+	// (Number) Selector.
 	// Selector.
 	Selector *float64 `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// (String) Service.
 	// Service.
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (Number) Size of location in meters.
 	// Size of location in meters.
 	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
 
+	// (String) Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) Target.
 	// Target.
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) Record type.
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// Type.
 	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (Number) Usage.
 	// Usage.
 	Usage *float64 `json:"usage,omitempty" tf:"usage,omitempty"`
 
+	// (String) Value of the record. This field's semantics depend on the chosen tag.
 	// Value of the record. This field's semantics depend on the chosen tag.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (Number) The record weight.
 	// The record weight.
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type DataObservation struct {
 
+	// (Number) Algorithm.
 	// Algorithm.
 	Algorithm *float64 `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
+	// (Number) Altitude of location in meters.
 	// Altitude of location in meters.
 	Altitude *float64 `json:"altitude,omitempty" tf:"altitude,omitempty"`
 
+	// (String) Certificate.
 	// Certificate.
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) Digest.
 	// Digest.
 	Digest *string `json:"digest,omitempty" tf:"digest,omitempty"`
 
+	// (Number) Digest Type.
 	// Digest Type.
 	DigestType *float64 `json:"digestType,omitempty" tf:"digest_type,omitempty"`
 
+	// (String) Fingerprint.
 	// Fingerprint.
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (Dynamic) Flags for the CAA record.
 	// Flags for the CAA record.
 	Flags *v1.JSON `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (Number) Key Tag.
 	// Key Tag.
 	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
+	// (Number) Degrees of latitude.
 	// Degrees of latitude.
 	LatDegrees *float64 `json:"latDegrees,omitempty" tf:"lat_degrees,omitempty"`
 
+	// (String) Latitude direction.
+	// Available values: "N", "S".
 	// Latitude direction.
 	// Available values: "N", "S".
 	LatDirection *string `json:"latDirection,omitempty" tf:"lat_direction,omitempty"`
 
+	// (Number) Minutes of latitude.
 	// Minutes of latitude.
 	LatMinutes *float64 `json:"latMinutes,omitempty" tf:"lat_minutes,omitempty"`
 
+	// (Number) Seconds of latitude.
 	// Seconds of latitude.
 	LatSeconds *float64 `json:"latSeconds,omitempty" tf:"lat_seconds,omitempty"`
 
+	// (Number) Degrees of longitude.
 	// Degrees of longitude.
 	LongDegrees *float64 `json:"longDegrees,omitempty" tf:"long_degrees,omitempty"`
 
+	// (String) Longitude direction.
+	// Available values: "E", "W".
 	// Longitude direction.
 	// Available values: "E", "W".
 	LongDirection *string `json:"longDirection,omitempty" tf:"long_direction,omitempty"`
 
+	// (Number) Minutes of longitude.
 	// Minutes of longitude.
 	LongMinutes *float64 `json:"longMinutes,omitempty" tf:"long_minutes,omitempty"`
 
+	// (Number) Seconds of longitude.
 	// Seconds of longitude.
 	LongSeconds *float64 `json:"longSeconds,omitempty" tf:"long_seconds,omitempty"`
 
+	// (Number) Matching Type.
 	// Matching Type.
 	MatchingType *float64 `json:"matchingType,omitempty" tf:"matching_type,omitempty"`
 
+	// (Number) Order.
 	// Order.
 	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
 
+	// (Number) The port of the service.
 	// The port of the service.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Number) Horizontal precision of location.
 	// Horizontal precision of location.
 	PrecisionHorz *float64 `json:"precisionHorz,omitempty" tf:"precision_horz,omitempty"`
 
+	// (Number) Vertical precision of location.
 	// Vertical precision of location.
 	PrecisionVert *float64 `json:"precisionVert,omitempty" tf:"precision_vert,omitempty"`
 
+	// (Number) Preference.
 	// Preference.
 	Preference *float64 `json:"preference,omitempty" tf:"preference,omitempty"`
 
+	// (Number) Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// Priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Number) Protocol.
 	// Protocol.
 	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String) Public Key.
 	// Public Key.
 	PublicKey *string `json:"publicKey,omitempty" tf:"public_key,omitempty"`
 
+	// (String) Regex.
 	// Regex.
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String) Replacement.
 	// Replacement.
 	Replacement *string `json:"replacement,omitempty" tf:"replacement,omitempty"`
 
+	// (Number) Selector.
 	// Selector.
 	Selector *float64 `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// (String) Service.
 	// Service.
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (Number) Size of location in meters.
 	// Size of location in meters.
 	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
 
+	// (String) Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) Target.
 	// Target.
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) Record type.
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// Type.
 	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (Number) Usage.
 	// Usage.
 	Usage *float64 `json:"usage,omitempty" tf:"usage,omitempty"`
 
+	// (String) Value of the record. This field's semantics depend on the chosen tag.
 	// Value of the record. This field's semantics depend on the chosen tag.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (Number) The record weight.
 	// The record weight.
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type DataParameters struct {
 
+	// (Number) Algorithm.
 	// Algorithm.
 	// +kubebuilder:validation:Optional
 	Algorithm *float64 `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
+	// (Number) Altitude of location in meters.
 	// Altitude of location in meters.
 	// +kubebuilder:validation:Optional
 	Altitude *float64 `json:"altitude,omitempty" tf:"altitude,omitempty"`
 
+	// (String) Certificate.
 	// Certificate.
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 
+	// (String) Digest.
 	// Digest.
 	// +kubebuilder:validation:Optional
 	Digest *string `json:"digest,omitempty" tf:"digest,omitempty"`
 
+	// (Number) Digest Type.
 	// Digest Type.
 	// +kubebuilder:validation:Optional
 	DigestType *float64 `json:"digestType,omitempty" tf:"digest_type,omitempty"`
 
+	// (String) Fingerprint.
 	// Fingerprint.
 	// +kubebuilder:validation:Optional
 	Fingerprint *string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 
+	// (Dynamic) Flags for the CAA record.
 	// Flags for the CAA record.
 	// +kubebuilder:validation:Optional
 	Flags *v1.JSON `json:"flags,omitempty" tf:"flags,omitempty"`
 
+	// (Number) Key Tag.
 	// Key Tag.
 	// +kubebuilder:validation:Optional
 	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
+	// (Number) Degrees of latitude.
 	// Degrees of latitude.
 	// +kubebuilder:validation:Optional
 	LatDegrees *float64 `json:"latDegrees,omitempty" tf:"lat_degrees,omitempty"`
 
+	// (String) Latitude direction.
+	// Available values: "N", "S".
 	// Latitude direction.
 	// Available values: "N", "S".
 	// +kubebuilder:validation:Optional
 	LatDirection *string `json:"latDirection,omitempty" tf:"lat_direction,omitempty"`
 
+	// (Number) Minutes of latitude.
 	// Minutes of latitude.
 	// +kubebuilder:validation:Optional
 	LatMinutes *float64 `json:"latMinutes,omitempty" tf:"lat_minutes,omitempty"`
 
+	// (Number) Seconds of latitude.
 	// Seconds of latitude.
 	// +kubebuilder:validation:Optional
 	LatSeconds *float64 `json:"latSeconds,omitempty" tf:"lat_seconds,omitempty"`
 
+	// (Number) Degrees of longitude.
 	// Degrees of longitude.
 	// +kubebuilder:validation:Optional
 	LongDegrees *float64 `json:"longDegrees,omitempty" tf:"long_degrees,omitempty"`
 
+	// (String) Longitude direction.
+	// Available values: "E", "W".
 	// Longitude direction.
 	// Available values: "E", "W".
 	// +kubebuilder:validation:Optional
 	LongDirection *string `json:"longDirection,omitempty" tf:"long_direction,omitempty"`
 
+	// (Number) Minutes of longitude.
 	// Minutes of longitude.
 	// +kubebuilder:validation:Optional
 	LongMinutes *float64 `json:"longMinutes,omitempty" tf:"long_minutes,omitempty"`
 
+	// (Number) Seconds of longitude.
 	// Seconds of longitude.
 	// +kubebuilder:validation:Optional
 	LongSeconds *float64 `json:"longSeconds,omitempty" tf:"long_seconds,omitempty"`
 
+	// (Number) Matching Type.
 	// Matching Type.
 	// +kubebuilder:validation:Optional
 	MatchingType *float64 `json:"matchingType,omitempty" tf:"matching_type,omitempty"`
 
+	// (Number) Order.
 	// Order.
 	// +kubebuilder:validation:Optional
 	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
 
+	// (Number) The port of the service.
 	// The port of the service.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (Number) Horizontal precision of location.
 	// Horizontal precision of location.
 	// +kubebuilder:validation:Optional
 	PrecisionHorz *float64 `json:"precisionHorz,omitempty" tf:"precision_horz,omitempty"`
 
+	// (Number) Vertical precision of location.
 	// Vertical precision of location.
 	// +kubebuilder:validation:Optional
 	PrecisionVert *float64 `json:"precisionVert,omitempty" tf:"precision_vert,omitempty"`
 
+	// (Number) Preference.
 	// Preference.
 	// +kubebuilder:validation:Optional
 	Preference *float64 `json:"preference,omitempty" tf:"preference,omitempty"`
 
+	// (Number) Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// Priority.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Number) Protocol.
 	// Protocol.
 	// +kubebuilder:validation:Optional
 	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
+	// (String) Public Key.
 	// Public Key.
 	// +kubebuilder:validation:Optional
 	PublicKey *string `json:"publicKey,omitempty" tf:"public_key,omitempty"`
 
+	// (String) Regex.
 	// Regex.
 	// +kubebuilder:validation:Optional
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String) Replacement.
 	// Replacement.
 	// +kubebuilder:validation:Optional
 	Replacement *string `json:"replacement,omitempty" tf:"replacement,omitempty"`
 
+	// (Number) Selector.
 	// Selector.
 	// +kubebuilder:validation:Optional
 	Selector *float64 `json:"selector,omitempty" tf:"selector,omitempty"`
 
+	// (String) Service.
 	// Service.
 	// +kubebuilder:validation:Optional
 	Service *string `json:"service,omitempty" tf:"service,omitempty"`
 
+	// (Number) Size of location in meters.
 	// Size of location in meters.
 	// +kubebuilder:validation:Optional
 	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
 
+	// (String) Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	// +kubebuilder:validation:Optional
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) Target.
 	// Target.
 	// +kubebuilder:validation:Optional
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) Record type.
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// Type.
 	// +kubebuilder:validation:Optional
 	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (Number) Usage.
 	// Usage.
 	// +kubebuilder:validation:Optional
 	Usage *float64 `json:"usage,omitempty" tf:"usage,omitempty"`
 
+	// (String) Value of the record. This field's semantics depend on the chosen tag.
 	// Value of the record. This field's semantics depend on the chosen tag.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (Number) The record weight.
 	// The record weight.
 	// +kubebuilder:validation:Optional
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
@@ -391,138 +508,181 @@ type DataParameters struct {
 
 type RecordInitParameters struct {
 
+	// (String) Comments or notes about the DNS record. This field has no effect on DNS responses.
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (Attributes) Components of a CAA record. (see below for nested schema)
 	Data *DataInitParameters `json:"data,omitempty" tf:"data,omitempty"`
 
+	// (String) DNS record name (or @ for the zone apex) in Punycode.
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Boolean) Whether the record is receiving the performance and security benefits of Cloudflare.
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `json:"proxied,omitempty" tf:"proxied,omitempty"`
 
+	// (Attributes) Settings for the DNS record. (see below for nested schema)
 	Settings *SettingsInitParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (Number) Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (Set of String) Custom tags for the DNS record. This field has no effect on DNS responses.
 	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	// +listType=set
 	Tags []*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// (String) Record type.
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// Record type.
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RecordObservation struct {
 
+	// (String) Comments or notes about the DNS record. This field has no effect on DNS responses.
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) When the record comment was last modified. Omitted if there is no comment.
 	// When the record comment was last modified. Omitted if there is no comment.
 	CommentModifiedOn *string `json:"commentModifiedOn,omitempty" tf:"comment_modified_on,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String) When the record was created.
 	// When the record was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (Attributes) Components of a CAA record. (see below for nested schema)
 	Data *DataObservation `json:"data,omitempty" tf:"data,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// specific information about the record.
 	// Extra Cloudflare-specific information about the record.
 	Meta *string `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// (String) When the record was last modified.
 	// When the record was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) DNS record name (or @ for the zone apex) in Punycode.
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Boolean) Whether the record can be proxied by Cloudflare or not.
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable *bool `json:"proxiable,omitempty" tf:"proxiable,omitempty"`
 
+	// (Boolean) Whether the record is receiving the performance and security benefits of Cloudflare.
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `json:"proxied,omitempty" tf:"proxied,omitempty"`
 
+	// (Attributes) Settings for the DNS record. (see below for nested schema)
 	Settings *SettingsObservation `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (Number) Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (Set of String) Custom tags for the DNS record. This field has no effect on DNS responses.
 	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	// +listType=set
 	Tags []*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// (String) When the record tags were last modified. Omitted if there are no tags.
 	// When the record tags were last modified. Omitted if there are no tags.
 	TagsModifiedOn *string `json:"tagsModifiedOn,omitempty" tf:"tags_modified_on,omitempty"`
 
+	// (String) Record type.
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// Record type.
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RecordParameters struct {
 
+	// (String) Comments or notes about the DNS record. This field has no effect on DNS responses.
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	// +kubebuilder:validation:Optional
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	// +kubebuilder:validation:Optional
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (Attributes) Components of a CAA record. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Data *DataParameters `json:"data,omitempty" tf:"data,omitempty"`
 
+	// (String) DNS record name (or @ for the zone apex) in Punycode.
 	// DNS record name (or @ for the zone apex) in Punycode.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Boolean) Whether the record is receiving the performance and security benefits of Cloudflare.
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	// +kubebuilder:validation:Optional
 	Proxied *bool `json:"proxied,omitempty" tf:"proxied,omitempty"`
 
+	// (Attributes) Settings for the DNS record. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Settings *SettingsParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (Number) Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
+	// (Set of String) Custom tags for the DNS record. This field has no effect on DNS responses.
 	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Tags []*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// (String) Record type.
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// Record type.
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -530,38 +690,47 @@ type RecordParameters struct {
 
 type SettingsInitParameters struct {
 
+	// (Boolean) If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
 	// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
 	FlattenCname *bool `json:"flattenCname,omitempty" tf:"flatten_cname,omitempty"`
 
+	// (Boolean) When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	IPv4Only *bool `json:"ipv4Only,omitempty" tf:"ipv4_only,omitempty"`
 
+	// (Boolean) When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	IPv6Only *bool `json:"ipv6Only,omitempty" tf:"ipv6_only,omitempty"`
 }
 
 type SettingsObservation struct {
 
+	// (Boolean) If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
 	// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
 	FlattenCname *bool `json:"flattenCname,omitempty" tf:"flatten_cname,omitempty"`
 
+	// (Boolean) When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	IPv4Only *bool `json:"ipv4Only,omitempty" tf:"ipv4_only,omitempty"`
 
+	// (Boolean) When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	IPv6Only *bool `json:"ipv6Only,omitempty" tf:"ipv6_only,omitempty"`
 }
 
 type SettingsParameters struct {
 
+	// (Boolean) If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
 	// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
 	// +kubebuilder:validation:Optional
 	FlattenCname *bool `json:"flattenCname,omitempty" tf:"flatten_cname,omitempty"`
 
+	// (Boolean) When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// +kubebuilder:validation:Optional
 	IPv4Only *bool `json:"ipv4Only,omitempty" tf:"ipv4_only,omitempty"`
 
+	// (Boolean) When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
 	// +kubebuilder:validation:Optional
 	IPv6Only *bool `json:"ipv6Only,omitempty" tf:"ipv6_only,omitempty"`
@@ -594,7 +763,7 @@ type RecordStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Record is the Schema for the Records API. <no value>
+// Record is the Schema for the Records API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

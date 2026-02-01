@@ -14,26 +14,35 @@ import (
 )
 
 type RulesInitParameters struct {
+
+	// (Attributes List) A list of snippet rules. (see below for nested schema)
 	Rules []RulesRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RulesObservation struct {
+
+	// (String) The unique ID of the rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) A list of snippet rules. (see below for nested schema)
 	Rules []RulesRulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RulesParameters struct {
 
+	// (Attributes List) A list of snippet rules. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []RulesRulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -41,54 +50,68 @@ type RulesParameters struct {
 
 type RulesRulesInitParameters struct {
 
+	// (String) An informative description of the rule.
 	// An informative description of the rule.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether the rule should be executed.
 	// Whether the rule should be executed.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The expression defining which traffic will match the rule.
 	// The expression defining which traffic will match the rule.
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) The identifying name of the snippet.
 	// The identifying name of the snippet.
 	SnippetName *string `json:"snippetName,omitempty" tf:"snippet_name,omitempty"`
 }
 
 type RulesRulesObservation struct {
 
+	// (String) An informative description of the rule.
 	// An informative description of the rule.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether the rule should be executed.
 	// Whether the rule should be executed.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The expression defining which traffic will match the rule.
 	// The expression defining which traffic will match the rule.
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) The unique ID of the rule.
 	// The unique ID of the rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The timestamp of when the rule was last modified.
 	// The timestamp of when the rule was last modified.
 	LastUpdated *string `json:"lastUpdated,omitempty" tf:"last_updated,omitempty"`
 
+	// (String) The identifying name of the snippet.
 	// The identifying name of the snippet.
 	SnippetName *string `json:"snippetName,omitempty" tf:"snippet_name,omitempty"`
 }
 
 type RulesRulesParameters struct {
 
+	// (String) An informative description of the rule.
 	// An informative description of the rule.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Whether the rule should be executed.
 	// Whether the rule should be executed.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The expression defining which traffic will match the rule.
 	// The expression defining which traffic will match the rule.
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression" tf:"expression,omitempty"`
 
+	// (String) The identifying name of the snippet.
 	// The identifying name of the snippet.
 	// +kubebuilder:validation:Optional
 	SnippetName *string `json:"snippetName" tf:"snippet_name,omitempty"`
@@ -121,7 +144,7 @@ type RulesStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Rules is the Schema for the Ruless API. <no value>
+// Rules is the Schema for the Ruless API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

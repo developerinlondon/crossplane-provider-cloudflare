@@ -15,18 +15,21 @@ import (
 
 type DHCPRelayInitParameters struct {
 
+	// (List of String) List of DHCP server IPs.
 	// List of DHCP server IPs.
 	ServerAddresses []*string `json:"serverAddresses,omitempty" tf:"server_addresses,omitempty"`
 }
 
 type DHCPRelayObservation struct {
 
+	// (List of String) List of DHCP server IPs.
 	// List of DHCP server IPs.
 	ServerAddresses []*string `json:"serverAddresses,omitempty" tf:"server_addresses,omitempty"`
 }
 
 type DHCPRelayParameters struct {
 
+	// (List of String) List of DHCP server IPs.
 	// List of DHCP server IPs.
 	// +kubebuilder:validation:Optional
 	ServerAddresses []*string `json:"serverAddresses,omitempty" tf:"server_addresses,omitempty"`
@@ -34,17 +37,22 @@ type DHCPRelayParameters struct {
 
 type DHCPServerInitParameters struct {
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	DHCPPoolEnd *string `json:"dhcpPoolEnd,omitempty" tf:"dhcp_pool_end,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	DHCPPoolStart *string `json:"dhcpPoolStart,omitempty" tf:"dhcp_pool_start,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	DNSServer *string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (List of String)
 	DNSServers []*string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 
+	// (Map of String) Mapping of MAC addresses to IP addresses
 	// Mapping of MAC addresses to IP addresses
 	// +mapType=granular
 	Reservations map[string]*string `json:"reservations,omitempty" tf:"reservations,omitempty"`
@@ -52,17 +60,22 @@ type DHCPServerInitParameters struct {
 
 type DHCPServerObservation struct {
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	DHCPPoolEnd *string `json:"dhcpPoolEnd,omitempty" tf:"dhcp_pool_end,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	DHCPPoolStart *string `json:"dhcpPoolStart,omitempty" tf:"dhcp_pool_start,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	DNSServer *string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (List of String)
 	DNSServers []*string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 
+	// (Map of String) Mapping of MAC addresses to IP addresses
 	// Mapping of MAC addresses to IP addresses
 	// +mapType=granular
 	Reservations map[string]*string `json:"reservations,omitempty" tf:"reservations,omitempty"`
@@ -70,21 +83,26 @@ type DHCPServerObservation struct {
 
 type DHCPServerParameters struct {
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	// +kubebuilder:validation:Optional
 	DHCPPoolEnd *string `json:"dhcpPoolEnd,omitempty" tf:"dhcp_pool_end,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	// +kubebuilder:validation:Optional
 	DHCPPoolStart *string `json:"dhcpPoolStart,omitempty" tf:"dhcp_pool_start,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	// +kubebuilder:validation:Optional
 	DNSServer *string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	DNSServers []*string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 
+	// (Map of String) Mapping of MAC addresses to IP addresses
 	// Mapping of MAC addresses to IP addresses
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
@@ -93,71 +111,88 @@ type DHCPServerParameters struct {
 
 type NATInitParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	StaticPrefix *string `json:"staticPrefix,omitempty" tf:"static_prefix,omitempty"`
 }
 
 type NATObservation struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	StaticPrefix *string `json:"staticPrefix,omitempty" tf:"static_prefix,omitempty"`
 }
 
 type NATParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	StaticPrefix *string `json:"staticPrefix,omitempty" tf:"static_prefix,omitempty"`
 }
 
 type RoutedSubnetsInitParameters struct {
+
+	// (Attributes) (see below for nested schema)
 	NAT *RoutedSubnetsNATInitParameters `json:"nat,omitempty" tf:"nat,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	NextHop *string `json:"nextHop,omitempty" tf:"next_hop,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
 type RoutedSubnetsNATInitParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	StaticPrefix *string `json:"staticPrefix,omitempty" tf:"static_prefix,omitempty"`
 }
 
 type RoutedSubnetsNATObservation struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	StaticPrefix *string `json:"staticPrefix,omitempty" tf:"static_prefix,omitempty"`
 }
 
 type RoutedSubnetsNATParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	StaticPrefix *string `json:"staticPrefix,omitempty" tf:"static_prefix,omitempty"`
 }
 
 type RoutedSubnetsObservation struct {
+
+	// (Attributes) (see below for nested schema)
 	NAT *RoutedSubnetsNATObservation `json:"nat,omitempty" tf:"nat,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	NextHop *string `json:"nextHop,omitempty" tf:"next_hop,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
 type RoutedSubnetsParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	NAT *RoutedSubnetsNATParameters `json:"nat,omitempty" tf:"nat,omitempty"`
 
+	// (String) A valid IPv4 address.
 	// A valid IPv4 address.
 	// +kubebuilder:validation:Optional
 	NextHop *string `json:"nextHop" tf:"next_hop,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	Prefix *string `json:"prefix" tf:"prefix,omitempty"`
@@ -165,52 +200,67 @@ type RoutedSubnetsParameters struct {
 
 type StaticAddressingInitParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DHCPRelay *DHCPRelayInitParameters `json:"dhcpRelay,omitempty" tf:"dhcp_relay,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DHCPServer *DHCPServerInitParameters `json:"dhcpServer,omitempty" tf:"dhcp_server,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	SecondaryAddress *string `json:"secondaryAddress,omitempty" tf:"secondary_address,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	VirtualAddress *string `json:"virtualAddress,omitempty" tf:"virtual_address,omitempty"`
 }
 
 type StaticAddressingObservation struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DHCPRelay *DHCPRelayObservation `json:"dhcpRelay,omitempty" tf:"dhcp_relay,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	DHCPServer *DHCPServerObservation `json:"dhcpServer,omitempty" tf:"dhcp_server,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	SecondaryAddress *string `json:"secondaryAddress,omitempty" tf:"secondary_address,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	VirtualAddress *string `json:"virtualAddress,omitempty" tf:"virtual_address,omitempty"`
 }
 
 type StaticAddressingParameters struct {
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	Address *string `json:"address" tf:"address,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DHCPRelay *DHCPRelayParameters `json:"dhcpRelay,omitempty" tf:"dhcp_relay,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	DHCPServer *DHCPServerParameters `json:"dhcpServer,omitempty" tf:"dhcp_server,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	SecondaryAddress *string `json:"secondaryAddress,omitempty" tf:"secondary_address,omitempty"`
 
+	// (String) A valid CIDR notation representing an IP range.
 	// A valid CIDR notation representing an IP range.
 	// +kubebuilder:validation:Optional
 	VirtualAddress *string `json:"virtualAddress,omitempty" tf:"virtual_address,omitempty"`
@@ -218,85 +268,113 @@ type StaticAddressingParameters struct {
 
 type TransitSiteLanInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink *bool `json:"haLink,omitempty" tf:"ha_link,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	NAT *NATInitParameters `json:"nat,omitempty" tf:"nat,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	Physport *float64 `json:"physport,omitempty" tf:"physport,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	RoutedSubnets []RoutedSubnetsInitParameters `json:"routedSubnets,omitempty" tf:"routed_subnets,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Attributes) If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. (see below for nested schema)
 	StaticAddressing *StaticAddressingInitParameters `json:"staticAddressing,omitempty" tf:"static_addressing,omitempty"`
 
+	// (Number) VLAN ID. Use zero for untagged.
 	// VLAN ID. Use zero for untagged.
 	VlanTag *float64 `json:"vlanTag,omitempty" tf:"vlan_tag,omitempty"`
 }
 
 type TransitSiteLanObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink *bool `json:"haLink,omitempty" tf:"ha_link,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	NAT *NATObservation `json:"nat,omitempty" tf:"nat,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	Physport *float64 `json:"physport,omitempty" tf:"physport,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	RoutedSubnets []RoutedSubnetsObservation `json:"routedSubnets,omitempty" tf:"routed_subnets,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Attributes) If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. (see below for nested schema)
 	StaticAddressing *StaticAddressingObservation `json:"staticAddressing,omitempty" tf:"static_addressing,omitempty"`
 
+	// (Number) VLAN ID. Use zero for untagged.
 	// VLAN ID. Use zero for untagged.
 	VlanTag *float64 `json:"vlanTag,omitempty" tf:"vlan_tag,omitempty"`
 }
 
 type TransitSiteLanParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	// +kubebuilder:validation:Optional
 	HaLink *bool `json:"haLink,omitempty" tf:"ha_link,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	NAT *NATParameters `json:"nat,omitempty" tf:"nat,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	// +kubebuilder:validation:Optional
 	Physport *float64 `json:"physport,omitempty" tf:"physport,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	RoutedSubnets []RoutedSubnetsParameters `json:"routedSubnets,omitempty" tf:"routed_subnets,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
 
+	// (Attributes) If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	StaticAddressing *StaticAddressingParameters `json:"staticAddressing,omitempty" tf:"static_addressing,omitempty"`
 
+	// (Number) VLAN ID. Use zero for untagged.
 	// VLAN ID. Use zero for untagged.
 	// +kubebuilder:validation:Optional
 	VlanTag *float64 `json:"vlanTag,omitempty" tf:"vlan_tag,omitempty"`
@@ -329,7 +407,7 @@ type TransitSiteLanStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TransitSiteLan is the Schema for the TransitSiteLans API. <no value>
+// TransitSiteLan is the Schema for the TransitSiteLans API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

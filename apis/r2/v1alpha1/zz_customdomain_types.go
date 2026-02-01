@@ -15,98 +15,127 @@ import (
 
 type CustomDomainInitParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (List of String) An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
 	Ciphers []*string `json:"ciphers,omitempty" tf:"ciphers,omitempty"`
 
+	// (String) Name of the custom domain to be added.
 	// Name of the custom domain to be added.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
+	// (Boolean) Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTLS *string `json:"minTls,omitempty" tf:"min_tls,omitempty"`
 
+	// (String) Zone ID of the custom domain.
 	// Zone ID of the custom domain.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CustomDomainObservation struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (List of String) An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
 	Ciphers []*string `json:"ciphers,omitempty" tf:"ciphers,omitempty"`
 
+	// (String) Name of the custom domain to be added.
 	// Name of the custom domain to be added.
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
+	// (Boolean) Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTLS *string `json:"minTls,omitempty" tf:"min_tls,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Status *StatusObservation `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Zone ID of the custom domain.
 	// Zone ID of the custom domain.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String) Zone that the custom domain resides in.
 	// Zone that the custom domain resides in.
 	ZoneName *string `json:"zoneName,omitempty" tf:"zone_name,omitempty"`
 }
 
 type CustomDomainParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	// +kubebuilder:validation:Optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (List of String) An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
 	// +kubebuilder:validation:Optional
 	Ciphers []*string `json:"ciphers,omitempty" tf:"ciphers,omitempty"`
 
+	// (String) Name of the custom domain to be added.
 	// Name of the custom domain to be added.
 	// +kubebuilder:validation:Optional
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
+	// (Boolean) Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	// +kubebuilder:validation:Optional
 	MinTLS *string `json:"minTls,omitempty" tf:"min_tls,omitempty"`
 
+	// (String) Zone ID of the custom domain.
 	// Zone ID of the custom domain.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -117,10 +146,14 @@ type StatusInitParameters struct {
 
 type StatusObservation struct {
 
+	// (String) Ownership status of the domain.
+	// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
 	// Ownership status of the domain.
 	// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
 	Ownership *string `json:"ownership,omitempty" tf:"ownership,omitempty"`
 
+	// (String) SSL certificate status.
+	// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
 	// SSL certificate status.
 	// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
 	SSL *string `json:"ssl,omitempty" tf:"ssl,omitempty"`
@@ -156,7 +189,7 @@ type CustomDomainStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CustomDomain is the Schema for the CustomDomains API. <no value>
+// CustomDomain is the Schema for the CustomDomains API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,30 +15,41 @@ import (
 
 type DNSSettingsInitParameters struct {
 
+	// (Boolean) Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `json:"flattenAllCnames,omitempty" tf:"flatten_all_cnames,omitempty"`
 
+	// (Boolean) Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	FoundationDNS *bool `json:"foundationDns,omitempty" tf:"foundation_dns,omitempty"`
 
+	// (Attributes) Settings for this internal zone. (see below for nested schema)
 	InternalDNS *InternalDNSInitParameters `json:"internalDns,omitempty" tf:"internal_dns,omitempty"`
 
+	// provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider *bool `json:"multiProvider,omitempty" tf:"multi_provider,omitempty"`
 
+	// (Attributes) Settings determining the nameservers through which the zone should be available. (see below for nested schema)
 	Nameservers *NameserversInitParameters `json:"nameservers,omitempty" tf:"nameservers,omitempty"`
 
+	// (Number) The time to live (TTL) of the zone's nameserver (NS) records.
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTTL *float64 `json:"nsTtl,omitempty" tf:"ns_ttl,omitempty"`
 
+	// (Boolean) Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	// Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	SecondaryOverrides *bool `json:"secondaryOverrides,omitempty" tf:"secondary_overrides,omitempty"`
 
+	// (Attributes) Components of the zone's SOA record. (see below for nested schema)
 	Soa *SoaInitParameters `json:"soa,omitempty" tf:"soa,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String) Whether the zone mode is a regular or CDN/DNS only zone.
+	// Available values: "standard", "cdn_only", "dns_only".
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn_only", "dns_only".
 	ZoneMode *string `json:"zoneMode,omitempty" tf:"zone_mode,omitempty"`
@@ -46,32 +57,43 @@ type DNSSettingsInitParameters struct {
 
 type DNSSettingsObservation struct {
 
+	// (Boolean) Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `json:"flattenAllCnames,omitempty" tf:"flatten_all_cnames,omitempty"`
 
+	// (Boolean) Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	FoundationDNS *bool `json:"foundationDns,omitempty" tf:"foundation_dns,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) Settings for this internal zone. (see below for nested schema)
 	InternalDNS *InternalDNSObservation `json:"internalDns,omitempty" tf:"internal_dns,omitempty"`
 
+	// provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider *bool `json:"multiProvider,omitempty" tf:"multi_provider,omitempty"`
 
+	// (Attributes) Settings determining the nameservers through which the zone should be available. (see below for nested schema)
 	Nameservers *NameserversObservation `json:"nameservers,omitempty" tf:"nameservers,omitempty"`
 
+	// (Number) The time to live (TTL) of the zone's nameserver (NS) records.
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTTL *float64 `json:"nsTtl,omitempty" tf:"ns_ttl,omitempty"`
 
+	// (Boolean) Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	// Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	SecondaryOverrides *bool `json:"secondaryOverrides,omitempty" tf:"secondary_overrides,omitempty"`
 
+	// (Attributes) Components of the zone's SOA record. (see below for nested schema)
 	Soa *SoaObservation `json:"soa,omitempty" tf:"soa,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String) Whether the zone mode is a regular or CDN/DNS only zone.
+	// Available values: "standard", "cdn_only", "dns_only".
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn_only", "dns_only".
 	ZoneMode *string `json:"zoneMode,omitempty" tf:"zone_mode,omitempty"`
@@ -79,39 +101,50 @@ type DNSSettingsObservation struct {
 
 type DNSSettingsParameters struct {
 
+	// (Boolean) Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	// +kubebuilder:validation:Optional
 	FlattenAllCnames *bool `json:"flattenAllCnames,omitempty" tf:"flatten_all_cnames,omitempty"`
 
+	// (Boolean) Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	// +kubebuilder:validation:Optional
 	FoundationDNS *bool `json:"foundationDns,omitempty" tf:"foundation_dns,omitempty"`
 
+	// (Attributes) Settings for this internal zone. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	InternalDNS *InternalDNSParameters `json:"internalDns,omitempty" tf:"internal_dns,omitempty"`
 
+	// provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	// +kubebuilder:validation:Optional
 	MultiProvider *bool `json:"multiProvider,omitempty" tf:"multi_provider,omitempty"`
 
+	// (Attributes) Settings determining the nameservers through which the zone should be available. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Nameservers *NameserversParameters `json:"nameservers,omitempty" tf:"nameservers,omitempty"`
 
+	// (Number) The time to live (TTL) of the zone's nameserver (NS) records.
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	// +kubebuilder:validation:Optional
 	NsTTL *float64 `json:"nsTtl,omitempty" tf:"ns_ttl,omitempty"`
 
+	// (Boolean) Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	// Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	// +kubebuilder:validation:Optional
 	SecondaryOverrides *bool `json:"secondaryOverrides,omitempty" tf:"secondary_overrides,omitempty"`
 
+	// (Attributes) Components of the zone's SOA record. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Soa *SoaParameters `json:"soa,omitempty" tf:"soa,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 
+	// (String) Whether the zone mode is a regular or CDN/DNS only zone.
+	// Available values: "standard", "cdn_only", "dns_only".
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn_only", "dns_only".
 	// +kubebuilder:validation:Optional
@@ -120,18 +153,21 @@ type DNSSettingsParameters struct {
 
 type InternalDNSInitParameters struct {
 
+	// (String) The ID of the zone to fallback to.
 	// The ID of the zone to fallback to.
 	ReferenceZoneID *string `json:"referenceZoneId,omitempty" tf:"reference_zone_id,omitempty"`
 }
 
 type InternalDNSObservation struct {
 
+	// (String) The ID of the zone to fallback to.
 	// The ID of the zone to fallback to.
 	ReferenceZoneID *string `json:"referenceZoneId,omitempty" tf:"reference_zone_id,omitempty"`
 }
 
 type InternalDNSParameters struct {
 
+	// (String) The ID of the zone to fallback to.
 	// The ID of the zone to fallback to.
 	// +kubebuilder:validation:Optional
 	ReferenceZoneID *string `json:"referenceZoneId,omitempty" tf:"reference_zone_id,omitempty"`
@@ -139,9 +175,12 @@ type InternalDNSParameters struct {
 
 type NameserversInitParameters struct {
 
+	// (Number) Configured nameserver set to be used for this zone
 	// Configured nameserver set to be used for this zone
 	NsSet *float64 `json:"nsSet,omitempty" tf:"ns_set,omitempty"`
 
+	// (String) Nameserver type
+	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
 	// Nameserver type
 	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -149,9 +188,12 @@ type NameserversInitParameters struct {
 
 type NameserversObservation struct {
 
+	// (Number) Configured nameserver set to be used for this zone
 	// Configured nameserver set to be used for this zone
 	NsSet *float64 `json:"nsSet,omitempty" tf:"ns_set,omitempty"`
 
+	// (String) Nameserver type
+	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
 	// Nameserver type
 	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -159,10 +201,13 @@ type NameserversObservation struct {
 
 type NameserversParameters struct {
 
+	// (Number) Configured nameserver set to be used for this zone
 	// Configured nameserver set to be used for this zone
 	// +kubebuilder:validation:Optional
 	NsSet *float64 `json:"nsSet,omitempty" tf:"ns_set,omitempty"`
 
+	// (String) Nameserver type
+	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
 	// Nameserver type
 	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
 	// +kubebuilder:validation:Optional
@@ -171,78 +216,99 @@ type NameserversParameters struct {
 
 type SoaInitParameters struct {
 
+	// (Number) Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
 	Expire *float64 `json:"expire,omitempty" tf:"expire,omitempty"`
 
+	// (Number) The time to live (TTL) for negative caching of records within the zone.
 	// The time to live (TTL) for negative caching of records within the zone.
 	MinTTL *float64 `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
 
+	// assigned value will be used.
 	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 	Mname *string `json:"mname,omitempty" tf:"mname,omitempty"`
 
+	// check the SOA record to see if the zone has been updated.
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
 	Refresh *float64 `json:"refresh,omitempty" tf:"refresh,omitempty"`
 
+	// (Number) Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
 	Retry *float64 `json:"retry,omitempty" tf:"retry,omitempty"`
 
+	// (String) The email address of the zone administrator, with the first label representing the local part of the email address.
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
 	Rname *string `json:"rname,omitempty" tf:"rname,omitempty"`
 
+	// (Number) The time to live (TTL) of the SOA record itself.
 	// The time to live (TTL) of the SOA record itself.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type SoaObservation struct {
 
+	// (Number) Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
 	Expire *float64 `json:"expire,omitempty" tf:"expire,omitempty"`
 
+	// (Number) The time to live (TTL) for negative caching of records within the zone.
 	// The time to live (TTL) for negative caching of records within the zone.
 	MinTTL *float64 `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
 
+	// assigned value will be used.
 	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 	Mname *string `json:"mname,omitempty" tf:"mname,omitempty"`
 
+	// check the SOA record to see if the zone has been updated.
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
 	Refresh *float64 `json:"refresh,omitempty" tf:"refresh,omitempty"`
 
+	// (Number) Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
 	Retry *float64 `json:"retry,omitempty" tf:"retry,omitempty"`
 
+	// (String) The email address of the zone administrator, with the first label representing the local part of the email address.
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
 	Rname *string `json:"rname,omitempty" tf:"rname,omitempty"`
 
+	// (Number) The time to live (TTL) of the SOA record itself.
 	// The time to live (TTL) of the SOA record itself.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type SoaParameters struct {
 
+	// (Number) Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
 	// +kubebuilder:validation:Optional
 	Expire *float64 `json:"expire,omitempty" tf:"expire,omitempty"`
 
+	// (Number) The time to live (TTL) for negative caching of records within the zone.
 	// The time to live (TTL) for negative caching of records within the zone.
 	// +kubebuilder:validation:Optional
 	MinTTL *float64 `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
 
+	// assigned value will be used.
 	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 	// +kubebuilder:validation:Optional
 	Mname *string `json:"mname,omitempty" tf:"mname,omitempty"`
 
+	// check the SOA record to see if the zone has been updated.
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
 	// +kubebuilder:validation:Optional
 	Refresh *float64 `json:"refresh,omitempty" tf:"refresh,omitempty"`
 
+	// (Number) Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
 	// +kubebuilder:validation:Optional
 	Retry *float64 `json:"retry,omitempty" tf:"retry,omitempty"`
 
+	// (String) The email address of the zone administrator, with the first label representing the local part of the email address.
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
 	// +kubebuilder:validation:Optional
 	Rname *string `json:"rname,omitempty" tf:"rname,omitempty"`
 
+	// (Number) The time to live (TTL) of the SOA record itself.
 	// The time to live (TTL) of the SOA record itself.
 	// +kubebuilder:validation:Optional
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
@@ -275,7 +341,7 @@ type DNSSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// DNSSettings is the Schema for the DNSSettingss API. <no value>
+// DNSSettings is the Schema for the DNSSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

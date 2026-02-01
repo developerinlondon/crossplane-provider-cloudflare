@@ -15,38 +15,47 @@ import (
 
 type DataInitParameters struct {
 
+	// (String) The desired endpoint to test.
 	// The desired endpoint to test.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The type of test.
 	// The type of test.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) The HTTP request method type.
 	// The HTTP request method type.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 }
 
 type DataObservation struct {
 
+	// (String) The desired endpoint to test.
 	// The desired endpoint to test.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The type of test.
 	// The type of test.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) The HTTP request method type.
 	// The HTTP request method type.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
 }
 
 type DataParameters struct {
 
+	// (String) The desired endpoint to test.
 	// The desired endpoint to test.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The type of test.
 	// The type of test.
 	// +kubebuilder:validation:Optional
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) The HTTP request method type.
 	// The HTTP request method type.
 	// +kubebuilder:validation:Optional
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
@@ -54,100 +63,131 @@ type DataParameters struct {
 
 type TargetPoliciesInitParameters struct {
 
+	// (String) The unique identifier for the test.
 	// The id of the DEX rule
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type TargetPoliciesObservation struct {
 
+	// (Boolean) Whether the DEX rule is the account default
 	// Whether the DEX rule is the account default
 	Default *bool `json:"default,omitempty" tf:"default,omitempty"`
 
+	// (String) The unique identifier for the test.
 	// The id of the DEX rule
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the DEX test. Must be unique.
 	// The name of the DEX rule
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TargetPoliciesParameters struct {
 
+	// (String) The unique identifier for the test.
 	// The id of the DEX rule
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type TrustDexTestInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The configuration object which contains the details for the WARP client to conduct the test. (see below for nested schema)
 	Data *DataInitParameters `json:"data,omitempty" tf:"data,omitempty"`
 
+	// (String) Additional details about the test.
 	// Additional details about the test.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Determines whether or not the test is active.
 	// Determines whether or not the test is active.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) How often the test will run.
 	// How often the test will run.
 	Interval *string `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The name of the DEX test. Must be unique.
 	// The name of the DEX test. Must be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes List) DEX rules targeted by this test (see below for nested schema)
 	TargetPolicies []TargetPoliciesInitParameters `json:"targetPolicies,omitempty" tf:"target_policies,omitempty"`
 }
 
 type TrustDexTestObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The configuration object which contains the details for the WARP client to conduct the test. (see below for nested schema)
 	Data *DataObservation `json:"data,omitempty" tf:"data,omitempty"`
 
+	// (String) Additional details about the test.
 	// Additional details about the test.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Determines whether or not the test is active.
 	// Determines whether or not the test is active.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The unique identifier for the test.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) How often the test will run.
 	// How often the test will run.
 	Interval *string `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The name of the DEX test. Must be unique.
 	// The name of the DEX test. Must be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes List) DEX rules targeted by this test (see below for nested schema)
 	TargetPolicies []TargetPoliciesObservation `json:"targetPolicies,omitempty" tf:"target_policies,omitempty"`
 
+	// (Boolean)
 	Targeted *bool `json:"targeted,omitempty" tf:"targeted,omitempty"`
 
+	// (String) The unique identifier for the test.
 	// The unique identifier for the test.
 	TestID *string `json:"testId,omitempty" tf:"test_id,omitempty"`
 }
 
 type TrustDexTestParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The configuration object which contains the details for the WARP client to conduct the test. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Data *DataParameters `json:"data,omitempty" tf:"data,omitempty"`
 
+	// (String) Additional details about the test.
 	// Additional details about the test.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean) Determines whether or not the test is active.
 	// Determines whether or not the test is active.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) How often the test will run.
 	// How often the test will run.
 	// +kubebuilder:validation:Optional
 	Interval *string `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The name of the DEX test. Must be unique.
 	// The name of the DEX test. Must be unique.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes List) DEX rules targeted by this test (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	TargetPolicies []TargetPoliciesParameters `json:"targetPolicies,omitempty" tf:"target_policies,omitempty"`
 }
@@ -179,7 +219,7 @@ type TrustDexTestStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDexTest is the Schema for the TrustDexTests API. <no value>
+// TrustDexTest is the Schema for the TrustDexTests API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

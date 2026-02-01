@@ -16,60 +16,77 @@ import (
 
 type SettingInitParameters struct {
 
+	// recommender enrollment setting.
 	// ssl-recommender enrollment setting.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Setting name
 	// Setting name
 	SettingID *string `json:"settingId,omitempty" tf:"setting_id,omitempty"`
 
+	// (Dynamic) Current value of the zone setting.
 	// Current value of the zone setting.
 	Value *v1.JSON `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SettingObservation struct {
 
+	// (Boolean) Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 	// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 	Editable *bool `json:"editable,omitempty" tf:"editable,omitempty"`
 
+	// recommender enrollment setting.
 	// ssl-recommender enrollment setting.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Setting name
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) last time this setting was modified.
 	// last time this setting was modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) Setting name
 	// Setting name
 	SettingID *string `json:"settingId,omitempty" tf:"setting_id,omitempty"`
 
+	// (Number) Value of the zone setting.
+	// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
 	// Value of the zone setting.
 	// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
 	TimeRemaining *float64 `json:"timeRemaining,omitempty" tf:"time_remaining,omitempty"`
 
+	// (Dynamic) Current value of the zone setting.
 	// Current value of the zone setting.
 	Value *v1.JSON `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SettingParameters struct {
 
+	// recommender enrollment setting.
 	// ssl-recommender enrollment setting.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Setting name
 	// Setting name
 	// +kubebuilder:validation:Optional
 	SettingID *string `json:"settingId,omitempty" tf:"setting_id,omitempty"`
 
+	// (Dynamic) Current value of the zone setting.
 	// Current value of the zone setting.
 	// +kubebuilder:validation:Optional
 	Value *v1.JSON `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -102,7 +119,7 @@ type SettingStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Setting is the Schema for the Settings API. <no value>
+// Setting is the Schema for the Settings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

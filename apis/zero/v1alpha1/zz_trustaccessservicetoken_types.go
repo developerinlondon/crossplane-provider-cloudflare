@@ -15,75 +15,96 @@ import (
 
 type TrustAccessServiceTokenInitParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) A version number identifying the current client_secret associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by previous_client_secret_expires_at.
 	// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
 	ClientSecretVersion *float64 `json:"clientSecretVersion,omitempty" tf:"client_secret_version,omitempty"`
 
+	// (String) The duration for how long the service token will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `json:"duration,omitempty" tf:"duration,omitempty"`
 
+	// (String) The name of the service token.
 	// The name of the service token.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The expiration of the previous client_secret. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
 	// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
 	PreviousClientSecretExpiresAt *string `json:"previousClientSecretExpiresAt,omitempty" tf:"previous_client_secret_expires_at,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustAccessServiceTokenObservation struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// Access-Client-ID request header.
 	// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
+	// (Number) A version number identifying the current client_secret associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by previous_client_secret_expires_at.
 	// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
 	ClientSecretVersion *float64 `json:"clientSecretVersion,omitempty" tf:"client_secret_version,omitempty"`
 
+	// (String) The duration for how long the service token will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `json:"duration,omitempty" tf:"duration,omitempty"`
 
+	// (String)
 	ExpiresAt *string `json:"expiresAt,omitempty" tf:"expires_at,omitempty"`
 
+	// (String) The ID of the service token.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The name of the service token.
 	// The name of the service token.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The expiration of the previous client_secret. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
 	// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
 	PreviousClientSecretExpiresAt *string `json:"previousClientSecretExpiresAt,omitempty" tf:"previous_client_secret_expires_at,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustAccessServiceTokenParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) A version number identifying the current client_secret associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by previous_client_secret_expires_at.
 	// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
 	// +kubebuilder:validation:Optional
 	ClientSecretVersion *float64 `json:"clientSecretVersion,omitempty" tf:"client_secret_version,omitempty"`
 
+	// (String) The duration for how long the service token will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	// +kubebuilder:validation:Optional
 	Duration *string `json:"duration,omitempty" tf:"duration,omitempty"`
 
+	// (String) The name of the service token.
 	// The name of the service token.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The expiration of the previous client_secret. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
 	// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
 	// +kubebuilder:validation:Optional
 	PreviousClientSecretExpiresAt *string `json:"previousClientSecretExpiresAt,omitempty" tf:"previous_client_secret_expires_at,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -116,7 +137,7 @@ type TrustAccessServiceTokenStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessServiceToken is the Schema for the TrustAccessServiceTokens API. <no value>
+// TrustAccessServiceToken is the Schema for the TrustAccessServiceTokens API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

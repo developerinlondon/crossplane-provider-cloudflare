@@ -15,39 +15,51 @@ import (
 
 type SmartRoutingInitParameters struct {
 
+	// (String) Specifies the enablement value of Argo Smart Routing.
+	// Available values: "on", "off".
 	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Specifies the zone associated with the API call.
 	// Specifies the zone associated with the API call.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SmartRoutingObservation struct {
 
+	// (Boolean) Specifies if the setting is editable.
 	// Specifies if the setting is editable.
 	Editable *bool `json:"editable,omitempty" tf:"editable,omitempty"`
 
+	// (String) Specifies the zone associated with the API call.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Specifies the time when the setting was last modified.
 	// Specifies the time when the setting was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) Specifies the enablement value of Argo Smart Routing.
+	// Available values: "on", "off".
 	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Specifies the zone associated with the API call.
 	// Specifies the zone associated with the API call.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SmartRoutingParameters struct {
 
+	// (String) Specifies the enablement value of Argo Smart Routing.
+	// Available values: "on", "off".
 	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Specifies the zone associated with the API call.
 	// Specifies the zone associated with the API call.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -80,7 +92,7 @@ type SmartRoutingStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SmartRouting is the Schema for the SmartRoutings API. <no value>
+// SmartRouting is the Schema for the SmartRoutings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

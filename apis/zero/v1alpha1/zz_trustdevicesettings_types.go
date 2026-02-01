@@ -14,106 +14,138 @@ import (
 )
 
 type TrustDeviceSettingsInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime *float64 `json:"disableForTime,omitempty" tf:"disable_for_time,omitempty"`
 
+	// (Boolean) Controls whether the external emergency disconnect feature is enabled.
 	// Controls whether the external emergency disconnect feature is enabled.
 	ExternalEmergencySignalEnabled *bool `json:"externalEmergencySignalEnabled,omitempty" tf:"external_emergency_signal_enabled,omitempty"`
 
+	// (String) The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
 	// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
 	ExternalEmergencySignalFingerprint *string `json:"externalEmergencySignalFingerprint,omitempty" tf:"external_emergency_signal_fingerprint,omitempty"`
 
+	// (String) The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
 	// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
 	ExternalEmergencySignalInterval *string `json:"externalEmergencySignalInterval,omitempty" tf:"external_emergency_signal_interval,omitempty"`
 
+	// (String) The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
 	// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
 	ExternalEmergencySignalURL *string `json:"externalEmergencySignalUrl,omitempty" tf:"external_emergency_signal_url,omitempty"`
 
+	// (Boolean) Enable gateway proxy filtering on TCP.
 	// Enable gateway proxy filtering on TCP.
 	GatewayProxyEnabled *bool `json:"gatewayProxyEnabled,omitempty" tf:"gateway_proxy_enabled,omitempty"`
 
+	// (Boolean) Enable gateway proxy filtering on UDP.
 	// Enable gateway proxy filtering on UDP.
 	GatewayUDPProxyEnabled *bool `json:"gatewayUdpProxyEnabled,omitempty" tf:"gateway_udp_proxy_enabled,omitempty"`
 
+	// (Boolean) Enable installation of cloudflare managed root certificate.
 	// Enable installation of cloudflare managed root certificate.
 	RootCertificateInstallationEnabled *bool `json:"rootCertificateInstallationEnabled,omitempty" tf:"root_certificate_installation_enabled,omitempty"`
 
+	// (Boolean) Enable using CGNAT virtual IPv4.
 	// Enable using CGNAT virtual IPv4.
 	UseZtVirtualIP *bool `json:"useZtVirtualIp,omitempty" tf:"use_zt_virtual_ip,omitempty"`
 }
 
 type TrustDeviceSettingsObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime *float64 `json:"disableForTime,omitempty" tf:"disable_for_time,omitempty"`
 
+	// (Boolean) Controls whether the external emergency disconnect feature is enabled.
 	// Controls whether the external emergency disconnect feature is enabled.
 	ExternalEmergencySignalEnabled *bool `json:"externalEmergencySignalEnabled,omitempty" tf:"external_emergency_signal_enabled,omitempty"`
 
+	// (String) The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
 	// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
 	ExternalEmergencySignalFingerprint *string `json:"externalEmergencySignalFingerprint,omitempty" tf:"external_emergency_signal_fingerprint,omitempty"`
 
+	// (String) The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
 	// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
 	ExternalEmergencySignalInterval *string `json:"externalEmergencySignalInterval,omitempty" tf:"external_emergency_signal_interval,omitempty"`
 
+	// (String) The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
 	// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
 	ExternalEmergencySignalURL *string `json:"externalEmergencySignalUrl,omitempty" tf:"external_emergency_signal_url,omitempty"`
 
+	// (Boolean) Enable gateway proxy filtering on TCP.
 	// Enable gateway proxy filtering on TCP.
 	GatewayProxyEnabled *bool `json:"gatewayProxyEnabled,omitempty" tf:"gateway_proxy_enabled,omitempty"`
 
+	// (Boolean) Enable gateway proxy filtering on UDP.
 	// Enable gateway proxy filtering on UDP.
 	GatewayUDPProxyEnabled *bool `json:"gatewayUdpProxyEnabled,omitempty" tf:"gateway_udp_proxy_enabled,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Enable installation of cloudflare managed root certificate.
 	// Enable installation of cloudflare managed root certificate.
 	RootCertificateInstallationEnabled *bool `json:"rootCertificateInstallationEnabled,omitempty" tf:"root_certificate_installation_enabled,omitempty"`
 
+	// (Boolean) Enable using CGNAT virtual IPv4.
 	// Enable using CGNAT virtual IPv4.
 	UseZtVirtualIP *bool `json:"useZtVirtualIp,omitempty" tf:"use_zt_virtual_ip,omitempty"`
 }
 
 type TrustDeviceSettingsParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	// +kubebuilder:validation:Optional
 	DisableForTime *float64 `json:"disableForTime,omitempty" tf:"disable_for_time,omitempty"`
 
+	// (Boolean) Controls whether the external emergency disconnect feature is enabled.
 	// Controls whether the external emergency disconnect feature is enabled.
 	// +kubebuilder:validation:Optional
 	ExternalEmergencySignalEnabled *bool `json:"externalEmergencySignalEnabled,omitempty" tf:"external_emergency_signal_enabled,omitempty"`
 
+	// (String) The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
 	// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
 	// +kubebuilder:validation:Optional
 	ExternalEmergencySignalFingerprint *string `json:"externalEmergencySignalFingerprint,omitempty" tf:"external_emergency_signal_fingerprint,omitempty"`
 
+	// (String) The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
 	// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
 	// +kubebuilder:validation:Optional
 	ExternalEmergencySignalInterval *string `json:"externalEmergencySignalInterval,omitempty" tf:"external_emergency_signal_interval,omitempty"`
 
+	// (String) The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
 	// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
 	// +kubebuilder:validation:Optional
 	ExternalEmergencySignalURL *string `json:"externalEmergencySignalUrl,omitempty" tf:"external_emergency_signal_url,omitempty"`
 
+	// (Boolean) Enable gateway proxy filtering on TCP.
 	// Enable gateway proxy filtering on TCP.
 	// +kubebuilder:validation:Optional
 	GatewayProxyEnabled *bool `json:"gatewayProxyEnabled,omitempty" tf:"gateway_proxy_enabled,omitempty"`
 
+	// (Boolean) Enable gateway proxy filtering on UDP.
 	// Enable gateway proxy filtering on UDP.
 	// +kubebuilder:validation:Optional
 	GatewayUDPProxyEnabled *bool `json:"gatewayUdpProxyEnabled,omitempty" tf:"gateway_udp_proxy_enabled,omitempty"`
 
+	// (Boolean) Enable installation of cloudflare managed root certificate.
 	// Enable installation of cloudflare managed root certificate.
 	// +kubebuilder:validation:Optional
 	RootCertificateInstallationEnabled *bool `json:"rootCertificateInstallationEnabled,omitempty" tf:"root_certificate_installation_enabled,omitempty"`
 
+	// (Boolean) Enable using CGNAT virtual IPv4.
 	// Enable using CGNAT virtual IPv4.
 	// +kubebuilder:validation:Optional
 	UseZtVirtualIP *bool `json:"useZtVirtualIp,omitempty" tf:"use_zt_virtual_ip,omitempty"`
@@ -146,7 +178,7 @@ type TrustDeviceSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDeviceSettings is the Schema for the TrustDeviceSettingss API. <no value>
+// TrustDeviceSettings is the Schema for the TrustDeviceSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

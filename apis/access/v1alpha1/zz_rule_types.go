@@ -15,31 +15,40 @@ import (
 
 type ConfigurationInitParameters struct {
 
+	// (String) The configuration target. You must set the target to ip when specifying an IP address in the rule.
+	// Available values: "ip", "ip6", "ip_range", "asn", "country".
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
 	// Available values: "ip", "ip6", "ip_range", "asn", "country".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The IP address to match. This address will be compared to the IP address of incoming requests.
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfigurationObservation struct {
 
+	// (String) The configuration target. You must set the target to ip when specifying an IP address in the rule.
+	// Available values: "ip", "ip6", "ip_range", "asn", "country".
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
 	// Available values: "ip", "ip6", "ip_range", "asn", "country".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The IP address to match. This address will be compared to the IP address of incoming requests.
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfigurationParameters struct {
 
+	// (String) The configuration target. You must set the target to ip when specifying an IP address in the rule.
+	// Available values: "ip", "ip6", "ip_range", "asn", "country".
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
 	// Available values: "ip", "ip6", "ip_range", "asn", "country".
 	// +kubebuilder:validation:Optional
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) The IP address to match. This address will be compared to the IP address of incoming requests.
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
@@ -47,71 +56,94 @@ type ConfigurationParameters struct {
 
 type RuleInitParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The rule configuration. (see below for nested schema)
 	Configuration *ConfigurationInitParameters `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
+	// (String) The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) An informative summary of the rule, typically used as a reminder or explanation.
 	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RuleObservation struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (List of String) The available actions that a rule can apply to a matched request.
 	// The available actions that a rule can apply to a matched request.
 	AllowedModes []*string `json:"allowedModes,omitempty" tf:"allowed_modes,omitempty"`
 
+	// (Attributes) The rule configuration. (see below for nested schema)
 	Configuration *ConfigurationObservation `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
+	// (String) The timestamp of when the rule was created.
 	// The timestamp of when the rule was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) The unique identifier of the IP Access rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) The timestamp of when the rule was last modified.
 	// The timestamp of when the rule was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) An informative summary of the rule, typically used as a reminder or explanation.
 	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
 
+	// (Attributes) All zones owned by the user will have the rule applied. (see below for nested schema)
 	Scope *ScopeObservation `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RuleParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes) The rule configuration. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Configuration *ConfigurationParameters `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
+	// (String) The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) An informative summary of the rule, typically used as a reminder or explanation.
 	// An informative summary of the rule, typically used as a reminder or explanation.
 	// +kubebuilder:validation:Optional
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -122,12 +154,16 @@ type ScopeInitParameters struct {
 
 type ScopeObservation struct {
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) The unique identifier of the IP Access rule.
 	// Defines an identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Defines the scope of the rule.
+	// Available values: "user", "organization".
 	// Defines the scope of the rule.
 	// Available values: "user", "organization".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -163,7 +199,7 @@ type RuleStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Rule is the Schema for the Rules API. <no value>
+// Rule is the Schema for the Rules API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

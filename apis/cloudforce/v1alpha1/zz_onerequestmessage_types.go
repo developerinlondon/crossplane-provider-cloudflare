@@ -15,52 +15,66 @@ import (
 
 type OneRequestMessageInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Content of message.
 	// Content of message.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	RequestID *string `json:"requestId,omitempty" tf:"request_id,omitempty"`
 }
 
 type OneRequestMessageObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Author of message.
 	// Author of message.
 	Author *string `json:"author,omitempty" tf:"author,omitempty"`
 
+	// (String) Content of message.
 	// Content of message.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String) Defines the message creation time.
 	// Defines the message creation time.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (Number) Message ID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// on request.
 	// Whether the message is a follow-on request.
 	IsFollowOnRequest *bool `json:"isFollowOnRequest,omitempty" tf:"is_follow_on_request,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	RequestID *string `json:"requestId,omitempty" tf:"request_id,omitempty"`
 
+	// (String) Defines the message last updated time.
 	// Defines the message last updated time.
 	Updated *string `json:"updated,omitempty" tf:"updated,omitempty"`
 }
 
 type OneRequestMessageParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Content of message.
 	// Content of message.
 	// +kubebuilder:validation:Optional
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	// +kubebuilder:validation:Optional
 	RequestID *string `json:"requestId,omitempty" tf:"request_id,omitempty"`
@@ -93,7 +107,7 @@ type OneRequestMessageStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OneRequestMessage is the Schema for the OneRequestMessages API. <no value>
+// OneRequestMessage is the Schema for the OneRequestMessages API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

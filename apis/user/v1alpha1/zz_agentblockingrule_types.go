@@ -14,59 +14,80 @@ import (
 )
 
 type AgentBlockingRuleInitParameters struct {
+
+	// (Attributes) (see below for nested schema)
 	Configuration *ConfigurationInitParameters `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
+	// (String) An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Boolean) When true, indicates that the rule is currently paused.
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type AgentBlockingRuleObservation struct {
+
+	// (Attributes) (see below for nested schema)
 	Configuration *ConfigurationObservation `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
+	// (String) An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The unique identifier of the User Agent Blocking rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Boolean) When true, indicates that the rule is currently paused.
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type AgentBlockingRuleParameters struct {
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Configuration *ConfigurationParameters `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
+	// (String) An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge".
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (Boolean) When true, indicates that the rule is currently paused.
 	// When true, indicates that the rule is currently paused.
 	// +kubebuilder:validation:Optional
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -74,31 +95,40 @@ type AgentBlockingRuleParameters struct {
 
 type ConfigurationInitParameters struct {
 
+	// (String) The configuration target. You must set the target to ua when specifying a user agent in the rule.
+	// Available values: "ua".
 	// The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
 	// Available values: "ua".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) the user agent to exactly match
 	// the user agent to exactly match
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfigurationObservation struct {
 
+	// (String) The configuration target. You must set the target to ua when specifying a user agent in the rule.
+	// Available values: "ua".
 	// The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
 	// Available values: "ua".
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) the user agent to exactly match
 	// the user agent to exactly match
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfigurationParameters struct {
 
+	// (String) The configuration target. You must set the target to ua when specifying a user agent in the rule.
+	// Available values: "ua".
 	// The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
 	// Available values: "ua".
 	// +kubebuilder:validation:Optional
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
+	// (String) the user agent to exactly match
 	// the user agent to exactly match
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
@@ -131,7 +161,7 @@ type AgentBlockingRuleStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// AgentBlockingRule is the Schema for the AgentBlockingRules API. <no value>
+// AgentBlockingRule is the Schema for the AgentBlockingRules API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

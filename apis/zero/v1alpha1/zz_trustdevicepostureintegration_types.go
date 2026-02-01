@@ -15,116 +15,153 @@ import (
 
 type TrustDevicePostureIntegrationConfigInitParameters struct {
 
+	// (String) The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	// The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	APIURL *string `json:"apiUrl,omitempty" tf:"api_url,omitempty"`
 
+	// Access-Client-ID header when hitting the api_url.
 	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
 	AccessClientID *string `json:"accessClientId,omitempty" tf:"access_client_id,omitempty"`
 
+	// Access-Client-Secret header when hitting the api_url.
 	// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
 	AccessClientSecretSecretRef *v1.SecretKeySelector `json:"accessClientSecretSecretRef,omitempty" tf:"-"`
 
+	// (String) The Workspace One Authorization URL depending on your region.
 	// The Workspace One Authorization URL depending on your region.
 	AuthURL *string `json:"authUrl,omitempty" tf:"auth_url,omitempty"`
 
+	// (String) The Workspace One client ID provided in the Workspace One Admin Dashboard.
 	// The Workspace One client ID provided in the Workspace One Admin Dashboard.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
+	// (String) The Uptycs client secret.
 	// The Uptycs client secret.
 	ClientKey *string `json:"clientKey,omitempty" tf:"client_key,omitempty"`
 
+	// (String, Sensitive) The Workspace One client secret provided in the Workspace One Admin Dashboard.
 	// The Workspace One client secret provided in the Workspace One Admin Dashboard.
 	ClientSecretSecretRef *v1.SecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
+	// (String) The Crowdstrike customer ID.
 	// The Crowdstrike customer ID.
 	CustomerID *string `json:"customerId,omitempty" tf:"customer_id,omitempty"`
 }
 
 type TrustDevicePostureIntegrationConfigObservation struct {
 
+	// (String) The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	// The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	APIURL *string `json:"apiUrl,omitempty" tf:"api_url,omitempty"`
 
+	// Access-Client-ID header when hitting the api_url.
 	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
 	AccessClientID *string `json:"accessClientId,omitempty" tf:"access_client_id,omitempty"`
 
+	// (String) The Workspace One Authorization URL depending on your region.
 	// The Workspace One Authorization URL depending on your region.
 	AuthURL *string `json:"authUrl,omitempty" tf:"auth_url,omitempty"`
 
+	// (String) The Workspace One client ID provided in the Workspace One Admin Dashboard.
 	// The Workspace One client ID provided in the Workspace One Admin Dashboard.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
+	// (String) The Uptycs client secret.
 	// The Uptycs client secret.
 	ClientKey *string `json:"clientKey,omitempty" tf:"client_key,omitempty"`
 
+	// (String) The Crowdstrike customer ID.
 	// The Crowdstrike customer ID.
 	CustomerID *string `json:"customerId,omitempty" tf:"customer_id,omitempty"`
 }
 
 type TrustDevicePostureIntegrationConfigParameters struct {
 
+	// (String) The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	// The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	// +kubebuilder:validation:Optional
 	APIURL *string `json:"apiUrl,omitempty" tf:"api_url,omitempty"`
 
+	// Access-Client-ID header when hitting the api_url.
 	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
 	// +kubebuilder:validation:Optional
 	AccessClientID *string `json:"accessClientId,omitempty" tf:"access_client_id,omitempty"`
 
+	// Access-Client-Secret header when hitting the api_url.
 	// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
 	// +kubebuilder:validation:Optional
 	AccessClientSecretSecretRef *v1.SecretKeySelector `json:"accessClientSecretSecretRef,omitempty" tf:"-"`
 
+	// (String) The Workspace One Authorization URL depending on your region.
 	// The Workspace One Authorization URL depending on your region.
 	// +kubebuilder:validation:Optional
 	AuthURL *string `json:"authUrl,omitempty" tf:"auth_url,omitempty"`
 
+	// (String) The Workspace One client ID provided in the Workspace One Admin Dashboard.
 	// The Workspace One client ID provided in the Workspace One Admin Dashboard.
 	// +kubebuilder:validation:Optional
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
+	// (String) The Uptycs client secret.
 	// The Uptycs client secret.
 	// +kubebuilder:validation:Optional
 	ClientKey *string `json:"clientKey,omitempty" tf:"client_key,omitempty"`
 
+	// (String, Sensitive) The Workspace One client secret provided in the Workspace One Admin Dashboard.
 	// The Workspace One client secret provided in the Workspace One Admin Dashboard.
 	// +kubebuilder:validation:Optional
 	ClientSecretSecretRef *v1.SecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
+	// (String) The Crowdstrike customer ID.
 	// The Crowdstrike customer ID.
 	// +kubebuilder:validation:Optional
 	CustomerID *string `json:"customerId,omitempty" tf:"customer_id,omitempty"`
 }
 
 type TrustDevicePostureIntegrationInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// party integration information. (see below for nested schema)
 	Config *TrustDevicePostureIntegrationConfigInitParameters `json:"config,omitempty" tf:"config,omitempty"`
 
+	// party API. Use m for minutes (e.g. 5m) and h for hours (e.g. 12h).
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
 	Interval *string `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The name of the device posture integration.
 	// The name of the device posture integration.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of device posture integration.
+	// Available values: "workspace_one", "crowdstrike_s2s", "uptycs", "intune", "kolide", "tanium_s2s", "sentinelone_s2s", "custom_s2s".
 	// The type of device posture integration.
 	// Available values: "workspace_one", "crowdstrike_s2s", "uptycs", "intune", "kolide", "tanium_s2s", "sentinelone_s2s", "custom_s2s".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type TrustDevicePostureIntegrationObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// party integration information. (see below for nested schema)
 	Config *TrustDevicePostureIntegrationConfigObservation `json:"config,omitempty" tf:"config,omitempty"`
 
+	// (String) API UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// party API. Use m for minutes (e.g. 5m) and h for hours (e.g. 12h).
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
 	Interval *string `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The name of the device posture integration.
 	// The name of the device posture integration.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of device posture integration.
+	// Available values: "workspace_one", "crowdstrike_s2s", "uptycs", "intune", "kolide", "tanium_s2s", "sentinelone_s2s", "custom_s2s".
 	// The type of device posture integration.
 	// Available values: "workspace_one", "crowdstrike_s2s", "uptycs", "intune", "kolide", "tanium_s2s", "sentinelone_s2s", "custom_s2s".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -132,20 +169,26 @@ type TrustDevicePostureIntegrationObservation struct {
 
 type TrustDevicePostureIntegrationParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// party integration information. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Config *TrustDevicePostureIntegrationConfigParameters `json:"config,omitempty" tf:"config,omitempty"`
 
+	// party API. Use m for minutes (e.g. 5m) and h for hours (e.g. 12h).
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
 	// +kubebuilder:validation:Optional
 	Interval *string `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// (String) The name of the device posture integration.
 	// The name of the device posture integration.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The type of device posture integration.
+	// Available values: "workspace_one", "crowdstrike_s2s", "uptycs", "intune", "kolide", "tanium_s2s", "sentinelone_s2s", "custom_s2s".
 	// The type of device posture integration.
 	// Available values: "workspace_one", "crowdstrike_s2s", "uptycs", "intune", "kolide", "tanium_s2s", "sentinelone_s2s", "custom_s2s".
 	// +kubebuilder:validation:Optional
@@ -179,7 +222,7 @@ type TrustDevicePostureIntegrationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDevicePostureIntegration is the Schema for the TrustDevicePostureIntegrations API. <no value>
+// TrustDevicePostureIntegration is the Schema for the TrustDevicePostureIntegrations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

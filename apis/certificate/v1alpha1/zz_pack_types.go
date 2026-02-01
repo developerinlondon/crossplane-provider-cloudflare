@@ -18,38 +18,51 @@ type CertificatesInitParameters struct {
 
 type CertificatesObservation struct {
 
+	// (String) Certificate bundle method.
 	// Certificate bundle method.
 	BundleMethod *string `json:"bundleMethod,omitempty" tf:"bundle_method,omitempty"`
 
+	// (String) When the certificate from the authority expires.
 	// When the certificate from the authority expires.
 	ExpiresOn *string `json:"expiresOn,omitempty" tf:"expires_on,omitempty"`
 
+	// (Attributes) Specify the region where your private key can be held locally. (see below for nested schema)
 	GeoRestrictions *GeoRestrictionsObservation `json:"geoRestrictions,omitempty" tf:"geo_restrictions,omitempty"`
 
+	// (Set of String) Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// Hostnames covered by this certificate.
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
+	// (String) Identifier.
 	// Certificate identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The certificate authority that issued the certificate.
 	// The certificate authority that issued the certificate.
 	Issuer *string `json:"issuer,omitempty" tf:"issuer,omitempty"`
 
+	// (String) When the certificate was last modified.
 	// When the certificate was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Number) The order/priority in which the certificate will be used.
 	// The order/priority in which the certificate will be used.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) The type of hash used for the certificate.
 	// The type of hash used for the certificate.
 	Signature *string `json:"signature,omitempty" tf:"signature,omitempty"`
 
+	// (String) Status of certificate pack.
+	// Available values: "initializing", "pending_validation", "deleted", "pending_issuance", "pending_deployment", "pending_deletion", "pending_expiration", "expired", "active", "initializing_timed_out", "validation_timed_out", "issuance_timed_out", "deployment_timed_out", "deletion_timed_out", "pending_cleanup", "staging_deployment", "staging_active", "deactivating", "inactive", "backup_issued", "holding_deployment".
 	// Certificate status.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) When the certificate was uploaded to Cloudflare.
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn *string `json:"uploadedOn,omitempty" tf:"uploaded_on,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -62,6 +75,7 @@ type GeoRestrictionsInitParameters struct {
 
 type GeoRestrictionsObservation struct {
 
+	// (String) Available values: "us", "eu", "highest_security".
 	// Available values: "us", "eu", "highest_security".
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
@@ -71,108 +85,148 @@ type GeoRestrictionsParameters struct {
 
 type PackInitParameters struct {
 
+	// (String) Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions see this page for more details.
+	// Available values: "google", "lets_encrypt", "ssl_com".
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
 	// Available values: "google", "lets_encrypt", "ssl_com".
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (Boolean) Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding *bool `json:"cloudflareBranding,omitempty" tf:"cloudflare_branding,omitempty"`
 
+	// (Set of String) Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// +listType=set
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
+	// (String) Type of certificate pack.
+	// Available values: "advanced".
 	// Type of certificate pack.
 	// Available values: "advanced".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod *string `json:"validationMethod,omitempty" tf:"validation_method,omitempty"`
 
+	// (Number) Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays *float64 `json:"validityDays,omitempty" tf:"validity_days,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type PackObservation struct {
 
+	// (String) Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions see this page for more details.
+	// Available values: "google", "lets_encrypt", "ssl_com".
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
 	// Available values: "google", "lets_encrypt", "ssl_com".
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (Attributes List) Array of certificates in this pack. (see below for nested schema)
 	Certificates []CertificatesObservation `json:"certificates,omitempty" tf:"certificates,omitempty"`
 
+	// (Boolean) Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding *bool `json:"cloudflareBranding,omitempty" tf:"cloudflare_branding,omitempty"`
 
+	// (Set of String) Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// +listType=set
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Identifier of the primary certificate in a pack.
 	// Identifier of the primary certificate in a pack.
 	PrimaryCertificate *string `json:"primaryCertificate,omitempty" tf:"primary_certificate,omitempty"`
 
+	// (String) Status of certificate pack.
+	// Available values: "initializing", "pending_validation", "deleted", "pending_issuance", "pending_deployment", "pending_deletion", "pending_expiration", "expired", "active", "initializing_timed_out", "validation_timed_out", "issuance_timed_out", "deployment_timed_out", "deletion_timed_out", "pending_cleanup", "staging_deployment", "staging_active", "deactivating", "inactive", "backup_issued", "holding_deployment".
 	// Status of certificate pack.
 	// Available values: "initializing", "pending_validation", "deleted", "pending_issuance", "pending_deployment", "pending_deletion", "pending_expiration", "expired", "active", "initializing_timed_out", "validation_timed_out", "issuance_timed_out", "deployment_timed_out", "deletion_timed_out", "pending_cleanup", "staging_deployment", "staging_active", "deactivating", "inactive", "backup_issued", "holding_deployment".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Type of certificate pack.
+	// Available values: "advanced".
 	// Type of certificate pack.
 	// Available values: "advanced".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (Attributes List) Domain validation errors that have been received by the certificate authority (CA). (see below for nested schema)
 	ValidationErrors []ValidationErrorsObservation `json:"validationErrors,omitempty" tf:"validation_errors,omitempty"`
 
+	// (String) Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod *string `json:"validationMethod,omitempty" tf:"validation_method,omitempty"`
 
+	// (Attributes List) Certificates' validation records. (see below for nested schema)
 	ValidationRecords []ValidationRecordsObservation `json:"validationRecords,omitempty" tf:"validation_records,omitempty"`
 
+	// (Number) Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays *float64 `json:"validityDays,omitempty" tf:"validity_days,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type PackParameters struct {
 
+	// (String) Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions see this page for more details.
+	// Available values: "google", "lets_encrypt", "ssl_com".
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
 	// Available values: "google", "lets_encrypt", "ssl_com".
 	// +kubebuilder:validation:Optional
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (Boolean) Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	// +kubebuilder:validation:Optional
 	CloudflareBranding *bool `json:"cloudflareBranding,omitempty" tf:"cloudflare_branding,omitempty"`
 
+	// (Set of String) Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
+	// (String) Type of certificate pack.
+	// Available values: "advanced".
 	// Type of certificate pack.
 	// Available values: "advanced".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	// +kubebuilder:validation:Optional
 	ValidationMethod *string `json:"validationMethod,omitempty" tf:"validation_method,omitempty"`
 
+	// (Number) Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	// +kubebuilder:validation:Optional
 	ValidityDays *float64 `json:"validityDays,omitempty" tf:"validity_days,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -183,6 +237,7 @@ type ValidationErrorsInitParameters struct {
 
 type ValidationErrorsObservation struct {
 
+	// (String) A domain validation error.
 	// A domain validation error.
 	Message *string `json:"message,omitempty" tf:"message,omitempty"`
 }
@@ -195,18 +250,23 @@ type ValidationRecordsInitParameters struct {
 
 type ValidationRecordsObservation struct {
 
+	// (List of String) The set of email addresses that the certificate authority (CA) will use to complete domain validation.
 	// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
 	Emails []*string `json:"emails,omitempty" tf:"emails,omitempty"`
 
+	// (String) The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
 	// The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
 	HTTPBody *string `json:"httpBody,omitempty" tf:"http_body,omitempty"`
 
+	// (String) The url that will be checked during domain validation.
 	// The url that will be checked during domain validation.
 	HTTPURL *string `json:"httpUrl,omitempty" tf:"http_url,omitempty"`
 
+	// (String) The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
 	// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
 	TxtName *string `json:"txtName,omitempty" tf:"txt_name,omitempty"`
 
+	// (String) The TXT record that the certificate authority (CA) will check during domain validation.
 	// The TXT record that the certificate authority (CA) will check during domain validation.
 	TxtValue *string `json:"txtValue,omitempty" tf:"txt_value,omitempty"`
 }
@@ -241,7 +301,7 @@ type PackStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Pack is the Schema for the Packs API. <no value>
+// Pack is the Schema for the Packs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

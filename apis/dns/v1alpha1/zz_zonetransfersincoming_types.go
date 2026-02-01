@@ -15,66 +15,86 @@ import (
 
 type ZoneTransfersIncomingInitParameters struct {
 
+	// (Number) How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+	// Not applicable for primary zones.
 	// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
 	// Not applicable for primary zones.
 	AutoRefreshSeconds *float64 `json:"autoRefreshSeconds,omitempty" tf:"auto_refresh_seconds,omitempty"`
 
+	// (String) Zone name.
 	// Zone name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) A list of peer tags.
 	// A list of peer tags.
 	// +listType=set
 	Peers []*string `json:"peers,omitempty" tf:"peers,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ZoneTransfersIncomingObservation struct {
 
+	// (Number) How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+	// Not applicable for primary zones.
 	// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
 	// Not applicable for primary zones.
 	AutoRefreshSeconds *float64 `json:"autoRefreshSeconds,omitempty" tf:"auto_refresh_seconds,omitempty"`
 
+	// (String) The time for a specific event.
 	// The time for a specific event.
 	CheckedTime *string `json:"checkedTime,omitempty" tf:"checked_time,omitempty"`
 
+	// (String) The time for a specific event.
 	// The time for a specific event.
 	CreatedTime *string `json:"createdTime,omitempty" tf:"created_time,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The time for a specific event.
 	// The time for a specific event.
 	ModifiedTime *string `json:"modifiedTime,omitempty" tf:"modified_time,omitempty"`
 
+	// (String) Zone name.
 	// Zone name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) A list of peer tags.
 	// A list of peer tags.
 	// +listType=set
 	Peers []*string `json:"peers,omitempty" tf:"peers,omitempty"`
 
+	// (Number) The serial number of the SOA for the given zone.
 	// The serial number of the SOA for the given zone.
 	SoaSerial *float64 `json:"soaSerial,omitempty" tf:"soa_serial,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ZoneTransfersIncomingParameters struct {
 
+	// (Number) How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+	// Not applicable for primary zones.
 	// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
 	// Not applicable for primary zones.
 	// +kubebuilder:validation:Optional
 	AutoRefreshSeconds *float64 `json:"autoRefreshSeconds,omitempty" tf:"auto_refresh_seconds,omitempty"`
 
+	// (String) Zone name.
 	// Zone name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Set of String) A list of peer tags.
 	// A list of peer tags.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Peers []*string `json:"peers,omitempty" tf:"peers,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -106,7 +126,7 @@ type ZoneTransfersIncomingStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ZoneTransfersIncoming is the Schema for the ZoneTransfersIncomings API. <no value>
+// ZoneTransfersIncoming is the Schema for the ZoneTransfersIncomings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

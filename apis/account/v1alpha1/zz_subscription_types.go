@@ -15,43 +15,54 @@ import (
 
 type RatePlanInitParameters struct {
 
+	// (String) Subscription identifier tag.
 	// The ID of the rate plan.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The scope that this rate plan applies to.
 	// The scope that this rate plan applies to.
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 }
 
 type RatePlanObservation struct {
 
+	// (String) The monetary unit in which pricing information is displayed.
 	// The currency applied to the rate plan subscription.
 	Currency *string `json:"currency,omitempty" tf:"currency,omitempty"`
 
+	// (Boolean) Whether this rate plan is managed externally from Cloudflare.
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged *bool `json:"externallyManaged,omitempty" tf:"externally_managed,omitempty"`
 
+	// (String) Subscription identifier tag.
 	// The ID of the rate plan.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// based (or newly adopted term contract).
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract *bool `json:"isContract,omitempty" tf:"is_contract,omitempty"`
 
+	// (String) The full name of the rate plan.
 	// The full name of the rate plan.
 	PublicName *string `json:"publicName,omitempty" tf:"public_name,omitempty"`
 
+	// (String) The scope that this rate plan applies to.
 	// The scope that this rate plan applies to.
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (List of String) The list of sets this rate plan applies to. Returns array of strings.
 	// The list of sets this rate plan applies to. Returns array of strings.
 	Sets []*string `json:"sets,omitempty" tf:"sets,omitempty"`
 }
 
 type RatePlanParameters struct {
 
+	// (String) Subscription identifier tag.
 	// The ID of the rate plan.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The scope that this rate plan applies to.
 	// The scope that this rate plan applies to.
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
@@ -59,41 +70,56 @@ type RatePlanParameters struct {
 
 type SubscriptionInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
+	// (Attributes) The rate plan applied to the subscription. (see below for nested schema)
 	RatePlan *RatePlanInitParameters `json:"ratePlan,omitempty" tf:"rate_plan,omitempty"`
 }
 
 type SubscriptionObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The monetary unit in which pricing information is displayed.
 	// The monetary unit in which pricing information is displayed.
 	Currency *string `json:"currency,omitempty" tf:"currency,omitempty"`
 
+	// (String) The end of the current period and also when the next billing is due.
 	// The end of the current period and also when the next billing is due.
 	CurrentPeriodEnd *string `json:"currentPeriodEnd,omitempty" tf:"current_period_end,omitempty"`
 
+	// (String) When the current billing period started. May match initial_period_start if this is the first period.
 	// When the current billing period started. May match initial_period_start if this is the first period.
 	CurrentPeriodStart *string `json:"currentPeriodStart,omitempty" tf:"current_period_start,omitempty"`
 
+	// (String) How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
+	// (String) Subscription identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) The price of the subscription that will be billed, in US dollars.
 	// The price of the subscription that will be billed, in US dollars.
 	Price *float64 `json:"price,omitempty" tf:"price,omitempty"`
 
+	// (Attributes) The rate plan applied to the subscription. (see below for nested schema)
 	RatePlan *RatePlanObservation `json:"ratePlan,omitempty" tf:"rate_plan,omitempty"`
 
+	// (String) The state that the subscription is in.
+	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -101,15 +127,19 @@ type SubscriptionObservation struct {
 
 type SubscriptionParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	// +kubebuilder:validation:Optional
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
+	// (Attributes) The rate plan applied to the subscription. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	RatePlan *RatePlanParameters `json:"ratePlan,omitempty" tf:"rate_plan,omitempty"`
 }
@@ -141,7 +171,7 @@ type SubscriptionStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Subscription is the Schema for the Subscriptions API. <no value>
+// Subscription is the Schema for the Subscriptions API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

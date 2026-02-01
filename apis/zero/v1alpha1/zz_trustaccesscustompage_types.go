@@ -15,15 +15,20 @@ import (
 
 type TrustAccessCustomPageInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Custom page HTML.
 	// Custom page HTML.
 	CustomHTML *string `json:"customHtml,omitempty" tf:"custom_html,omitempty"`
 
+	// (String) Custom page name.
 	// Custom page name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Custom page type.
+	// Available values: "identity_denied", "forbidden".
 	// Custom page type.
 	// Available values: "identity_denied", "forbidden".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -31,39 +36,51 @@ type TrustAccessCustomPageInitParameters struct {
 
 type TrustAccessCustomPageObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Custom page HTML.
 	// Custom page HTML.
 	CustomHTML *string `json:"customHtml,omitempty" tf:"custom_html,omitempty"`
 
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Custom page name.
 	// Custom page name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Custom page type.
+	// Available values: "identity_denied", "forbidden".
 	// Custom page type.
 	// Available values: "identity_denied", "forbidden".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	UID *string `json:"uid,omitempty" tf:"uid,omitempty"`
 }
 
 type TrustAccessCustomPageParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Custom page HTML.
 	// Custom page HTML.
 	// +kubebuilder:validation:Optional
 	CustomHTML *string `json:"customHtml,omitempty" tf:"custom_html,omitempty"`
 
+	// (String) Custom page name.
 	// Custom page name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Custom page type.
+	// Available values: "identity_denied", "forbidden".
 	// Custom page type.
 	// Available values: "identity_denied", "forbidden".
 	// +kubebuilder:validation:Optional
@@ -97,7 +114,7 @@ type TrustAccessCustomPageStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessCustomPage is the Schema for the TrustAccessCustomPages API. <no value>
+// TrustAccessCustomPage is the Schema for the TrustAccessCustomPages API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

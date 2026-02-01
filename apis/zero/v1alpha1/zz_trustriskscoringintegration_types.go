@@ -14,68 +14,92 @@ import (
 )
 
 type TrustRiskScoringIntegrationInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// party.
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
 
+	// (String) Available values: "Okta".
 	// Available values: "Okta".
 	IntegrationType *string `json:"integrationType,omitempty" tf:"integration_type,omitempty"`
 
+	// Okta IDP ID (a UUIDv4).
+	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceID *string `json:"referenceId,omitempty" tf:"reference_id,omitempty"`
 
+	// (String) The base url of the tenant, e.g. "https://tenant.okta.com".
 	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantURL *string `json:"tenantUrl,omitempty" tf:"tenant_url,omitempty"`
 }
 
 type TrustRiskScoringIntegrationObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The Cloudflare account tag.
 	// The Cloudflare account tag.
 	AccountTag *string `json:"accountTag,omitempty" tf:"account_tag,omitempty"`
 
+	// party.
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
 
+	// (String) When the integration was created in RFC3339 format.
 	// When the integration was created in RFC3339 format.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) The id of the integration, a UUIDv4.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Available values: "Okta".
 	// Available values: "Okta".
 	IntegrationType *string `json:"integrationType,omitempty" tf:"integration_type,omitempty"`
 
+	// Okta IDP ID (a UUIDv4).
+	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceID *string `json:"referenceId,omitempty" tf:"reference_id,omitempty"`
 
+	// (String) The base url of the tenant, e.g. "https://tenant.okta.com".
 	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantURL *string `json:"tenantUrl,omitempty" tf:"tenant_url,omitempty"`
 
+	// known/sse-configuration/{integration_uuid}/". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.
 	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration_uuid}/". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1.
 	WellKnownURL *string `json:"wellKnownUrl,omitempty" tf:"well_known_url,omitempty"`
 }
 
 type TrustRiskScoringIntegrationParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// party.
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	// +kubebuilder:validation:Optional
 	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
 
+	// (String) Available values: "Okta".
 	// Available values: "Okta".
 	// +kubebuilder:validation:Optional
 	IntegrationType *string `json:"integrationType,omitempty" tf:"integration_type,omitempty"`
 
+	// Okta IDP ID (a UUIDv4).
+	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	// +kubebuilder:validation:Optional
 	ReferenceID *string `json:"referenceId,omitempty" tf:"reference_id,omitempty"`
 
+	// (String) The base url of the tenant, e.g. "https://tenant.okta.com".
 	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	// +kubebuilder:validation:Optional
 	TenantURL *string `json:"tenantUrl,omitempty" tf:"tenant_url,omitempty"`
@@ -108,7 +132,7 @@ type TrustRiskScoringIntegrationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustRiskScoringIntegration is the Schema for the TrustRiskScoringIntegrations API. <no value>
+// TrustRiskScoringIntegration is the Schema for the TrustRiskScoringIntegrations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

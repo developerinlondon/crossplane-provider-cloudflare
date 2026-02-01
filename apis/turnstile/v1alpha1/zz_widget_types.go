@@ -15,35 +15,50 @@ import (
 
 type WidgetInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) If bot_fight_mode is set to true, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	// If bot_fight_mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode *bool `json:"botFightMode,omitempty" tf:"bot_fight_mode,omitempty"`
 
+	// (String) If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "no_clearance", "jschallenge", "managed", "interactive".
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
 	// Available values: "no_clearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel *string `json:"clearanceLevel,omitempty" tf:"clearance_level,omitempty"`
 
+	// (List of String)
 	Domains []*string `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (Boolean) Return the Ephemeral ID in /siteverify (ENT only).
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralID *bool `json:"ephemeralId,omitempty" tf:"ephemeral_id,omitempty"`
 
+	// interactive", "invisible", "managed".
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	// Human readable widget name. Not unique. Cloudflare suggests that you
 	// set this to a meaningful string to make it easier to identify your
 	// widget, and where it is used.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Do not show any Cloudflare branding on the widget (ENT only).
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `json:"offlabel,omitempty" tf:"offlabel,omitempty"`
 
+	// (String) Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -51,90 +66,124 @@ type WidgetInitParameters struct {
 
 type WidgetObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) If bot_fight_mode is set to true, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	// If bot_fight_mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode *bool `json:"botFightMode,omitempty" tf:"bot_fight_mode,omitempty"`
 
+	// (String) If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "no_clearance", "jschallenge", "managed", "interactive".
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
 	// Available values: "no_clearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel *string `json:"clearanceLevel,omitempty" tf:"clearance_level,omitempty"`
 
+	// (String) When the widget was created.
 	// When the widget was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (List of String)
 	Domains []*string `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (Boolean) Return the Ephemeral ID in /siteverify (ENT only).
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralID *bool `json:"ephemeralId,omitempty" tf:"ephemeral_id,omitempty"`
 
+	// (String) Widget item identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// interactive", "invisible", "managed".
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) When the widget was modified.
 	// When the widget was modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	// Human readable widget name. Not unique. Cloudflare suggests that you
 	// set this to a meaningful string to make it easier to identify your
 	// widget, and where it is used.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Do not show any Cloudflare branding on the widget (ENT only).
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `json:"offlabel,omitempty" tf:"offlabel,omitempty"`
 
+	// (String) Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 
+	// (String) Widget item identifier tag.
 	// Widget item identifier tag.
 	Sitekey *string `json:"sitekey,omitempty" tf:"sitekey,omitempty"`
 }
 
 type WidgetParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) If bot_fight_mode is set to true, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	// If bot_fight_mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	// +kubebuilder:validation:Optional
 	BotFightMode *bool `json:"botFightMode,omitempty" tf:"bot_fight_mode,omitempty"`
 
+	// (String) If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "no_clearance", "jschallenge", "managed", "interactive".
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
 	// Available values: "no_clearance", "jschallenge", "managed", "interactive".
 	// +kubebuilder:validation:Optional
 	ClearanceLevel *string `json:"clearanceLevel,omitempty" tf:"clearance_level,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Domains []*string `json:"domains,omitempty" tf:"domains,omitempty"`
 
+	// (Boolean) Return the Ephemeral ID in /siteverify (ENT only).
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	// +kubebuilder:validation:Optional
 	EphemeralID *bool `json:"ephemeralId,omitempty" tf:"ephemeral_id,omitempty"`
 
+	// interactive", "invisible", "managed".
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	// +kubebuilder:validation:Optional
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
 
+	// (String) Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	// Human readable widget name. Not unique. Cloudflare suggests that you
 	// set this to a meaningful string to make it easier to identify your
 	// widget, and where it is used.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean) Do not show any Cloudflare branding on the widget (ENT only).
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	// +kubebuilder:validation:Optional
 	Offlabel *bool `json:"offlabel,omitempty" tf:"offlabel,omitempty"`
 
+	// (String) Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	// +kubebuilder:validation:Optional
@@ -168,7 +217,7 @@ type WidgetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Widget is the Schema for the Widgets API. <no value>
+// Widget is the Schema for the Widgets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

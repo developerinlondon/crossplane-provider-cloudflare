@@ -15,44 +15,56 @@ import (
 
 type BodyInitParameters struct {
 
+	// (String) Defines the ruleset expression to use in matching content objects.
 	// Defines the ruleset expression to use in matching content objects.
 	Payload *string `json:"payload,omitempty" tf:"payload,omitempty"`
 }
 
 type BodyObservation struct {
 
+	// (String) Defines the ruleset expression to use in matching content objects.
 	// Defines the ruleset expression to use in matching content objects.
 	Payload *string `json:"payload,omitempty" tf:"payload,omitempty"`
 }
 
 type BodyParameters struct {
 
+	// (String) Defines the ruleset expression to use in matching content objects.
 	// Defines the ruleset expression to use in matching content objects.
 	// +kubebuilder:validation:Optional
 	Payload *string `json:"payload" tf:"payload,omitempty"`
 }
 
 type ScanningExpressionInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	Body []BodyInitParameters `json:"body,omitempty" tf:"body,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ScanningExpressionObservation struct {
+
+	// (Attributes List) (see below for nested schema)
 	Body []BodyObservation `json:"body,omitempty" tf:"body,omitempty"`
 
+	// (String) defines the unique ID for this custom scan expression.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ScanningExpressionParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Body []BodyParameters `json:"body,omitempty" tf:"body,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -85,7 +97,7 @@ type ScanningExpressionStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ScanningExpression is the Schema for the ScanningExpressions API. <no value>
+// ScanningExpression is the Schema for the ScanningExpressions API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

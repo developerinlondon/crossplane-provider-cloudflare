@@ -15,35 +15,46 @@ import (
 
 type ActionsInitParameters struct {
 
+	// all rule.
+	// Available values: "drop", "forward", "worker".
 	// Type of action for catch-all rule.
 	// Available values: "drop", "forward", "worker".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String)
 	Value []*string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ActionsObservation struct {
 
+	// all rule.
+	// Available values: "drop", "forward", "worker".
 	// Type of action for catch-all rule.
 	// Available values: "drop", "forward", "worker".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (List of String)
 	Value []*string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ActionsParameters struct {
 
+	// all rule.
+	// Available values: "drop", "forward", "worker".
 	// Type of action for catch-all rule.
 	// Available values: "drop", "forward", "worker".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`
 
+	// (List of String)
 	// +kubebuilder:validation:Optional
 	Value []*string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type MatchersInitParameters struct {
 
+	// all rule.
+	// Available values: "drop", "forward", "worker".
 	// Type of matcher. Default is 'all'.
 	// Available values: "all".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -51,6 +62,8 @@ type MatchersInitParameters struct {
 
 type MatchersObservation struct {
 
+	// all rule.
+	// Available values: "drop", "forward", "worker".
 	// Type of matcher. Default is 'all'.
 	// Available values: "all".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -58,6 +71,8 @@ type MatchersObservation struct {
 
 type MatchersParameters struct {
 
+	// all rule.
+	// Available values: "drop", "forward", "worker".
 	// Type of matcher. Default is 'all'.
 	// Available values: "all".
 	// +kubebuilder:validation:Optional
@@ -65,56 +80,75 @@ type MatchersParameters struct {
 }
 
 type RoutingCatchAllInitParameters struct {
+
+	// all routing rule. (see below for nested schema)
 	Actions []ActionsInitParameters `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (Boolean) Routing rule status.
 	// Routing rule status.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// all routing rule. (see below for nested schema)
 	Matchers []MatchersInitParameters `json:"matchers,omitempty" tf:"matchers,omitempty"`
 
+	// (String) Routing rule name.
 	// Routing rule name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoutingCatchAllObservation struct {
+
+	// all routing rule. (see below for nested schema)
 	Actions []ActionsObservation `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (Boolean) Routing rule status.
 	// Routing rule status.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// all routing rule. (see below for nested schema)
 	Matchers []MatchersObservation `json:"matchers,omitempty" tf:"matchers,omitempty"`
 
+	// (String) Routing rule name.
 	// Routing rule name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String, Deprecated) Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RoutingCatchAllParameters struct {
 
+	// all routing rule. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Actions []ActionsParameters `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (Boolean) Routing rule status.
 	// Routing rule status.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// all routing rule. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Matchers []MatchersParameters `json:"matchers,omitempty" tf:"matchers,omitempty"`
 
+	// (String) Routing rule name.
 	// Routing rule name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -147,7 +181,7 @@ type RoutingCatchAllStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// RoutingCatchAll is the Schema for the RoutingCatchAlls API. <no value>
+// RoutingCatchAll is the Schema for the RoutingCatchAlls API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

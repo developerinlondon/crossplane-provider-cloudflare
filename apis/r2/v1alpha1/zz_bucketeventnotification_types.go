@@ -15,109 +15,137 @@ import (
 
 type BucketEventNotificationInitParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) Queue ID.
 	// Queue ID.
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (Attributes List) Array of rules to drive notifications. (see below for nested schema)
 	Rules []BucketEventNotificationRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketEventNotificationObservation struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) Queue ID.
 	// Queue ID.
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String) Name of the queue.
 	// Name of the queue.
 	QueueName *string `json:"queueName,omitempty" tf:"queue_name,omitempty"`
 
+	// (Attributes List) Array of rules to drive notifications. (see below for nested schema)
 	Rules []BucketEventNotificationRulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketEventNotificationParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	// +kubebuilder:validation:Optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Jurisdiction of the bucket
 	// Jurisdiction of the bucket
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) Queue ID.
 	// Queue ID.
 	// +kubebuilder:validation:Optional
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (Attributes List) Array of rules to drive notifications. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []BucketEventNotificationRulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type BucketEventNotificationRulesInitParameters struct {
 
+	// (List of String) Array of R2 object actions that will trigger notifications.
 	// Array of R2 object actions that will trigger notifications.
 	Actions []*string `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (String) A description that can be used to identify the event notification rule after creation.
 	// A description that can be used to identify the event notification rule after creation.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Notifications will be sent only for objects with this prefix.
 	// Notifications will be sent only for objects with this prefix.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 
+	// (String) Notifications will be sent only for objects with this suffix.
 	// Notifications will be sent only for objects with this suffix.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
 
 type BucketEventNotificationRulesObservation struct {
 
+	// (List of String) Array of R2 object actions that will trigger notifications.
 	// Array of R2 object actions that will trigger notifications.
 	Actions []*string `json:"actions,omitempty" tf:"actions,omitempty"`
 
+	// (String) A description that can be used to identify the event notification rule after creation.
 	// A description that can be used to identify the event notification rule after creation.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Notifications will be sent only for objects with this prefix.
 	// Notifications will be sent only for objects with this prefix.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 
+	// (String) Notifications will be sent only for objects with this suffix.
 	// Notifications will be sent only for objects with this suffix.
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
 }
 
 type BucketEventNotificationRulesParameters struct {
 
+	// (List of String) Array of R2 object actions that will trigger notifications.
 	// Array of R2 object actions that will trigger notifications.
 	// +kubebuilder:validation:Optional
 	Actions []*string `json:"actions" tf:"actions,omitempty"`
 
+	// (String) A description that can be used to identify the event notification rule after creation.
 	// A description that can be used to identify the event notification rule after creation.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Notifications will be sent only for objects with this prefix.
 	// Notifications will be sent only for objects with this prefix.
 	// +kubebuilder:validation:Optional
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 
+	// (String) Notifications will be sent only for objects with this suffix.
 	// Notifications will be sent only for objects with this suffix.
 	// +kubebuilder:validation:Optional
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
@@ -150,7 +178,7 @@ type BucketEventNotificationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// BucketEventNotification is the Schema for the BucketEventNotifications API. <no value>
+// BucketEventNotification is the Schema for the BucketEventNotifications API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

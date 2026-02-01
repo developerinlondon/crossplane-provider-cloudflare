@@ -15,82 +15,105 @@ import (
 
 type ImageInitParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Can set the creator field with an internal user ID.
 	// Can set the creator field with an internal user ID.
 	Creator *string `json:"creator,omitempty" tf:"creator,omitempty"`
 
+	// (String) An image binary data. Only needed when type is uploading a file.
 	// An image binary data. Only needed when type is uploading a file.
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// value store. Can use used for keeping references to another system of record for managing images.
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (Boolean) Indicates whether the image requires a signature token for the access.
 	// Indicates whether the image requires a signature token for the access.
 	RequireSignedUrls *bool `json:"requireSignedUrls,omitempty" tf:"require_signed_urls,omitempty"`
 
+	// (String) A URL to fetch an image from origin. Only needed when type is uploading from a URL.
 	// A URL to fetch an image from origin. Only needed when type is uploading from a URL.
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type ImageObservation struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Can set the creator field with an internal user ID.
 	// Can set the creator field with an internal user ID.
 	Creator *string `json:"creator,omitempty" tf:"creator,omitempty"`
 
+	// (String) An image binary data. Only needed when type is uploading a file.
 	// An image binary data. Only needed when type is uploading a file.
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (String) Image file name.
 	// Image file name.
 	Filename *string `json:"filename,omitempty" tf:"filename,omitempty"`
 
+	// (String) An optional custom unique identifier for your image.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
 	// User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
 	Meta *string `json:"meta,omitempty" tf:"meta,omitempty"`
 
+	// value store. Can use used for keeping references to another system of record for managing images.
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (Boolean) Indicates whether the image requires a signature token for the access.
 	// Indicates whether the image requires a signature token for the access.
 	RequireSignedUrls *bool `json:"requireSignedUrls,omitempty" tf:"require_signed_urls,omitempty"`
 
+	// (String) A URL to fetch an image from origin. Only needed when type is uploading from a URL.
 	// A URL to fetch an image from origin. Only needed when type is uploading from a URL.
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 
+	// (String) When the media item was uploaded.
 	// When the media item was uploaded.
 	Uploaded *string `json:"uploaded,omitempty" tf:"uploaded,omitempty"`
 
+	// (List of String) Object specifying available variants for an image.
 	// Object specifying available variants for an image.
 	Variants []*string `json:"variants,omitempty" tf:"variants,omitempty"`
 }
 
 type ImageParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Can set the creator field with an internal user ID.
 	// Can set the creator field with an internal user ID.
 	// +kubebuilder:validation:Optional
 	Creator *string `json:"creator,omitempty" tf:"creator,omitempty"`
 
+	// (String) An image binary data. Only needed when type is uploading a file.
 	// An image binary data. Only needed when type is uploading a file.
 	// +kubebuilder:validation:Optional
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// value store. Can use used for keeping references to another system of record for managing images.
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
 	// +kubebuilder:validation:Optional
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (Boolean) Indicates whether the image requires a signature token for the access.
 	// Indicates whether the image requires a signature token for the access.
 	// +kubebuilder:validation:Optional
 	RequireSignedUrls *bool `json:"requireSignedUrls,omitempty" tf:"require_signed_urls,omitempty"`
 
+	// (String) A URL to fetch an image from origin. Only needed when type is uploading from a URL.
 	// A URL to fetch an image from origin. Only needed when type is uploading from a URL.
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
@@ -123,7 +146,7 @@ type ImageStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Image is the Schema for the Images API. <no value>
+// Image is the Schema for the Images API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

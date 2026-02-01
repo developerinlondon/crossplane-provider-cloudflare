@@ -18,22 +18,29 @@ type ConsumersInitParameters struct {
 
 type ConsumersObservation struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	ConsumerID *string `json:"consumerId,omitempty" tf:"consumer_id,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String)
 	// A Resource identifier.
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String) Name of a Worker
 	// Name of a Worker
 	Script *string `json:"script,omitempty" tf:"script,omitempty"`
 
+	// (String) Name of a Worker
 	// Name of a Worker
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Settings *ConsumersSettingsObservation `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "worker", "http_pull".
 	// Available values: "worker", "http_pull".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -46,21 +53,27 @@ type ConsumersSettingsInitParameters struct {
 
 type ConsumersSettingsObservation struct {
 
+	// (Number) The maximum number of messages to include in a batch.
 	// The maximum number of messages to include in a batch.
 	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
+	// (Number) Maximum number of concurrent consumers that may consume from this Queue. Set to null to automatically opt in to the platform's maximum (recommended).
 	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
 	MaxConcurrency *float64 `json:"maxConcurrency,omitempty" tf:"max_concurrency,omitempty"`
 
+	// (Number) The maximum number of retries
 	// The maximum number of retries
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Number) The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 	MaxWaitTimeMs *float64 `json:"maxWaitTimeMs,omitempty" tf:"max_wait_time_ms,omitempty"`
 
+	// (Number) The number of seconds to delay before making the message available for another attempt.
 	// The number of seconds to delay before making the message available for another attempt.
 	RetryDelay *float64 `json:"retryDelay,omitempty" tf:"retry_delay,omitempty"`
 
+	// (Number) The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
 	VisibilityTimeoutMs *float64 `json:"visibilityTimeoutMs,omitempty" tf:"visibility_timeout_ms,omitempty"`
 }
@@ -72,10 +85,14 @@ type ProducersInitParameters struct {
 }
 
 type ProducersObservation struct {
+
+	// (String)
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
 
+	// (String) Name of a Worker
 	Script *string `json:"script,omitempty" tf:"script,omitempty"`
 
+	// (String) Available values: "worker", "http_pull".
 	// Available values: "worker", "r2_bucket".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -85,87 +102,113 @@ type ProducersParameters struct {
 
 type QueueInitParameters struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	QueueName *string `json:"queueName,omitempty" tf:"queue_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Settings *QueueSettingsInitParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 }
 
 type QueueObservation struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Consumers []ConsumersObservation `json:"consumers,omitempty" tf:"consumers,omitempty"`
 
+	// (Number)
 	ConsumersTotalCount *float64 `json:"consumersTotalCount,omitempty" tf:"consumers_total_count,omitempty"`
 
+	// (String)
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Producers []ProducersObservation `json:"producers,omitempty" tf:"producers,omitempty"`
 
+	// (Number)
 	ProducersTotalCount *float64 `json:"producersTotalCount,omitempty" tf:"producers_total_count,omitempty"`
 
+	// (String)
 	QueueID *string `json:"queueId,omitempty" tf:"queue_id,omitempty"`
 
+	// (String)
 	QueueName *string `json:"queueName,omitempty" tf:"queue_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Settings *QueueSettingsObservation `json:"settings,omitempty" tf:"settings,omitempty"`
 }
 
 type QueueParameters struct {
 
+	// (String) A Resource identifier.
 	// A Resource identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	QueueName *string `json:"queueName,omitempty" tf:"queue_name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Settings *QueueSettingsParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 }
 
 type QueueSettingsInitParameters struct {
 
+	// (Number) Number of seconds to delay delivery of all messages to consumers.
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay *float64 `json:"deliveryDelay,omitempty" tf:"delivery_delay,omitempty"`
 
+	// (Boolean) Indicates if message delivery to consumers is currently paused.
 	// Indicates if message delivery to consumers is currently paused.
 	DeliveryPaused *bool `json:"deliveryPaused,omitempty" tf:"delivery_paused,omitempty"`
 
+	// (Number) Number of seconds after which an unconsumed message will be delayed.
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod *float64 `json:"messageRetentionPeriod,omitempty" tf:"message_retention_period,omitempty"`
 }
 
 type QueueSettingsObservation struct {
 
+	// (Number) Number of seconds to delay delivery of all messages to consumers.
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay *float64 `json:"deliveryDelay,omitempty" tf:"delivery_delay,omitempty"`
 
+	// (Boolean) Indicates if message delivery to consumers is currently paused.
 	// Indicates if message delivery to consumers is currently paused.
 	DeliveryPaused *bool `json:"deliveryPaused,omitempty" tf:"delivery_paused,omitempty"`
 
+	// (Number) Number of seconds after which an unconsumed message will be delayed.
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod *float64 `json:"messageRetentionPeriod,omitempty" tf:"message_retention_period,omitempty"`
 }
 
 type QueueSettingsParameters struct {
 
+	// (Number) Number of seconds to delay delivery of all messages to consumers.
 	// Number of seconds to delay delivery of all messages to consumers.
 	// +kubebuilder:validation:Optional
 	DeliveryDelay *float64 `json:"deliveryDelay,omitempty" tf:"delivery_delay,omitempty"`
 
+	// (Boolean) Indicates if message delivery to consumers is currently paused.
 	// Indicates if message delivery to consumers is currently paused.
 	// +kubebuilder:validation:Optional
 	DeliveryPaused *bool `json:"deliveryPaused,omitempty" tf:"delivery_paused,omitempty"`
 
+	// (Number) Number of seconds after which an unconsumed message will be delayed.
 	// Number of seconds after which an unconsumed message will be delayed.
 	// +kubebuilder:validation:Optional
 	MessageRetentionPeriod *float64 `json:"messageRetentionPeriod,omitempty" tf:"message_retention_period,omitempty"`
@@ -198,7 +241,7 @@ type QueueStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Queue is the Schema for the Queues API. <no value>
+// Queue is the Schema for the Queues API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

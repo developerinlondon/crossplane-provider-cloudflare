@@ -15,10 +15,13 @@ import (
 
 type ScanningInitParameters struct {
 
+	// (String) The status value for Content Scanning.
+	// Available values: "enabled", "disabled".
 	// The status value for Content Scanning.
 	// Available values: "enabled", "disabled".
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -26,24 +29,31 @@ type ScanningInitParameters struct {
 type ScanningObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Defines the last modification date (ISO 8601) of the Content Scanning status.
 	// Defines the last modification date (ISO 8601) of the Content Scanning status.
 	Modified *string `json:"modified,omitempty" tf:"modified,omitempty"`
 
+	// (String) The status value for Content Scanning.
+	// Available values: "enabled", "disabled".
 	// The status value for Content Scanning.
 	// Available values: "enabled", "disabled".
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ScanningParameters struct {
 
+	// (String) The status value for Content Scanning.
+	// Available values: "enabled", "disabled".
 	// The status value for Content Scanning.
 	// Available values: "enabled", "disabled".
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -76,7 +86,7 @@ type ScanningStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Scanning is the Schema for the Scannings API. <no value>
+// Scanning is the Schema for the Scannings API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

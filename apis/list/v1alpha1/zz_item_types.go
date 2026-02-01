@@ -15,169 +15,223 @@ import (
 
 type HostnameInitParameters struct {
 
+	// (Boolean) Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	ExcludeExactHostname *bool `json:"excludeExactHostname,omitempty" tf:"exclude_exact_hostname,omitempty"`
 
+	// (String)
 	URLHostname *string `json:"urlHostname,omitempty" tf:"url_hostname,omitempty"`
 }
 
 type HostnameObservation struct {
 
+	// (Boolean) Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	ExcludeExactHostname *bool `json:"excludeExactHostname,omitempty" tf:"exclude_exact_hostname,omitempty"`
 
+	// (String)
 	URLHostname *string `json:"urlHostname,omitempty" tf:"url_hostname,omitempty"`
 }
 
 type HostnameParameters struct {
 
+	// (Boolean) Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	// +kubebuilder:validation:Optional
 	ExcludeExactHostname *bool `json:"excludeExactHostname,omitempty" tf:"exclude_exact_hostname,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	URLHostname *string `json:"urlHostname" tf:"url_hostname,omitempty"`
 }
 
 type ItemInitParameters struct {
 
+	// (String) The Account ID for this resource.
 	// The Account ID for this resource.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// negative 32 bit integer
 	// A non-negative 32 bit integer
 	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
+	// (String) An informative summary of the list item.
 	// An informative summary of the list item.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// ). (see below for nested schema)
 	Hostname *HostnameInitParameters `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (String) The unique ID of the list.
 	// The unique ID of the list.
 	ListID *string `json:"listId,omitempty" tf:"list_id,omitempty"`
 
+	// (Attributes) The definition of the redirect. (see below for nested schema)
 	Redirect *RedirectInitParameters `json:"redirect,omitempty" tf:"redirect,omitempty"`
 }
 
 type ItemObservation struct {
 
+	// (String) The Account ID for this resource.
 	// The Account ID for this resource.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// negative 32 bit integer
 	// A non-negative 32 bit integer
 	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
+	// (String) An informative summary of the list item.
 	// An informative summary of the list item.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) The RFC 3339 timestamp of when the item was created.
 	// The RFC 3339 timestamp of when the item was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// ). (see below for nested schema)
 	Hostname *HostnameObservation `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) The unique ID of the item in the List.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (String) The unique ID of the list.
 	// The unique ID of the list.
 	ListID *string `json:"listId,omitempty" tf:"list_id,omitempty"`
 
+	// (String) The RFC 3339 timestamp of when the item was last modified.
 	// The RFC 3339 timestamp of when the item was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The unique operation ID of the asynchronous action.
 	// The unique operation ID of the asynchronous action.
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (Attributes) The definition of the redirect. (see below for nested schema)
 	Redirect *RedirectObservation `json:"redirect,omitempty" tf:"redirect,omitempty"`
 }
 
 type ItemParameters struct {
 
+	// (String) The Account ID for this resource.
 	// The Account ID for this resource.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// negative 32 bit integer
 	// A non-negative 32 bit integer
 	// +kubebuilder:validation:Optional
 	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
+	// (String) An informative summary of the list item.
 	// An informative summary of the list item.
 	// +kubebuilder:validation:Optional
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// ). (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Hostname *HostnameParameters `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	// +kubebuilder:validation:Optional
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (String) The unique ID of the list.
 	// The unique ID of the list.
 	// +kubebuilder:validation:Optional
 	ListID *string `json:"listId,omitempty" tf:"list_id,omitempty"`
 
+	// (Attributes) The definition of the redirect. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Redirect *RedirectParameters `json:"redirect,omitempty" tf:"redirect,omitempty"`
 }
 
 type RedirectInitParameters struct {
+
+	// (Boolean)
 	IncludeSubdomains *bool `json:"includeSubdomains,omitempty" tf:"include_subdomains,omitempty"`
 
+	// (Boolean)
 	PreservePathSuffix *bool `json:"preservePathSuffix,omitempty" tf:"preserve_path_suffix,omitempty"`
 
+	// (Boolean)
 	PreserveQueryString *bool `json:"preserveQueryString,omitempty" tf:"preserve_query_string,omitempty"`
 
+	// (String)
 	SourceURL *string `json:"sourceUrl,omitempty" tf:"source_url,omitempty"`
 
+	// (Number) Available values: 301, 302, 307, 308.
 	// Available values: 301, 302, 307, 308.
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
+	// (Boolean)
 	SubpathMatching *bool `json:"subpathMatching,omitempty" tf:"subpath_matching,omitempty"`
 
+	// (String)
 	TargetURL *string `json:"targetUrl,omitempty" tf:"target_url,omitempty"`
 }
 
 type RedirectObservation struct {
+
+	// (Boolean)
 	IncludeSubdomains *bool `json:"includeSubdomains,omitempty" tf:"include_subdomains,omitempty"`
 
+	// (Boolean)
 	PreservePathSuffix *bool `json:"preservePathSuffix,omitempty" tf:"preserve_path_suffix,omitempty"`
 
+	// (Boolean)
 	PreserveQueryString *bool `json:"preserveQueryString,omitempty" tf:"preserve_query_string,omitempty"`
 
+	// (String)
 	SourceURL *string `json:"sourceUrl,omitempty" tf:"source_url,omitempty"`
 
+	// (Number) Available values: 301, 302, 307, 308.
 	// Available values: 301, 302, 307, 308.
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
+	// (Boolean)
 	SubpathMatching *bool `json:"subpathMatching,omitempty" tf:"subpath_matching,omitempty"`
 
+	// (String)
 	TargetURL *string `json:"targetUrl,omitempty" tf:"target_url,omitempty"`
 }
 
 type RedirectParameters struct {
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	IncludeSubdomains *bool `json:"includeSubdomains,omitempty" tf:"include_subdomains,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	PreservePathSuffix *bool `json:"preservePathSuffix,omitempty" tf:"preserve_path_suffix,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	PreserveQueryString *bool `json:"preserveQueryString,omitempty" tf:"preserve_query_string,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	SourceURL *string `json:"sourceUrl" tf:"source_url,omitempty"`
 
+	// (Number) Available values: 301, 302, 307, 308.
 	// Available values: 301, 302, 307, 308.
 	// +kubebuilder:validation:Optional
 	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	SubpathMatching *bool `json:"subpathMatching,omitempty" tf:"subpath_matching,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	TargetURL *string `json:"targetUrl" tf:"target_url,omitempty"`
 }
@@ -209,7 +263,7 @@ type ItemStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Item is the Schema for the Items API. <no value>
+// Item is the Schema for the Items API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -14,56 +14,77 @@ import (
 )
 
 type TrustGatewayProxyEndpointInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (List of String) Specify the list of CIDRs to restrict ingress connections.
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
+	// (String) The proxy endpoint kind
+	// Available values: "ip", "identity".
 	// The proxy endpoint kind
 	// Available values: "ip", "identity".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Specify the name of the proxy endpoint.
 	// Specify the name of the proxy endpoint.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TrustGatewayProxyEndpointObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (List of String) Specify the list of CIDRs to restrict ingress connections.
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
+	// (String) The proxy endpoint kind
+	// Available values: "ip", "identity".
 	// The proxy endpoint kind
 	// Available values: "ip", "identity".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Specify the name of the proxy endpoint.
 	// Specify the name of the proxy endpoint.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the subdomain to use as the destination in the proxy client.
 	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain *string `json:"subdomain,omitempty" tf:"subdomain,omitempty"`
 
+	// (String)
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
 type TrustGatewayProxyEndpointParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (List of String) Specify the list of CIDRs to restrict ingress connections.
 	// Specify the list of CIDRs to restrict ingress connections.
 	// +kubebuilder:validation:Optional
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
+	// (String) The proxy endpoint kind
+	// Available values: "ip", "identity".
 	// The proxy endpoint kind
 	// Available values: "ip", "identity".
 	// +kubebuilder:validation:Optional
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Specify the name of the proxy endpoint.
 	// Specify the name of the proxy endpoint.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -96,7 +117,7 @@ type TrustGatewayProxyEndpointStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustGatewayProxyEndpoint is the Schema for the TrustGatewayProxyEndpoints API. <no value>
+// TrustGatewayProxyEndpoint is the Schema for the TrustGatewayProxyEndpoints API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

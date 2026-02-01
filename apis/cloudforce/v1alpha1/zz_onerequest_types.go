@@ -15,21 +15,27 @@ import (
 
 type OneRequestInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Request content.
 	// Request content.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String) Priority for analyzing the request.
 	// Priority for analyzing the request.
 	Priority *string `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Requested information from request.
 	// Requested information from request.
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
+	// (String) Brief description of the request.
 	// Brief description of the request.
 	Summary *string `json:"summary,omitempty" tf:"summary,omitempty"`
 
+	// strict", "green", "red".
 	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `json:"tlp,omitempty" tf:"tlp,omitempty"`
@@ -37,72 +43,94 @@ type OneRequestInitParameters struct {
 
 type OneRequestObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Completed *string `json:"completed,omitempty" tf:"completed,omitempty"`
 
+	// (String) Request content.
 	// Request content.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String)
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) Tokens for the request messages.
 	// Tokens for the request messages.
 	MessageTokens *float64 `json:"messageTokens,omitempty" tf:"message_tokens,omitempty"`
 
+	// (String) Priority for analyzing the request.
 	// Priority for analyzing the request.
 	Priority *string `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Readable Request ID.
 	// Readable Request ID.
 	ReadableID *string `json:"readableId,omitempty" tf:"readable_id,omitempty"`
 
+	// (String) Requested information from request.
 	// Requested information from request.
 	Request *string `json:"request,omitempty" tf:"request,omitempty"`
 
+	// (String) Requested information from request.
 	// Requested information from request.
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
+	// (String) Request Status.
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	// Request Status.
 	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Brief description of the request.
 	// Brief description of the request.
 	Summary *string `json:"summary,omitempty" tf:"summary,omitempty"`
 
+	// strict", "green", "red".
 	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `json:"tlp,omitempty" tf:"tlp,omitempty"`
 
+	// (Number) Tokens for the request.
 	// Tokens for the request.
 	Tokens *float64 `json:"tokens,omitempty" tf:"tokens,omitempty"`
 
+	// (String)
 	Updated *string `json:"updated,omitempty" tf:"updated,omitempty"`
 }
 
 type OneRequestParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Request content.
 	// Request content.
 	// +kubebuilder:validation:Optional
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String) Priority for analyzing the request.
 	// Priority for analyzing the request.
 	// +kubebuilder:validation:Optional
 	Priority *string `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Requested information from request.
 	// Requested information from request.
 	// +kubebuilder:validation:Optional
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
+	// (String) Brief description of the request.
 	// Brief description of the request.
 	// +kubebuilder:validation:Optional
 	Summary *string `json:"summary,omitempty" tf:"summary,omitempty"`
 
+	// strict", "green", "red".
 	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	// +kubebuilder:validation:Optional
@@ -136,7 +164,7 @@ type OneRequestStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OneRequest is the Schema for the OneRequests API. <no value>
+// OneRequest is the Schema for the OneRequests API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

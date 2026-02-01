@@ -14,38 +14,52 @@ import (
 )
 
 type BehaviorsInitParameters struct {
+
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Available values: "low", "medium", "high".
 	// Available values: "low", "medium", "high".
 	RiskLevel *string `json:"riskLevel,omitempty" tf:"risk_level,omitempty"`
 }
 
 type BehaviorsObservation struct {
+
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Available values: "low", "medium", "high".
 	// Available values: "low", "medium", "high".
 	RiskLevel *string `json:"riskLevel,omitempty" tf:"risk_level,omitempty"`
 }
 
 type BehaviorsParameters struct {
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String) Available values: "low", "medium", "high".
 	// Available values: "low", "medium", "high".
 	// +kubebuilder:validation:Optional
 	RiskLevel *string `json:"riskLevel" tf:"risk_level,omitempty"`
 }
 
 type TrustRiskBehaviorInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Map) (see below for nested schema)
 	Behaviors map[string]BehaviorsInitParameters `json:"behaviors,omitempty" tf:"behaviors,omitempty"`
 }
 
 type TrustRiskBehaviorObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Map) (see below for nested schema)
 	Behaviors map[string]BehaviorsObservation `json:"behaviors,omitempty" tf:"behaviors,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -53,9 +67,11 @@ type TrustRiskBehaviorObservation struct {
 
 type TrustRiskBehaviorParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Attributes Map) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Behaviors map[string]BehaviorsParameters `json:"behaviors,omitempty" tf:"behaviors,omitempty"`
 }
@@ -87,7 +103,7 @@ type TrustRiskBehaviorStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustRiskBehavior is the Schema for the TrustRiskBehaviors API. <no value>
+// TrustRiskBehavior is the Schema for the TrustRiskBehaviors API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

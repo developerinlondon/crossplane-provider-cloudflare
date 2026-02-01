@@ -15,55 +15,73 @@ import (
 
 type SecurityBlockSenderInitParameters struct {
 
+	// (String) Account Identifier
 	// Account Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Comments *string `json:"comments,omitempty" tf:"comments,omitempty"`
 
+	// (Boolean)
 	IsRegex *bool `json:"isRegex,omitempty" tf:"is_regex,omitempty"`
 
+	// (String)
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String) Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `json:"patternType,omitempty" tf:"pattern_type,omitempty"`
 }
 
 type SecurityBlockSenderObservation struct {
 
+	// (String) Account Identifier
 	// Account Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Comments *string `json:"comments,omitempty" tf:"comments,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Number) The unique identifier for the allow policy.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean)
 	IsRegex *bool `json:"isRegex,omitempty" tf:"is_regex,omitempty"`
 
+	// (String)
 	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
 
+	// (String)
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String) Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `json:"patternType,omitempty" tf:"pattern_type,omitempty"`
 }
 
 type SecurityBlockSenderParameters struct {
 
+	// (String) Account Identifier
 	// Account Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Comments *string `json:"comments,omitempty" tf:"comments,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	IsRegex *bool `json:"isRegex,omitempty" tf:"is_regex,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String) Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	// +kubebuilder:validation:Optional
 	PatternType *string `json:"patternType,omitempty" tf:"pattern_type,omitempty"`
@@ -96,7 +114,7 @@ type SecurityBlockSenderStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SecurityBlockSender is the Schema for the SecurityBlockSenders API. <no value>
+// SecurityBlockSender is the Schema for the SecurityBlockSenders API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

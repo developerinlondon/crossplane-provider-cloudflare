@@ -15,20 +15,27 @@ import (
 
 type BucketInitParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// effort, not a guarantee, of bucket location.
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
 	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
@@ -36,25 +43,34 @@ type BucketInitParameters struct {
 
 type BucketObservation struct {
 
+	// (String) Account ID.
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Creation timestamp.
 	// Creation timestamp.
 	CreationDate *string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`
 
+	// (String) Name of the bucket.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// effort, not a guarantee, of bucket location.
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
 	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
@@ -62,24 +78,31 @@ type BucketObservation struct {
 
 type BucketParameters struct {
 
+	// (String) Account ID.
 	// Account ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp".
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// effort, not a guarantee, of bucket location.
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	// +kubebuilder:validation:Optional
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// (String) Name of the bucket.
 	// Name of the bucket.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
 	// +kubebuilder:validation:Optional
@@ -113,7 +136,7 @@ type BucketStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Bucket is the Schema for the Buckets API. <no value>
+// Bucket is the Schema for the Buckets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

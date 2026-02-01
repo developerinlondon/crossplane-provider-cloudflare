@@ -18,9 +18,11 @@ type TrustDlpEntryConfidenceInitParameters struct {
 
 type TrustDlpEntryConfidenceObservation struct {
 
+	// (Boolean) Indicates whether this entry has AI remote service validation.
 	// Indicates whether this entry has AI remote service validation.
 	AIContextAvailable *bool `json:"aiContextAvailable,omitempty" tf:"ai_context_available,omitempty"`
 
+	// (Boolean) Indicates whether this entry has any form of validation that is not an AI remote service.
 	// Indicates whether this entry has any form of validation that is not an AI remote service.
 	Available *bool `json:"available,omitempty" tf:"available,omitempty"`
 }
@@ -29,100 +31,139 @@ type TrustDlpEntryConfidenceParameters struct {
 }
 
 type TrustDlpEntryInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Pattern *TrustDlpEntryPatternInitParameters `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String)
 	ProfileID *string `json:"profileId,omitempty" tf:"profile_id,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration".
 	// Available values: "custom", "predefined", "integration".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type TrustDlpEntryObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// sensitive manner
+	// Cannot be set to false if secret is true
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" tf:"case_sensitive,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Confidence *TrustDlpEntryConfidenceObservation `json:"confidence,omitempty" tf:"confidence,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Pattern *TrustDlpEntryPatternObservation `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String)
 	ProfileID *string `json:"profileId,omitempty" tf:"profile_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Profiles []TrustDlpEntryProfilesObservation `json:"profiles,omitempty" tf:"profiles,omitempty"`
 
+	// (Boolean)
 	Secret *bool `json:"secret,omitempty" tf:"secret,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration".
 	// Available values: "custom", "predefined", "integration".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String)
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (String) Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus *string `json:"uploadStatus,omitempty" tf:"upload_status,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Variant *TrustDlpEntryVariantObservation `json:"variant,omitempty" tf:"variant,omitempty"`
 
+	// (String)
 	WordList *string `json:"wordList,omitempty" tf:"word_list,omitempty"`
 }
 
 type TrustDlpEntryParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Pattern *TrustDlpEntryPatternParameters `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ProfileID *string `json:"profileId,omitempty" tf:"profile_id,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration".
 	// Available values: "custom", "predefined", "integration".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type TrustDlpEntryPatternInitParameters struct {
+
+	// (String)
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String, Deprecated) Available values: "luhn".
 	// Available values: "luhn".
 	Validation *string `json:"validation,omitempty" tf:"validation,omitempty"`
 }
 
 type TrustDlpEntryPatternObservation struct {
+
+	// (String)
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String, Deprecated) Available values: "luhn".
 	// Available values: "luhn".
 	Validation *string `json:"validation,omitempty" tf:"validation,omitempty"`
 }
 
 type TrustDlpEntryPatternParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Regex *string `json:"regex" tf:"regex,omitempty"`
 
+	// (String, Deprecated) Available values: "luhn".
 	// Available values: "luhn".
 	// +kubebuilder:validation:Optional
 	Validation *string `json:"validation,omitempty" tf:"validation,omitempty"`
@@ -132,8 +173,11 @@ type TrustDlpEntryProfilesInitParameters struct {
 }
 
 type TrustDlpEntryProfilesObservation struct {
+
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
@@ -144,11 +188,15 @@ type TrustDlpEntryVariantInitParameters struct {
 }
 
 type TrustDlpEntryVariantObservation struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Available values: "Intent", "Content".
 	// Available values: "Intent", "Content".
 	TopicType *string `json:"topicType,omitempty" tf:"topic_type,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration".
 	// Available values: "PromptTopic".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -183,7 +231,7 @@ type TrustDlpEntryStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDlpEntry is the Schema for the TrustDlpEntrys API. <no value>
+// TrustDlpEntry is the Schema for the TrustDlpEntrys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

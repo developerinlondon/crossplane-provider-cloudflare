@@ -15,41 +15,53 @@ import (
 
 type CaptionLanguageInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The WebVTT file containing the caption or subtitle content.
 	// The WebVTT file containing the caption or subtitle content.
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) The language tag in BCP 47 format.
 	// The language tag in BCP 47 format.
 	Language *string `json:"language,omitempty" tf:"language,omitempty"`
 }
 
 type CaptionLanguageObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The WebVTT file containing the caption or subtitle content.
 	// The WebVTT file containing the caption or subtitle content.
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (Boolean) Whether the caption was generated via AI.
 	// Whether the caption was generated via AI.
 	Generated *bool `json:"generated,omitempty" tf:"generated,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) The language label displayed in the native language to users.
 	// The language label displayed in the native language to users.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
+	// (String) The language tag in BCP 47 format.
 	// The language tag in BCP 47 format.
 	Language *string `json:"language,omitempty" tf:"language,omitempty"`
 
+	// (String) The status of a generated caption.
+	// Available values: "ready", "inprogress", "error".
 	// The status of a generated caption.
 	// Available values: "ready", "inprogress", "error".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -57,18 +69,22 @@ type CaptionLanguageObservation struct {
 
 type CaptionLanguageParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The WebVTT file containing the caption or subtitle content.
 	// The WebVTT file containing the caption or subtitle content.
 	// +kubebuilder:validation:Optional
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// generated unique identifier for a media item.
 	// A Cloudflare-generated unique identifier for a media item.
 	// +kubebuilder:validation:Optional
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
 
+	// (String) The language tag in BCP 47 format.
 	// The language tag in BCP 47 format.
 	// +kubebuilder:validation:Optional
 	Language *string `json:"language,omitempty" tf:"language,omitempty"`
@@ -101,7 +117,7 @@ type CaptionLanguageStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CaptionLanguage is the Schema for the CaptionLanguages API. <no value>
+// CaptionLanguage is the Schema for the CaptionLanguages API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

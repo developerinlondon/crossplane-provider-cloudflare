@@ -15,28 +15,34 @@ import (
 
 type TrustDeviceDefaultProfileCertificatesInitParameters struct {
 
+	// (Boolean) The current status of the device policy certificate provisioning feature for WARP clients.
 	// The current status of the device policy certificate provisioning feature for WARP clients.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustDeviceDefaultProfileCertificatesObservation struct {
 
+	// (Boolean) The current status of the device policy certificate provisioning feature for WARP clients.
 	// The current status of the device policy certificate provisioning feature for WARP clients.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustDeviceDefaultProfileCertificatesParameters struct {
 
+	// (Boolean) The current status of the device policy certificate provisioning feature for WARP clients.
 	// The current status of the device policy certificate provisioning feature for WARP clients.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -68,7 +74,7 @@ type TrustDeviceDefaultProfileCertificatesStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDeviceDefaultProfileCertificates is the Schema for the TrustDeviceDefaultProfileCertificatess API. <no value>
+// TrustDeviceDefaultProfileCertificates is the Schema for the TrustDeviceDefaultProfileCertificatess API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

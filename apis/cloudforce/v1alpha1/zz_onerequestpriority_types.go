@@ -15,18 +15,23 @@ import (
 
 type OneRequestPriorityInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (List of String) List of labels.
 	// List of labels.
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
+	// (Number) Priority.
 	// Priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Requirement.
 	// Requirement.
 	Requirement *string `json:"requirement,omitempty" tf:"requirement,omitempty"`
 
+	// strict", "green", "red".
 	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `json:"tlp,omitempty" tf:"tlp,omitempty"`
@@ -34,71 +39,93 @@ type OneRequestPriorityInitParameters struct {
 
 type OneRequestPriorityObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Completed *string `json:"completed,omitempty" tf:"completed,omitempty"`
 
+	// (String) Request content.
 	// Request content.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String)
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (List of String) List of labels.
 	// List of labels.
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
+	// (Number) Tokens for the request messages.
 	// Tokens for the request messages.
 	MessageTokens *float64 `json:"messageTokens,omitempty" tf:"message_tokens,omitempty"`
 
+	// (Number) Priority.
 	// Priority.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Readable Request ID.
 	// Readable Request ID.
 	ReadableID *string `json:"readableId,omitempty" tf:"readable_id,omitempty"`
 
+	// (String) Requested information from request.
 	// Requested information from request.
 	Request *string `json:"request,omitempty" tf:"request,omitempty"`
 
+	// (String) Requirement.
 	// Requirement.
 	Requirement *string `json:"requirement,omitempty" tf:"requirement,omitempty"`
 
+	// (String) Request Status.
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	// Request Status.
 	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) Brief description of the request.
 	// Brief description of the request.
 	Summary *string `json:"summary,omitempty" tf:"summary,omitempty"`
 
+	// strict", "green", "red".
 	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `json:"tlp,omitempty" tf:"tlp,omitempty"`
 
+	// (Number) Tokens for the request.
 	// Tokens for the request.
 	Tokens *float64 `json:"tokens,omitempty" tf:"tokens,omitempty"`
 
+	// (String)
 	Updated *string `json:"updated,omitempty" tf:"updated,omitempty"`
 }
 
 type OneRequestPriorityParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (List of String) List of labels.
 	// List of labels.
 	// +kubebuilder:validation:Optional
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
+	// (Number) Priority.
 	// Priority.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (String) Requirement.
 	// Requirement.
 	// +kubebuilder:validation:Optional
 	Requirement *string `json:"requirement,omitempty" tf:"requirement,omitempty"`
 
+	// strict", "green", "red".
 	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	// +kubebuilder:validation:Optional
@@ -132,7 +159,7 @@ type OneRequestPriorityStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OneRequestPriority is the Schema for the OneRequestPrioritys API. <no value>
+// OneRequestPriority is the Schema for the OneRequestPrioritys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

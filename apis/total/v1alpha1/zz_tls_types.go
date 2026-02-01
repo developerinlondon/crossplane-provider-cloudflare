@@ -15,47 +15,62 @@ import (
 
 type TLSInitParameters struct {
 
+	// (String) The Certificate Authority that Total TLS certificates will be issued through.
+	// Available values: "google", "lets_encrypt", "ssl_com".
 	// The Certificate Authority that Total TLS certificates will be issued through.
 	// Available values: "google", "lets_encrypt", "ssl_com".
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (Boolean) If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TLSObservation struct {
 
+	// (String) The Certificate Authority that Total TLS certificates will be issued through.
+	// Available values: "google", "lets_encrypt", "ssl_com".
 	// The Certificate Authority that Total TLS certificates will be issued through.
 	// Available values: "google", "lets_encrypt", "ssl_com".
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (Boolean) If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Number) The validity period in days for the certificates ordered via Total TLS.
+	// Available values: 90.
 	// The validity period in days for the certificates ordered via Total TLS.
 	// Available values: 90.
 	ValidityPeriod *float64 `json:"validityPeriod,omitempty" tf:"validity_period,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TLSParameters struct {
 
+	// (String) The Certificate Authority that Total TLS certificates will be issued through.
+	// Available values: "google", "lets_encrypt", "ssl_com".
 	// The Certificate Authority that Total TLS certificates will be issued through.
 	// Available values: "google", "lets_encrypt", "ssl_com".
 	// +kubebuilder:validation:Optional
 	CertificateAuthority *string `json:"certificateAuthority,omitempty" tf:"certificate_authority,omitempty"`
 
+	// (Boolean) If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -88,7 +103,7 @@ type TLSStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TLS is the Schema for the TLSs API. <no value>
+// TLS is the Schema for the TLSs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

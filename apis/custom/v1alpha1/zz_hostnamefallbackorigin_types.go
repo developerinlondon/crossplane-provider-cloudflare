@@ -15,43 +15,55 @@ import (
 
 type HostnameFallbackOriginInitParameters struct {
 
+	// (String) Your origin hostname that requests to your custom hostnames will be sent to.
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin *string `json:"origin,omitempty" tf:"origin,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HostnameFallbackOriginObservation struct {
 
+	// (String) This is the time the fallback origin was created.
 	// This is the time the fallback origin was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (List of String) These are errors that were encountered while trying to activate a fallback origin.
 	// These are errors that were encountered while trying to activate a fallback origin.
 	Errors []*string `json:"errors,omitempty" tf:"errors,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Your origin hostname that requests to your custom hostnames will be sent to.
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin *string `json:"origin,omitempty" tf:"origin,omitempty"`
 
+	// (String) Status of the fallback origin's activation.
+	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deployment_timed_out", "deletion_timed_out".
 	// Status of the fallback origin's activation.
 	// Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deployment_timed_out", "deletion_timed_out".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (String) This is the time the fallback origin was updated.
 	// This is the time the fallback origin was updated.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HostnameFallbackOriginParameters struct {
 
+	// (String) Your origin hostname that requests to your custom hostnames will be sent to.
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	// +kubebuilder:validation:Optional
 	Origin *string `json:"origin,omitempty" tf:"origin,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -84,7 +96,7 @@ type HostnameFallbackOriginStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// HostnameFallbackOrigin is the Schema for the HostnameFallbackOrigins API. <no value>
+// HostnameFallbackOrigin is the Schema for the HostnameFallbackOrigins API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

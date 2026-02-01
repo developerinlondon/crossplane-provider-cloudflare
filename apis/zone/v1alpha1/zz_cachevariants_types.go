@@ -14,33 +14,43 @@ import (
 )
 
 type CacheVariantsInitParameters struct {
+
+	// (Attributes) Value of the zone setting. (see below for nested schema)
 	Value *ValueInitParameters `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CacheVariantsObservation struct {
 
+	// (Boolean) Whether the setting is editable.
 	// Whether the setting is editable.
 	Editable *bool `json:"editable,omitempty" tf:"editable,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Last time this setting was modified.
 	// Last time this setting was modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (Attributes) Value of the zone setting. (see below for nested schema)
 	Value *ValueObservation `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CacheVariantsParameters struct {
 
+	// (Attributes) Value of the zone setting. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Value *ValueParameters `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -48,118 +58,151 @@ type CacheVariantsParameters struct {
 
 type ValueInitParameters struct {
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for avif.
 	// List of strings with the MIME types of all the variants that should be served for avif.
 	Avif []*string `json:"avif,omitempty" tf:"avif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for bmp.
 	// List of strings with the MIME types of all the variants that should be served for bmp.
 	Bmp []*string `json:"bmp,omitempty" tf:"bmp,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for gif.
 	// List of strings with the MIME types of all the variants that should be served for gif.
 	Gif []*string `json:"gif,omitempty" tf:"gif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jp2.
 	// List of strings with the MIME types of all the variants that should be served for jp2.
 	Jp2 []*string `json:"jp2,omitempty" tf:"jp2,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpeg.
 	// List of strings with the MIME types of all the variants that should be served for jpeg.
 	Jpeg []*string `json:"jpeg,omitempty" tf:"jpeg,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpg.
 	// List of strings with the MIME types of all the variants that should be served for jpg.
 	Jpg []*string `json:"jpg,omitempty" tf:"jpg,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpg2.
 	// List of strings with the MIME types of all the variants that should be served for jpg2.
 	Jpg2 []*string `json:"jpg2,omitempty" tf:"jpg2,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for png.
 	// List of strings with the MIME types of all the variants that should be served for png.
 	Png []*string `json:"png,omitempty" tf:"png,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for tif.
 	// List of strings with the MIME types of all the variants that should be served for tif.
 	Tif []*string `json:"tif,omitempty" tf:"tif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for tiff.
 	// List of strings with the MIME types of all the variants that should be served for tiff.
 	Tiff []*string `json:"tiff,omitempty" tf:"tiff,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for webp.
 	// List of strings with the MIME types of all the variants that should be served for webp.
 	Webp []*string `json:"webp,omitempty" tf:"webp,omitempty"`
 }
 
 type ValueObservation struct {
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for avif.
 	// List of strings with the MIME types of all the variants that should be served for avif.
 	Avif []*string `json:"avif,omitempty" tf:"avif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for bmp.
 	// List of strings with the MIME types of all the variants that should be served for bmp.
 	Bmp []*string `json:"bmp,omitempty" tf:"bmp,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for gif.
 	// List of strings with the MIME types of all the variants that should be served for gif.
 	Gif []*string `json:"gif,omitempty" tf:"gif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jp2.
 	// List of strings with the MIME types of all the variants that should be served for jp2.
 	Jp2 []*string `json:"jp2,omitempty" tf:"jp2,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpeg.
 	// List of strings with the MIME types of all the variants that should be served for jpeg.
 	Jpeg []*string `json:"jpeg,omitempty" tf:"jpeg,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpg.
 	// List of strings with the MIME types of all the variants that should be served for jpg.
 	Jpg []*string `json:"jpg,omitempty" tf:"jpg,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpg2.
 	// List of strings with the MIME types of all the variants that should be served for jpg2.
 	Jpg2 []*string `json:"jpg2,omitempty" tf:"jpg2,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for png.
 	// List of strings with the MIME types of all the variants that should be served for png.
 	Png []*string `json:"png,omitempty" tf:"png,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for tif.
 	// List of strings with the MIME types of all the variants that should be served for tif.
 	Tif []*string `json:"tif,omitempty" tf:"tif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for tiff.
 	// List of strings with the MIME types of all the variants that should be served for tiff.
 	Tiff []*string `json:"tiff,omitempty" tf:"tiff,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for webp.
 	// List of strings with the MIME types of all the variants that should be served for webp.
 	Webp []*string `json:"webp,omitempty" tf:"webp,omitempty"`
 }
 
 type ValueParameters struct {
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for avif.
 	// List of strings with the MIME types of all the variants that should be served for avif.
 	// +kubebuilder:validation:Optional
 	Avif []*string `json:"avif,omitempty" tf:"avif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for bmp.
 	// List of strings with the MIME types of all the variants that should be served for bmp.
 	// +kubebuilder:validation:Optional
 	Bmp []*string `json:"bmp,omitempty" tf:"bmp,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for gif.
 	// List of strings with the MIME types of all the variants that should be served for gif.
 	// +kubebuilder:validation:Optional
 	Gif []*string `json:"gif,omitempty" tf:"gif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jp2.
 	// List of strings with the MIME types of all the variants that should be served for jp2.
 	// +kubebuilder:validation:Optional
 	Jp2 []*string `json:"jp2,omitempty" tf:"jp2,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpeg.
 	// List of strings with the MIME types of all the variants that should be served for jpeg.
 	// +kubebuilder:validation:Optional
 	Jpeg []*string `json:"jpeg,omitempty" tf:"jpeg,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpg.
 	// List of strings with the MIME types of all the variants that should be served for jpg.
 	// +kubebuilder:validation:Optional
 	Jpg []*string `json:"jpg,omitempty" tf:"jpg,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for jpg2.
 	// List of strings with the MIME types of all the variants that should be served for jpg2.
 	// +kubebuilder:validation:Optional
 	Jpg2 []*string `json:"jpg2,omitempty" tf:"jpg2,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for png.
 	// List of strings with the MIME types of all the variants that should be served for png.
 	// +kubebuilder:validation:Optional
 	Png []*string `json:"png,omitempty" tf:"png,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for tif.
 	// List of strings with the MIME types of all the variants that should be served for tif.
 	// +kubebuilder:validation:Optional
 	Tif []*string `json:"tif,omitempty" tf:"tif,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for tiff.
 	// List of strings with the MIME types of all the variants that should be served for tiff.
 	// +kubebuilder:validation:Optional
 	Tiff []*string `json:"tiff,omitempty" tf:"tiff,omitempty"`
 
+	// (List of String) List of strings with the MIME types of all the variants that should be served for webp.
 	// List of strings with the MIME types of all the variants that should be served for webp.
 	// +kubebuilder:validation:Optional
 	Webp []*string `json:"webp,omitempty" tf:"webp,omitempty"`
@@ -192,7 +235,7 @@ type CacheVariantsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// CacheVariants is the Schema for the CacheVariantss API. <no value>
+// CacheVariants is the Schema for the CacheVariantss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

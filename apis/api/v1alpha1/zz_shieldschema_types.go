@@ -17,21 +17,30 @@ type SchemaInitParameters struct {
 }
 
 type SchemaObservation struct {
+
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Kind of schema
+	// Available values: "openapi_v3".
 	// Kind of schema
 	// Available values: "openapi_v3".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Name of the schema
 	// Name of the schema
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	// UUID.
 	SchemaID *string `json:"schemaId,omitempty" tf:"schema_id,omitempty"`
 
+	// (String) Source of the schema
 	// Source of the schema
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// (String) Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	// Flag whether schema is enabled for validation.
 	ValidationEnabled *bool `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 }
@@ -41,81 +50,110 @@ type SchemaParameters struct {
 
 type ShieldSchemaInitParameters struct {
 
+	// (String) Schema file bytes
 	// Schema file bytes
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (String) Kind of schema
+	// Available values: "openapi_v3".
 	// Kind of schema
 	// Available values: "openapi_v3".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Name of the schema
 	// Name of the schema
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	SchemaID *string `json:"schemaId,omitempty" tf:"schema_id,omitempty"`
 
+	// (String) Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	// Flag whether schema is enabled for validation.
 	// Available values: "true", "false".
 	ValidationEnabled *string `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldSchemaObservation struct {
+
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Schema file bytes
 	// Schema file bytes
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Kind of schema
+	// Available values: "openapi_v3".
 	// Kind of schema
 	// Available values: "openapi_v3".
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Name of the schema
 	// Name of the schema
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Schema *SchemaObservation `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// (String)
 	SchemaID *string `json:"schemaId,omitempty" tf:"schema_id,omitempty"`
 
+	// (String) Source of the schema
 	// Source of the schema
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	UploadDetails *UploadDetailsObservation `json:"uploadDetails,omitempty" tf:"upload_details,omitempty"`
 
+	// (String) Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	// Flag whether schema is enabled for validation.
 	// Available values: "true", "false".
 	ValidationEnabled *string `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldSchemaParameters struct {
 
+	// (String) Schema file bytes
 	// Schema file bytes
 	// +kubebuilder:validation:Optional
 	File *string `json:"file,omitempty" tf:"file,omitempty"`
 
+	// (String) Kind of schema
+	// Available values: "openapi_v3".
 	// Kind of schema
 	// Available values: "openapi_v3".
 	// +kubebuilder:validation:Optional
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// (String) Name of the schema
 	// Name of the schema
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	SchemaID *string `json:"schemaId,omitempty" tf:"schema_id,omitempty"`
 
+	// (String) Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	// Flag whether schema is enabled for validation.
 	// Available values: "true", "false".
 	// +kubebuilder:validation:Optional
 	ValidationEnabled *string `json:"validationEnabled,omitempty" tf:"validation_enabled,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -125,6 +163,8 @@ type UploadDetailsInitParameters struct {
 }
 
 type UploadDetailsObservation struct {
+
+	// critical errors found within the schema. (see below for nested schema)
 	Warnings []WarningsObservation `json:"warnings,omitempty" tf:"warnings,omitempty"`
 }
 
@@ -136,12 +176,15 @@ type WarningsInitParameters struct {
 
 type WarningsObservation struct {
 
+	// (Number) Code that identifies the event that occurred.
 	// Code that identifies the event that occurred.
 	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
 
+	// (List of String) JSONPath location(s) in the schema where these events were encountered.  See https://goessner.net/articles/JsonPath/ for JSONPath specification.
 	// JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.
 	Locations []*string `json:"locations,omitempty" tf:"locations,omitempty"`
 
+	// (String) Diagnostic message that describes the event.
 	// Diagnostic message that describes the event.
 	Message *string `json:"message,omitempty" tf:"message,omitempty"`
 }
@@ -176,7 +219,7 @@ type ShieldSchemaStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ShieldSchema is the Schema for the ShieldSchemas API. <no value>
+// ShieldSchema is the Schema for the ShieldSchemas API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

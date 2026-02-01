@@ -15,49 +15,61 @@ import (
 
 type TurnAppInitParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	KeyID *string `json:"keyId,omitempty" tf:"key_id,omitempty"`
 
+	// (String) A short description of a TURN key, not shown to end users.
 	// A short description of a TURN key, not shown to end users.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type TurnAppObservation struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The date and time the item was created.
 	// The date and time the item was created.
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	KeyID *string `json:"keyId,omitempty" tf:"key_id,omitempty"`
 
+	// (String) The date and time the item was last modified.
 	// The date and time the item was last modified.
 	Modified *string `json:"modified,omitempty" tf:"modified,omitempty"`
 
+	// (String) A short description of a TURN key, not shown to end users.
 	// A short description of a TURN key, not shown to end users.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	UID *string `json:"uid,omitempty" tf:"uid,omitempty"`
 }
 
 type TurnAppParameters struct {
 
+	// (String) The account identifier tag.
 	// The account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// generated unique identifier for a item.
 	// A Cloudflare-generated unique identifier for a item.
 	// +kubebuilder:validation:Optional
 	KeyID *string `json:"keyId,omitempty" tf:"key_id,omitempty"`
 
+	// (String) A short description of a TURN key, not shown to end users.
 	// A short description of a TURN key, not shown to end users.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -90,7 +102,7 @@ type TurnAppStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TurnApp is the Schema for the TurnApps API. <no value>
+// TurnApp is the Schema for the TurnApps API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

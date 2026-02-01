@@ -15,33 +15,41 @@ import (
 
 type KvNamespaceInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// readable string name for a Namespace.
 	// A human-readable string name for a Namespace.
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 }
 
 type KvNamespaceObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Namespace identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsURLEncoding *bool `json:"supportsUrlEncoding,omitempty" tf:"supports_url_encoding,omitempty"`
 
+	// readable string name for a Namespace.
 	// A human-readable string name for a Namespace.
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
 }
 
 type KvNamespaceParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// readable string name for a Namespace.
 	// A human-readable string name for a Namespace.
 	// +kubebuilder:validation:Optional
 	Title *string `json:"title,omitempty" tf:"title,omitempty"`
@@ -74,7 +82,7 @@ type KvNamespaceStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// KvNamespace is the Schema for the KvNamespaces API. <no value>
+// KvNamespace is the Schema for the KvNamespaces API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

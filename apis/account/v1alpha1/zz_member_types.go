@@ -15,62 +15,79 @@ import (
 
 type MemberInitParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes Set) Array of policies associated with this member. (see below for nested schema)
 	Policies []PoliciesInitParameters `json:"policies,omitempty" tf:"policies,omitempty"`
 
+	// (Set of String) Set of roles associated with this member.
 	// Set of roles associated with this member.
 	// +listType=set
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`
 
+	// (String) Available values: "accepted", "pending".
 	// Available values: "accepted", "pending".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 }
 
 type MemberObservation struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) Membership identifier tag.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes Set) Array of policies associated with this member. (see below for nested schema)
 	Policies []PoliciesObservation `json:"policies,omitempty" tf:"policies,omitempty"`
 
+	// (Set of String) Set of roles associated with this member.
 	// Set of roles associated with this member.
 	// +listType=set
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`
 
+	// (String) Available values: "accepted", "pending".
 	// Available values: "accepted", "pending".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
+	// (Attributes) Details of the user associated to the membership. (see below for nested schema)
 	User *UserObservation `json:"user,omitempty" tf:"user,omitempty"`
 }
 
 type MemberParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	// +kubebuilder:validation:Optional
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (Attributes Set) Array of policies associated with this member. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Policies []PoliciesParameters `json:"policies,omitempty" tf:"policies,omitempty"`
 
+	// (Set of String) Set of roles associated with this member.
 	// Set of roles associated with this member.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`
 
+	// (String) Available values: "accepted", "pending".
 	// Available values: "accepted", "pending".
 	// +kubebuilder:validation:Optional
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -78,18 +95,21 @@ type MemberParameters struct {
 
 type PermissionGroupsInitParameters struct {
 
+	// (String) Membership identifier tag.
 	// Identifier of the group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type PermissionGroupsObservation struct {
 
+	// (String) Membership identifier tag.
 	// Identifier of the group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type PermissionGroupsParameters struct {
 
+	// (String) Membership identifier tag.
 	// Identifier of the group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -97,54 +117,69 @@ type PermissionGroupsParameters struct {
 
 type PoliciesInitParameters struct {
 
+	// (String) Allow or deny operations against the resources.
+	// Available values: "allow", "deny".
 	// Allow or deny operations against the resources.
 	// Available values: "allow", "deny".
 	Access *string `json:"access,omitempty" tf:"access,omitempty"`
 
+	// (Attributes Set) A set of permission groups that are specified to the policy. (see below for nested schema)
 	PermissionGroups []PermissionGroupsInitParameters `json:"permissionGroups,omitempty" tf:"permission_groups,omitempty"`
 
+	// (Attributes Set) A list of resource groups that the policy applies to. (see below for nested schema)
 	ResourceGroups []ResourceGroupsInitParameters `json:"resourceGroups,omitempty" tf:"resource_groups,omitempty"`
 }
 
 type PoliciesObservation struct {
 
+	// (String) Allow or deny operations against the resources.
+	// Available values: "allow", "deny".
 	// Allow or deny operations against the resources.
 	// Available values: "allow", "deny".
 	Access *string `json:"access,omitempty" tf:"access,omitempty"`
 
+	// (Attributes Set) A set of permission groups that are specified to the policy. (see below for nested schema)
 	PermissionGroups []PermissionGroupsObservation `json:"permissionGroups,omitempty" tf:"permission_groups,omitempty"`
 
+	// (Attributes Set) A list of resource groups that the policy applies to. (see below for nested schema)
 	ResourceGroups []ResourceGroupsObservation `json:"resourceGroups,omitempty" tf:"resource_groups,omitempty"`
 }
 
 type PoliciesParameters struct {
 
+	// (String) Allow or deny operations against the resources.
+	// Available values: "allow", "deny".
 	// Allow or deny operations against the resources.
 	// Available values: "allow", "deny".
 	// +kubebuilder:validation:Optional
 	Access *string `json:"access" tf:"access,omitempty"`
 
+	// (Attributes Set) A set of permission groups that are specified to the policy. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	PermissionGroups []PermissionGroupsParameters `json:"permissionGroups" tf:"permission_groups,omitempty"`
 
+	// (Attributes Set) A list of resource groups that the policy applies to. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ResourceGroups []ResourceGroupsParameters `json:"resourceGroups" tf:"resource_groups,omitempty"`
 }
 
 type ResourceGroupsInitParameters struct {
 
+	// (String) Membership identifier tag.
 	// Identifier of the group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ResourceGroupsObservation struct {
 
+	// (String) Membership identifier tag.
 	// Identifier of the group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ResourceGroupsParameters struct {
 
+	// (String) Membership identifier tag.
 	// Identifier of the group.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
@@ -155,18 +190,23 @@ type UserInitParameters struct {
 
 type UserObservation struct {
 
+	// (String) The contact email address of the user.
 	// The contact email address of the user.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
+	// (String) User's first name
 	// User's first name
 	FirstName *string `json:"firstName,omitempty" tf:"first_name,omitempty"`
 
+	// (String) Membership identifier tag.
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) User's last name
 	// User's last name
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
 
+	// factor authentication is enabled for the user account. Does not apply to API authentication.
 	// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
 	TwoFactorAuthenticationEnabled *bool `json:"twoFactorAuthenticationEnabled,omitempty" tf:"two_factor_authentication_enabled,omitempty"`
 }
@@ -201,7 +241,7 @@ type MemberStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Member is the Schema for the Members API. <no value>
+// Member is the Schema for the Members API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

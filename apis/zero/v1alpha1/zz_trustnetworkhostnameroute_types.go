@@ -15,59 +15,75 @@ import (
 
 type TrustNetworkHostnameRouteInitParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) An optional description of the hostname route.
 	// An optional description of the hostname route.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) The hostname of the route.
 	// The hostname of the route.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the tunnel.
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 }
 
 type TrustNetworkHostnameRouteObservation struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) An optional description of the hostname route.
 	// An optional description of the hostname route.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) Timestamp of when the resource was created.
 	// Timestamp of when the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) Timestamp of when the resource was deleted. If null, the resource has not been deleted.
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt *string `json:"deletedAt,omitempty" tf:"deleted_at,omitempty"`
 
+	// (String) The hostname of the route.
 	// The hostname of the route.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) The hostname route ID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the tunnel.
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
 
+	// friendly name for a tunnel.
 	// A user-friendly name for a tunnel.
 	TunnelName *string `json:"tunnelName,omitempty" tf:"tunnel_name,omitempty"`
 }
 
 type TrustNetworkHostnameRouteParameters struct {
 
+	// (String) Cloudflare account ID
 	// Cloudflare account ID
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) An optional description of the hostname route.
 	// An optional description of the hostname route.
 	// +kubebuilder:validation:Optional
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
+	// (String) The hostname of the route.
 	// The hostname of the route.
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) UUID of the tunnel.
 	// UUID of the tunnel.
 	// +kubebuilder:validation:Optional
 	TunnelID *string `json:"tunnelId,omitempty" tf:"tunnel_id,omitempty"`
@@ -100,7 +116,7 @@ type TrustNetworkHostnameRouteStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustNetworkHostnameRoute is the Schema for the TrustNetworkHostnameRoutes API. <no value>
+// TrustNetworkHostnameRoute is the Schema for the TrustNetworkHostnameRoutes API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

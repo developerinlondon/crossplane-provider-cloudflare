@@ -15,6 +15,8 @@ import (
 
 type ValidationSettingsInitParameters struct {
 
+	// (String) The default mitigation action used
+	// Mitigation actions are as follows:
 	// The default mitigation action used
 	// Mitigation actions are as follows:
 	//
@@ -24,6 +26,7 @@ type ValidationSettingsInitParameters struct {
 	// Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction *string `json:"validationDefaultMitigationAction,omitempty" tf:"validation_default_mitigation_action,omitempty"`
 
+	// (String) When set, this overrides both zone level and operation level mitigation actions.
 	// When set, this overrides both zone level and operation level mitigation actions.
 	//
 	// - `"none"` - skip running schema validation entirely for the request
@@ -31,6 +34,7 @@ type ValidationSettingsInitParameters struct {
 	// Available values: "none".
 	ValidationOverrideMitigationAction *string `json:"validationOverrideMitigationAction,omitempty" tf:"validation_override_mitigation_action,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -38,6 +42,8 @@ type ValidationSettingsInitParameters struct {
 type ValidationSettingsObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The default mitigation action used
+	// Mitigation actions are as follows:
 	// The default mitigation action used
 	// Mitigation actions are as follows:
 	//
@@ -47,6 +53,7 @@ type ValidationSettingsObservation struct {
 	// Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction *string `json:"validationDefaultMitigationAction,omitempty" tf:"validation_default_mitigation_action,omitempty"`
 
+	// (String) When set, this overrides both zone level and operation level mitigation actions.
 	// When set, this overrides both zone level and operation level mitigation actions.
 	//
 	// - `"none"` - skip running schema validation entirely for the request
@@ -54,12 +61,15 @@ type ValidationSettingsObservation struct {
 	// Available values: "none".
 	ValidationOverrideMitigationAction *string `json:"validationOverrideMitigationAction,omitempty" tf:"validation_override_mitigation_action,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ValidationSettingsParameters struct {
 
+	// (String) The default mitigation action used
+	// Mitigation actions are as follows:
 	// The default mitigation action used
 	// Mitigation actions are as follows:
 	//
@@ -70,6 +80,7 @@ type ValidationSettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	ValidationDefaultMitigationAction *string `json:"validationDefaultMitigationAction,omitempty" tf:"validation_default_mitigation_action,omitempty"`
 
+	// (String) When set, this overrides both zone level and operation level mitigation actions.
 	// When set, this overrides both zone level and operation level mitigation actions.
 	//
 	// - `"none"` - skip running schema validation entirely for the request
@@ -78,6 +89,7 @@ type ValidationSettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	ValidationOverrideMitigationAction *string `json:"validationOverrideMitigationAction,omitempty" tf:"validation_override_mitigation_action,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -110,7 +122,7 @@ type ValidationSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ValidationSettings is the Schema for the ValidationSettingss API. <no value>
+// ValidationSettings is the Schema for the ValidationSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

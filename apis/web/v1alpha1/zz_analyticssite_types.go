@@ -15,85 +15,110 @@ import (
 
 type AnalyticsSiteInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// clouded sites.
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool `json:"autoInstall,omitempty" tf:"auto_install,omitempty"`
 
+	// (Boolean) Enables or disables RUM. This option can be used only when auto_install is set to true.
 	// Enables or disables RUM. This option can be used only when auto_install is set to true.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// clouded sites.
 	// The hostname to use for gray-clouded sites.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (Boolean) If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 	Lite *bool `json:"lite,omitempty" tf:"lite,omitempty"`
 
+	// (String) The zone identifier.
 	// The zone identifier.
 	ZoneTag *string `json:"zoneTag,omitempty" tf:"zone_tag,omitempty"`
 }
 
 type AnalyticsSiteObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// clouded sites.
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool `json:"autoInstall,omitempty" tf:"auto_install,omitempty"`
 
+	// (String)
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// (Boolean) Enables or disables RUM. This option can be used only when auto_install is set to true.
 	// Enables or disables RUM. This option can be used only when auto_install is set to true.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// clouded sites.
 	// The hostname to use for gray-clouded sites.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The Web Analytics site identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 	Lite *bool `json:"lite,omitempty" tf:"lite,omitempty"`
 
+	// (Attributes List) A list of rules. (see below for nested schema)
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Ruleset *RulesetObservation `json:"ruleset,omitempty" tf:"ruleset,omitempty"`
 
+	// (String) The Web Analytics site identifier.
 	// The Web Analytics site identifier.
 	SiteTag *string `json:"siteTag,omitempty" tf:"site_tag,omitempty"`
 
+	// (String) The Web Analytics site token.
 	// The Web Analytics site token.
 	SiteToken *string `json:"siteToken,omitempty" tf:"site_token,omitempty"`
 
+	// (String) Encoded JavaScript snippet.
 	// Encoded JavaScript snippet.
 	Snippet *string `json:"snippet,omitempty" tf:"snippet,omitempty"`
 
+	// (String) The zone identifier.
 	// The zone identifier.
 	ZoneTag *string `json:"zoneTag,omitempty" tf:"zone_tag,omitempty"`
 }
 
 type AnalyticsSiteParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// clouded sites.
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	// +kubebuilder:validation:Optional
 	AutoInstall *bool `json:"autoInstall,omitempty" tf:"auto_install,omitempty"`
 
+	// (Boolean) Enables or disables RUM. This option can be used only when auto_install is set to true.
 	// Enables or disables RUM. This option can be used only when auto_install is set to true.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// clouded sites.
 	// The hostname to use for gray-clouded sites.
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (Boolean) If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 	// +kubebuilder:validation:Optional
 	Lite *bool `json:"lite,omitempty" tf:"lite,omitempty"`
 
+	// (String) The zone identifier.
 	// The zone identifier.
 	// +kubebuilder:validation:Optional
 	ZoneTag *string `json:"zoneTag,omitempty" tf:"zone_tag,omitempty"`
@@ -103,23 +128,31 @@ type RulesInitParameters struct {
 }
 
 type RulesObservation struct {
+
+	// (String)
 	Created *string `json:"created,omitempty" tf:"created,omitempty"`
 
+	// clouded sites.
 	// The hostname the rule will be applied to.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
+	// (String) The Web Analytics site identifier.
 	// The Web Analytics rule identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Whether the rule includes or excludes traffic from being measured.
 	// Whether the rule includes or excludes traffic from being measured.
 	Inclusive *bool `json:"inclusive,omitempty" tf:"inclusive,omitempty"`
 
+	// (Boolean) Whether the rule is paused or not.
 	// Whether the rule is paused or not.
 	IsPaused *bool `json:"isPaused,omitempty" tf:"is_paused,omitempty"`
 
+	// (List of String) The paths the rule will be applied to.
 	// The paths the rule will be applied to.
 	Paths []*string `json:"paths,omitempty" tf:"paths,omitempty"`
 
+	// (Number)
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 }
 
@@ -131,14 +164,18 @@ type RulesetInitParameters struct {
 
 type RulesetObservation struct {
 
+	// (Boolean) Enables or disables RUM. This option can be used only when auto_install is set to true.
 	// Whether the ruleset is enabled.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) The Web Analytics site identifier.
 	// The Web Analytics ruleset identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	ZoneName *string `json:"zoneName,omitempty" tf:"zone_name,omitempty"`
 
+	// (String) The zone identifier.
 	// The zone identifier.
 	ZoneTag *string `json:"zoneTag,omitempty" tf:"zone_tag,omitempty"`
 }
@@ -173,7 +210,7 @@ type AnalyticsSiteStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// AnalyticsSite is the Schema for the AnalyticsSites API. <no value>
+// AnalyticsSite is the Schema for the AnalyticsSites API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

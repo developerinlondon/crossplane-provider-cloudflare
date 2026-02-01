@@ -14,66 +14,87 @@ import (
 )
 
 type ZoneTransfersPeerInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Boolean) Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	IxfrEnable *bool `json:"ixfrEnable,omitempty" tf:"ixfr_enable,omitempty"`
 
+	// (String) The name of the peer.
 	// The name of the peer.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	// DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) TSIG authentication will be used for zone transfer if configured.
 	// TSIG authentication will be used for zone transfer if configured.
 	TsigID *string `json:"tsigId,omitempty" tf:"tsig_id,omitempty"`
 }
 
 type ZoneTransfersPeerObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Boolean) Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	IxfrEnable *bool `json:"ixfrEnable,omitempty" tf:"ixfr_enable,omitempty"`
 
+	// (String) The name of the peer.
 	// The name of the peer.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	// DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) TSIG authentication will be used for zone transfer if configured.
 	// TSIG authentication will be used for zone transfer if configured.
 	TsigID *string `json:"tsigId,omitempty" tf:"tsig_id,omitempty"`
 }
 
 type ZoneTransfersPeerParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	// +kubebuilder:validation:Optional
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
+	// (Boolean) Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	// +kubebuilder:validation:Optional
 	IxfrEnable *bool `json:"ixfrEnable,omitempty" tf:"ixfr_enable,omitempty"`
 
+	// (String) The name of the peer.
 	// The name of the peer.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number) DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	// DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
+	// (String) TSIG authentication will be used for zone transfer if configured.
 	// TSIG authentication will be used for zone transfer if configured.
 	// +kubebuilder:validation:Optional
 	TsigID *string `json:"tsigId,omitempty" tf:"tsig_id,omitempty"`
@@ -106,7 +127,7 @@ type ZoneTransfersPeerStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ZoneTransfersPeer is the Schema for the ZoneTransfersPeers API. <no value>
+// ZoneTransfersPeer is the Schema for the ZoneTransfersPeers API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

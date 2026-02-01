@@ -14,55 +14,73 @@ import (
 )
 
 type AccountInitParameters struct {
+
+	// (Attributes) Parent container details (see below for nested schema)
 	ManagedBy *ManagedByInitParameters `json:"managedBy,omitempty" tf:"managed_by,omitempty"`
 
+	// (String) Account name
 	// Account name
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) Account settings (see below for nested schema)
 	Settings *SettingsInitParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "standard", "enterprise".
 	// Available values: "standard", "enterprise".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// to/manage-accounts/ (see below for nested schema)
 	Unit *UnitInitParameters `json:"unit,omitempty" tf:"unit,omitempty"`
 }
 
 type AccountObservation struct {
 
+	// (String) Timestamp for the creation of the account
 	// Timestamp for the creation of the account
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) Parent container details (see below for nested schema)
 	ManagedBy *ManagedByObservation `json:"managedBy,omitempty" tf:"managed_by,omitempty"`
 
+	// (String) Account name
 	// Account name
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) Account settings (see below for nested schema)
 	Settings *SettingsObservation `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "standard", "enterprise".
 	// Available values: "standard", "enterprise".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// to/manage-accounts/ (see below for nested schema)
 	Unit *UnitObservation `json:"unit,omitempty" tf:"unit,omitempty"`
 }
 
 type AccountParameters struct {
 
+	// (Attributes) Parent container details (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ManagedBy *ManagedByParameters `json:"managedBy,omitempty" tf:"managed_by,omitempty"`
 
+	// (String) Account name
 	// Account name
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) Account settings (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Settings *SettingsParameters `json:"settings,omitempty" tf:"settings,omitempty"`
 
+	// (String) Available values: "standard", "enterprise".
 	// Available values: "standard", "enterprise".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// to/manage-accounts/ (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Unit *UnitParameters `json:"unit,omitempty" tf:"unit,omitempty"`
 }
@@ -72,9 +90,11 @@ type ManagedByInitParameters struct {
 
 type ManagedByObservation struct {
 
+	// (String) ID of the parent Organization, if one exists
 	// ID of the parent Organization, if one exists
 	ParentOrgID *string `json:"parentOrgId,omitempty" tf:"parent_org_id,omitempty"`
 
+	// (String) Name of the parent Organization, if one exists
 	// Name of the parent Organization, if one exists
 	ParentOrgName *string `json:"parentOrgName,omitempty" tf:"parent_org_name,omitempty"`
 }
@@ -84,9 +104,11 @@ type ManagedByParameters struct {
 
 type SettingsInitParameters struct {
 
+	// (String) Sets an abuse contact email to notify for abuse reports.
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail *string `json:"abuseContactEmail,omitempty" tf:"abuse_contact_email,omitempty"`
 
+	// Factor Authentication is enabled
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
 	EnforceTwofactor *bool `json:"enforceTwofactor,omitempty" tf:"enforce_twofactor,omitempty"`
@@ -94,9 +116,11 @@ type SettingsInitParameters struct {
 
 type SettingsObservation struct {
 
+	// (String) Sets an abuse contact email to notify for abuse reports.
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail *string `json:"abuseContactEmail,omitempty" tf:"abuse_contact_email,omitempty"`
 
+	// Factor Authentication is enabled
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
 	EnforceTwofactor *bool `json:"enforceTwofactor,omitempty" tf:"enforce_twofactor,omitempty"`
@@ -104,10 +128,12 @@ type SettingsObservation struct {
 
 type SettingsParameters struct {
 
+	// (String) Sets an abuse contact email to notify for abuse reports.
 	// Sets an abuse contact email to notify for abuse reports.
 	// +kubebuilder:validation:Optional
 	AbuseContactEmail *string `json:"abuseContactEmail,omitempty" tf:"abuse_contact_email,omitempty"`
 
+	// Factor Authentication is enabled
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
 	// +kubebuilder:validation:Optional
@@ -116,18 +142,21 @@ type SettingsParameters struct {
 
 type UnitInitParameters struct {
 
+	// (String) Identifier
 	// Tenant unit ID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type UnitObservation struct {
 
+	// (String) Identifier
 	// Tenant unit ID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type UnitParameters struct {
 
+	// (String) Identifier
 	// Tenant unit ID
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -160,7 +189,7 @@ type AccountStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Account is the Schema for the Accounts API. <no value>
+// Account is the Schema for the Accounts API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

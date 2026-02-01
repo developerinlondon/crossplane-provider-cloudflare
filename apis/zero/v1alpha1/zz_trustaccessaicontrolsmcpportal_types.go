@@ -14,154 +14,215 @@ import (
 )
 
 type ServersInitParameters struct {
+
+	// (Boolean)
 	DefaultDisabled *bool `json:"defaultDisabled,omitempty" tf:"default_disabled,omitempty"`
 
+	// (Boolean)
 	OnBehalf *bool `json:"onBehalf,omitempty" tf:"on_behalf,omitempty"`
 
+	// (String) server id
 	// server id
 	ServerID *string `json:"serverId,omitempty" tf:"server_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	UpdatedPrompts []UpdatedPromptsInitParameters `json:"updatedPrompts,omitempty" tf:"updated_prompts,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	UpdatedTools []UpdatedToolsInitParameters `json:"updatedTools,omitempty" tf:"updated_tools,omitempty"`
 }
 
 type ServersObservation struct {
+
+	// (Boolean)
 	DefaultDisabled *bool `json:"defaultDisabled,omitempty" tf:"default_disabled,omitempty"`
 
+	// (Boolean)
 	OnBehalf *bool `json:"onBehalf,omitempty" tf:"on_behalf,omitempty"`
 
+	// (String) server id
 	// server id
 	ServerID *string `json:"serverId,omitempty" tf:"server_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	UpdatedPrompts []UpdatedPromptsObservation `json:"updatedPrompts,omitempty" tf:"updated_prompts,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	UpdatedTools []UpdatedToolsObservation `json:"updatedTools,omitempty" tf:"updated_tools,omitempty"`
 }
 
 type ServersParameters struct {
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	DefaultDisabled *bool `json:"defaultDisabled,omitempty" tf:"default_disabled,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	OnBehalf *bool `json:"onBehalf,omitempty" tf:"on_behalf,omitempty"`
 
+	// (String) server id
 	// server id
 	// +kubebuilder:validation:Optional
 	ServerID *string `json:"serverId" tf:"server_id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	UpdatedPrompts []UpdatedPromptsParameters `json:"updatedPrompts,omitempty" tf:"updated_prompts,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	UpdatedTools []UpdatedToolsParameters `json:"updatedTools,omitempty" tf:"updated_tools,omitempty"`
 }
 
 type TrustAccessAIControlsMcpPortalInitParameters struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Servers []ServersInitParameters `json:"servers,omitempty" tf:"servers,omitempty"`
 }
 
 type TrustAccessAIControlsMcpPortalObservation struct {
+
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String)
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) portal id
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	ModifiedAt *string `json:"modifiedAt,omitempty" tf:"modified_at,omitempty"`
 
+	// (String)
 	ModifiedBy *string `json:"modifiedBy,omitempty" tf:"modified_by,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Servers []ServersObservation `json:"servers,omitempty" tf:"servers,omitempty"`
 }
 
 type TrustAccessAIControlsMcpPortalParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Servers []ServersParameters `json:"servers,omitempty" tf:"servers,omitempty"`
 }
 
 type UpdatedPromptsInitParameters struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type UpdatedPromptsObservation struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type UpdatedPromptsParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 }
 
 type UpdatedToolsInitParameters struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type UpdatedToolsObservation struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type UpdatedToolsParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 }
@@ -193,7 +254,7 @@ type TrustAccessAIControlsMcpPortalStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustAccessAIControlsMcpPortal is the Schema for the TrustAccessAIControlsMcpPortals API. <no value>
+// TrustAccessAIControlsMcpPortal is the Schema for the TrustAccessAIControlsMcpPortals API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

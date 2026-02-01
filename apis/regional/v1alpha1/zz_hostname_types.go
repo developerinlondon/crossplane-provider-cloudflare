@@ -15,53 +15,67 @@ import (
 
 type HostnameInitParameters struct {
 
+	// (String) DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g *.example.com
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Identifying key for the region
 	// Identifying key for the region
 	RegionKey *string `json:"regionKey,omitempty" tf:"region_key,omitempty"`
 
+	// (String) Configure which routing method to use for the regional hostname
 	// Configure which routing method to use for the regional hostname
 	Routing *string `json:"routing,omitempty" tf:"routing,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HostnameObservation struct {
 
+	// (String) When the regional hostname was created
 	// When the regional hostname was created
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g *.example.com
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g *.example.com
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Identifying key for the region
 	// Identifying key for the region
 	RegionKey *string `json:"regionKey,omitempty" tf:"region_key,omitempty"`
 
+	// (String) Configure which routing method to use for the regional hostname
 	// Configure which routing method to use for the regional hostname
 	Routing *string `json:"routing,omitempty" tf:"routing,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type HostnameParameters struct {
 
+	// (String) DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g *.example.com
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	// +kubebuilder:validation:Optional
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
+	// (String) Identifying key for the region
 	// Identifying key for the region
 	// +kubebuilder:validation:Optional
 	RegionKey *string `json:"regionKey,omitempty" tf:"region_key,omitempty"`
 
+	// (String) Configure which routing method to use for the regional hostname
 	// Configure which routing method to use for the regional hostname
 	// +kubebuilder:validation:Optional
 	Routing *string `json:"routing,omitempty" tf:"routing,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -94,7 +108,7 @@ type HostnameStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Hostname is the Schema for the Hostnames API. <no value>
+// Hostname is the Schema for the Hostnames API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

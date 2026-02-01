@@ -15,39 +15,50 @@ import (
 
 type RouteInitParameters struct {
 
+	// (String) Pattern to match incoming requests against. Learn more.
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String) Name of the script to run if the route matches.
 	// Name of the script to run if the route matches.
 	Script *string `json:"script,omitempty" tf:"script,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RouteObservation struct {
+
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Pattern to match incoming requests against. Learn more.
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String) Name of the script to run if the route matches.
 	// Name of the script to run if the route matches.
 	Script *string `json:"script,omitempty" tf:"script,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RouteParameters struct {
 
+	// (String) Pattern to match incoming requests against. Learn more.
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	// +kubebuilder:validation:Optional
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (String) Name of the script to run if the route matches.
 	// Name of the script to run if the route matches.
 	// +kubebuilder:validation:Optional
 	Script *string `json:"script,omitempty" tf:"script,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -80,7 +91,7 @@ type RouteStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Route is the Schema for the Routes API. <no value>
+// Route is the Schema for the Routes API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

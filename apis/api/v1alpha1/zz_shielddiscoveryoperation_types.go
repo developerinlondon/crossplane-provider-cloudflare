@@ -15,41 +15,51 @@ import (
 
 type ShieldDiscoveryOperationInitParameters struct {
 
+	// (String) UUID.
 	// UUID.
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Mark state of operation in API Discovery
 	// Mark state of operation in API Discovery
 	// * `review` - Mark operation as for review
 	// * `ignored` - Mark operation as ignored
 	// Available values: "review", "ignored".
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldDiscoveryOperationObservation struct {
+
+	// (String) UUID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) UUID.
 	// UUID.
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Mark state of operation in API Discovery
 	// Mark state of operation in API Discovery
 	// * `review` - Mark operation as for review
 	// * `ignored` - Mark operation as ignored
 	// Available values: "review", "ignored".
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ShieldDiscoveryOperationParameters struct {
 
+	// (String) UUID.
 	// UUID.
 	// +kubebuilder:validation:Optional
 	OperationID *string `json:"operationId,omitempty" tf:"operation_id,omitempty"`
 
+	// (String) Mark state of operation in API Discovery
 	// Mark state of operation in API Discovery
 	// * `review` - Mark operation as for review
 	// * `ignored` - Mark operation as ignored
@@ -57,6 +67,7 @@ type ShieldDiscoveryOperationParameters struct {
 	// +kubebuilder:validation:Optional
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -89,7 +100,7 @@ type ShieldDiscoveryOperationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ShieldDiscoveryOperation is the Schema for the ShieldDiscoveryOperations API. <no value>
+// ShieldDiscoveryOperation is the Schema for the ShieldDiscoveryOperations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,28 +15,34 @@ import (
 
 type CustomPagesInitParameters struct {
 
+	// identity rule.
 	// The uid of the custom page to use when a user is denied access after failing a non-identity rule.
 	Forbidden *string `json:"forbidden,omitempty" tf:"forbidden,omitempty"`
 
+	// (String) The uid of the custom page to use when a user is denied access.
 	// The uid of the custom page to use when a user is denied access.
 	IdentityDenied *string `json:"identityDenied,omitempty" tf:"identity_denied,omitempty"`
 }
 
 type CustomPagesObservation struct {
 
+	// identity rule.
 	// The uid of the custom page to use when a user is denied access after failing a non-identity rule.
 	Forbidden *string `json:"forbidden,omitempty" tf:"forbidden,omitempty"`
 
+	// (String) The uid of the custom page to use when a user is denied access.
 	// The uid of the custom page to use when a user is denied access.
 	IdentityDenied *string `json:"identityDenied,omitempty" tf:"identity_denied,omitempty"`
 }
 
 type CustomPagesParameters struct {
 
+	// identity rule.
 	// The uid of the custom page to use when a user is denied access after failing a non-identity rule.
 	// +kubebuilder:validation:Optional
 	Forbidden *string `json:"forbidden,omitempty" tf:"forbidden,omitempty"`
 
+	// (String) The uid of the custom page to use when a user is denied access.
 	// The uid of the custom page to use when a user is denied access.
 	// +kubebuilder:validation:Optional
 	IdentityDenied *string `json:"identityDenied,omitempty" tf:"identity_denied,omitempty"`
@@ -44,58 +50,73 @@ type CustomPagesParameters struct {
 
 type LoginDesignInitParameters struct {
 
+	// (String) The background color on your login page.
 	// The background color on your login page.
 	BackgroundColor *string `json:"backgroundColor,omitempty" tf:"background_color,omitempty"`
 
+	// (String) The text at the bottom of your login page.
 	// The text at the bottom of your login page.
 	FooterText *string `json:"footerText,omitempty" tf:"footer_text,omitempty"`
 
+	// (String) The text at the top of your login page.
 	// The text at the top of your login page.
 	HeaderText *string `json:"headerText,omitempty" tf:"header_text,omitempty"`
 
+	// (String) The URL of the logo on your login page.
 	// The URL of the logo on your login page.
 	LogoPath *string `json:"logoPath,omitempty" tf:"logo_path,omitempty"`
 
+	// (String) The text color on your login page.
 	// The text color on your login page.
 	TextColor *string `json:"textColor,omitempty" tf:"text_color,omitempty"`
 }
 
 type LoginDesignObservation struct {
 
+	// (String) The background color on your login page.
 	// The background color on your login page.
 	BackgroundColor *string `json:"backgroundColor,omitempty" tf:"background_color,omitempty"`
 
+	// (String) The text at the bottom of your login page.
 	// The text at the bottom of your login page.
 	FooterText *string `json:"footerText,omitempty" tf:"footer_text,omitempty"`
 
+	// (String) The text at the top of your login page.
 	// The text at the top of your login page.
 	HeaderText *string `json:"headerText,omitempty" tf:"header_text,omitempty"`
 
+	// (String) The URL of the logo on your login page.
 	// The URL of the logo on your login page.
 	LogoPath *string `json:"logoPath,omitempty" tf:"logo_path,omitempty"`
 
+	// (String) The text color on your login page.
 	// The text color on your login page.
 	TextColor *string `json:"textColor,omitempty" tf:"text_color,omitempty"`
 }
 
 type LoginDesignParameters struct {
 
+	// (String) The background color on your login page.
 	// The background color on your login page.
 	// +kubebuilder:validation:Optional
 	BackgroundColor *string `json:"backgroundColor,omitempty" tf:"background_color,omitempty"`
 
+	// (String) The text at the bottom of your login page.
 	// The text at the bottom of your login page.
 	// +kubebuilder:validation:Optional
 	FooterText *string `json:"footerText,omitempty" tf:"footer_text,omitempty"`
 
+	// (String) The text at the top of your login page.
 	// The text at the top of your login page.
 	// +kubebuilder:validation:Optional
 	HeaderText *string `json:"headerText,omitempty" tf:"header_text,omitempty"`
 
+	// (String) The URL of the logo on your login page.
 	// The URL of the logo on your login page.
 	// +kubebuilder:validation:Optional
 	LogoPath *string `json:"logoPath,omitempty" tf:"logo_path,omitempty"`
 
+	// (String) The text color on your login page.
 	// The text color on your login page.
 	// +kubebuilder:validation:Optional
 	TextColor *string `json:"textColor,omitempty" tf:"text_color,omitempty"`
@@ -103,134 +124,173 @@ type LoginDesignParameters struct {
 
 type TrustOrganizationInitParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp *bool `json:"allowAuthenticateViaWarp,omitempty" tf:"allow_authenticate_via_warp,omitempty"`
 
+	// (String) The unique subdomain assigned to your Zero Trust organization.
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain *string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 
+	// (Boolean) When set to true, users skip the identity provider selection step during login.
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity *bool `json:"autoRedirectToIdentity,omitempty" tf:"auto_redirect_to_identity,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CustomPages *CustomPagesInitParameters `json:"customPages,omitempty" tf:"custom_pages,omitempty"`
 
+	// Only in the Dashboard, regardless of user permission.
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission.
 	IsUIReadOnly *bool `json:"isUiReadOnly,omitempty" tf:"is_ui_read_only,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginDesign *LoginDesignInitParameters `json:"loginDesign,omitempty" tf:"login_design,omitempty"`
 
+	// (String) The name of your Zero Trust organization.
 	// The name of your Zero Trust organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The amount of time that tokens issued for applications will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `json:"sessionDuration,omitempty" tf:"session_duration,omitempty"`
 
+	// (String) A description of the reason why the UI read only field is being toggled.
 	// A description of the reason why the UI read only field is being toggled.
 	UIReadOnlyToggleReason *string `json:"uiReadOnlyToggleReason,omitempty" tf:"ui_read_only_toggle_reason,omitempty"`
 
+	// (String) The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime *string `json:"userSeatExpirationInactiveTime,omitempty" tf:"user_seat_expiration_inactive_time,omitempty"`
 
+	// (String) The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration *string `json:"warpAuthSessionDuration,omitempty" tf:"warp_auth_session_duration,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustOrganizationObservation struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp *bool `json:"allowAuthenticateViaWarp,omitempty" tf:"allow_authenticate_via_warp,omitempty"`
 
+	// (String) The unique subdomain assigned to your Zero Trust organization.
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain *string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 
+	// (Boolean) When set to true, users skip the identity provider selection step during login.
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity *bool `json:"autoRedirectToIdentity,omitempty" tf:"auto_redirect_to_identity,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	CustomPages *CustomPagesObservation `json:"customPages,omitempty" tf:"custom_pages,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Only in the Dashboard, regardless of user permission.
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission.
 	IsUIReadOnly *bool `json:"isUiReadOnly,omitempty" tf:"is_ui_read_only,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	LoginDesign *LoginDesignObservation `json:"loginDesign,omitempty" tf:"login_design,omitempty"`
 
+	// (String) The name of your Zero Trust organization.
 	// The name of your Zero Trust organization.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The amount of time that tokens issued for applications will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `json:"sessionDuration,omitempty" tf:"session_duration,omitempty"`
 
+	// (String) A description of the reason why the UI read only field is being toggled.
 	// A description of the reason why the UI read only field is being toggled.
 	UIReadOnlyToggleReason *string `json:"uiReadOnlyToggleReason,omitempty" tf:"ui_read_only_toggle_reason,omitempty"`
 
+	// (String) The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime *string `json:"userSeatExpirationInactiveTime,omitempty" tf:"user_seat_expiration_inactive_time,omitempty"`
 
+	// (String) The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration *string `json:"warpAuthSessionDuration,omitempty" tf:"warp_auth_session_duration,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type TrustOrganizationParameters struct {
 
+	// (String) The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	// +kubebuilder:validation:Optional
 	AllowAuthenticateViaWarp *bool `json:"allowAuthenticateViaWarp,omitempty" tf:"allow_authenticate_via_warp,omitempty"`
 
+	// (String) The unique subdomain assigned to your Zero Trust organization.
 	// The unique subdomain assigned to your Zero Trust organization.
 	// +kubebuilder:validation:Optional
 	AuthDomain *string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 
+	// (Boolean) When set to true, users skip the identity provider selection step during login.
 	// When set to `true`, users skip the identity provider selection step during login.
 	// +kubebuilder:validation:Optional
 	AutoRedirectToIdentity *bool `json:"autoRedirectToIdentity,omitempty" tf:"auto_redirect_to_identity,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	CustomPages *CustomPagesParameters `json:"customPages,omitempty" tf:"custom_pages,omitempty"`
 
+	// Only in the Dashboard, regardless of user permission.
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission.
 	// +kubebuilder:validation:Optional
 	IsUIReadOnly *bool `json:"isUiReadOnly,omitempty" tf:"is_ui_read_only,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	LoginDesign *LoginDesignParameters `json:"loginDesign,omitempty" tf:"login_design,omitempty"`
 
+	// (String) The name of your Zero Trust organization.
 	// The name of your Zero Trust organization.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) The amount of time that tokens issued for applications will be valid. Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// +kubebuilder:validation:Optional
 	SessionDuration *string `json:"sessionDuration,omitempty" tf:"session_duration,omitempty"`
 
+	// (String) A description of the reason why the UI read only field is being toggled.
 	// A description of the reason why the UI read only field is being toggled.
 	// +kubebuilder:validation:Optional
 	UIReadOnlyToggleReason *string `json:"uiReadOnlyToggleReason,omitempty" tf:"ui_read_only_toggle_reason,omitempty"`
 
+	// (String) The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format 300ms or 2h45m. Valid time units are: ns, us (or µs), ms, s, m, h.
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	// +kubebuilder:validation:Optional
 	UserSeatExpirationInactiveTime *string `json:"userSeatExpirationInactiveTime,omitempty" tf:"user_seat_expiration_inactive_time,omitempty"`
 
+	// (String) The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	// +kubebuilder:validation:Optional
 	WarpAuthSessionDuration *string `json:"warpAuthSessionDuration,omitempty" tf:"warp_auth_session_duration,omitempty"`
 
+	// (String) The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -263,7 +323,7 @@ type TrustOrganizationStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustOrganization is the Schema for the TrustOrganizations API. <no value>
+// TrustOrganization is the Schema for the TrustOrganizations API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

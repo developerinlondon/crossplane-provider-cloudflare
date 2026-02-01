@@ -14,26 +14,35 @@ import (
 )
 
 type ConnectorRulesInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ConnectorRulesObservation struct {
+
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ConnectorRulesParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Rules []RulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -41,48 +50,66 @@ type ConnectorRulesParameters struct {
 
 type ParametersInitParameters struct {
 
+	// (String) Host to perform Cloud Connection to
 	// Host to perform Cloud Connection to
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type ParametersObservation struct {
 
+	// (String) Host to perform Cloud Connection to
 	// Host to perform Cloud Connection to
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type ParametersParameters struct {
 
+	// (String) Host to perform Cloud Connection to
 	// Host to perform Cloud Connection to
 	// +kubebuilder:validation:Optional
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 }
 
 type RulesInitParameters struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Attributes) Parameters of Cloud Connector Rule (see below for nested schema)
 	Parameters *ParametersInitParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// (String) Cloud Provider type
+	// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
 	// Cloud Provider type
 	// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
 	Provider *string `json:"provider,omitempty" tf:"provider,omitempty"`
 }
 
 type RulesObservation struct {
+
+	// (String)
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) Parameters of Cloud Connector Rule (see below for nested schema)
 	Parameters *ParametersObservation `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// (String) Cloud Provider type
+	// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
 	// Cloud Provider type
 	// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
 	Provider *string `json:"provider,omitempty" tf:"provider,omitempty"`
@@ -90,18 +117,24 @@ type RulesObservation struct {
 
 type RulesParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Attributes) Parameters of Cloud Connector Rule (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Parameters *ParametersParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// (String) Cloud Provider type
+	// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
 	// Cloud Provider type
 	// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
 	// +kubebuilder:validation:Optional
@@ -135,7 +168,7 @@ type ConnectorRulesStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ConnectorRules is the Schema for the ConnectorRuless API. <no value>
+// ConnectorRules is the Schema for the ConnectorRuless API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

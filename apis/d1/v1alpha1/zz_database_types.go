@@ -15,83 +15,112 @@ import (
 
 type DatabaseInitParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp".
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) D1 database name.
 	// D1 database name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint *string `json:"primaryLocationHint,omitempty" tf:"primary_location_hint,omitempty"`
 
+	// (Attributes) Configuration for D1 read replication. (see below for nested schema)
 	ReadReplication *ReadReplicationInitParameters `json:"readReplication,omitempty" tf:"read_replication,omitempty"`
 }
 
 type DatabaseObservation struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Specifies the timestamp the resource was created as an ISO8601 string.
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (Number) The D1 database's size, in bytes.
 	// The D1 database's size, in bytes.
 	FileSize *float64 `json:"fileSize,omitempty" tf:"file_size,omitempty"`
 
+	// (String) D1 database identifier (UUID).
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp".
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) D1 database name.
 	// D1 database name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Number)
 	NumTables *float64 `json:"numTables,omitempty" tf:"num_tables,omitempty"`
 
+	// (String) Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint *string `json:"primaryLocationHint,omitempty" tf:"primary_location_hint,omitempty"`
 
+	// (Attributes) Configuration for D1 read replication. (see below for nested schema)
 	ReadReplication *ReadReplicationObservation `json:"readReplication,omitempty" tf:"read_replication,omitempty"`
 
+	// (String) D1 database identifier (UUID).
 	// D1 database identifier (UUID).
 	UUID *string `json:"uuid,omitempty" tf:"uuid,omitempty"`
 
+	// (String)
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type DatabaseParameters struct {
 
+	// (String) Account identifier tag.
 	// Account identifier tag.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp".
 	// +kubebuilder:validation:Optional
 	Jurisdiction *string `json:"jurisdiction,omitempty" tf:"jurisdiction,omitempty"`
 
+	// (String) D1 database name.
 	// D1 database name.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	// +kubebuilder:validation:Optional
 	PrimaryLocationHint *string `json:"primaryLocationHint,omitempty" tf:"primary_location_hint,omitempty"`
 
+	// (Attributes) Configuration for D1 read replication. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ReadReplication *ReadReplicationParameters `json:"readReplication,omitempty" tf:"read_replication,omitempty"`
 }
 
 type ReadReplicationInitParameters struct {
 
+	// (String) The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+	// Available values: "auto", "disabled".
 	// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
 	// Available values: "auto", "disabled".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
@@ -99,6 +128,8 @@ type ReadReplicationInitParameters struct {
 
 type ReadReplicationObservation struct {
 
+	// (String) The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+	// Available values: "auto", "disabled".
 	// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
 	// Available values: "auto", "disabled".
 	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
@@ -106,6 +137,8 @@ type ReadReplicationObservation struct {
 
 type ReadReplicationParameters struct {
 
+	// (String) The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+	// Available values: "auto", "disabled".
 	// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
 	// Available values: "auto", "disabled".
 	// +kubebuilder:validation:Optional
@@ -139,7 +172,7 @@ type DatabaseStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Database is the Schema for the Databases API. <no value>
+// Database is the Schema for the Databases API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

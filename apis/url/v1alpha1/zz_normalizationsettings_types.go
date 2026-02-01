@@ -15,45 +15,62 @@ import (
 
 type NormalizationSettingsInitParameters struct {
 
+	// (String) The scope of the URL normalization.
+	// Available values: "incoming", "both", "none".
 	// The scope of the URL normalization.
 	// Available values: "incoming", "both", "none".
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (String) The type of URL normalization performed by Cloudflare.
+	// Available values: "cloudflare", "rfc3986".
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type NormalizationSettingsObservation struct {
+
+	// (String) The unique ID of the zone.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) The scope of the URL normalization.
+	// Available values: "incoming", "both", "none".
 	// The scope of the URL normalization.
 	// Available values: "incoming", "both", "none".
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (String) The type of URL normalization performed by Cloudflare.
+	// Available values: "cloudflare", "rfc3986".
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type NormalizationSettingsParameters struct {
 
+	// (String) The scope of the URL normalization.
+	// Available values: "incoming", "both", "none".
 	// The scope of the URL normalization.
 	// Available values: "incoming", "both", "none".
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (String) The type of URL normalization performed by Cloudflare.
+	// Available values: "cloudflare", "rfc3986".
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -86,7 +103,7 @@ type NormalizationSettingsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// NormalizationSettings is the Schema for the NormalizationSettingss API. <no value>
+// NormalizationSettings is the Schema for the NormalizationSettingss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

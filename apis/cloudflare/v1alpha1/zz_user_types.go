@@ -18,18 +18,24 @@ type OrganizationsInitParameters struct {
 
 type OrganizationsObservation struct {
 
+	// (String) Identifier of the user.
 	// Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Organization name.
 	// Organization name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (List of String) Access permissions for this User.
 	// Access permissions for this User.
 	Permissions []*string `json:"permissions,omitempty" tf:"permissions,omitempty"`
 
+	// (List of String) List of roles that a user has within an organization.
 	// List of roles that a user has within an organization.
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`
 
+	// (String) Whether the user is a member of the organization or has an invitation pending.
+	// Available values: "member", "invited".
 	// Whether the user is a member of the organization or has an invitation pending.
 	// Available values: "member", "invited".
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -40,83 +46,107 @@ type OrganizationsParameters struct {
 
 type UserInitParameters_2 struct {
 
+	// (String) The country in which the user lives.
 	// The country in which the user lives.
 	Country *string `json:"country,omitempty" tf:"country,omitempty"`
 
+	// (String) User's first name
 	// User's first name
 	FirstName *string `json:"firstName,omitempty" tf:"first_name,omitempty"`
 
+	// (String) User's last name
 	// User's last name
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
 
+	// (String) User's telephone number
 	// User's telephone number
 	Telephone *string `json:"telephone,omitempty" tf:"telephone,omitempty"`
 
+	// (String) The zipcode or postal code where the user lives.
 	// The zipcode or postal code where the user lives.
 	Zipcode *string `json:"zipcode,omitempty" tf:"zipcode,omitempty"`
 }
 
 type UserObservation_2 struct {
 
+	// (List of String) Lists the betas that the user is participating in.
 	// Lists the betas that the user is participating in.
 	Betas []*string `json:"betas,omitempty" tf:"betas,omitempty"`
 
+	// (String) The country in which the user lives.
 	// The country in which the user lives.
 	Country *string `json:"country,omitempty" tf:"country,omitempty"`
 
+	// (String) User's first name
 	// User's first name
 	FirstName *string `json:"firstName,omitempty" tf:"first_name,omitempty"`
 
+	// (Boolean) Indicates whether user has any business zones
 	// Indicates whether user has any business zones
 	HasBusinessZones *bool `json:"hasBusinessZones,omitempty" tf:"has_business_zones,omitempty"`
 
+	// (Boolean) Indicates whether user has any enterprise zones
 	// Indicates whether user has any enterprise zones
 	HasEnterpriseZones *bool `json:"hasEnterpriseZones,omitempty" tf:"has_enterprise_zones,omitempty"`
 
+	// (Boolean) Indicates whether user has any pro zones
 	// Indicates whether user has any pro zones
 	HasProZones *bool `json:"hasProZones,omitempty" tf:"has_pro_zones,omitempty"`
 
+	// (String) Identifier of the user.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) User's last name
 	// User's last name
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
 
+	// (Attributes List) (see below for nested schema)
 	Organizations []OrganizationsObservation `json:"organizations,omitempty" tf:"organizations,omitempty"`
 
+	// (Boolean) Indicates whether user has been suspended
 	// Indicates whether user has been suspended
 	Suspended *bool `json:"suspended,omitempty" tf:"suspended,omitempty"`
 
+	// (String) User's telephone number
 	// User's telephone number
 	Telephone *string `json:"telephone,omitempty" tf:"telephone,omitempty"`
 
+	// factor authentication is enabled for the user account. Does not apply to API authentication.
 	// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
 	TwoFactorAuthenticationEnabled *bool `json:"twoFactorAuthenticationEnabled,omitempty" tf:"two_factor_authentication_enabled,omitempty"`
 
+	// factor authentication is required by one of the accounts that the user is a member of.
 	// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
 	TwoFactorAuthenticationLocked *bool `json:"twoFactorAuthenticationLocked,omitempty" tf:"two_factor_authentication_locked,omitempty"`
 
+	// (String) The zipcode or postal code where the user lives.
 	// The zipcode or postal code where the user lives.
 	Zipcode *string `json:"zipcode,omitempty" tf:"zipcode,omitempty"`
 }
 
 type UserParameters_2 struct {
 
+	// (String) The country in which the user lives.
 	// The country in which the user lives.
 	// +kubebuilder:validation:Optional
 	Country *string `json:"country,omitempty" tf:"country,omitempty"`
 
+	// (String) User's first name
 	// User's first name
 	// +kubebuilder:validation:Optional
 	FirstName *string `json:"firstName,omitempty" tf:"first_name,omitempty"`
 
+	// (String) User's last name
 	// User's last name
 	// +kubebuilder:validation:Optional
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
 
+	// (String) User's telephone number
 	// User's telephone number
 	// +kubebuilder:validation:Optional
 	Telephone *string `json:"telephone,omitempty" tf:"telephone,omitempty"`
 
+	// (String) The zipcode or postal code where the user lives.
 	// The zipcode or postal code where the user lives.
 	// +kubebuilder:validation:Optional
 	Zipcode *string `json:"zipcode,omitempty" tf:"zipcode,omitempty"`
@@ -149,7 +179,7 @@ type UserStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// User is the Schema for the Users API. <no value>
+// User is the Schema for the Users API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

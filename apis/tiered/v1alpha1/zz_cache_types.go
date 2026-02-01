@@ -15,39 +15,51 @@ import (
 
 type CacheInitParameters struct {
 
+	// (String) Enable or disable the Smart Tiered Cache.
+	// Available values: "on", "off".
 	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CacheObservation struct {
 
+	// (Boolean) Whether the setting is editable.
 	// Whether the setting is editable.
 	Editable *bool `json:"editable,omitempty" tf:"editable,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Last time this setting was modified.
 	// Last time this setting was modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) Enable or disable the Smart Tiered Cache.
+	// Available values: "on", "off".
 	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type CacheParameters struct {
 
+	// (String) Enable or disable the Smart Tiered Cache.
+	// Available values: "on", "off".
 	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -80,7 +92,7 @@ type CacheStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Cache is the Schema for the Caches API. <no value>
+// Cache is the Schema for the Caches API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

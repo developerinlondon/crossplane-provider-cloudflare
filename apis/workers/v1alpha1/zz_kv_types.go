@@ -15,60 +15,76 @@ import (
 
 type KvInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName *string `json:"keyName,omitempty" tf:"key_name,omitempty"`
 
+	// (String) Associates arbitrary JSON data with a key/value pair.
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (String) Namespace identifier tag.
 	// Namespace identifier tag.
 	NamespaceID *string `json:"namespaceId,omitempty" tf:"namespace_id,omitempty"`
 
+	// (String) A byte sequence to be stored, up to 25 MiB in length.
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type KvObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName *string `json:"keyName,omitempty" tf:"key_name,omitempty"`
 
+	// (String) Associates arbitrary JSON data with a key/value pair.
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (String) Namespace identifier tag.
 	// Namespace identifier tag.
 	NamespaceID *string `json:"namespaceId,omitempty" tf:"namespace_id,omitempty"`
 
+	// (String) A byte sequence to be stored, up to 25 MiB in length.
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type KvParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	// +kubebuilder:validation:Optional
 	KeyName *string `json:"keyName,omitempty" tf:"key_name,omitempty"`
 
+	// (String) Associates arbitrary JSON data with a key/value pair.
 	// Associates arbitrary JSON data with a key/value pair.
 	// +kubebuilder:validation:Optional
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (String) Namespace identifier tag.
 	// Namespace identifier tag.
 	// +kubebuilder:validation:Optional
 	NamespaceID *string `json:"namespaceId,omitempty" tf:"namespace_id,omitempty"`
 
+	// (String) A byte sequence to be stored, up to 25 MiB in length.
 	// A byte sequence to be stored, up to 25 MiB in length.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
@@ -101,7 +117,7 @@ type KvStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Kv is the Schema for the Kvs API. <no value>
+// Kv is the Schema for the Kvs API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -15,117 +15,151 @@ import (
 
 type BodyInitParameters struct {
 
+	// (String) An informative summary of the filter.
 	// An informative summary of the filter.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The filter expression. For more information, refer to Expressions.
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Boolean) When true, indicates that the filter is currently paused.
 	// When true, indicates that the filter is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) A short reference tag. Allows you to select related filters.
 	// A short reference tag. Allows you to select related filters.
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 }
 
 type BodyObservation struct {
 
+	// (String) An informative summary of the filter.
 	// An informative summary of the filter.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The filter expression. For more information, refer to Expressions.
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) The unique identifier of the filter.
 	// The unique identifier of the filter.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) When true, indicates that the filter is currently paused.
 	// When true, indicates that the filter is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) A short reference tag. Allows you to select related filters.
 	// A short reference tag. Allows you to select related filters.
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 }
 
 type BodyParameters struct {
 
+	// (String) An informative summary of the filter.
 	// An informative summary of the filter.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The filter expression. For more information, refer to Expressions.
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Boolean) When true, indicates that the filter is currently paused.
 	// When true, indicates that the filter is currently paused.
 	// +kubebuilder:validation:Optional
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) A short reference tag. Allows you to select related filters.
 	// A short reference tag. Allows you to select related filters.
 	// +kubebuilder:validation:Optional
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 }
 
 type FilterInitParameters struct {
+
+	// (Attributes List) (see below for nested schema)
 	Body []BodyInitParameters `json:"body,omitempty" tf:"body,omitempty"`
 
+	// (String) An informative summary of the filter.
 	// An informative summary of the filter.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The filter expression. For more information, refer to Expressions.
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Boolean) When true, indicates that the filter is currently paused.
 	// When true, indicates that the filter is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) A short reference tag. Allows you to select related filters.
 	// A short reference tag. Allows you to select related filters.
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type FilterObservation struct {
+
+	// (Attributes List) (see below for nested schema)
 	Body []BodyObservation `json:"body,omitempty" tf:"body,omitempty"`
 
+	// (String) An informative summary of the filter.
 	// An informative summary of the filter.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The filter expression. For more information, refer to Expressions.
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (String) The unique identifier of the filter.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) When true, indicates that the filter is currently paused.
 	// When true, indicates that the filter is currently paused.
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) A short reference tag. Allows you to select related filters.
 	// A short reference tag. Allows you to select related filters.
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type FilterParameters struct {
 
+	// (Attributes List) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Body []BodyParameters `json:"body,omitempty" tf:"body,omitempty"`
 
+	// (String) An informative summary of the filter.
 	// An informative summary of the filter.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) The filter expression. For more information, refer to Expressions.
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	// (Boolean) When true, indicates that the filter is currently paused.
 	// When true, indicates that the filter is currently paused.
 	// +kubebuilder:validation:Optional
 	Paused *bool `json:"paused,omitempty" tf:"paused,omitempty"`
 
+	// (String) A short reference tag. Allows you to select related filters.
 	// A short reference tag. Allows you to select related filters.
 	// +kubebuilder:validation:Optional
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 
+	// (String) Defines an identifier.
 	// Defines an identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -158,7 +192,7 @@ type FilterStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Filter is the Schema for the Filters API. <no value>
+// Filter is the Schema for the Filters API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

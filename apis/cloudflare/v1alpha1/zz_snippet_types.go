@@ -14,40 +14,51 @@ import (
 )
 
 type FilesInitParameters struct {
+
+	// (String)
 	Content *string `json:"content,omitempty" tf:"content"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name"`
 }
 
 type FilesObservation struct {
+
+	// (String)
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type FilesParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Content *string `json:"content" tf:"content"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name"`
 }
 
 type MetadataInitParameters struct {
 
+	// (String) Name of the file that contains the main module of the snippet.
 	// Name of the file that contains the main module of the snippet.
 	MainModule *string `json:"mainModule,omitempty" tf:"main_module,omitempty"`
 }
 
 type MetadataObservation struct {
 
+	// (String) Name of the file that contains the main module of the snippet.
 	// Name of the file that contains the main module of the snippet.
 	MainModule *string `json:"mainModule,omitempty" tf:"main_module,omitempty"`
 }
 
 type MetadataParameters struct {
 
+	// (String) Name of the file that contains the main module of the snippet.
 	// Name of the file that contains the main module of the snippet.
 	// +kubebuilder:validation:Optional
 	MainModule *string `json:"mainModule" tf:"main_module,omitempty"`
@@ -55,53 +66,67 @@ type MetadataParameters struct {
 
 type SnippetInitParameters struct {
 
+	// (List of Object) The list of files belonging to the snippet. (see below for nested schema)
 	// The list of files belonging to the snippet.
 	Files []FilesInitParameters `json:"files,omitempty" tf:"files,omitempty"`
 
+	// (Attributes) Metadata about the snippet. (see below for nested schema)
 	Metadata *MetadataInitParameters `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (String) The identifying name of the snippet.
 	// The identifying name of the snippet.
 	SnippetName *string `json:"snippetName,omitempty" tf:"snippet_name,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SnippetObservation struct {
 
+	// (String) The timestamp of when the snippet was created.
 	// The timestamp of when the snippet was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (List of Object) The list of files belonging to the snippet. (see below for nested schema)
 	// The list of files belonging to the snippet.
 	Files []FilesObservation `json:"files,omitempty" tf:"files,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Attributes) Metadata about the snippet. (see below for nested schema)
 	Metadata *MetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (String) The timestamp of when the snippet was last modified.
 	// The timestamp of when the snippet was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The identifying name of the snippet.
 	// The identifying name of the snippet.
 	SnippetName *string `json:"snippetName,omitempty" tf:"snippet_name,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type SnippetParameters struct {
 
+	// (List of Object) The list of files belonging to the snippet. (see below for nested schema)
 	// The list of files belonging to the snippet.
 	// +kubebuilder:validation:Optional
 	Files []FilesParameters `json:"files,omitempty" tf:"files,omitempty"`
 
+	// (Attributes) Metadata about the snippet. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Metadata *MetadataParameters `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
+	// (String) The identifying name of the snippet.
 	// The identifying name of the snippet.
 	// +kubebuilder:validation:Optional
 	SnippetName *string `json:"snippetName,omitempty" tf:"snippet_name,omitempty"`
 
+	// (String) The unique ID of the zone.
 	// The unique ID of the zone.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -134,7 +159,7 @@ type SnippetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Snippet is the Schema for the Snippets API. <no value>
+// Snippet is the Schema for the Snippets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

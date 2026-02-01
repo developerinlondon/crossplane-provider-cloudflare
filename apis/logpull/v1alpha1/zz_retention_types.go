@@ -15,30 +15,37 @@ import (
 
 type RetentionInitParameters struct {
 
+	// (Boolean) The log retention flag for Logpull API.
 	// The log retention flag for Logpull API.
 	Flag *bool `json:"flag,omitempty" tf:"flag,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RetentionObservation struct {
 
+	// (Boolean) The log retention flag for Logpull API.
 	// The log retention flag for Logpull API.
 	Flag *bool `json:"flag,omitempty" tf:"flag,omitempty"`
 
+	// (String) Identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type RetentionParameters struct {
 
+	// (Boolean) The log retention flag for Logpull API.
 	// The log retention flag for Logpull API.
 	// +kubebuilder:validation:Optional
 	Flag *bool `json:"flag,omitempty" tf:"flag,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -71,7 +78,7 @@ type RetentionStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Retention is the Schema for the Retentions API. <no value>
+// Retention is the Schema for the Retentions API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

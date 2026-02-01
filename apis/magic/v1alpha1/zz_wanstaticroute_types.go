@@ -15,28 +15,34 @@ import (
 
 type ScopeInitParameters struct {
 
+	// (List of String) List of colo names for the ECMP scope.
 	// List of colo names for the ECMP scope.
 	ColoNames []*string `json:"coloNames,omitempty" tf:"colo_names,omitempty"`
 
+	// (List of String) List of colo regions for the ECMP scope.
 	// List of colo regions for the ECMP scope.
 	ColoRegions []*string `json:"coloRegions,omitempty" tf:"colo_regions,omitempty"`
 }
 
 type ScopeObservation struct {
 
+	// (List of String) List of colo names for the ECMP scope.
 	// List of colo names for the ECMP scope.
 	ColoNames []*string `json:"coloNames,omitempty" tf:"colo_names,omitempty"`
 
+	// (List of String) List of colo regions for the ECMP scope.
 	// List of colo regions for the ECMP scope.
 	ColoRegions []*string `json:"coloRegions,omitempty" tf:"colo_regions,omitempty"`
 }
 
 type ScopeParameters struct {
 
+	// (List of String) List of colo names for the ECMP scope.
 	// List of colo names for the ECMP scope.
 	// +kubebuilder:validation:Optional
 	ColoNames []*string `json:"coloNames,omitempty" tf:"colo_names,omitempty"`
 
+	// (List of String) List of colo regions for the ECMP scope.
 	// List of colo regions for the ECMP scope.
 	// +kubebuilder:validation:Optional
 	ColoRegions []*string `json:"coloRegions,omitempty" tf:"colo_regions,omitempty"`
@@ -44,83 +50,107 @@ type ScopeParameters struct {
 
 type WanStaticRouteInitParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) An optional human provided description of the static route.
 	// An optional human provided description of the static route.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// hop IP Address for the static route.
 	// The next-hop IP Address for the static route.
 	Nexthop *string `json:"nexthop,omitempty" tf:"nexthop,omitempty"`
 
+	// Domain Routing format.
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 
+	// (Number) Priority of the static route.
 	// Priority of the static route.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Attributes) Used only for ECMP routes. (see below for nested schema)
 	Scope *ScopeInitParameters `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// if provided.
 	// Optional weight of the ECMP scope - if provided.
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type WanStaticRouteObservation struct {
 
+	// (String) Identifier
 	// Identifier
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) When the route was created.
 	// When the route was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) An optional human provided description of the static route.
 	// An optional human provided description of the static route.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (String) Identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) When the route was last modified.
 	// When the route was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// hop IP Address for the static route.
 	// The next-hop IP Address for the static route.
 	Nexthop *string `json:"nexthop,omitempty" tf:"nexthop,omitempty"`
 
+	// Domain Routing format.
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 
+	// (Number) Priority of the static route.
 	// Priority of the static route.
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Attributes) Used only for ECMP routes. (see below for nested schema)
 	Scope *ScopeObservation `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// if provided.
 	// Optional weight of the ECMP scope - if provided.
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type WanStaticRouteParameters struct {
 
+	// (String) Identifier
 	// Identifier
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) An optional human provided description of the static route.
 	// An optional human provided description of the static route.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// hop IP Address for the static route.
 	// The next-hop IP Address for the static route.
 	// +kubebuilder:validation:Optional
 	Nexthop *string `json:"nexthop,omitempty" tf:"nexthop,omitempty"`
 
+	// Domain Routing format.
 	// IP Prefix in Classless Inter-Domain Routing format.
 	// +kubebuilder:validation:Optional
 	Prefix *string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 
+	// (Number) Priority of the static route.
 	// Priority of the static route.
 	// +kubebuilder:validation:Optional
 	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
+	// (Attributes) Used only for ECMP routes. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Scope *ScopeParameters `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// if provided.
 	// Optional weight of the ECMP scope - if provided.
 	// +kubebuilder:validation:Optional
 	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
@@ -153,7 +183,7 @@ type WanStaticRouteStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// WanStaticRoute is the Schema for the WanStaticRoutes API. <no value>
+// WanStaticRoute is the Schema for the WanStaticRoutes API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

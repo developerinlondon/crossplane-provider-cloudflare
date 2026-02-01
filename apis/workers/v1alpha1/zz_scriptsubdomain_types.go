@@ -15,50 +15,63 @@ import (
 
 type ScriptSubdomainInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether the Worker should be available on the workers.dev subdomain.
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled *bool `json:"previewsEnabled,omitempty" tf:"previews_enabled,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 }
 
 type ScriptSubdomainObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether the Worker should be available on the workers.dev subdomain.
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String) Identifier for the resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Boolean) Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled *bool `json:"previewsEnabled,omitempty" tf:"previews_enabled,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
 }
 
 type ScriptSubdomainParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Boolean) Whether the Worker should be available on the workers.dev subdomain.
 	// Whether the Worker should be available on the workers.dev subdomain.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Boolean) Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	// +kubebuilder:validation:Optional
 	PreviewsEnabled *bool `json:"previewsEnabled,omitempty" tf:"previews_enabled,omitempty"`
 
+	// (String) Name of the script, used in URLs and route configuration.
 	// Name of the script, used in URLs and route configuration.
 	// +kubebuilder:validation:Optional
 	ScriptName *string `json:"scriptName,omitempty" tf:"script_name,omitempty"`
@@ -91,7 +104,7 @@ type ScriptSubdomainStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ScriptSubdomain is the Schema for the ScriptSubdomains API. <no value>
+// ScriptSubdomain is the Schema for the ScriptSubdomains API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

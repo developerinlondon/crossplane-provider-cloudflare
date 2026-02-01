@@ -15,54 +15,69 @@ import (
 
 type ForPlatformsDispatchNamespaceInitParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the dispatch namespace.
 	// The name of the dispatch namespace.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type ForPlatformsDispatchNamespaceObservation struct {
 
+	// (String) Identifier.
 	// Identifier.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
+	// (String) When the script was created.
 	// When the script was created.
 	CreatedOn *string `json:"createdOn,omitempty" tf:"created_on,omitempty"`
 
+	// (String) Name of the Workers for Platforms dispatch namespace.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) Identifier.
 	// Identifier.
 	ModifiedBy *string `json:"modifiedBy,omitempty" tf:"modified_by,omitempty"`
 
+	// (String) When the script was last modified.
 	// When the script was last modified.
 	ModifiedOn *string `json:"modifiedOn,omitempty" tf:"modified_on,omitempty"`
 
+	// (String) The name of the dispatch namespace.
 	// The name of the dispatch namespace.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (String) API Resource UUID tag.
 	// API Resource UUID tag.
 	NamespaceID *string `json:"namespaceId,omitempty" tf:"namespace_id,omitempty"`
 
+	// (String) Name of the Workers for Platforms dispatch namespace.
 	// Name of the Workers for Platforms dispatch namespace.
 	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
 
+	// (Number) The current number of scripts in this Dispatch Namespace.
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount *float64 `json:"scriptCount,omitempty" tf:"script_count,omitempty"`
 
+	// (Boolean) Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the request.cf object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and request.cf is undefined. By default, Workers in a namespace are "untrusted".
 	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
 	TrustedWorkers *bool `json:"trustedWorkers,omitempty" tf:"trusted_workers,omitempty"`
 }
 
 type ForPlatformsDispatchNamespaceParameters struct {
 
+	// (String) Identifier.
 	// Identifier.
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (String) The name of the dispatch namespace.
 	// The name of the dispatch namespace.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -95,7 +110,7 @@ type ForPlatformsDispatchNamespaceStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ForPlatformsDispatchNamespace is the Schema for the ForPlatformsDispatchNamespaces API. <no value>
+// ForPlatformsDispatchNamespace is the Schema for the ForPlatformsDispatchNamespaces API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

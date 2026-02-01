@@ -15,115 +15,154 @@ import (
 
 type ContextAwarenessInitParameters struct {
 
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes) Content types to exclude from context analysis and return all matches. (see below for nested schema)
 	Skip *SkipInitParameters `json:"skip,omitempty" tf:"skip,omitempty"`
 }
 
 type ContextAwarenessObservation struct {
 
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (Attributes) Content types to exclude from context analysis and return all matches. (see below for nested schema)
 	Skip *SkipObservation `json:"skip,omitempty" tf:"skip,omitempty"`
 }
 
 type ContextAwarenessParameters struct {
 
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (Attributes) Content types to exclude from context analysis and return all matches. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Skip *SkipParameters `json:"skip" tf:"skip,omitempty"`
 }
 
 type EntriesInitParameters struct {
+
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Pattern *EntriesPatternInitParameters `json:"pattern,omitempty" tf:"pattern,omitempty"`
 }
 
 type EntriesObservation struct {
+
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	Pattern *EntriesPatternObservation `json:"pattern,omitempty" tf:"pattern,omitempty"`
 }
 
 type EntriesParameters struct {
 
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 
+	// (Attributes) (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Pattern *EntriesPatternParameters `json:"pattern" tf:"pattern,omitempty"`
 }
 
 type EntriesPatternInitParameters struct {
+
+	// (String)
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String, Deprecated) Available values: "luhn".
 	// Available values: "luhn".
 	Validation *string `json:"validation,omitempty" tf:"validation,omitempty"`
 }
 
 type EntriesPatternObservation struct {
+
+	// (String)
 	Regex *string `json:"regex,omitempty" tf:"regex,omitempty"`
 
+	// (String, Deprecated) Available values: "luhn".
 	// Available values: "luhn".
 	Validation *string `json:"validation,omitempty" tf:"validation,omitempty"`
 }
 
 type EntriesPatternParameters struct {
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Regex *string `json:"regex" tf:"regex,omitempty"`
 
+	// (String, Deprecated) Available values: "luhn".
 	// Available values: "luhn".
 	// +kubebuilder:validation:Optional
 	Validation *string `json:"validation,omitempty" tf:"validation,omitempty"`
 }
 
 type SharedEntriesInitParameters struct {
+
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 	// Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 	EntryType *string `json:"entryType,omitempty" tf:"entry_type,omitempty"`
 }
 
 type SharedEntriesObservation struct {
+
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
+	// (String)
 	EntryID *string `json:"entryId,omitempty" tf:"entry_id,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 	// Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 	EntryType *string `json:"entryType,omitempty" tf:"entry_type,omitempty"`
 }
 
 type SharedEntriesParameters struct {
 
+	// (Boolean) If true, scan the context of predefined entries to only return matches surrounded by keywords.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	EntryID *string `json:"entryId" tf:"entry_id,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 	// Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 	// +kubebuilder:validation:Optional
 	EntryType *string `json:"entryType" tf:"entry_type,omitempty"`
@@ -131,116 +170,159 @@ type SharedEntriesParameters struct {
 
 type SkipInitParameters struct {
 
+	// (Boolean) If the content type is a file, skip context analysis and return all matches.
 	// If the content type is a file, skip context analysis and return all matches.
 	Files *bool `json:"files,omitempty" tf:"files,omitempty"`
 }
 
 type SkipObservation struct {
 
+	// (Boolean) If the content type is a file, skip context analysis and return all matches.
 	// If the content type is a file, skip context analysis and return all matches.
 	Files *bool `json:"files,omitempty" tf:"files,omitempty"`
 }
 
 type SkipParameters struct {
 
+	// (Boolean) If the content type is a file, skip context analysis and return all matches.
 	// If the content type is a file, skip context analysis and return all matches.
 	// +kubebuilder:validation:Optional
 	Files *bool `json:"files" tf:"files,omitempty"`
 }
 
 type TrustDlpCustomProfileInitParameters struct {
+
+	// (Boolean)
 	AIContextEnabled *bool `json:"aiContextEnabled,omitempty" tf:"ai_context_enabled,omitempty"`
 
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Related DLP policies will trigger when the match count exceeds the number set.
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount *float64 `json:"allowedMatchCount,omitempty" tf:"allowed_match_count,omitempty"`
 
+	// (String)
 	ConfidenceThreshold *string `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
+	// (Attributes, Deprecated) Scan the context of predefined entries to only return matches surrounded by keywords. (see below for nested schema)
 	ContextAwareness *ContextAwarenessInitParameters `json:"contextAwareness,omitempty" tf:"context_awareness,omitempty"`
 
+	// (String) The description of the profile.
 	// The description of the profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes Set, Deprecated) Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed. (see below for nested schema)
 	Entries []EntriesInitParameters `json:"entries,omitempty" tf:"entries,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean)
 	OcrEnabled *bool `json:"ocrEnabled,omitempty" tf:"ocr_enabled,omitempty"`
 
+	// defined Cloudflare profiles, or your Microsoft Information Protection profiles). (see below for nested schema)
 	SharedEntries []SharedEntriesInitParameters `json:"sharedEntries,omitempty" tf:"shared_entries,omitempty"`
 }
 
 type TrustDlpCustomProfileObservation struct {
+
+	// (Boolean)
 	AIContextEnabled *bool `json:"aiContextEnabled,omitempty" tf:"ai_context_enabled,omitempty"`
 
+	// (String)
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Related DLP policies will trigger when the match count exceeds the number set.
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount *float64 `json:"allowedMatchCount,omitempty" tf:"allowed_match_count,omitempty"`
 
+	// (String)
 	ConfidenceThreshold *string `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
+	// (Attributes, Deprecated) Scan the context of predefined entries to only return matches surrounded by keywords. (see below for nested schema)
 	ContextAwareness *ContextAwarenessObservation `json:"contextAwareness,omitempty" tf:"context_awareness,omitempty"`
 
+	// (String) When the profile was created.
 	// When the profile was created.
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
+	// (String) The description of the profile.
 	// The description of the profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes Set, Deprecated) Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed. (see below for nested schema)
 	Entries []EntriesObservation `json:"entries,omitempty" tf:"entries,omitempty"`
 
+	// (String) The id of the profile (uuid).
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean)
 	OcrEnabled *bool `json:"ocrEnabled,omitempty" tf:"ocr_enabled,omitempty"`
 
+	// (Boolean) Whether this profile can be accessed by anyone.
 	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool `json:"openAccess,omitempty" tf:"open_access,omitempty"`
 
+	// defined Cloudflare profiles, or your Microsoft Information Protection profiles). (see below for nested schema)
 	SharedEntries []SharedEntriesObservation `json:"sharedEntries,omitempty" tf:"shared_entries,omitempty"`
 
+	// (String) Available values: "custom", "predefined", "integration".
 	// Available values: "custom", "predefined", "integration".
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
+	// (String) When the profile was lasted updated.
 	// When the profile was lasted updated.
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
 type TrustDlpCustomProfileParameters struct {
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	AIContextEnabled *bool `json:"aiContextEnabled,omitempty" tf:"ai_context_enabled,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
 
+	// (Number) Related DLP policies will trigger when the match count exceeds the number set.
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	// +kubebuilder:validation:Optional
 	AllowedMatchCount *float64 `json:"allowedMatchCount,omitempty" tf:"allowed_match_count,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	ConfidenceThreshold *string `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
+	// (Attributes, Deprecated) Scan the context of predefined entries to only return matches surrounded by keywords. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	ContextAwareness *ContextAwarenessParameters `json:"contextAwareness,omitempty" tf:"context_awareness,omitempty"`
 
+	// (String) The description of the profile.
 	// The description of the profile.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// (Attributes Set, Deprecated) Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed. (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	Entries []EntriesParameters `json:"entries,omitempty" tf:"entries,omitempty"`
 
+	// (String)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Boolean)
 	// +kubebuilder:validation:Optional
 	OcrEnabled *bool `json:"ocrEnabled,omitempty" tf:"ocr_enabled,omitempty"`
 
+	// defined Cloudflare profiles, or your Microsoft Information Protection profiles). (see below for nested schema)
 	// +kubebuilder:validation:Optional
 	SharedEntries []SharedEntriesParameters `json:"sharedEntries,omitempty" tf:"shared_entries,omitempty"`
 }
@@ -272,7 +354,7 @@ type TrustDlpCustomProfileStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// TrustDlpCustomProfile is the Schema for the TrustDlpCustomProfiles API. <no value>
+// TrustDlpCustomProfile is the Schema for the TrustDlpCustomProfiles API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
