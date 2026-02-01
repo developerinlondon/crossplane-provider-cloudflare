@@ -1,4 +1,9 @@
 FROM alpine:3.23.2
+
+LABEL org.opencontainers.image.source=https://github.com/developerinlondon/crossplane-provider-cloudflare
+LABEL org.opencontainers.image.description="Crossplane Provider for Cloudflare (Upjet v2.2.0, 207 resources)"
+LABEL org.opencontainers.image.licenses=Apache-2.0
+
 RUN apk --no-cache add ca-certificates bash
 
 ARG TARGETOS
