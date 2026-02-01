@@ -10,7 +10,7 @@ package v1alpha1
 func (tr *Bucket) Hub() {}
 
 // Hub marks this type as a conversion hub.
-func (tr *BucketCORS) Hub() {}
+func (tr *BucketCors) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *BucketEventNotification) Hub() {}

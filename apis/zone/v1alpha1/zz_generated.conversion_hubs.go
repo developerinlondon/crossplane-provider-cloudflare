@@ -7,10 +7,25 @@
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
+func (tr *CacheReserve) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *CacheVariants) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *DNSSEC) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DNSSettings) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Hold) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Lockdown) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Setting) Hub() {}
 
 // Hub marks this type as a conversion hub.
-func (tr *Zone) Hub() {}
+func (tr *Subscription) Hub() {}

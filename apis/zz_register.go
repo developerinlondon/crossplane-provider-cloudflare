@@ -10,9 +10,68 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "gitlab.com/jarvisai.run/provider-cloudflare/apis/r2/v1alpha1"
+	v1alpha1 "gitlab.com/jarvisai.run/provider-cloudflare/apis/access/v1alpha1"
+	v1alpha1account "gitlab.com/jarvisai.run/provider-cloudflare/apis/account/v1alpha1"
+	v1alpha1api "gitlab.com/jarvisai.run/provider-cloudflare/apis/api/v1alpha1"
+	v1alpha1argo "gitlab.com/jarvisai.run/provider-cloudflare/apis/argo/v1alpha1"
+	v1alpha1authenticated "gitlab.com/jarvisai.run/provider-cloudflare/apis/authenticated/v1alpha1"
+	v1alpha1bot "gitlab.com/jarvisai.run/provider-cloudflare/apis/bot/v1alpha1"
+	v1alpha1byo "gitlab.com/jarvisai.run/provider-cloudflare/apis/byo/v1alpha1"
+	v1alpha1calls "gitlab.com/jarvisai.run/provider-cloudflare/apis/calls/v1alpha1"
+	v1alpha1certificate "gitlab.com/jarvisai.run/provider-cloudflare/apis/certificate/v1alpha1"
+	v1alpha1cloud "gitlab.com/jarvisai.run/provider-cloudflare/apis/cloud/v1alpha1"
+	v1alpha1cloudflare "gitlab.com/jarvisai.run/provider-cloudflare/apis/cloudflare/v1alpha1"
+	v1alpha1cloudforce "gitlab.com/jarvisai.run/provider-cloudflare/apis/cloudforce/v1alpha1"
+	v1alpha1connectivity "gitlab.com/jarvisai.run/provider-cloudflare/apis/connectivity/v1alpha1"
+	v1alpha1content "gitlab.com/jarvisai.run/provider-cloudflare/apis/content/v1alpha1"
+	v1alpha1custom "gitlab.com/jarvisai.run/provider-cloudflare/apis/custom/v1alpha1"
+	v1alpha1d1 "gitlab.com/jarvisai.run/provider-cloudflare/apis/d1/v1alpha1"
+	v1alpha1dns "gitlab.com/jarvisai.run/provider-cloudflare/apis/dns/v1alpha1"
+	v1alpha1email "gitlab.com/jarvisai.run/provider-cloudflare/apis/email/v1alpha1"
+	v1alpha1firewall "gitlab.com/jarvisai.run/provider-cloudflare/apis/firewall/v1alpha1"
+	v1alpha1hostname "gitlab.com/jarvisai.run/provider-cloudflare/apis/hostname/v1alpha1"
+	v1alpha1hyperdrive "gitlab.com/jarvisai.run/provider-cloudflare/apis/hyperdrive/v1alpha1"
+	v1alpha1image "gitlab.com/jarvisai.run/provider-cloudflare/apis/image/v1alpha1"
+	v1alpha1keyless "gitlab.com/jarvisai.run/provider-cloudflare/apis/keyless/v1alpha1"
+	v1alpha1leaked "gitlab.com/jarvisai.run/provider-cloudflare/apis/leaked/v1alpha1"
+	v1alpha1list "gitlab.com/jarvisai.run/provider-cloudflare/apis/list/v1alpha1"
+	v1alpha1load "gitlab.com/jarvisai.run/provider-cloudflare/apis/load/v1alpha1"
+	v1alpha1logpull "gitlab.com/jarvisai.run/provider-cloudflare/apis/logpull/v1alpha1"
+	v1alpha1logpush "gitlab.com/jarvisai.run/provider-cloudflare/apis/logpush/v1alpha1"
+	v1alpha1magic "gitlab.com/jarvisai.run/provider-cloudflare/apis/magic/v1alpha1"
+	v1alpha1managed "gitlab.com/jarvisai.run/provider-cloudflare/apis/managed/v1alpha1"
+	v1alpha1mtls "gitlab.com/jarvisai.run/provider-cloudflare/apis/mtls/v1alpha1"
+	v1alpha1notification "gitlab.com/jarvisai.run/provider-cloudflare/apis/notification/v1alpha1"
+	v1alpha1observatory "gitlab.com/jarvisai.run/provider-cloudflare/apis/observatory/v1alpha1"
+	v1alpha1organization "gitlab.com/jarvisai.run/provider-cloudflare/apis/organization/v1alpha1"
+	v1alpha1origin "gitlab.com/jarvisai.run/provider-cloudflare/apis/origin/v1alpha1"
+	v1alpha1page "gitlab.com/jarvisai.run/provider-cloudflare/apis/page/v1alpha1"
+	v1alpha1pages "gitlab.com/jarvisai.run/provider-cloudflare/apis/pages/v1alpha1"
+	v1alpha1queue "gitlab.com/jarvisai.run/provider-cloudflare/apis/queue/v1alpha1"
+	v1alpha1r2 "gitlab.com/jarvisai.run/provider-cloudflare/apis/r2/v1alpha1"
+	v1alpha1rate "gitlab.com/jarvisai.run/provider-cloudflare/apis/rate/v1alpha1"
+	v1alpha1regional "gitlab.com/jarvisai.run/provider-cloudflare/apis/regional/v1alpha1"
+	v1alpha1registrar "gitlab.com/jarvisai.run/provider-cloudflare/apis/registrar/v1alpha1"
+	v1alpha1schema "gitlab.com/jarvisai.run/provider-cloudflare/apis/schema/v1alpha1"
+	v1alpha1snippet "gitlab.com/jarvisai.run/provider-cloudflare/apis/snippet/v1alpha1"
+	v1alpha1spectrum "gitlab.com/jarvisai.run/provider-cloudflare/apis/spectrum/v1alpha1"
+	v1alpha1sso "gitlab.com/jarvisai.run/provider-cloudflare/apis/sso/v1alpha1"
+	v1alpha1stream "gitlab.com/jarvisai.run/provider-cloudflare/apis/stream/v1alpha1"
+	v1alpha1tiered "gitlab.com/jarvisai.run/provider-cloudflare/apis/tiered/v1alpha1"
+	v1alpha1token "gitlab.com/jarvisai.run/provider-cloudflare/apis/token/v1alpha1"
+	v1alpha1total "gitlab.com/jarvisai.run/provider-cloudflare/apis/total/v1alpha1"
+	v1alpha1turnstile "gitlab.com/jarvisai.run/provider-cloudflare/apis/turnstile/v1alpha1"
+	v1alpha1universal "gitlab.com/jarvisai.run/provider-cloudflare/apis/universal/v1alpha1"
+	v1alpha1url "gitlab.com/jarvisai.run/provider-cloudflare/apis/url/v1alpha1"
+	v1alpha1user "gitlab.com/jarvisai.run/provider-cloudflare/apis/user/v1alpha1"
 	v1alpha1apis "gitlab.com/jarvisai.run/provider-cloudflare/apis/v1alpha1"
 	v1beta1 "gitlab.com/jarvisai.run/provider-cloudflare/apis/v1beta1"
+	v1alpha1waiting "gitlab.com/jarvisai.run/provider-cloudflare/apis/waiting/v1alpha1"
+	v1alpha1web "gitlab.com/jarvisai.run/provider-cloudflare/apis/web/v1alpha1"
+	v1alpha1web3 "gitlab.com/jarvisai.run/provider-cloudflare/apis/web3/v1alpha1"
+	v1alpha1worker "gitlab.com/jarvisai.run/provider-cloudflare/apis/worker/v1alpha1"
+	v1alpha1workers "gitlab.com/jarvisai.run/provider-cloudflare/apis/workers/v1alpha1"
+	v1alpha1zero "gitlab.com/jarvisai.run/provider-cloudflare/apis/zero/v1alpha1"
 	v1alpha1zone "gitlab.com/jarvisai.run/provider-cloudflare/apis/zone/v1alpha1"
 )
 
@@ -20,8 +79,67 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1account.SchemeBuilder.AddToScheme,
+		v1alpha1api.SchemeBuilder.AddToScheme,
+		v1alpha1argo.SchemeBuilder.AddToScheme,
+		v1alpha1authenticated.SchemeBuilder.AddToScheme,
+		v1alpha1bot.SchemeBuilder.AddToScheme,
+		v1alpha1byo.SchemeBuilder.AddToScheme,
+		v1alpha1calls.SchemeBuilder.AddToScheme,
+		v1alpha1certificate.SchemeBuilder.AddToScheme,
+		v1alpha1cloud.SchemeBuilder.AddToScheme,
+		v1alpha1cloudflare.SchemeBuilder.AddToScheme,
+		v1alpha1cloudforce.SchemeBuilder.AddToScheme,
+		v1alpha1connectivity.SchemeBuilder.AddToScheme,
+		v1alpha1content.SchemeBuilder.AddToScheme,
+		v1alpha1custom.SchemeBuilder.AddToScheme,
+		v1alpha1d1.SchemeBuilder.AddToScheme,
+		v1alpha1dns.SchemeBuilder.AddToScheme,
+		v1alpha1email.SchemeBuilder.AddToScheme,
+		v1alpha1firewall.SchemeBuilder.AddToScheme,
+		v1alpha1hostname.SchemeBuilder.AddToScheme,
+		v1alpha1hyperdrive.SchemeBuilder.AddToScheme,
+		v1alpha1image.SchemeBuilder.AddToScheme,
+		v1alpha1keyless.SchemeBuilder.AddToScheme,
+		v1alpha1leaked.SchemeBuilder.AddToScheme,
+		v1alpha1list.SchemeBuilder.AddToScheme,
+		v1alpha1load.SchemeBuilder.AddToScheme,
+		v1alpha1logpull.SchemeBuilder.AddToScheme,
+		v1alpha1logpush.SchemeBuilder.AddToScheme,
+		v1alpha1magic.SchemeBuilder.AddToScheme,
+		v1alpha1managed.SchemeBuilder.AddToScheme,
+		v1alpha1mtls.SchemeBuilder.AddToScheme,
+		v1alpha1notification.SchemeBuilder.AddToScheme,
+		v1alpha1observatory.SchemeBuilder.AddToScheme,
+		v1alpha1organization.SchemeBuilder.AddToScheme,
+		v1alpha1origin.SchemeBuilder.AddToScheme,
+		v1alpha1page.SchemeBuilder.AddToScheme,
+		v1alpha1pages.SchemeBuilder.AddToScheme,
+		v1alpha1queue.SchemeBuilder.AddToScheme,
+		v1alpha1r2.SchemeBuilder.AddToScheme,
+		v1alpha1rate.SchemeBuilder.AddToScheme,
+		v1alpha1regional.SchemeBuilder.AddToScheme,
+		v1alpha1registrar.SchemeBuilder.AddToScheme,
+		v1alpha1schema.SchemeBuilder.AddToScheme,
+		v1alpha1snippet.SchemeBuilder.AddToScheme,
+		v1alpha1spectrum.SchemeBuilder.AddToScheme,
+		v1alpha1sso.SchemeBuilder.AddToScheme,
+		v1alpha1stream.SchemeBuilder.AddToScheme,
+		v1alpha1tiered.SchemeBuilder.AddToScheme,
+		v1alpha1token.SchemeBuilder.AddToScheme,
+		v1alpha1total.SchemeBuilder.AddToScheme,
+		v1alpha1turnstile.SchemeBuilder.AddToScheme,
+		v1alpha1universal.SchemeBuilder.AddToScheme,
+		v1alpha1url.SchemeBuilder.AddToScheme,
+		v1alpha1user.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
+		v1alpha1waiting.SchemeBuilder.AddToScheme,
+		v1alpha1web.SchemeBuilder.AddToScheme,
+		v1alpha1web3.SchemeBuilder.AddToScheme,
+		v1alpha1worker.SchemeBuilder.AddToScheme,
+		v1alpha1workers.SchemeBuilder.AddToScheme,
+		v1alpha1zero.SchemeBuilder.AddToScheme,
 		v1alpha1zone.SchemeBuilder.AddToScheme,
 	)
 }

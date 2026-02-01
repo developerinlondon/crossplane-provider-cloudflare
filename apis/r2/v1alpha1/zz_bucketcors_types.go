@@ -52,7 +52,7 @@ type AllowedParameters struct {
 	Origins []*string `json:"origins" tf:"origins,omitempty"`
 }
 
-type BucketCORSInitParameters struct {
+type BucketCorsInitParameters struct {
 
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
@@ -66,7 +66,7 @@ type BucketCORSInitParameters struct {
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
-type BucketCORSObservation struct {
+type BucketCorsObservation struct {
 
 	// Account ID.
 	AccountID *string `json:"accountId,omitempty" tf:"account_id,omitempty"`
@@ -82,7 +82,7 @@ type BucketCORSObservation struct {
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
-type BucketCORSParameters struct {
+type BucketCorsParameters struct {
 
 	// Account ID.
 	// +kubebuilder:validation:Optional
@@ -144,10 +144,10 @@ type RulesParameters struct {
 	MaxAgeSeconds *float64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 }
 
-// BucketCORSSpec defines the desired state of BucketCORS
-type BucketCORSSpec struct {
+// BucketCorsSpec defines the desired state of BucketCors
+type BucketCorsSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     BucketCORSParameters `json:"forProvider"`
+	ForProvider     BucketCorsParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -158,51 +158,51 @@ type BucketCORSSpec struct {
 	// required on creation, but we do not desire to update them after creation,
 	// for example because of an external controller is managing them, like an
 	// autoscaler.
-	InitProvider BucketCORSInitParameters `json:"initProvider,omitempty"`
+	InitProvider BucketCorsInitParameters `json:"initProvider,omitempty"`
 }
 
-// BucketCORSStatus defines the observed state of BucketCORS.
-type BucketCORSStatus struct {
+// BucketCorsStatus defines the observed state of BucketCors.
+type BucketCorsStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        BucketCORSObservation `json:"atProvider,omitempty"`
+	AtProvider        BucketCorsObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// BucketCORS is the Schema for the BucketCORSs API. <no value>
+// BucketCors is the Schema for the BucketCorss API. <no value>
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,cloudflare}
-type BucketCORS struct {
+type BucketCors struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.accountId) || (has(self.initProvider) && has(self.initProvider.accountId))",message="spec.forProvider.accountId is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.bucketName) || (has(self.initProvider) && has(self.initProvider.bucketName))",message="spec.forProvider.bucketName is a required parameter"
-	Spec   BucketCORSSpec   `json:"spec"`
-	Status BucketCORSStatus `json:"status,omitempty"`
+	Spec   BucketCorsSpec   `json:"spec"`
+	Status BucketCorsStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// BucketCORSList contains a list of BucketCORSs
-type BucketCORSList struct {
+// BucketCorsList contains a list of BucketCorss
+type BucketCorsList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []BucketCORS `json:"items"`
+	Items           []BucketCors `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	BucketCORS_Kind             = "BucketCORS"
-	BucketCORS_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: BucketCORS_Kind}.String()
-	BucketCORS_KindAPIVersion   = BucketCORS_Kind + "." + CRDGroupVersion.String()
-	BucketCORS_GroupVersionKind = CRDGroupVersion.WithKind(BucketCORS_Kind)
+	BucketCors_Kind             = "BucketCors"
+	BucketCors_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: BucketCors_Kind}.String()
+	BucketCors_KindAPIVersion   = BucketCors_Kind + "." + CRDGroupVersion.String()
+	BucketCors_GroupVersionKind = CRDGroupVersion.WithKind(BucketCors_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&BucketCORS{}, &BucketCORSList{})
+	SchemeBuilder.Register(&BucketCors{}, &BucketCorsList{})
 }

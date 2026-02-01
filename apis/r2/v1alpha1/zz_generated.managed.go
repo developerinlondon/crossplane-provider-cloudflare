@@ -58,53 +58,53 @@ func (mg *Bucket) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
-// GetCondition of this BucketCORS.
-func (mg *BucketCORS) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this BucketCors.
+func (mg *BucketCors) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this BucketCORS.
-func (mg *BucketCORS) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this BucketCors.
+func (mg *BucketCors) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetManagementPolicies of this BucketCORS.
-func (mg *BucketCORS) GetManagementPolicies() xpv1.ManagementPolicies {
+// GetManagementPolicies of this BucketCors.
+func (mg *BucketCors) GetManagementPolicies() xpv1.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
-// GetProviderConfigReference of this BucketCORS.
-func (mg *BucketCORS) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this BucketCors.
+func (mg *BucketCors) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
-// GetWriteConnectionSecretToReference of this BucketCORS.
-func (mg *BucketCORS) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this BucketCors.
+func (mg *BucketCors) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this BucketCORS.
-func (mg *BucketCORS) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this BucketCors.
+func (mg *BucketCors) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this BucketCORS.
-func (mg *BucketCORS) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this BucketCors.
+func (mg *BucketCors) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetManagementPolicies of this BucketCORS.
-func (mg *BucketCORS) SetManagementPolicies(r xpv1.ManagementPolicies) {
+// SetManagementPolicies of this BucketCors.
+func (mg *BucketCors) SetManagementPolicies(r xpv1.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
-// SetProviderConfigReference of this BucketCORS.
-func (mg *BucketCORS) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this BucketCors.
+func (mg *BucketCors) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
-// SetWriteConnectionSecretToReference of this BucketCORS.
-func (mg *BucketCORS) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this BucketCors.
+func (mg *BucketCors) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
